@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TravelTitleSet"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_height="48dp"
+        android:layout_width="48dp"
+        android:id="@+id/btn_back"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/ic_back"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="32dp"
+        android:textSize="28sp"
+        android:fontFamily="@font/roboto_medium"
+        android:textStyle="normal"
+        android:textColor="@color/black"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="35sp"
+        tools:text="When"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto_light"
+        android:textStyle="normal"
+        android:textColor="@color/deep_grey"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="12sp"
+        tools:text="Do You Travel?"
+        />
+
+
+    //버튼 이미지로 달라고 하기.
+    //슬라이드 바 추가.
+
+
+
+    <Button
+        android:id="@+id/btn_Next"
+        android:onClick="onClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="74dp"
+        android:background="@drawable/ic_btn_296"
+        android:fontFamily="@font/roboto_medium"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="7sp"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        tools:text="Next" />
+
+
+</LinearLayout>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_bus_24px" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#dbdde4}
+        </style>
+    </defs>
+    <path id="패스_2043" d="M0 0h24v24H0z" class="cls-1" data-name="패스 2043"/>
+    <path id="패스_2044" d="M4 16a2.986 2.986 0 0 0 1 2.22v1.28a1.5 1.5 0 0 0 3 0V19h8v.5a1.5 1.5 0 0 0 3 0v-1.28A2.986 2.986 0 0 0 20 16V6c0-3.5-3.58-4-8-4s-8 .5-8 4zm3.5 1A1.5 1.5 0 1 1 9 15.5 1.5 1.5 0 0 1 7.5 17zm9 0a1.5 1.5 0 1 1 1.5-1.5 1.5 1.5 0 0 1-1.5 1.5zm1.5-6H6V6h12z" class="cls-2" data-name="패스 2044"/>
+</svg>

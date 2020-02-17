@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TravelTitleSet"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_height="48dp"
+        android:layout_width="48dp"
+        android:id="@+id/btn_back"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/ic_back"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="32dp"
+        android:textSize="28sp"
+        android:fontFamily="@font/roboto_medium"
+        android:textStyle="normal"
+        android:textColor="@color/black"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="35sp"
+        tools:text="What Is"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto_light"
+        android:textStyle="normal"
+        android:textColor="@color/deep_grey"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="12sp"
+        tools:text="Your Lodging?"
+        />
+
+    <Button
+        android:id="@+id/btn_hotel"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:background="@drawable/border_12r_grey"
+        android:drawableLeft="@drawable/ic_lodging_24px"
+        android:paddingLeft="24dp"
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_regular"
+        android:textStyle="normal"
+        android:textColor="@color/soft_black"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="11sp"
+        android:text="Hotel"/>
+
+    <Button
+        android:id="@+id/btn_condo"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:background="@drawable/border_12r_grey"
+        android:drawableLeft="@drawable/ic_lodging_24px"
+        android:paddingLeft="24dp"
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_regular"
+        android:textStyle="normal"
+        android:textColor="@color/soft_black"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="11sp"
+        android:text="Condo / Pension / Residence"
+        />
+
+    <Button
+        android:id="@+id/btn_hostel"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:background="@drawable/border_12r_grey"
+        android:drawableLeft="@drawable/ic_lodging_24px"
+        android:paddingLeft="24dp"
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_regular"
+        android:textStyle="normal"
+        android:textColor="@color/soft_black"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="11sp"
+        android:text="Youth Hostel / Gest House"/>
+
+    //버튼 이미지로 달라고 하기.
+    //슬라이드 바 추가.
+
+
+
+    <Button
+        android:id="@+id/btn_Next"
+        android:onClick="onClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="74dp"
+        android:background="@drawable/ic_btn_296"
+        android:fontFamily="@font/roboto_medium"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="7sp"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        tools:text="Next" />
+
+
+</LinearLayout>

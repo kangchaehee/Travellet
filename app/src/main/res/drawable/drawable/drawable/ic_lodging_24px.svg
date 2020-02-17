@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_lodging_24px" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#dbdde4}
+        </style>
+    </defs>
+    <path id="패스_2057" d="M0 0h24v24H0z" class="cls-1" data-name="패스 2057"/>
+    <path id="패스_2058" d="M7 13a3 3 0 1 0-3-3 3 3 0 0 0 3 3zm12-6h-6a2.006 2.006 0 0 0-2 2v5H3V6a1 1 0 0 0-2 0v13a1 1 0 0 0 2 0v-2h18v2a1 1 0 0 0 2 0v-8a4 4 0 0 0-4-4z" class="cls-2" data-name="패스 2058"/>
+</svg>

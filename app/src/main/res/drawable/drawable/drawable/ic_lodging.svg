@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_lodging" width="50" height="56" viewBox="0 0 50 56">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#c8cbd3;font-size:10px;font-family:Roboto-Regular,Roboto;letter-spacing:.03em}.cls-3{fill:#dbdde4}
+        </style>
+    </defs>
+    <path id="사각형_323" d="M0 0h50v56H0z" class="cls-1" data-name="사각형 323"/>
+    <path id="패스_2057" d="M0 0h22v32H0z" class="cls-1" data-name="패스 2057" transform="translate(14 12)"/>
+    <g id="그룹_361" data-name="그룹 361" transform="translate(6 4)">
+        <text id="lodging" class="cls-2" transform="translate(19 46)">
+            <tspan x="-18.844" y="0">Lodging</tspan>
+        </text>
+        <g id="ic_lodging_32px" transform="translate(3)">
+            <path id="패스_2057-2" d="M0 0h32v32H0z" class="cls-1" data-name="패스 2057"/>
+            <path id="패스_2058" d="M9.182 17.267a4.362 4.362 0 0 0 4.091-4.6 4.362 4.362 0 0 0-4.091-4.6 4.362 4.362 0 0 0-4.091 4.6 4.362 4.362 0 0 0 4.091 4.6zm16.364-9.2h-8.182a2.921 2.921 0 0 0-2.727 3.067V18.8H3.727V6.533A1.46 1.46 0 0 0 2.364 5 1.46 1.46 0 0 0 1 6.533v19.934A1.46 1.46 0 0 0 2.364 28a1.46 1.46 0 0 0 1.364-1.533V23.4h24.545v3.067a1.373 1.373 0 1 0 2.727 0V14.2c0-3.389-2.441-6.133-5.455-6.133z" class="cls-3" data-name="패스 2058"/>
+        </g>
+    </g>
+</svg>
