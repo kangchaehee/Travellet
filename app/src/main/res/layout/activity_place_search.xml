@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/placeToPlan"
+        android:background="@drawable/ic_back"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="28dp"
+        android:textColor="@color/deep_grey"
+        android:text="Place"
+        android:textSize="12sp"
+        android:fontFamily="@font/roboto_regular" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:singleLine="true"
+            android:id="@+id/placeSearchKey"
+            android:layout_toLeftOf="@id/SearchKeyButton"
+            android:layout_marginRight="8dp"
+            android:background="@null"
+            android:hint="Search the place"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_light"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:id="@+id/SearchKeyButton"
+            android:background="@drawable/ic_search_24px"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/icon_grey"
+            android:layout_below="@id/placeSearchKey"
+            android:layout_marginTop="8dp"/>
+    </RelativeLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/searchLodging"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:background="@drawable/button_background_border"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Lodging"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/searchFood"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_background_border"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Food"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/searchShopping"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_background_border"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Shopping"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/searchTourism"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_background_border"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Tourism"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/searchETC"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="32dp"
+                android:background="@drawable/button_background_border"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Etc"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:scrollbars="none">
+
+    </ListView>
+
+    <!--<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"/>-->
+
+</LinearLayout>

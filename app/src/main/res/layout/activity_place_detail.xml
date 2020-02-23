@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detailToList"
+        android:background="@drawable/ic_back"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/detailToList">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detailTitle"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:text="Lotte Hotel Seoul"
+                android:fontFamily="@font/roboto_bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detailType"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp"
+                android:textColor="@color/deep_grey"
+                android:text="Accommodation"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="196dp"
+                android:layout_marginTop="32dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/detailImage"
+                    android:scaleType="centerCrop"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/ic_like_non"/>
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background_full"
+                android:text="More Info"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="20dp"
+                android:id="@+id/moreInfo"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/icon_grey"
+                android:layout_marginTop="40dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Introduction"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:fontFamily="@font/roboto_medium"/>
+
+            <TextView
+                android:id="@+id/detailOverview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:textSize="16sp"
+                android:textColor="@color/deep_grey"
+                android:text="Lotte Hotels and Resorts is a South Korea
+n luxury hotel chain operated by Lotte Hot
+el Co., Ltd., the hospitality arm of Lotte Co
+rporation. The company was founded in M
+ay 1973. Starting with the opening of Lott
+e Hotel Seoul in 1979, luxury chain hotels opened in Jamsil, Busan, Jeju, and Ulsan. \n\n
+
+The first business hotel, Lotte City Hotel M
+apo, opened in April 2009, and the first ove
+rseas chain, Lotte Hotel Moscow, opened i
+n June 2010. On December 8, 2011, the se
+cond business hotel, Lotte City Hotel Gim
+po Airport opened within the Lotte Mall Gi
+mpo Airport complex"
+                android:fontFamily="@font/roboto_light"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/icon_grey"
+                android:layout_marginTop="40dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Location &amp; Contact Info"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:fontFamily="@font/roboto_medium"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="Address"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:id="@+id/addr"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="34dp"
+                    android:text="30, Eulji-ro, Jung-gu, Seoul address address"
+                    android:textColor="@color/deep_grey"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_light"
+                    android:layout_toRightOf="@+id/addr"
+                    android:id="@+id/detailAddress"/>
+
+                <View
+                    android:layout_below="@+id/detailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/icon_grey"
+                    android:layout_marginTop="16dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Tel"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:id="@+id/tel"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="34dp"
+                    android:text="+82-02-123-1234 "
+                    android:textColor="@color/deep_grey"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_light"
+                    android:layout_toRightOf="@+id/tel"
+                    android:id="@+id/detailTel"/>
+
+                <View
+                    android:layout_below="@+id/detailTel"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/icon_grey"
+                    android:layout_marginTop="16dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Link"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:id="@+id/link"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="34dp"
+                    android:text="www.hotel.com"
+                    android:textColor="@color/deep_grey"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_light"
+                    android:layout_toRightOf="@+id/link"
+                    android:id="@+id/detailLink"/>
+
+                <View
+                    android:layout_below="@+id/detailLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/icon_grey"
+                    android:layout_marginTop="16dp"/>
+
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background_full"
+                android:text="Direction"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="32dp"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/direction"/>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -145,7 +145,6 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -156,7 +155,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
 
 
             <LinearLayout
@@ -181,6 +181,96 @@
                     android:textSize="14sp"
                     android:textStyle="normal"
                     tools:text="Lodging" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:fontFamily="@font/roboto_regular"
+                android:lineSpacingExtra="11sp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                tools:text="Remaining $ 1,800.00" />
+
+            //퍼센트 이미지 바
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/progress_6" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:fontFamily="@font/roboto_light"
+                    android:lineSpacingExtra="9sp"
+                    android:textColor="#757575"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    tools:text="$1,800.00 of  $2,000.00" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="end"
+                    android:fontFamily="@font/roboto_regular"
+                    android:lineSpacingExtra="9sp"
+                    android:textColor="#757575"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    tools:text="90%" />
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="21dp"
+                    android:layout_marginTop="45dp"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/bar"/>
+
+            </RelativeLayout>
+
+
+            #2
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="2dp"
+                    app:srcCompat="@drawable/ic_food_24px" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:fontFamily="@font/roboto_light"
+                    android:lineSpacingExtra="11sp"
+                    android:textColor="@color/deep_grey"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    tools:text="Food" />
 
             </LinearLayout>
 
@@ -242,90 +332,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="21dp"
-                    android:background="@drawable/bar" />
-
-            </RelativeLayout>
-
-
-            #2
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginRight="2dp"
-                    app:srcCompat="@drawable/ic_lodging_24px" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:fontFamily="@font/roboto_light"
-                    android:lineSpacingExtra="11sp"
-                    android:textColor="@color/deep_grey"
-                    android:textSize="14sp"
-                    android:textStyle="normal"
-                    tools:text="Lodging" />
-
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
-                android:fontFamily="@font/roboto_regular"
-                android:lineSpacingExtra="11sp"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="normal"
-                tools:text="Remaining $ 1,800.00" />
-
-            //퍼센트 이미지 바
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="8dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/progress_6" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="45dp"
                     android:layout_alignParentTop="true"
-                    android:fontFamily="@font/roboto_light"
-                    android:lineSpacingExtra="9sp"
-                    android:textColor="#757575"
-                    android:textSize="12sp"
-                    android:textStyle="normal"
-                    tools:text="$1,800.00 of  $2,000.00" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_gravity="end"
-                    android:fontFamily="@font/roboto_regular"
-                    android:lineSpacingExtra="9sp"
-                    android:textColor="#757575"
-                    android:textSize="12sp"
-                    android:textStyle="normal"
-                    tools:text="90%" />
+                    android:background="@drawable/bar"/>
 
             </RelativeLayout>
 

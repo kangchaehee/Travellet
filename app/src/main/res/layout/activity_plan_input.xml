@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputToPlan"
+        android:background="@drawable/ic_back"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="28dp"/>
+
+    <ScrollView
+        android:id="@+id/scr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/inputToPlan"
+        android:layout_above="@+id/addButton">
+        <LinearLayout
+            android:layout_below="@id/inputToPlan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/soft_black"
+                android:textSize="24sp"
+                android:text="Add Plan"
+                android:fontFamily="@font/roboto_medium"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Time"
+                android:textSize="12sp"
+                android:textColor="@color/deep_grey"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <TimePicker
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/select_time"
+                android:timePickerMode="spinner" />
+
+            <!--<RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/select_time"
+                    android:textColor="@color/soft_grey"
+                    android:textSize="14sp"
+                    android:text="Select your trip time"
+                    android:fontFamily="@font/roboto_light"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/SelectTimeButton"
+                    android:background="@drawable/ic_down"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/icon_grey"
+                    android:layout_below="@id/select_time"
+                    android:layout_marginTop="8dp"/>
+
+            </RelativeLayout>-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Place"
+                android:textSize="12sp"
+                android:textColor="@color/deep_grey"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/select_place"
+                    android:textColor="@color/soft_black"
+                    android:textSize="14sp"
+                    android:text="Select your trip time"
+                    android:fontFamily="@font/roboto_light"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/SelectPlaceButton"
+                    android:background="@drawable/ic_down"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/icon_grey"
+                    android:layout_below="@id/select_place"
+                    android:layout_marginTop="8dp"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Memo"
+                android:textSize="12sp"
+                android:textColor="@color/deep_grey"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Write memo."
+                    android:background="@null"
+                    android:id="@+id/memo"
+                    android:textColor="@color/soft_black"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_light"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/icon_grey"
+                    android:layout_below="@id/memo"
+                    android:layout_marginTop="8dp"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Category"
+                android:textSize="12sp"
+                android:textColor="@color/deep_grey"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp">
+
+                    <ImageButton
+                        android:layout_width="50dp"
+                        android:layout_height="56dp"
+                        android:id="@+id/lodging"
+                        android:background="@drawable/ic_lodging"/>
+
+                    <ImageButton
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="56dp"
+                        android:id="@+id/food"
+                        android:background="@drawable/ic_food"/>
+
+                    <ImageButton
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="56dp"
+                        android:id="@+id/shopping"
+                        android:background="@drawable/ic_shopping"/>
+
+                    <ImageButton
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="56dp"
+                        android:id="@+id/tourism"
+                        android:background="@drawable/ic_tourism"/>
+
+                    <ImageButton
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="50dp"
+                        android:layout_height="56dp"
+                        android:id="@+id/etc"
+                        android:background="@drawable/ic_etc"/>
+
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_full"
+        android:text="ADD"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_marginBottom="32dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="32dp"
+        android:id="@+id/addButton"/>
+</RelativeLayout>
