@@ -222,7 +222,6 @@
             android:textStyle="normal"
             android:textColor="#757575"
             android:lineSpacingExtra="9sp"
-            android:
             tools:text="90%"
             />
     </ScrollView>
