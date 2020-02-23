@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_food" width="50" height="56" viewBox="0 0 50 56">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#c8cbd3;font-size:10px;font-family:Roboto-Regular,Roboto;letter-spacing:.03em}.cls-3{fill:#dbdde4}
+        </style>
+    </defs>
+    <path id="사각형_324" d="M0 0h50v56H0z" class="cls-1" data-name="사각형 324"/>
+    <g id="그룹_356" data-name="그룹 356" transform="translate(9 4)">
+        <text id="food" class="cls-2" transform="translate(16 46)">
+            <tspan x="-11.685" y="0">Food</tspan>
+        </text>
+        <g id="ic_food_32px">
+            <path id="패스_2073" d="M0 0h32v32H0z" class="cls-1" data-name="패스 2073"/>
+            <path id="패스_2074" d="M21.778 7.6V16a2.854 2.854 0 0 0 2.889 2.8h1.444v9.8a1.445 1.445 0 0 0 2.889 0V3.582a1.447 1.447 0 0 0-1.791-1.372c-3.12.742-5.431 3.304-5.431 5.39zm-7.222 4.2h-2.889V3.4a1.445 1.445 0 0 0-2.889 0v8.4H5.889V3.4A1.445 1.445 0 0 0 3 3.4v8.4a5.689 5.689 0 0 0 5.778 5.6v11.2a1.445 1.445 0 0 0 2.889 0V17.4a5.689 5.689 0 0 0 5.778-5.6V3.4a1.445 1.445 0 0 0-2.889 0z" class="cls-3" data-name="패스 2074"/>
+        </g>
+    </g>
+</svg>

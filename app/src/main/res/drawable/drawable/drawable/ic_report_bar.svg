@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_report_bar" width="90" height="48" viewBox="0 0 90 48">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#dbdde4}
+        </style>
+    </defs>
+    <path id="사각형_321" d="M0 0h90v48H0z" class="cls-1" data-name="사각형 321"/>
+    <g id="ic_report" transform="translate(33 12)">
+        <g id="Icon_rating" transform="translate(3 4)">
+            <path id="Path" d="M0 2a2 2 0 0 1 4 0v12a2 2 0 0 1-4 0z" class="cls-2" transform="translate(14)"/>
+            <path id="Path-2" d="M0 2a2 2 0 0 1 4 0v8a2 2 0 0 1-4 0z" class="cls-2" data-name="Path" transform="translate(7 4)"/>
+            <path id="Path-3" d="M2 0a2 2 0 0 0-2 2v2a2 2 0 0 0 4 0V2a2 2 0 0 0-2-2z" class="cls-2" data-name="Path" transform="translate(0 10)"/>
+        </g>
+    </g>
+</svg>

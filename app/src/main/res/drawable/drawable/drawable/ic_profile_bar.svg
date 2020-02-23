@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_profile_bar" width="90" height="48" viewBox="0 0 90 48">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#dbdde4}
+        </style>
+    </defs>
+    <path id="사각형_321" d="M0 0h90v48H0z" class="cls-1" data-name="사각형 321"/>
+    <g id="ic_profile" transform="translate(33 12)">
+        <path id="Path" d="M4 8a4 4 0 1 0-4-4 4 4 0 0 0 4 4z" class="cls-2" transform="translate(8.001 3)"/>
+        <path id="Path-2" d="M8 0a9.985 9.985 0 0 0-8 4 9.985 9.985 0 0 0 8 4 9.985 9.985 0 0 0 8-4 9.985 9.985 0 0 0-8-4z" class="cls-2" data-name="Path" transform="translate(4 13)"/>
+    </g>
+</svg>

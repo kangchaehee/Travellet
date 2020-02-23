@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_tourism" width="50" height="56" viewBox="0 0 50 56">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#c8cbd3;font-size:10px;font-family:Roboto-Regular,Roboto;letter-spacing:.03em}.cls-3{fill:#dbdde4}
+        </style>
+    </defs>
+    <path id="사각형_326" d="M0 0h50v56H0z" class="cls-1" data-name="사각형 326"/>
+    <g id="그룹_358" data-name="그룹 358" transform="translate(6 4)">
+        <text id="tourism" class="cls-2" transform="translate(19 46)">
+            <tspan x="-19.115" y="0">Tourism</tspan>
+        </text>
+        <g id="ic_tourism_32px" transform="translate(3)">
+            <path id="패스_2069" d="M0 0h32v32H0z" class="cls-1" data-name="패스 2069"/>
+            <path id="패스_2070" d="M19.831 5.819l-7.224-2.538a2.875 2.875 0 0 0-1.878-.015L4.965 5.21A2.919 2.919 0 0 0 3 7.966v17.185a2.881 2.881 0 0 0 3.93 2.7l4.233-1.651a1.39 1.39 0 0 1 1-.015l7.223 2.538a2.875 2.875 0 0 0 1.878.014l5.764-1.943a2.905 2.905 0 0 0 1.965-2.755V6.849a2.881 2.881 0 0 0-3.93-2.7L20.827 5.8a1.47 1.47 0 0 1-1 .015zm.506 20.173l-8.668-3.06V6.008l8.668 3.06z" class="cls-3" data-name="패스 2070"/>
+        </g>
+    </g>
+</svg>

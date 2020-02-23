@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_wallet_bar_selected" width="90" height="48" viewBox="0 0 90 48">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2,.cls-3{fill:#427dff}.cls-2{font-size:10px;font-family:Roboto-Regular,Roboto;letter-spacing:.03em}
+        </style>
+    </defs>
+    <path id="사각형_319" d="M0 0h90v48H0z" class="cls-1" data-name="사각형 319"/>
+    <g id="그룹_191" data-name="그룹 191" transform="translate(31 6)">
+        <text id="wallet" class="cls-2" transform="translate(15 34)">
+            <tspan x="-14.534" y="0">Wallet</tspan>
+        </text>
+        <g id="ic_wallet" transform="translate(2.5)">
+            <g id="Icon_cash" transform="translate(3 5)">
+                <path id="Path" d="M0 2a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2h-4a3 3 0 0 0 0 6h4v2a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z" class="cls-3"/>
+                <path id="Shape" d="M6 4H2a2 2 0 0 1 0-4h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1zM2 1a1 1 0 1 0 1 1 1 1 0 0 0-1-1z" class="cls-3" transform="translate(12 5)"/>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_shopping" width="50" height="56" viewBox="0 0 50 56">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#c8cbd3;font-size:10px;font-family:Roboto-Regular,Roboto;letter-spacing:.03em}.cls-3{fill:#dbdde4}
+        </style>
+    </defs>
+    <path id="사각형_325" d="M0 0h50v56H0z" class="cls-1" data-name="사각형 325"/>
+    <g id="그룹_357" data-name="그룹 357" transform="translate(10 4)">
+        <text id="shopping" class="cls-2" transform="translate(15 46)">
+            <tspan x="-22.009" y="0">Shopping</tspan>
+        </text>
+        <g id="ic_shopping_32px" transform="translate(-1)">
+            <path id="패스_2063" d="M0 0h32v32H0z" class="cls-1" data-name="패스 2063"/>
+            <path id="패스_2064" d="M9.4 24.4a2.8 2.8 0 1 0 2.8 2.8 2.8 2.8 0 0 0-2.8-2.8zm-7-19.6h1.4l5.039 10.626-1.89 3.416A2.805 2.805 0 0 0 9.4 23h15.4a1.4 1.4 0 0 0 0-2.8H9.4l1.54-2.8h10.428a2.786 2.786 0 0 0 2.45-1.442l5.011-9.086A1.4 1.4 0 0 0 27.611 4.8H6.893l-.938-2A1.389 1.389 0 0 0 4.7 2H2.4a1.4 1.4 0 0 0 0 2.8zm21 19.6a2.8 2.8 0 1 0 2.8 2.8 2.8 2.8 0 0 0-2.8-2.8z" class="cls-3" data-name="패스 2064"/>
+        </g>
+    </g>
+</svg>

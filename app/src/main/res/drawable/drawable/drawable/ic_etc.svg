@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_etc" width="50" height="56" viewBox="0 0 50 56">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#c8cbd3;font-size:10px;font-family:Roboto-Regular,Roboto;letter-spacing:.03em}.cls-3{fill:#dbdde4}
+        </style>
+    </defs>
+    <path id="사각형_327" d="M0 0h50v56H0z" class="cls-1" data-name="사각형 327"/>
+    <g id="그룹_359" data-name="그룹 359" transform="translate(9 4)">
+        <text id="etc" class="cls-2" transform="translate(16 46)">
+            <tspan x="-7.392" y="0">Etc</tspan>
+        </text>
+        <g id="ic_etc_32px">
+            <path id="패스_2033" d="M0 0h32v32H0z" class="cls-1" data-name="패스 2033"/>
+            <path id="패스_2034" d="M26.111 1H5.889a2.81 2.81 0 0 0-2.875 2.734L3 21.41a2.705 2.705 0 0 0 1.271 2.269l10.934 6.89a1.537 1.537 0 0 0 1.6 0l10.92-6.89A2.705 2.705 0 0 0 29 21.41V3.734A2.823 2.823 0 0 0 26.111 1zM25.1 10.159L14.137 20.535a1.5 1.5 0 0 1-2.037 0l-5.186-4.907a1.31 1.31 0 0 1 0-1.928 1.5 1.5 0 0 1 2.037 0l4.16 3.937 9.938-9.405a1.5 1.5 0 0 1 2.037 0 1.311 1.311 0 0 1 .014 1.928z" class="cls-3" data-name="패스 2034"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_remove" width="48" height="48" viewBox="0 0 48 48">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#dbdde4}
+        </style>
+    </defs>
+    <path id="사각형_346" d="M0 0h48v48H0z" class="cls-1" data-name="사각형 346"/>
+    <g id="clear-24px" transform="translate(12 12)">
+        <path id="패스_2116" d="M0 0h24v24H0z" class="cls-1" data-name="패스 2116"/>
+        <path id="패스_2117" d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 0 0 5.7 7.11L10.59 12 5.7 16.89a1 1 0 0 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z" class="cls-2" data-name="패스 2117"/>
+    </g>
+</svg>

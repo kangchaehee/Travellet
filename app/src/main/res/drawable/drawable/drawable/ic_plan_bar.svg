@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_plan_bar" width="90" height="48" viewBox="0 0 90 48">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#dbdde4}
+        </style>
+    </defs>
+    <path id="사각형_321" d="M0 0h90v48H0z" class="cls-1" data-name="사각형 321"/>
+    <g id="ic_plan" transform="translate(33 12)">
+        <g id="Icon_home" transform="translate(3 4)">
+            <path id="Path" d="M14.927 7.763h1.925a1 1 0 0 0 .588-1.809L9.515.191a1 1 0 0 0-1.176 0L.414 5.955A1 1 0 0 0 1 7.763h1.927v7a1 1 0 0 0 1 1h3v-6h4v6h3a1 1 0 0 0 1-1z" class="cls-2" transform="translate(.073 .237)"/>
+        </g>
+    </g>
+</svg>
