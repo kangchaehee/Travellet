@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,88 +8,96 @@
     tools:context=".TravelTitleSet"
     android:orientation="vertical">
 
-    //슬라이드 바 추가.
-
-
-    <Button
-        android:id="@+id/btn_back"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:background="@drawable/ic_back"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"/>
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="28dp"
-        android:fontFamily="@font/roboto_medium"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="35sp"
-        android:textColor="@color/black"
-        android:textSize="28sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_back"
-        tools:text="What Is" />
-
-    <TextView
-        android:id="@+id/textView15"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_light"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="12sp"
-        android:textColor="@color/deep_grey"
-        android:textSize="16sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        tools:text="Your Travel Title?" />
-
-    <EditText
-        android:id="@+id/Edittext_title"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:fontFamily="@font/roboto_light"
-        android:hint="Please enter a title."
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="11sp"
-        android:textColor="@color/soft_grey"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        android:orientation="vertical">
+
+        <ImageButton
+            android:layout_height="48dp"
+            android:layout_width="48dp"
+            android:id="@+id/btn_back"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="16dp"
+            android:background="@drawable/ic_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginLeft="32dp"
+            android:textSize="28sp"
+            android:fontFamily="@font/roboto_medium"
+            android:textStyle="normal"
+            android:textColor="@color/black"
+            android:lineSpacingExtra="35sp"
+            tools:text="What Is"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_light"
+            android:textStyle="normal"
+            android:textColor="@color/deep_grey"
+            android:lineSpacingExtra="12sp"
+            tools:text="Your Travel Title?"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_marginTop="120dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginLeft="32dp"
+            android:fontFamily="@font/roboto_light"
+            android:textStyle="normal"
+            android:textColor="@color/soft_grey"
+            android:lineSpacingExtra="11sp"
+            android:hint="Enter your travel title"
+            />
+
+
+    </LinearLayout>
+
+
+    //버튼 이미지로 달라고 하기.
+    //슬라이드 바 추가.
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_Next"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="52dp"
+        android:layout_marginLeft="52dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/progress_1" />
 
     <Button
         android:id="@+id/btn_Next"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/ic_btn_296"
+        android:background="@drawable/button_background_full"
         android:fontFamily="@font/roboto_medium"
-        android:letterSpacing="0.03"
+        android:gravity="center"
         android:lineSpacingExtra="7sp"
         android:onClick="onClick"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Next" />
+        tools:text="Next" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

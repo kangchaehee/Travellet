@@ -7,13 +7,14 @@
     android:orientation="vertical"
     tools:context=".planSearch">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_back"
+        android:background="@drawable/ic_back"
         android:layout_marginTop="24dp"
-        android:layout_marginLeft="16dp"
-        app:srcCompat="@drawable/btn_back" />
+        android:layout_marginLeft="16dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,10 +22,9 @@
         android:layout_marginTop="27dp"
         android:layout_marginLeft="32dp"
         android:textSize="12sp"
-        android:fontFamily="sans-serif"
+        app:fontFamily="sans-serif"
         android:textStyle="normal"
-        android:textColor="#000000"
-        android:letterSpacing="0.03"
+        android:textColor="@color/black"
         android:lineSpacingExtra="9sp"
         tools:text="Place"
         />
@@ -37,10 +37,9 @@
         android:layout_marginTop="8dp"
         android:layout_marginRight="32dp"
         android:textSize="12sp"
-        android:fontFamily="sans-serif"
+        app:fontFamily="sans-serif"
         android:textStyle="normal"
         android:textColor="#000000"
-        android:letterSpacing="0.03"
         android:lineSpacingExtra="9sp"
         android:hint="Search the place."
         />
@@ -71,10 +70,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:fontFamily="sans-serif"
+                app:fontFamily="sans-serif"
                 android:textStyle="normal"
                 android:textColor="#424242"
-                android:letterSpacing="0.03"
                 android:lineSpacingExtra="11sp"
                 tools:text="Sookmyung Women's University"
                 />
@@ -84,10 +82,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:textSize="10sp"
-                android:fontFamily="sans-serif-light"
+                app:fontFamily="sans-serif-light"
                 android:textStyle="normal"
                 android:textColor="#616161"
-                android:letterSpacing="0.03"
                 android:lineSpacingExtra="8sp"
                 tools:text="Seoul, chungpa-dong"
                 />
@@ -135,10 +132,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:fontFamily="sans-serif"
+                app:fontFamily="sans-serif"
                 android:textStyle="normal"
                 android:textColor="#424242"
-                android:letterSpacing="0.03"
                 android:lineSpacingExtra="11sp"
                 tools:text="Sookmyung Women's University"
                 />
@@ -148,10 +144,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:textSize="10sp"
-                android:fontFamily="sans-serif-light"
+                app:fontFamily="sans-serif-light"
                 android:textStyle="normal"
                 android:textColor="#616161"
-                android:letterSpacing="0.03"
                 android:lineSpacingExtra="8sp"
                 tools:text="Seoul, chungpa-dong"
                 />
@@ -196,10 +191,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:fontFamily="sans-serif"
+                app:fontFamily="sans-serif"
                 android:textStyle="normal"
                 android:textColor="#424242"
-                android:letterSpacing="0.03"
                 android:lineSpacingExtra="11sp"
                 tools:text="Sookmyung Women's University"
                 />
@@ -209,10 +203,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:textSize="10sp"
-                android:fontFamily="sans-serif-light"
+                app:fontFamily="sans-serif-light"
                 android:textStyle="normal"
                 android:textColor="#616161"
-                android:letterSpacing="0.03"
                 android:lineSpacingExtra="8sp"
                 tools:text="Seoul, chungpa-dong"
                 />
@@ -259,10 +252,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:fontFamily="sans-serif"
+                app:fontFamily="sans-serif"
                 android:textStyle="normal"
                 android:textColor="#424242"
-                android:letterSpacing="0.03"
                 android:lineSpacingExtra="11sp"
                 tools:text="Sookmyung Women's University"
                 />
@@ -272,10 +264,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:textSize="10sp"
-                android:fontFamily="sans-serif-light"
+                app:fontFamily="sans-serif-light"
                 android:textStyle="normal"
                 android:textColor="#616161"
-                android:letterSpacing="0.03"
                 android:lineSpacingExtra="8sp"
                 tools:text="Seoul, chungpa-dong"
                 />

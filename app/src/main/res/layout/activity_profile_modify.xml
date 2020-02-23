@@ -7,15 +7,17 @@
     tools:context=".Profile">
 
 
-    <Button
-        android:layout_height="48dp"
-        android:layout_width="48dp"
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/btn_back"
+        android:background="@drawable/ic_back"
         android:layout_marginTop="24dp"
         android:layout_marginLeft="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/ic_back"/>
+        app:layout_constraintTop_toTopOf="parent"/>
+
 
     <TextView
         android:id="@+id/textView"
@@ -149,7 +151,7 @@
         android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/ic_btn_296"
+        android:background="@drawable/button_background_full"
         android:fontFamily="@font/roboto_medium"
         android:letterSpacing="0.03"
         android:lineSpacingExtra="7sp"

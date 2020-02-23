@@ -1,126 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BudgetShow"
-    android:orientation="vertical">
+    tools:context=".TravelBudgetShow">
 
 
-    <Button
-        android:layout_height="48dp"
-        android:layout_width="48dp"
-        android:id="@+id/btn_back"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="16dp"
-        android:background="@drawable/ic_back"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginLeft="32dp"
-        android:textSize="28sp"
-        android:fontFamily="@font/roboto_medium"
-        android:textStyle="normal"
-        android:textColor="@color/black"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="35sp"
-        android:text="How Much" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="34dp"
-        android:layout_marginTop="8dp"
-        android:textSize="16sp"
-        android:fontFamily="@font/roboto_light"
-        android:textStyle="normal"
-        android:textColor="@color/deep_grey"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="12sp"
-        tools:text="Is Your Budget?" />
-
-
-    <Button
-        android:id="@+id/btn_frugal"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/ic_back" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/roboto_medium"
+            android:lineSpacingExtra="35sp"
+            android:text="Budgets"
+            android:textColor="@color/soft_black"
+            android:textSize="28sp"
+            android:textStyle="normal" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:lineSpacingExtra="12sp"
+                android:textColor="@color/deep_grey"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                tools:text="Total Budget" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:lineSpacingExtra="12sp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                tools:text="$2,000.00" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginRight="32dp"
-        android:layout_marginLeft="32dp"
-        android:background="@drawable/border_12r_grey"
-        android:drawableLeft="@drawable/ic_budeget_24px"
-        android:paddingLeft="24dp"
-        android:fontFamily="@font/roboto_regular"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="7sp"
-        android:textColor="@color/soft_black"
-        android:textSize="14sp"
+        android:fontFamily="@font/roboto_light"
+        android:lineSpacingExtra="9sp"
+        android:textColor="#757575"
+        android:textSize="12sp"
         android:textStyle="normal"
-        tools:text="Frugal"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:text="spent per day $400" />
 
-
-    <Button
-        android:id="@+id/btn_middle"
+    <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="32dp"
+        android:layout_height="2dp"
         android:layout_marginLeft="32dp"
-        android:background="@drawable/border_12r_grey"
-        android:drawableLeft="@drawable/ic_budeget_24px"
-        android:paddingLeft="24dp"
-        android:fontFamily="@font/roboto_regular"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="7sp"
-        android:textColor="@color/soft_black"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        tools:text="Middle"
-        />
-
-
-    <Button
-        android:id="@+id/btn_luxurious"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:layout_marginRight="32dp"
-        android:layout_marginLeft="32dp"
-        android:background="@drawable/border_12r_grey"
-        android:drawableLeft="@drawable/ic_budeget_24px"
-        android:paddingLeft="24dp"
-        android:fontFamily="@font/roboto_regular"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="7sp"
-        android:textColor="@color/soft_black"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        tools:text="Luxurious"
-        />
+        android:background="@drawable/progress_5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
-
-    //슬라이드 바 만들기.
-
-    <Button
-        android:id="@+id/btn_Next"
-        android:onClick="onClick"
+    <TextView
+        android:id="@+id/textView21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginTop="74dp"
-        android:background="@drawable/ic_btn_296"
-        android:fontFamily="@font/roboto_medium"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="7sp"
-        android:textColor="@color/white"
-        android:textSize="14sp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_light"
+        android:lineSpacingExtra="9sp"
+        android:textColor="#757575"
+        android:textSize="12sp"
         android:textStyle="normal"
-        tools:text="Next" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        tools:text="$1,800.00 of  $2,000.00" />
 
-</LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="32dp"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="end"
+        android:lineSpacingExtra="9sp"
+        android:textColor="#757575"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        tools:text="90%"
+        android:layout_marginTop="8dp"/>
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    //그래프 디테일
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView5">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="2dp"
+                    app:srcCompat="@drawable/ic_lodging_24px" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_light"
+                    android:textColor="@color/deep_grey"
+                    android:lineSpacingExtra="11sp"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    tools:text="Lodging" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textStyle="normal"
+                android:textColor="@color/black"
+                android:layout_marginLeft="32dp"
+                android:lineSpacingExtra="11sp"
+                tools:text="Remaining $ 1,800.00"/>
+
+            //퍼센트 이미지 바
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/progress_6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto_light"
+                android:textStyle="normal"
+                android:layout_marginTop="8dp"
+                android:textColor="#757575"
+                android:lineSpacingExtra="9sp"
+                tools:text="$1,800.00 of  $2,000.00"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_regular"
+            android:textStyle="normal"
+            android:textColor="#757575"
+            android:lineSpacingExtra="9sp"
+            android:
+            tools:text="90%"
+            />
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

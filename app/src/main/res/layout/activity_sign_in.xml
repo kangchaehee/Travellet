@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +20,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="100dp"
             android:textSize="28sp"
-            android:fontFamily="@font/roboto_medium"
+            app:fontFamily="@font/roboto_medium"
             android:textStyle="normal"
             android:textColor="@color/black"
             android:letterSpacing="0.03"
@@ -33,7 +34,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="8dp"
             android:textSize="16sp"
-            android:fontFamily="@font/roboto_light"
+            app:fontFamily="@font/roboto_light"
             android:textStyle="normal"
             android:textColor="@color/deep_grey"
             android:letterSpacing="0.03"
@@ -47,7 +48,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="60dp"
             android:textSize="12sp"
-            android:fontFamily="@font/roboto_regular"
+            app:fontFamily="@font/roboto_regular"
             android:textStyle="normal"
             android:textColor="@color/deep_grey"
             android:letterSpacing="0.03"
@@ -64,7 +65,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="32dp"
-            android:fontFamily="@font/roboto_light"
+            app:fontFamily="@font/roboto_light"
             android:hint="Please enter your email."
             android:letterSpacing="0.03"
             android:lineSpacingExtra="11sp"
@@ -79,7 +80,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="20dp"
             android:textSize="12sp"
-            android:fontFamily="@font/roboto_regular"
+            app:fontFamily="@font/roboto_regular"
             android:textStyle="normal"
             android:textColor="@color/deep_grey"
             android:letterSpacing="0.03"
@@ -94,7 +95,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="32dp"
-            android:fontFamily="@font/roboto_light"
+            app:fontFamily="@font/roboto_light"
             android:hint="Please enter your email."
             android:letterSpacing="0.03"
             android:lineSpacingExtra="11sp"
@@ -103,24 +104,23 @@
             android:textStyle="normal" />
 
 
-
         <Button
             android:id="@+id/btn_signin"
-            android:onClick="onClick"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginLeft="32dp"
             android:layout_marginTop="164dp"
             android:layout_marginRight="32dp"
-            android:background="@drawable/border_24r_blue"
-            android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/button"
+            app:fontFamily="@font/roboto_medium"
+            android:gravity="center"
             android:letterSpacing="0.03"
             android:lineSpacingExtra="7sp"
-            android:gravity="center"
+            android:onClick="onClick"
+            android:text="Sign In"
             android:textColor="@color/blue"
             android:textSize="12sp"
-            android:textStyle="normal"
-            android:text="Sign In"/>
+            android:textStyle="normal" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -134,7 +134,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:fontFamily="@font/roboto_regular"
+                app:fontFamily="@font/roboto_regular"
                 android:textStyle="normal"
                 android:textColor="@color/soft_grey"
                 android:lineSpacingExtra="9sp"
@@ -148,24 +148,13 @@
                 android:onClick="onButtonClick"
                 android:background="@color/white"
                 android:textSize="12sp"
-                android:fontFamily="@font/roboto_regular"
+                app:fontFamily="@font/roboto_regular"
                 android:textStyle="normal"
                 android:textColor="@color/blue"
                 android:lineSpacingExtra="9sp"
                 android:text=" Register now!"
                 />
 
-
-
-
-
         </LinearLayout>
-
-
-
-
     </LinearLayout>
-
-
-
 </ScrollView>

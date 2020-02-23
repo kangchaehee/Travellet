@@ -9,20 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProfileModify"></activity>
+        <activity android:name=".TravelBudgetShow"></activity>
+        <activity android:name=".BudgetInput" />
+        <activity android:name=".PlanBudget" />
+        <activity android:name=".TravelTitleSet" />
+        <activity android:name=".WalletList" />
+        <activity android:name=".WalletInput" />
+        <activity android:name=".WalletCost" />
+        <activity android:name=".WalletMain" />
+        <activity android:name=".ProfileModify" />
         <activity android:name=".TravelEstimatedBudget" />
         <activity android:name=".TravelCalendar" />
         <activity android:name=".TravelPreferenceSet" />
         <activity android:name=".TravelLodgingSet" />
-        <activity android:name=".TravelTitleSet" />
         <activity android:name=".MainEmpty" />
-        <activity android:name=".SignIn" >
+        <activity android:name=".SignIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".SplashActivity" />
         <activity android:name=".RegisterActivity" />
@@ -34,8 +40,7 @@
         <activity android:name=".BudgetSet" />
         <activity android:name=".AgePicker" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".MainActivity"/>
-
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

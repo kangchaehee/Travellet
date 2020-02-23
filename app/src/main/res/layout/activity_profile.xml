@@ -194,25 +194,25 @@
 
     <Button
         android:id="@+id/btn_edit"
-        android:onClick="onClick"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/ic_btn_296"
+        android:background="@drawable/button_background_full"
         android:fontFamily="@font/roboto_medium"
-        android:letterSpacing="0.03"
+        android:gravity="center"
         android:lineSpacingExtra="7sp"
+        android:onClick="onClick"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:text="Edit" />
 
 
-
-        //밑에 하단 바
+    //밑에 하단 바
 
 </androidx.constraintlayout.widget.ConstraintLayout>

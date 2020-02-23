@@ -7,7 +7,7 @@
     tools:context=".TravelTitleSet"
     android:orientation="vertical">
 
-    <Button
+    <ImageButton
         android:layout_height="48dp"
         android:layout_width="48dp"
         android:id="@+id/btn_back"
@@ -24,7 +24,6 @@
         android:fontFamily="@font/roboto_medium"
         android:textStyle="normal"
         android:textColor="@color/black"
-        android:letterSpacing="0.03"
         android:lineSpacingExtra="35sp"
         tools:text="What Is"
         />
@@ -38,7 +37,6 @@
         android:fontFamily="@font/roboto_light"
         android:textStyle="normal"
         android:textColor="@color/deep_grey"
-        android:letterSpacing="0.03"
         android:lineSpacingExtra="12sp"
         tools:text="Your Preference?"
         />
@@ -63,7 +61,6 @@
             android:fontFamily="@font/roboto_regular"
             android:textStyle="normal"
             android:textColor="@color/soft_black"
-            android:letterSpacing="0.03"
             android:lineSpacingExtra="11sp"
             android:text="Shopping"
             android:layout_weight="1"/>
@@ -80,7 +77,6 @@
             android:fontFamily="@font/roboto_regular"
             android:textStyle="normal"
             android:textColor="@color/soft_black"
-            android:letterSpacing="0.03"
             android:lineSpacingExtra="11sp"
             android:text="Food"
             android:layout_weight="1"/>
@@ -108,7 +104,6 @@
             android:fontFamily="@font/roboto_regular"
             android:textStyle="normal"
             android:textColor="@color/soft_black"
-            android:letterSpacing="0.03"
             android:lineSpacingExtra="11sp"
             android:text="Rest"
             android:layout_weight="1"/>
@@ -125,7 +120,6 @@
             android:fontFamily="@font/roboto_regular"
             android:textStyle="normal"
             android:textColor="@color/soft_black"
-            android:letterSpacing="0.03"
             android:lineSpacingExtra="11sp"
             android:text="Leisure"
             android:layout_weight="1"/>
@@ -152,7 +146,6 @@
             android:fontFamily="@font/roboto_regular"
             android:textStyle="normal"
             android:textColor="@color/soft_black"
-            android:letterSpacing="0.03"
             android:lineSpacingExtra="11sp"
             android:text="History"
             android:layout_weight="1"/>
@@ -169,7 +162,6 @@
             android:fontFamily="@font/roboto_regular"
             android:textStyle="normal"
             android:textColor="@color/soft_black"
-            android:letterSpacing="0.03"
             android:lineSpacingExtra="11sp"
             android:text="Nature"
             android:layout_weight="1"/>
@@ -181,24 +173,34 @@
     //슬라이드 바 추가.
 
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_Next"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="52dp"
+        android:layout_marginRight="52dp"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/progress_3" />
 
     <Button
         android:id="@+id/btn_Next"
         android:onClick="onClick"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:layout_marginTop="74dp"
-        android:background="@drawable/ic_btn_296"
+        android:layout_marginBottom="32dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/button_background_full"
         android:fontFamily="@font/roboto_medium"
-        android:letterSpacing="0.03"
         android:lineSpacingExtra="7sp"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="normal"
-        tools:text="Next\n" />
+        tools:text="Next" />
 
 
 </LinearLayout>

@@ -1,71 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".TravelTitleSet"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <Button
-        android:layout_height="48dp"
-        android:layout_width="48dp"
-        android:id="@+id/btn_back"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="16dp"
-        android:background="@drawable/ic_back"/>
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginLeft="32dp"
-        android:textSize="28sp"
-        android:fontFamily="@font/roboto_medium"
-        android:textStyle="normal"
-        android:textColor="@color/black"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="35sp"
-        tools:text="When"
-        />
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="8dp"
-        android:textSize="16sp"
-        android:fontFamily="@font/roboto_light"
-        android:textStyle="normal"
-        android:textColor="@color/deep_grey"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="12sp"
-        tools:text="Do You Travel?"
-        />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/inputToPlan"
+            android:background="@drawable/ic_back"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="16dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginLeft="32dp"
+            android:textSize="28sp"
+            android:fontFamily="@font/roboto_medium"
+            android:textStyle="normal"
+            android:textColor="@color/black"
+            android:letterSpacing="0.03"
+            android:lineSpacingExtra="35sp"
+            tools:text="When"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_light"
+            android:textStyle="normal"
+            android:textColor="@color/deep_grey"
+            android:letterSpacing="0.03"
+            android:lineSpacingExtra="12sp"
+            tools:text="Do You Travel?"
+            />
+
+
+    </LinearLayout>
 
 
     //버튼 이미지로 달라고 하기.
     //슬라이드 바 추가.
 
 
-
     <Button
         android:id="@+id/btn_Next"
-        android:onClick="onClick"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:layout_marginTop="74dp"
-        android:background="@drawable/ic_btn_296"
-        android:fontFamily="@font/roboto_medium"
-        android:letterSpacing="0.03"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_background_full"
+        android:gravity="center"
         android:lineSpacingExtra="7sp"
+        android:onClick="onClick"
+        android:text="Next"
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="normal"
-        tools:text="Next" />
+        app:fontFamily="@font/roboto_medium" />
 
 
-</LinearLayout>
+</RelativeLayout>

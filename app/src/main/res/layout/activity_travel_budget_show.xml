@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/white"
+tools:context=".BudgetShow">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_back"
+        android:background="@drawable/ic_back"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="32dp"
+        android:textSize="28sp"
+        android:fontFamily="@font/roboto_medium"
+        android:textStyle="normal"
+        android:textColor="@color/black"
+        android:lineSpacingExtra="35sp"
+        android:text="How Much" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto_light"
+        android:textStyle="normal"
+        android:textColor="@color/deep_grey"
+        android:lineSpacingExtra="12sp"
+        tools:text="Is Your Budget?" />
+
+
+    <Button
+        android:id="@+id/btn_frugal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:background="@drawable/border_12r_grey"
+        android:drawableLeft="@drawable/ic_budeget_24px"
+        android:paddingLeft="24dp"
+        android:fontFamily="@font/roboto_regular"
+        android:lineSpacingExtra="7sp"
+        android:textColor="@color/soft_black"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        tools:text="Frugal"
+        />
+
+
+    <Button
+        android:id="@+id/btn_middle"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:background="@drawable/border_12r_grey"
+        android:drawableLeft="@drawable/ic_budeget_24px"
+        android:paddingLeft="24dp"
+        android:fontFamily="@font/roboto_regular"
+        android:lineSpacingExtra="7sp"
+        android:textColor="@color/soft_black"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        tools:text="Middle"
+        />
+
+
+    <Button
+        android:id="@+id/btn_luxurious"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:background="@drawable/border_12r_grey"
+        android:drawableLeft="@drawable/ic_budeget_24px"
+        android:paddingLeft="24dp"
+        android:fontFamily="@font/roboto_regular"
+        android:lineSpacingExtra="7sp"
+        android:textColor="@color/soft_black"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        tools:text="Luxurious"
+        />
+
+
+</LinearLayout>
+
+
+//슬라이드 바 만들기.
+
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/btn_Next"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentRight="true"
+    android:layout_marginLeft="52dp"
+    android:layout_marginRight="52dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/progress_5" />
+
+
+<Button
+    android:id="@+id/btn_Next"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentBottom="true"
+    android:layout_marginLeft="32dp"
+    android:layout_marginRight="32dp"
+    android:layout_marginBottom="32dp"
+    android:background="@drawable/button_background_full"
+    android:fontFamily="@font/roboto_medium"
+    android:gravity="center"
+    android:lineSpacingExtra="7sp"
+    android:onClick="onClick"
+    android:textColor="@color/white"
+    android:textSize="14sp"
+    android:textStyle="normal"
+    tools:text="Next" />
+
+</RelativeLayout>

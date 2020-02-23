@@ -7,14 +7,13 @@
     tools:context=".Calendar"
     android:orientation="vertical">
 
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputToPlan"
+        android:background="@drawable/ic_back"
         android:layout_marginTop="24dp"
-        android:layout_marginLeft="16dp"
-        app:srcCompat="@drawable/btn_back" />
+        android:layout_marginLeft="16dp"/>
 
 
     <TextView
@@ -44,6 +43,8 @@
         tools:text="Are You Leaving?" />
 
 //달력
+
+
 
     <Button
         android:id="@+id/btn_Next"

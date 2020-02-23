@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".WalletCost">
+
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="16dp"/>
+
+
+    <TextView
+        android:id="@+id/textView0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="end"
+        android:lineSpacingExtra="9sp"
+        android:textColor="@color/soft_grey"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        android:layout_marginRight="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2020.02.02" />
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="35sp"
+            android:text="KRW "
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="normal"
+            app:fontFamily="@font/roboto_medium" />
+
+        <EditText
+            android:id="@+id/edit1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="0"
+            android:textColor="@color/black"
+            android:lineSpacingExtra="35sp"
+            android:textSize="28sp"
+            android:textStyle="normal"
+            app:fontFamily="@font/roboto_medium" />
+
+        <requestFocus/>
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="12sp"
+        android:textColor="@color/deep_grey"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:fontFamily="@font/roboto_light"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear"
+        tools:text="$ 0"
+        />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/deep_grey"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        android:lineSpacingExtra="9sp"
+        app:fontFamily="@font/roboto_light"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:text="Memo"
+        />
+
+    <EditText
+        android:id="@+id/memo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="5dp"
+        android:hint="memo"
+        />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:fontFamily="@font/roboto_regular"
+        android:textStyle="normal"
+        android:textColor="@color/deep_grey"
+        android:lineSpacingExtra="9sp"
+        tools:text="Catergory"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/memo"
+        />
+
+    <LinearLayout
+        android:id="@+id/horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/lodging"
+                android:layout_width="50dp"
+                android:layout_height="56dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/ic_lodging"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/food"
+                android:layout_width="50dp"
+                android:layout_height="56dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/ic_food"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/shopping"
+                android:layout_width="50dp"
+                android:layout_height="56dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/ic_shopping"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/tourism"
+                android:layout_width="50dp"
+                android:layout_height="56dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/ic_tourism"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/transport"
+                android:layout_width="50dp"
+                android:layout_height="56dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/ic_transport"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/etc"
+                android:layout_width="50dp"
+                android:layout_height="56dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/ic_etc"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bar"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal"
+        />
+
+
+    //계산기.
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="1"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="2"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"  />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="3"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"  />
+
+                <Button
+                    android:id="@+id/buttonP"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="+"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="4"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"/>
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="5"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"/>
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="6"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"/>
+
+                <Button
+                    android:id="@+id/buttonX"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="×"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="7"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"/>
+
+                <Button
+                    android:id="@+id/button8"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="8"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"/>
+
+                <Button
+                    android:id="@+id/button9"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="9"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"/>
+
+                <Button
+                    android:id="@+id/buttonD"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="÷"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/button0"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="0"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"/>
+
+                <Button
+                    android:id="@+id/buttonR"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="="
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"/>
+
+                <Button
+                    android:id="@+id/buttonC"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="C"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"/>
+
+                <Button
+                    android:id="@+id/buttonM"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="-"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_Next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_full"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:lineSpacingExtra="7sp"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        android:onClick="onClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        tools:text="ADD" />
+
+    //버튼
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
