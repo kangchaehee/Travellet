@@ -206,27 +206,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_age"
+            <Spinner
+                android:id="@+id/age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="32dp"
                 android:fontFamily="@font/roboto_light"
-                android:hint="Please select your year of birth."
-                android:lineSpacingExtra="11sp"
-                android:textColor="@color/deep_grey"
-                android:textSize="14sp"
-                android:textStyle="normal" />
+                />
 
-            <ImageButton
-                android:layout_width="14dp"
-                android:layout_height="8dp"
-                android:layout_marginRight="32dp"
-                android:background="@drawable/ic_down"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"/>
 
         </RelativeLayout>
 
@@ -257,27 +246,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv_country"
+            <Spinner
+                android:id="@+id/country"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="32dp"
-                android:fontFamily="@font/roboto_light"
-                android:hint="Please select your country."
-                android:lineSpacingExtra="11sp"
-                android:textColor="@color/deep_grey"
-                android:textSize="14sp"
-                android:textStyle="normal" />
+                android:layout_marginRight="32dp"/>
 
-            <ImageButton
-                android:layout_width="14dp"
-                android:layout_height="8dp"
-                android:layout_marginRight="32dp"
-                android:background="@drawable/ic_down"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"/>
 
         </RelativeLayout>
 
