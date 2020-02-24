@@ -20,6 +20,7 @@ import java.util.ArrayList;
 public class PlanInitialActivity extends AppCompatActivity {
 
     // github test
+    //강채희바보
     Button addButton, placeSearch;
 
     ListView listView;
