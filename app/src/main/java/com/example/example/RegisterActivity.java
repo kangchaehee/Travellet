@@ -13,12 +13,16 @@ import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+        //왜 에러가 나는 지 모르겠음
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.array_country, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
