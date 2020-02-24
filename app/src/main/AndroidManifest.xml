@@ -15,7 +15,7 @@
         <activity android:name=".PlaceSearchItem"></activity>
         <activity android:name=".PlaceSearchItemView" />
         <activity android:name=".PlaceSelectItem" />
-        <activity android:name=".PlaceSearch" />
+        <activity android:name=".PlaceSearchActivity" />
         <activity android:name=".PlaceDetailActivity" />
         <activity android:name=".ImageLoadTask" />
         <activity android:name=".DeleteActivity" />
