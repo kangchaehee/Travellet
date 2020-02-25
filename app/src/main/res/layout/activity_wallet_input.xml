@@ -67,9 +67,6 @@
             android:textStyle="normal"
             app:fontFamily="@font/roboto_medium" />
 
-        <requestFocus/>
-
-
 
     </LinearLayout>
 
@@ -226,6 +223,7 @@
         android:background="@drawable/bar"
         android:layout_marginRight="32dp"
         android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal"
         />
@@ -296,10 +294,10 @@
                     android:background="@color/white"  />
 
                 <Button
-                    android:id="@+id/buttonP"
+                    android:id="@+id/buttonX"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:text="+"
+                    android:text="*"
                     android:textSize="24sp"
                     android:fontFamily="@font/roboto_regular"
                     android:textStyle="normal"
@@ -358,10 +356,10 @@
                     android:background="@color/white"/>
 
                 <Button
-                    android:id="@+id/buttonX"
+                    android:id="@+id/buttonD"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:text="×"
+                    android:text="/"
                     android:textSize="24sp"
                     android:fontFamily="@font/roboto_regular"
                     android:textStyle="normal"
@@ -419,10 +417,10 @@
                     android:background="@color/white"/>
 
                 <Button
-                    android:id="@+id/buttonD"
+                    android:id="@+id/buttonZ"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:text="÷"
+                    android:text="."
                     android:textSize="24sp"
                     android:fontFamily="@font/roboto_regular"
                     android:textStyle="normal"
@@ -438,38 +436,24 @@
                 android:layout_height="wrap_content">
 
                 <Button
+                    android:id="@+id/buttonP"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="+"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"/>
+
+                <Button
                     android:id="@+id/button0"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:text="0"
-                    android:textSize="24sp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:textStyle="normal"
-                    android:textColor="@color/soft_black"
-                    android:lineSpacingExtra="18sp"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:background="@color/white"/>
-
-                <Button
-                    android:id="@+id/buttonR"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:text="="
-                    android:textSize="24sp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:textStyle="normal"
-                    android:textColor="@color/soft_black"
-                    android:lineSpacingExtra="18sp"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:background="@color/white"/>
-
-                <Button
-                    android:id="@+id/buttonC"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:text="C"
                     android:textSize="24sp"
                     android:fontFamily="@font/roboto_regular"
                     android:textStyle="normal"
@@ -492,6 +476,14 @@
                     android:gravity="center"
                     android:layout_weight="1"
                     android:background="@color/white"/>
+
+                <Button
+                    android:id="@+id/buttonC"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/ic_backspace"/>
 
             </LinearLayout>
 

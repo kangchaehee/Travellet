@@ -34,9 +34,9 @@ public class RegisterActivity extends AppCompatActivity {
     public class MyOnItemSelectedListener implements OnItemSelectedListener{
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            Toast.makeText(parent.getContext(),
-                    "Your country is "+parent.getItemAtPosition(position),
-                    Toast.LENGTH_SHORT).show();
+            //Toast.makeText(parent.getContext(),
+            //        "Your country is "+parent.getItemAtPosition(position),
+            //        Toast.LENGTH_SHORT).show();
         }
         @Override
         public void onNothingSelected(AdapterView<?> arg0) {
