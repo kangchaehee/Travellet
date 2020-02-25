@@ -169,6 +169,7 @@
                 android:textColor="@color/blue"
                 android:lineSpacingExtra="11sp"
                 android:text="Female"
+                android:textAllCaps="false"
                 android:layout_weight="1"/>
 
 
@@ -185,11 +186,11 @@
                 android:textColor="@color/blue"
                 android:lineSpacingExtra="11sp"
                 android:text="Male"
+                android:textAllCaps="false"
                 android:layout_weight="1" />
 
         </LinearLayout>
 
-        //서지선
 
         <TextView
             android:layout_width="wrap_content"
@@ -281,6 +282,7 @@
             android:textColor="@color/blue"
             android:textSize="14sp"
             android:textStyle="normal"
+            android:textAllCaps="false"
             android:text="Register"
             android:gravity="center"/>
 
@@ -315,6 +317,7 @@
                 android:textColor="@color/blue"
                 android:lineSpacingExtra="9sp"
                 android:text="Sign In"
+                android:textAllCaps="false"
                 />
 
         </LinearLayout>
