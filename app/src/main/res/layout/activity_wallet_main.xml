@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".WalletMain">
 
-//hello
+    //hello
     <HorizontalScrollView
         android:id="@+id/horizontal"
         android:layout_width="match_parent"
