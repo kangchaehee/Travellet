@@ -1,7 +1,4 @@
-package com.example.example;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,16 +8,22 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
-import java.util.List;
+import com.example.example.DeleteActivity;
+import com.example.example.DeleteDialog;
+import com.example.example.PlaceSearchActivity;
+import com.example.example.PlanInitialSubItem;
+import com.example.example.PlanInitialSubItemView;
+import com.example.example.PlanInputActivity;
+import com.example.example.R;
+
 import java.util.ArrayList;
 
-public class PlanInitialActivity extends AppCompatActivity {
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
+public class PlanInitialActivity extends AppCompatActivity {
     // github test
-    //강채희바보
     Button addButton, placeSearch;
 
     ListView listView;
@@ -29,6 +32,10 @@ public class PlanInitialActivity extends AppCompatActivity {
 
     String time, name, memo, tbText, tText;
     int tIc, tBudget;
+
+    DeleteDialog oDialog;
+
+    DeleteActivity cd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +66,10 @@ public class PlanInitialActivity extends AppCompatActivity {
                 startActivityForResult(intent, 102);
             }
         });
+
+
+        oDialog = new DeleteDialog(this);
+
     }
 
     class PlanSubAdapter extends BaseAdapter {
@@ -85,7 +96,7 @@ public class PlanInitialActivity extends AppCompatActivity {
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             PlanInitialSubItemView view= new PlanInitialSubItemView(getApplicationContext());
-            PlanInitialSubItem item = items.get(position);
+            final PlanInitialSubItem item = items.get(position);
             view.setPlaceTime(item.getPlaceTime());
             view.setPlaceName(item.getPlaceName());
             view.setPlaceMemo(item.getPlaceMemo());
@@ -98,8 +109,30 @@ public class PlanInitialActivity extends AppCompatActivity {
             del.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //Intent intent = new Intent(getApplicationContext(), DeleteActivity.class);
-                    //startActivity(intent);
+                    oDialog.setCancelable(false);
+                    oDialog.show();
+
+                    oDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            boolean del = oDialog.getDelete();
+                            if(del){
+                                items.remove(position);
+                                adapter.notifyDataSetChanged();
+                            }
+                        }
+                    });
+
+                    /*Intent intent = new Intent(getApplicationContext(), DeleteActivity.class);
+                    startActivity(intent);*/
+                }
+            });
+
+            ImageButton addT = (ImageButton) view.findViewById(R.id.transportAdd);
+            addT.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
                 }
             });
 
@@ -113,10 +146,20 @@ public class PlanInitialActivity extends AppCompatActivity {
 
         if(requestCode == 101){
             if(intent != null){
-                time = String.valueOf(intent.getIntExtra("hour", 0));
+                int hour = intent.getIntExtra("hour", 0);
+                int min = intent.getIntExtra("min", 0);
+                String ap;
+                if(hour > 12) {
+                    ap = "PM";
+                    hour -= 12;
+                }
+                else
+                    ap = "AM";
+                time = ap+ " "+hour+":"+min;
                 name = intent.getStringExtra("title");
                 memo = intent.getStringExtra("memo");
                 adapter.addItem(new PlanInitialSubItem(time, name, memo, tbText, tText, tIc, tBudget));
+                adapter.notifyDataSetChanged();
             }
         }
     }

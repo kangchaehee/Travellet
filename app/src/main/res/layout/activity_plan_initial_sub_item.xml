@@ -18,7 +18,7 @@
 
         <ImageView
             android:layout_width="2dp"
-            android:layout_height="147dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="12dp"
             android:layout_below="@id/ic_place"
             android:id="@+id/line"/>
@@ -45,7 +45,7 @@
         <LinearLayout
             android:id="@+id/place_linear"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="wrap_content"
             android:layout_toRightOf="@id/line"
             android:layout_below="@id/place_time"
             android:layout_marginLeft="12dp"
@@ -58,6 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
                 android:id="@+id/placeName"
                 android:textColor="@color/soft_black"
                 android:text="Lotte Hotel"
@@ -69,11 +70,12 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/placeMemo"
                 android:textSize="12sp"
-                android:text="memo memo"
                 android:textColor="@color/deep_grey"
                 android:fontFamily="@font/roboto_light"
                 android:layout_marginTop="8dp"
-                android:layout_marginLeft="24dp"/>
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginBottom="16dp"/>
         </LinearLayout>
 
         <RelativeLayout
@@ -87,8 +89,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/transport_ic"
                 android:layout_marginLeft="4dp"
-                android:layout_margin="12dp"
-                android:background="@drawable/ic_car_24px"/>
+                android:layout_margin="12dp"/>
 
             <TextView
                 android:id="@+id/transportText"
@@ -105,8 +106,7 @@
                 android:id="@+id/transportBudget"
                 android:layout_toRightOf="@id/transportText"
                 android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="@drawable/ic_budget"/>
+                android:layout_height="48dp"/>
 
             <TextView
                 android:id="@+id/TransBudgetText"
@@ -126,11 +126,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_add_circle_24px"
                 android:layout_margin="12dp"/>
-
         </RelativeLayout>
-
-
-
     </RelativeLayout>
 
 </LinearLayout>
