@@ -213,7 +213,6 @@
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="32dp"
-                android:fontFamily="@font/roboto_light"
                 />
 
 

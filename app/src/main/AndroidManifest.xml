@@ -54,7 +54,6 @@
         <activity android:name=".BudgetShow" />
         <activity android:name=".BudgetSet" />
         <activity android:name=".AgePicker" />
-        <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity" />
     </application>
 

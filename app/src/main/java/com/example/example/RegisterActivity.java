@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+
 public class RegisterActivity extends AppCompatActivity {
 
 
@@ -19,7 +20,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+
+        Spinner spinner = findViewById(R.id.country);
 
         //왜 에러가 나는 지 모르겠음
 
