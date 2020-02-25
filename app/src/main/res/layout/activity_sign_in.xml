@@ -133,11 +133,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 app:fontFamily="@font/roboto_regular"
                 android:textStyle="normal"
                 android:textColor="@color/soft_grey"
-                android:lineSpacingExtra="9sp"
+                android:lineSpacingExtra="7sp"
                 android:text="Don’t have an account?"
                 />
 
@@ -147,11 +147,11 @@
                 android:layout_height="wrap_content"
                 android:onClick="onButtonClick"
                 android:background="@color/white"
-                android:textSize="12sp"
+                android:textSize="10sp"
                 app:fontFamily="@font/roboto_regular"
                 android:textStyle="normal"
                 android:textColor="@color/blue"
-                android:lineSpacingExtra="9sp"
+                android:lineSpacingExtra="7sp"
                 android:text=" Register now!"
                 />
 

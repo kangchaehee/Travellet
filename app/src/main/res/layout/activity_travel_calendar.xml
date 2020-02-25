@@ -1,106 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/inputToPlan"
-            android:background="@drawable/ic_back"
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="16dp"/>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginLeft="32dp"
-            android:textSize="28sp"
-            android:fontFamily="@font/roboto_medium"
-            android:textStyle="normal"
-            android:textColor="@color/black"
-            android:letterSpacing="0.03"
-            android:lineSpacingExtra="35sp"
-            tools:text="When"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="8dp"
-            android:textSize="16sp"
-            android:fontFamily="@font/roboto_light"
-            android:textStyle="normal"
-            android:textColor="@color/deep_grey"
-            android:letterSpacing="0.03"
-            android:lineSpacingExtra="12sp"
-            tools:text="Do You Travel?"
-            />
-
-
-        <!--여기서 부터 달력-->
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView7">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/ic_back"
+                android:onClick="onButtonClick" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/roboto_medium"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="35sp"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="normal"
+                tools:text="When" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_light"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="12sp"
+                android:textColor="@color/deep_grey"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                tools:text="Do You Travel?" />
+
+
+            <!--여기서 부터 달력-->
+
+            <RelativeLayout
+                android:id="@+id/calendar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="?attr/actionBarSize" />
+
+                <com.applikeysolutions.cosmocalendar.view.CalendarView
+                    android:id="@+id/calendar_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/toolbar" />
+            </RelativeLayout>
+
+
+            <ImageView
+                android:id="@+id/imageView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="?attr/actionBarSize" />
+                android:layout_above="@+id/btn_Next"
+                android:background="@drawable/progress_4"
+                app:layout_constraintEnd_toStartOf="@id/btn_Next"
+                android:layout_marginLeft="52dp"
+                android:layout_marginRight="52dp"
+                android:layout_marginTop="67dp"/>
 
-            <com.applikeysolutions.cosmocalendar.view.CalendarView
-                android:id="@+id/calendar_view"
+            <Button
+                android:id="@+id/btn_Next"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/toolbar"/>
+                android:background="@drawable/button_background_full"
+                android:gravity="center"
+                android:lineSpacingExtra="7sp"
+                android:onClick="onClick"
+                android:text="Next"
+                android:layout_marginRight="32dp"
+                android:layout_marginLeft="32dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                android:layout_marginTop="8dp"
+                app:fontFamily="@font/roboto_medium" />
+
+        </LinearLayout>
 
 
-        </RelativeLayout>
 
-
-
-
-
-    </LinearLayout>
-
-
-    //버튼 이미지로 달라고 하기.
-    //슬라이드 바 추가.
-
-
-    <Button
-        android:id="@+id/btn_Next"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/button_background_full"
-        android:gravity="center"
-        android:lineSpacingExtra="7sp"
-        android:onClick="onClick"
-        android:text="Next"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        app:fontFamily="@font/roboto_medium" />
-
-
-</RelativeLayout>
+</ScrollView>

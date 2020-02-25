@@ -13,6 +13,15 @@ public class TravelLodgingSet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_lodging_set);
     }
+
+    //travel title set
+    public void onButtonClick(View view1){
+
+        Intent intent = new Intent(this, TravelTitleSet.class);
+        startActivity(intent);
+    }
+
+    //travel preference set
     public void onClick(View view){
 
         Intent intent = new Intent(TravelLodgingSet.this, TravelPreferenceSet.class);

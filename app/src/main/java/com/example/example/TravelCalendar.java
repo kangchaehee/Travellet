@@ -96,4 +96,19 @@ public class TravelCalendar extends AppCompatActivity {
         calendarView.clearSelections();
 
     }
+
+    //preference set
+    public void onButtonClick(View view1){
+
+        Intent intent = new Intent(this, TravelPreferenceSet.class);
+        startActivity(intent);
+    }
+
+    // Budget show
+    public void onClick(View view){
+
+        Intent intent = new Intent(this, TravelBudgetShow.class);
+        startActivity(intent);
+    }
+
 }

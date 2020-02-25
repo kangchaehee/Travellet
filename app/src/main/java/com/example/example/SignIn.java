@@ -18,7 +18,7 @@ public class SignIn extends AppCompatActivity {
     }
 
 
-    //sign in
+    //Main Activity
     public void onClick(View view1){
 
         Intent intent = new Intent(this, MainActivity.class);

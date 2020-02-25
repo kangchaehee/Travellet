@@ -49,7 +49,7 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Profile" />
         <activity android:name=".PlanSearch" />
-        <activity android:name=".InfoSEt" />
+        <activity android:name=".InfoSet" />
         <activity android:name=".Calendar" />
         <activity android:name=".BudgetShow" />
         <activity android:name=".BudgetSet" />

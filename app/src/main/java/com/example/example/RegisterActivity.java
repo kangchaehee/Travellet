@@ -23,8 +23,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         Spinner spinner = findViewById(R.id.country);
 
-        //왜 에러가 나는 지 모르겠음
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.array_country, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

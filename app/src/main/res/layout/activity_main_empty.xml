@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainEmpty">
+    tools:context=".MainEmpty"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/textView4"
@@ -36,7 +37,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4"
         tools:text="Kang Chae Hee" />
 
-    <TextView
+    <Button
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,16 +48,18 @@
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="normal"
+        android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         tools:text="UPCOMMING" />
 
-    <TextView
+    <Button
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
+        android:background="@color/white"
         app:fontFamily="@font/roboto_medium"
         android:lineSpacingExtra="11sp"
         android:textColor="@color/soft_grey"

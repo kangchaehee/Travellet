@@ -13,6 +13,15 @@ public class BudgetSet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget_set);
     }
+
+    //Budget show
+    public void onButtonClick(View view1){
+
+        Intent intent = new Intent(this, TravelBudgetShow.class);
+        startActivity(intent);
+    }
+
+    //estimated budget
     public void onClick(View view){
 
         Intent intent = new Intent(BudgetSet.this, TravelEstimatedBudget.class);
