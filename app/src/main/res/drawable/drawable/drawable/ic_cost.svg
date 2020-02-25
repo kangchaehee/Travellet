@@ -1,20 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="ic_cost" width="48" height="48" viewBox="0 0 48 48">
+<svg xmlns="http://www.w3.org/2000/svg" id="prefix__ic_cost" width="48" height="48" viewBox="0 0 48 48">
     <defs>
         <style>
-            .cls-1,.cls-2{fill:none}.cls-2{stroke:#dbdde4;stroke-width:2px}.cls-3{fill:#dbdde4;font-size:10px;font-family:Impact}.cls-4{stroke:none}
+            .prefix__cls-1{fill:none}
         </style>
     </defs>
-    <path id="사각형_354" d="M0 0h48v48H0z" class="cls-1" data-name="사각형 354"/>
-    <g id="ic_cost_24px" transform="translate(12 12)">
-        <path id="패스_2122" d="M0 0h24v24H0z" class="cls-1" data-name="패스 2122"/>
-        <g id="그룹_449" data-name="그룹 449" transform="translate(40 -4030)">
-            <g id="사각형_352" class="cls-2" data-name="사각형 352" transform="translate(-38 4034)">
-                <rect width="20" height="16" class="cls-4" rx="2"/>
-                <rect width="18" height="14" x="1" y="1" class="cls-1" rx="1"/>
+    <path id="prefix__사각형_354" d="M0 0H48V48H0z" class="prefix__cls-1" data-name="사각형 354"/>
+    <g id="prefix__ic_cost_24px" transform="translate(12 12)">
+        <path id="prefix__패스_2122" d="M0 0h24v24H0z" class="prefix__cls-1" data-name="패스 2122"/>
+        <g id="prefix__그룹_449" data-name="그룹 449" transform="translate(40 -4030)">
+            <g id="prefix__사각형_352" data-name="사각형 352" transform="translate(-38 4034)" style="stroke:#dbdde4;stroke-width:2px;fill:none">
+                <rect width="20" height="16" rx="2" style="stroke:none"/>
+                <rect width="18" height="14" x="1" y="1" class="prefix__cls-1" rx="1"/>
             </g>
-            <text id="c" class="cls-3" transform="translate(-28 4046)">
-                <tspan x="-2.769" y="0">C</tspan>
-            </text>
+            <path id="prefix__패스_2127" d="M2.441-4.463H.386v-1.374a2.461 2.461 0 00-.066-.748.283.283 0 00-.291-.149.3.3 0 00-.322.181 2.749 2.749 0 00-.068.781V-2.1a2.563 2.563 0 00.068.752.292.292 0 00.308.176.289.289 0 00.3-.176 2.875 2.875 0 00.071-.827v-.994h2.055v.308a6.077 6.077 0 01-.173 1.741 1.779 1.779 0 01-.767.9A2.625 2.625 0 01.039.166 3.029 3.029 0 01-1.45-.161a1.591 1.591 0 01-.776-.906 5.944 5.944 0 01-.19-1.741v-2.31A10.269 10.269 0 01-2.358-6.4a1.794 1.794 0 01.349-.823 1.947 1.947 0 01.809-.621 2.91 2.91 0 011.18-.227 2.9 2.9 0 011.5.351 1.684 1.684 0 01.776.875 5.262 5.262 0 01.186 1.631z" data-name="패스 2127" transform="translate(-28 4046)" style="fill:#dbdde4"/>
         </g>
     </g>
 </svg>

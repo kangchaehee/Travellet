@@ -107,7 +107,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/progress_6" />
+                android:background="@drawable/ic_progress_6" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -163,7 +163,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/progress_1" />
+                android:background="@drawable/ic_progress_1" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -218,7 +218,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/progress_2" />
+                android:background="@drawable/ic_progress_2" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -273,7 +273,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/progress_1" />
+                android:background="@drawable/ic_progress_1" />
 
 
             <LinearLayout
@@ -329,7 +329,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/progress_3" />
+                android:background="@drawable/ic_progress_3" />
 
 
             <LinearLayout
@@ -385,7 +385,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/progress_2" />
+                android:background="@drawable/ic_progress_2" />
 
 
             <LinearLayout
@@ -441,7 +441,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/progress_5" />
+                android:background="@drawable/ic_progress_5" />
 
 
             <Button
@@ -457,7 +457,9 @@
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                android:text="OK" />
+                android:text="Ok"
+                android:textAllCaps="false"
+                android:stateListAnimator="@null" />
 
         </LinearLayout>
 

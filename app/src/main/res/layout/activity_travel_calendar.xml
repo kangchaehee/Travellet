@@ -22,7 +22,8 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/ic_back"
-                android:onClick="onButtonClick" />
+                android:onClick="onButtonClick"
+                android:stateListAnimator="@null" />
 
 
             <TextView
@@ -79,7 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/btn_Next"
-                android:background="@drawable/progress_4"
+                android:background="@drawable/ic_progress_4"
                 app:layout_constraintEnd_toStartOf="@id/btn_Next"
                 android:layout_marginLeft="52dp"
                 android:layout_marginRight="52dp"
@@ -100,7 +101,8 @@
                 android:textSize="14sp"
                 android:textStyle="normal"
                 android:layout_marginTop="8dp"
-                app:fontFamily="@font/roboto_medium" />
+                app:fontFamily="@font/roboto_medium"
+                android:stateListAnimator="@null"/>
 
         </LinearLayout>
 

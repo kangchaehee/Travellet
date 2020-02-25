@@ -132,7 +132,8 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/ic_remove"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:stateListAnimator="@null"/>
 
             </LinearLayout>
 
@@ -207,7 +208,8 @@
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="@drawable/ic_remove"
-                    android:layout_gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:stateListAnimator="@null"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -230,7 +232,8 @@
         android:layout_marginBottom="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        tools:text="ADD" />
+        tools:text="ADD"
+        android:stateListAnimator="@null"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

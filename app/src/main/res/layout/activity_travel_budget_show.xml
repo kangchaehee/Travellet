@@ -36,7 +36,8 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/ic_back"
-                android:onClick="onButtonClick" />
+                android:onClick="onButtonClick"
+                android:stateListAnimator="@null" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -80,6 +81,7 @@
                 android:textSize="14sp"
                 android:textStyle="normal"
                 tools:text="Frugal\n$ 800"
+                android:stateListAnimator="@null"
                 />
 
 
@@ -99,7 +101,7 @@
                 android:textSize="14sp"
                 android:textStyle="normal"
                 android:text="Middle\n$ 1,000 ~ $ 1,200"
-                />
+                android:stateListAnimator="@null"/>
 
 
             <Button
@@ -118,6 +120,7 @@
                 android:textSize="14sp"
                 android:textStyle="normal"
                 android:text="Luxurious\n$ 1,200"
+                android:stateListAnimator="@null"
                 />
 
 
@@ -134,7 +137,7 @@
             android:layout_marginLeft="52dp"
             android:layout_marginRight="52dp"
             app:layout_constraintTop_toBottomOf="@id/linearLayout"
-            android:background="@drawable/progress_2"
+            android:background="@drawable/ic_progress_5"
             android:layout_marginTop="66dp"/>
 
         <Button
@@ -154,7 +157,8 @@
             app:layout_constraintTop_toBottomOf="@id/imageView6"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
-            android:text="Next" />
+            android:text="Next"
+            android:stateListAnimator="@null"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

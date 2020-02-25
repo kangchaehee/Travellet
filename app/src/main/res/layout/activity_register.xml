@@ -21,7 +21,8 @@
             android:background="@drawable/ic_back"
             android:layout_marginTop="24dp"
             android:layout_marginLeft="16dp"
-            android:onClick="onClicked"/>
+            android:onClick="onClicked"
+            android:stateListAnimator="@null"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -79,7 +80,20 @@
             android:lineSpacingExtra="11sp"
             android:textColor="@color/soft_grey"
             android:textSize="14sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            android:background="@null"
+            android:layout_centerVertical="true"
+            android:singleLine="true"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/icon_grey"
+            android:layout_below="@id/Edittext_email"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="8dp"/>
+
 
         <TextView
             android:id="@+id/textView3"
@@ -107,7 +121,20 @@
             android:lineSpacingExtra="11sp"
             android:textColor="@color/soft_grey"
             android:textSize="14sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            android:background="@null"
+            android:layout_centerVertical="true"
+            android:singleLine="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/icon_grey"
+            android:layout_below="@id/Edittext_pw"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="8dp"/>
+
 
 
         <TextView
@@ -135,7 +162,19 @@
             android:lineSpacingExtra="11sp"
             android:textColor="@color/soft_grey"
             android:textSize="14sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            android:background="@null"
+            android:layout_centerVertical="true"
+            android:singleLine="true"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/icon_grey"
+            android:layout_below="@id/Edittext_name"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="8dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -170,7 +209,8 @@
                 android:lineSpacingExtra="11sp"
                 android:text="Female"
                 android:textAllCaps="false"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:stateListAnimator="@null"/>
 
 
             <Button
@@ -187,7 +227,8 @@
                 android:lineSpacingExtra="11sp"
                 android:text="Male"
                 android:textAllCaps="false"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:stateListAnimator="@null" />
 
         </LinearLayout>
 
@@ -284,7 +325,8 @@
             android:textStyle="normal"
             android:textAllCaps="false"
             android:text="Register"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:stateListAnimator="@null"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -301,7 +343,7 @@
                 app:fontFamily="@font/roboto_regular"
                 android:lineSpacingExtra="9sp"
                 android:textColor="#bdbdbd"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:textStyle="normal"
                 android:text="Already have an account?"/>
 
@@ -311,13 +353,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 app:fontFamily="@font/roboto_regular"
                 android:textStyle="normal"
                 android:textColor="@color/blue"
                 android:lineSpacingExtra="9sp"
                 android:text="Sign In"
                 android:textAllCaps="false"
+                android:stateListAnimator="@null"
                 />
 
         </LinearLayout>

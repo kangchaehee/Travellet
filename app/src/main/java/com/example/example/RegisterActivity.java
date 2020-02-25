@@ -20,6 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        Spinner spinner2 = findViewById(R.id.age);
 
         Spinner spinner = findViewById(R.id.country);
 

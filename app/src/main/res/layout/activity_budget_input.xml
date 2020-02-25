@@ -16,7 +16,8 @@
         android:background="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="16dp"/>
+        android:layout_marginLeft="16dp"
+        android:stateListAnimator="@null"/>
 
 
     <TextView
@@ -115,8 +116,23 @@
         android:layout_marginRight="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="5dp"
-        android:hint="memo"
+        android:background="@null"
+        android:layout_centerVertical="true"
+        android:singleLine="true"
         />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/icon_grey"
+        android:layout_below="@id/memo"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/memo"/>
+
 
     <TextView
         android:id="@+id/textView4"
@@ -132,7 +148,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/memo"
+        app:layout_constraintTop_toBottomOf="@+id/view"
         />
 
     <LinearLayout
@@ -156,7 +172,8 @@
                 android:layout_height="56dp"
                 android:layout_marginRight="2dp"
                 android:background="@drawable/ic_lodging"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:stateListAnimator="@null"/>
 
             <Button
                 android:id="@+id/food"
@@ -164,7 +181,8 @@
                 android:layout_height="56dp"
                 android:layout_marginRight="2dp"
                 android:background="@drawable/ic_food"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:stateListAnimator="@null"/>
 
             <Button
                 android:id="@+id/shopping"
@@ -172,7 +190,8 @@
                 android:layout_height="56dp"
                 android:layout_marginRight="2dp"
                 android:background="@drawable/ic_shopping"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:stateListAnimator="@null"/>
 
             <Button
                 android:id="@+id/tourism"
@@ -180,7 +199,8 @@
                 android:layout_height="56dp"
                 android:layout_marginRight="2dp"
                 android:background="@drawable/ic_tourism"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:stateListAnimator="@null"/>
 
             <Button
                 android:id="@+id/transport"
@@ -188,7 +208,8 @@
                 android:layout_height="56dp"
                 android:layout_marginRight="2dp"
                 android:background="@drawable/ic_transport"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:stateListAnimator="@null"/>
 
             <Button
                 android:id="@+id/etc"
@@ -196,7 +217,8 @@
                 android:layout_height="56dp"
                 android:layout_marginRight="2dp"
                 android:background="@drawable/ic_etc"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:stateListAnimator="@null"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -207,6 +229,7 @@
         android:background="@drawable/bar"
         android:layout_marginRight="32dp"
         android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal"
         />
@@ -246,6 +269,7 @@
                     android:gravity="center"
                     android:layout_weight="1"
                     android:background="@color/white"
+                    android:stateListAnimator="@null"
                     />
 
                 <Button
@@ -260,7 +284,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"  />
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"  />
 
                 <Button
                     android:id="@+id/button3"
@@ -288,7 +313,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
             </LinearLayout>
 
@@ -308,7 +334,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
                     android:id="@+id/button5"
@@ -322,7 +349,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
                     android:id="@+id/button6"
@@ -336,7 +364,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
                     android:id="@+id/buttonX"
@@ -350,7 +379,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
             </LinearLayout>
 
             <LinearLayout
@@ -369,7 +399,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
                     android:id="@+id/button8"
@@ -383,7 +414,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
                     android:id="@+id/button9"
@@ -397,7 +429,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
                     android:id="@+id/buttonD"
@@ -411,7 +444,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
             </LinearLayout>
 
             <LinearLayout
@@ -430,7 +464,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
                     android:id="@+id/buttonR"
@@ -444,7 +479,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
                     android:id="@+id/buttonC"
@@ -458,7 +494,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
                     android:id="@+id/buttonM"
@@ -472,7 +509,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
             </LinearLayout>
 
@@ -498,7 +536,8 @@
         android:layout_marginBottom="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:text="ADD" />
+        android:text="ADD"
+        android:stateListAnimator="@null"/>
 
     //버튼
 

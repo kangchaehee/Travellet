@@ -50,10 +50,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Profile" />
         <activity android:name=".PlanSearch" />
-        <activity android:name=".InfoSet" />
         <activity android:name=".BudgetShow" />
         <activity android:name=".BudgetSet" />
-        <activity android:name=".AgePicker" />
         <activity android:name=".MainActivity" />
     </application>
 

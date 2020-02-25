@@ -210,7 +210,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="Edit" />
+        android:text="Edit"
+        android:stateListAnimator="@null" />
 
 
     //밑에 하단 바

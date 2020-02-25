@@ -71,7 +71,20 @@
             android:lineSpacingExtra="11sp"
             android:textColor="@color/soft_grey"
             android:textSize="14sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            android:background="@null"
+            android:layout_centerVertical="true"
+            android:singleLine="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/icon_grey"
+            android:layout_below="@id/Edittext_email"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="8dp"/>
+
 
 
         <TextView
@@ -101,7 +114,20 @@
             android:lineSpacingExtra="11sp"
             android:textColor="@color/soft_grey"
             android:textSize="14sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            android:background="@null"
+            android:layout_centerVertical="true"
+            android:singleLine="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/icon_grey"
+            android:layout_below="@id/Edittext_pw"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="8dp"/>
+
 
 
         <Button
@@ -121,7 +147,8 @@
             android:text="Sign In"
             android:textColor="@color/blue"
             android:textSize="12sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            android:stateListAnimator="@null"  />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -134,11 +161,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 app:fontFamily="@font/roboto_regular"
                 android:textStyle="normal"
                 android:textColor="@color/soft_grey"
-                android:lineSpacingExtra="7sp"
+                android:lineSpacingExtra="9sp"
                 android:text="Don’t have an account?"
                 />
 
@@ -148,13 +175,14 @@
                 android:layout_height="wrap_content"
                 android:onClick="onButtonClick"
                 android:background="@color/white"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 app:fontFamily="@font/roboto_regular"
                 android:textStyle="normal"
                 android:textColor="@color/blue"
-                android:lineSpacingExtra="7sp"
+                android:lineSpacingExtra="9sp"
                 android:textAllCaps="false"
                 android:text=" Register now!"
+                android:stateListAnimator="@null"
                 />
 
         </LinearLayout>

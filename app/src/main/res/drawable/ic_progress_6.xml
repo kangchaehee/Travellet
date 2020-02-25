@@ -7,10 +7,10 @@
       android:pathData="M2,2h256"
       android:strokeWidth="4"
       android:fillColor="#00000000"
-      android:strokeColor="#dbdde4"
+      android:strokeColor="#c8cbd3"
       android:strokeLineCap="round"/>
   <path
-      android:pathData="M2,2h44"
+      android:pathData="M2,2h256"
       android:strokeWidth="4"
       android:fillColor="#00000000"
       android:strokeColor="#427dff"
