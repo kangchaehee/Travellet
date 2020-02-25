@@ -11,4 +11,5 @@ public class PlanBudget extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plan_budget);
     }
+
 }

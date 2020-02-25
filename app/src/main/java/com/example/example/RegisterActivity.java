@@ -50,10 +50,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    //main empty 로.
+    //signin 으로
     public void onClick(View view){
 
-        Intent intent = new Intent(this, MainEmpty.class);
+        Intent intent = new Intent(this, SignIn.class);
         startActivity(intent);
     }
 

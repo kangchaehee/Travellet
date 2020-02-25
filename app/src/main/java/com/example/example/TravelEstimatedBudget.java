@@ -14,4 +14,10 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         setContentView(R.layout.activity_travel_estimated_budget);
     }
 
+    // plan initial
+    public void onClick(View view){
+
+        Intent intent = new Intent(this, PlanInitialActivity.class);
+        startActivity(intent);
+    }
 }
