@@ -33,7 +33,7 @@
         android:layout_marginRight="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="2020.02.02" />
+        android:text="2020.02.02" />
 
     <LinearLayout
         android:id="@+id/linear"
@@ -106,7 +106,7 @@
         android:layout_marginLeft="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear"
-        tools:text="$ 0"
+        android:text="$ 0"
         />
 
     <TextView
@@ -122,7 +122,7 @@
         android:layout_marginLeft="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:text="Memo"
+        android:text="Memo"
         />
 
     <EditText
@@ -146,7 +146,7 @@
         android:textStyle="normal"
         android:textColor="@color/deep_grey"
         android:lineSpacingExtra="9sp"
-        tools:text="Catergory"
+        android:text="Catergory"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginTop="16dp"
@@ -517,7 +517,7 @@
         android:layout_marginBottom="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        tools:text="Next" />
+        android:text="Next" />
 
     //버튼
 

@@ -45,7 +45,7 @@
             android:textColor="@color/deep_grey"
             android:letterSpacing="0.03"
             android:lineSpacingExtra="12sp"
-            tools:text="Is Your Initial Budget?" />
+            android:text="Is Your Initial Budget?" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -80,7 +80,7 @@
                 android:textSize="27sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="parent"
-                tools:text="$" />
+                android:text="$" />
 
         </RelativeLayout>
 
@@ -120,6 +120,6 @@
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="normal"
-        tools:text="Next" />
+        android:text="Next" />
 
 </RelativeLayout>

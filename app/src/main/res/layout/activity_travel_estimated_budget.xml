@@ -26,7 +26,7 @@
         android:textStyle="normal"
         android:textColor="@color/deep_grey"
         android:lineSpacingExtra="12sp"
-        tools:text="Estimated Budgets"
+        android:text="Estimated Budgets"
         />
 
     <TextView
@@ -39,7 +39,7 @@
         android:textStyle="normal"
         android:textColor="@color/black"
         android:lineSpacingExtra="35sp"
-        tools:text="$ 2,000.00"
+        android:text="$ 2,000.00"
         />
 
     <ScrollView
@@ -74,7 +74,7 @@
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Lodging" />
+                    android:text="Lodging" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -85,7 +85,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="40%" />
+                    android:text="40%" />
             </LinearLayout>
 
             <TextView
@@ -97,7 +97,7 @@
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
                 android:textStyle="normal"
-                tools:text="$ 1,800.00" />
+                android:text="$ 1,800.00" />
 
             //퍼센트 이미지 바
 
@@ -130,7 +130,7 @@
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Food" />
+                    android:text="Food" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -141,7 +141,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="30%" />
+                    android:text="30%" />
             </LinearLayout>
 
             <TextView
@@ -153,7 +153,7 @@
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
                 android:textStyle="normal"
-                tools:text="$ 1,800.00" />
+                android:text="$ 1,800.00" />
 
             //퍼센트 바
 
@@ -186,7 +186,7 @@
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Leisure/Culture" />
+                    android:text="Leisure/Culture" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -197,7 +197,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="11%" />
+                    android:text="11%" />
             </LinearLayout>
 
             <TextView
@@ -209,7 +209,7 @@
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
                 android:textStyle="normal"
-                tools:text="$ 1,800.00" />
+                android:text="$ 1,800.00" />
 
             //퍼센트 바
             <ImageView
@@ -241,7 +241,7 @@
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Shopping" />
+                    android:text="Shopping" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -252,7 +252,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="11%" />
+                    android:text="11%" />
             </LinearLayout>
 
             <TextView
@@ -264,7 +264,7 @@
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
                 android:textStyle="normal"
-                tools:text="$ 1,800.00" />
+                android:text="$ 1,800.00" />
 
             //퍼센트 바
             <ImageView
@@ -297,7 +297,7 @@
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Transportation" />
+                    android:text="Transportation" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -308,7 +308,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="8%" />
+                    android:text="8%" />
             </LinearLayout>
 
             <TextView
@@ -320,7 +320,7 @@
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
                 android:textStyle="normal"
-                tools:text="$ 1,800.00" />
+                android:text="$ 1,800.00" />
 
             //퍼센트 바
             <ImageView
@@ -353,7 +353,7 @@
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Etc" />
+                    android:text="Etc" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -364,7 +364,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="1%" />
+                    android:text="1%" />
             </LinearLayout>
 
             <TextView
@@ -376,7 +376,7 @@
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
                 android:textStyle="normal"
-                tools:text="$ 1,800.00" />
+                android:text="$ 1,800.00" />
 
             //퍼센트 바
             <ImageView
@@ -409,7 +409,7 @@
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Shopping" />
+                    android:text="Shopping" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -420,7 +420,7 @@
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="11%" />
+                    android:text="11%" />
             </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
@@ -431,7 +431,7 @@
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
                 android:textStyle="normal"
-                tools:text="$ 1,800.00" />
+                android:text="$ 1,800.00" />
 
             //퍼센트 바
 
@@ -457,7 +457,7 @@
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                tools:text="OK" />
+                android:text="OK" />
 
         </LinearLayout>
 

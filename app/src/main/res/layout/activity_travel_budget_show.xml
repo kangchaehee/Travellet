@@ -98,7 +98,7 @@
                 android:textColor="@color/soft_black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                tools:text="Middle\n$ 1,000 ~ $ 1,200"
+                android:text="Middle\n$ 1,000 ~ $ 1,200"
                 />
 
 
@@ -117,7 +117,7 @@
                 android:textColor="@color/soft_black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                tools:text="Luxurious\n$ 1,200"
+                android:text="Luxurious\n$ 1,200"
                 />
 
 
@@ -154,7 +154,7 @@
             app:layout_constraintTop_toBottomOf="@id/imageView6"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
-            tools:text="Next" />
+            android:text="Next" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

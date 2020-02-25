@@ -52,7 +52,7 @@
                 android:textColor="@color/deep_grey"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                tools:text="Total Budget" />
+                android:text="Total Budget" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                tools:text="$2,000.00" />
+                android:text="$2,000.00" />
 
         </LinearLayout>
     </LinearLayout>
@@ -81,7 +81,7 @@
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:text="spent per day $400" />
+        android:text="spent per day $400" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -108,7 +108,7 @@
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        tools:text="$1,800.00 of  $2,000.00" />
+        android:text="$1,800.00 of  $2,000.00" />
 
 
     <TextView
@@ -123,7 +123,7 @@
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        tools:text="90%"
+        android:text="90%"
         android:layout_marginTop="8dp"/>
 
     <ImageView
@@ -180,7 +180,7 @@
                     android:textColor="@color/deep_grey"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Lodging" />
+                    android:text="Lodging" />
 
             </LinearLayout>
 
@@ -193,7 +193,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                tools:text="Remaining $ 1,800.00" />
+                android:text="Remaining $ 1,800.00" />
 
             //퍼센트 이미지 바
 
@@ -220,7 +220,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="$1,800.00 of  $2,000.00" />
+                    android:text="$1,800.00 of  $2,000.00" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -233,7 +233,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="90%" />
+                    android:text="90%" />
 
 
                 <ImageView
@@ -270,7 +270,7 @@
                     android:textColor="@color/deep_grey"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Food" />
+                    android:text="Food" />
 
             </LinearLayout>
 
@@ -283,7 +283,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                tools:text="Remaining $ 1,800.00" />
+                android:text="Remaining $ 1,800.00" />
 
             //퍼센트 이미지 바
 
@@ -310,7 +310,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="$1,800.00 of  $2,000.00" />
+                    android:text="$1,800.00 of  $2,000.00" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -325,7 +325,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="90%" />
+                    android:text="90%" />
 
 
                 <ImageView
@@ -361,7 +361,7 @@
                     android:textColor="@color/deep_grey"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Lodging" />
+                    android:text="Lodging" />
 
             </LinearLayout>
 
@@ -374,7 +374,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                tools:text="Remaining $ 1,800.00" />
+                android:text="Remaining $ 1,800.00" />
 
             //퍼센트 이미지 바
 
@@ -401,7 +401,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="$1,800.00 of  $2,000.00" />
+                    android:text="$1,800.00 of  $2,000.00" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -416,7 +416,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="90%" />
+                    android:text="90%" />
 
             </RelativeLayout>
 
@@ -441,7 +441,7 @@
                     android:textColor="@color/deep_grey"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Lodging" />
+                    android:text="Lodging" />
 
             </LinearLayout>
 
@@ -454,7 +454,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                tools:text="Remaining $ 1,800.00" />
+                android:text="Remaining $ 1,800.00" />
 
             //퍼센트 이미지 바
 
@@ -481,7 +481,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="$1,800.00 of  $2,000.00" />
+                    android:text="$1,800.00 of  $2,000.00" />
 
                 <TextView
                     android:layout_width="wrap_content"

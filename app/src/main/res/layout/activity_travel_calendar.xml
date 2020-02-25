@@ -36,7 +36,7 @@
                 android:textColor="@color/black"
                 android:textSize="28sp"
                 android:textStyle="normal"
-                tools:text="When" />
+                android:text="When" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
                 android:textColor="@color/deep_grey"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                tools:text="Do You Travel?" />
+                android:text="Do You Travel?" />
 
 
             <!--여기서 부터 달력-->

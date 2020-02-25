@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@id/btn_back"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="28dp"
-        tools:text="Profile" />
+        android:text="Profile" />
 
 
     <ImageView
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         android:layout_marginTop="64dp"
         android:layout_marginLeft="32dp"
-        tools:text="Name" />
+        android:text="Name" />
 
 
     <EditText
@@ -94,7 +94,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ET_name"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="32dp"
-        tools:text="Age" />
+        android:text="Age" />
 
     <EditText
         android:id="@+id/ET_age"
@@ -128,7 +128,7 @@
         app:layout_constraintTop_toBottomOf="@+id/ET_age"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="32dp"
-        tools:text="Country" />
+        android:text="Country" />
 
     <EditText
         android:id="@+id/ET_country"
@@ -165,7 +165,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginBottom="32dp"
-        tools:text="save" />
+        android:text="save" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

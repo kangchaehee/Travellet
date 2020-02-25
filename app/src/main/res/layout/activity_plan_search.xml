@@ -26,7 +26,7 @@
         android:textStyle="normal"
         android:textColor="@color/black"
         android:lineSpacingExtra="9sp"
-        tools:text="Place"
+        android:text="Place"
         />
 
     <EditText
@@ -74,7 +74,7 @@
                 android:textStyle="normal"
                 android:textColor="#424242"
                 android:lineSpacingExtra="11sp"
-                tools:text="Sookmyung Women's University"
+                android:text="Sookmyung Women's University"
                 />
 
             <TextView
@@ -86,7 +86,7 @@
                 android:textStyle="normal"
                 android:textColor="#616161"
                 android:lineSpacingExtra="8sp"
-                tools:text="Seoul, chungpa-dong"
+                android:text="Seoul, chungpa-dong"
                 />
 
 

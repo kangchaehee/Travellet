@@ -152,6 +152,7 @@
                 android:textStyle="normal"
                 android:textColor="@color/blue"
                 android:lineSpacingExtra="7sp"
+
                 android:text=" Register now!"
                 />
 

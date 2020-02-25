@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="40dp"
-        tools:text="Hello," />
+        android:text="Hello," />
 
     <TextView
         android:id="@+id/textView2"
@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         android:layout_marginTop="4dp"
         android:layout_marginLeft="32dp"
-        tools:text="Kang Chae Hee" />
+        android:text="Kang Chae Hee" />
 
     <TextView
         android:id="@+id/textView3"
@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="32dp"
-        tools:text="PROFILE"
+        android:text="PROFILE"
         />
 
     //바에서 60dp
@@ -71,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         android:layout_marginTop="60dp"
         android:layout_marginLeft="40dp"
-        tools:text="Name"
+        android:text="Name"
         />
 
     <TextView
@@ -116,7 +116,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="40dp"
-        tools:text="Age"
+        android:text="Age"
         />
 
     <TextView
@@ -133,7 +133,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         android:layout_marginLeft="63dp"
         android:layout_marginTop="16dp"
-        tools:text="1998" />
+        android:text="1998" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -160,7 +160,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="40dp"
-        tools:text="Country"
+        android:text="Country"
         />
 
     <TextView
@@ -177,7 +177,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         android:layout_marginLeft="37dp"
         android:layout_marginTop="16dp"
-        tools:text="USA" />
+        android:text="USA" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -210,7 +210,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:text="Edit" />
+        android:text="Edit" />
 
 
     //밑에 하단 바

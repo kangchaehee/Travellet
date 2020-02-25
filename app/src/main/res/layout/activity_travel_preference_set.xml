@@ -33,7 +33,7 @@
             android:textStyle="normal"
             android:textColor="@color/black"
             android:lineSpacingExtra="35sp"
-            tools:text="What Is"
+            android:text="What Is"
             />
 
         <TextView
@@ -46,7 +46,7 @@
             android:textStyle="normal"
             android:textColor="@color/deep_grey"
             android:lineSpacingExtra="12sp"
-            tools:text="Your Preference?"
+            android:text="Your Preference?"
             />
 
         <LinearLayout
@@ -208,7 +208,7 @@
             android:textColor="@color/white"
             android:textSize="14sp"
             android:textStyle="normal"
-            tools:text="Next" />
+            android:text="Next" />
 
     </LinearLayout>
 

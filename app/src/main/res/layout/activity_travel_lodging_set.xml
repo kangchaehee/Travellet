@@ -48,7 +48,7 @@
                 android:textColor="@color/black"
                 android:textSize="28sp"
                 android:textStyle="normal"
-                tools:text="What Is" />
+                android:text="What Is" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,7 +60,7 @@
                 android:textColor="@color/deep_grey"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                tools:text="Your Lodging?" />
+                android:text="Your Lodging?" />
 
             <Button
                 android:id="@+id/btn_hotel"
@@ -147,7 +147,7 @@
             app:layout_constraintTop_toBottomOf="@id/imageView6"
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
-            tools:text="Next" />
+            android:text="Next" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
