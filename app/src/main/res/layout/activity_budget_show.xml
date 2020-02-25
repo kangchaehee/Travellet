@@ -496,7 +496,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="90%" />
+                    android:text="90%" />
 
             </RelativeLayout>
 
@@ -521,7 +521,7 @@
                     android:textColor="@color/deep_grey"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Lodging" />
+                    android:text="Lodging" />
 
             </LinearLayout>
 
@@ -534,7 +534,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                tools:text="Remaining $ 1,800.00" />
+                android:text="Remaining $ 1,800.00" />
 
             //퍼센트 이미지 바
 
@@ -561,7 +561,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="$1,800.00 of  $2,000.00" />
+                    android:text="$1,800.00 of  $2,000.00" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -576,7 +576,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="90%" />
+                    android:text="90%" />
 
             </RelativeLayout>
 
@@ -601,7 +601,7 @@
                     android:textColor="@color/deep_grey"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Lodging" />
+                    android:text="Lodging" />
 
             </LinearLayout>
 
@@ -614,7 +614,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                tools:text="Remaining $ 1,800.00" />
+                android:text="Remaining $ 1,800.00" />
 
             //퍼센트 이미지 바
 
@@ -641,7 +641,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="$1,800.00 of  $2,000.00" />
+                    android:text="$1,800.00 of  $2,000.00" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -656,7 +656,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="90%" />
+                    android:text="90%" />
 
             </RelativeLayout>
 
@@ -681,7 +681,7 @@
                     android:textColor="@color/deep_grey"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Lodging" />
+                    android:text="Lodging" />
 
             </LinearLayout>
 
@@ -694,7 +694,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                tools:text="Remaining $ 1,800.00" />
+                android:text="Remaining $ 1,800.00" />
 
             //퍼센트 이미지 바
 
@@ -721,7 +721,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="$1,800.00 of  $2,000.00" />
+                    android:text="$1,800.00 of  $2,000.00" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -736,7 +736,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="90%" />
+                    android:text="90%" />
 
             </RelativeLayout>
 
@@ -761,7 +761,7 @@
                     android:textColor="@color/deep_grey"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    tools:text="Lodging" />
+                    android:text="Lodging" />
 
             </LinearLayout>
 
@@ -774,7 +774,7 @@
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                tools:text="Remaining $ 1,800.00" />
+                android:text="Remaining $ 1,800.00" />
 
             //퍼센트 이미지 바
 
@@ -801,7 +801,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="$1,800.00 of  $2,000.00" />
+                    android:text="$1,800.00 of  $2,000.00" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -816,7 +816,7 @@
                     android:textColor="#757575"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="90%" />
+                    android:text="90%" />
 
             </RelativeLayout>
 

@@ -42,7 +42,7 @@
         android:textSize="16sp"
         android:textStyle="normal"
         app:fontFamily="@font/roboto_light"
-        tools:text="memo memo"
+        android:text="memo memo"
         android:layout_marginLeft="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -111,7 +111,7 @@
                         android:textColor="@color/black"
                         android:lineSpacingExtra="11sp"
                         android:layout_marginLeft="16dp"
-                        tools:text="Lodging"/>
+                        android:text="Lodging"/>
 
                     <TextView
                         android:id="@+id/tv_card"
@@ -124,7 +124,7 @@
                         android:textColor="@color/soft_black"
                         android:lineSpacingExtra="11sp"
                         android:layout_marginLeft="16dp"
-                        tools:text="$1000.00"/>
+                        android:text="$1000.00"/>
 
                 </LinearLayout>
 
@@ -186,7 +186,7 @@
                         android:textColor="@color/black"
                         android:lineSpacingExtra="11sp"
                         android:layout_marginLeft="16dp"
-                        tools:text="Transport"/>
+                        android:text="Transport"/>
 
                     <TextView
                         android:id="@+id/tv_card2"
@@ -199,7 +199,7 @@
                         android:textColor="@color/soft_black"
                         android:lineSpacingExtra="11sp"
                         android:layout_marginLeft="16dp"
-                        tools:text="$200.00"/>
+                        android:text="$200.00"/>
 
                 </LinearLayout>
 
