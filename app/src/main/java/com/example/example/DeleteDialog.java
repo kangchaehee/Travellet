@@ -33,7 +33,7 @@ public class DeleteDialog extends Dialog
         lpWindow.dimAmount = 0.5f;
         getWindow().setAttributes(lpWindow);
 
-        setContentView(R.layout.custom_dialog);
+        setContentView(R.layout.activity_delete_dialog);
 
         m_oDialog = this;
 
