@@ -14,10 +14,6 @@ public class PlanInitialSubItem extends AppCompatActivity {
         this.placeTime = placeTime;
         this.placeName = placeName;
         this.placeMemo = placeMemo;
-        this.transBudgetText = transBudgetText;
-        this.transportText = transportText;
-        this.transportIc = transportIc;
-        this.transportBudget = transportBudget;
     }
 
 
@@ -45,37 +41,6 @@ public class PlanInitialSubItem extends AppCompatActivity {
         this.placeMemo = placeMemo;
     }
 
-    public String getTransBudgetText() {
-        return transBudgetText;
-    }
-
-    public void setTransBudgetText(String transBudgetText) {
-        this.transBudgetText = transBudgetText;
-    }
-
-    public String getTransportText() {
-        return transportText;
-    }
-
-    public void setTransportText(String transportText) {
-        this.transportText = transportText;
-    }
-
-    public int getTransportIc() {
-        return transportIc;
-    }
-
-    public void setTransportIc(int transportIc) {
-        this.transportIc = transportIc;
-    }
-
-    public int getTransportBudget() {
-        return transportBudget;
-    }
-
-    public void setTransportBudget(int transportBudget) {
-        this.transportBudget = transportBudget;
-    }
 
     @Override
     public String toString() {

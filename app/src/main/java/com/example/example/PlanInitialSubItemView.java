@@ -33,22 +33,10 @@ public class PlanInitialSubItemView extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.activity_plan_initial_sub_item, this, true);
 
-        transportIc = (ImageView) findViewById(R.id.transport_ic);
-        transportBudget = (ImageView) findViewById(R.id.transportBudget);
         placeTime = (TextView) findViewById(R.id.place_time);
         placeName = (TextView) findViewById(R.id.placeName);
         placeMemo = (TextView) findViewById(R.id.placeMemo);
-        transBudgetText = (TextView) findViewById(R.id.TransBudgetText);
-        transportText = (TextView) findViewById(R.id.transportText);
 
-    }
-
-    public void setTransportIc(int ic) {
-        transportIc.setImageResource(ic);
-    }
-
-    public void setTransportBudget(int ic) {
-        transportBudget.setImageResource(ic);
     }
 
     public void setPlaceTime(String time) {
@@ -63,13 +51,6 @@ public class PlanInitialSubItemView extends LinearLayout {
         this.placeName.setText(memo);
     }
 
-    public void setTransBudgetText(String tbText) {
-        this.transBudgetText.setText(tbText);
-    }
-
-    public void setTransportText(String tText) {
-        this.transportText.setText(tText);
-    }
 
 
 }

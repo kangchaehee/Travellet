@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.example.DeleteActivity;
 import com.example.example.DeleteDialog;
@@ -36,8 +37,7 @@ public class PlanInitialActivity extends AppCompatActivity {
     int tIc, tBudget;
 
     DeleteDialog oDialog;
-
-    DeleteActivity cd;
+    TransportDialog tDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +71,7 @@ public class PlanInitialActivity extends AppCompatActivity {
 
 
         oDialog = new DeleteDialog(this);
+        tDialog = new TransportDialog(this);
 
     }
 
@@ -102,10 +103,6 @@ public class PlanInitialActivity extends AppCompatActivity {
             view.setPlaceTime(item.getPlaceTime());
             view.setPlaceName(item.getPlaceName());
             view.setPlaceMemo(item.getPlaceMemo());
-            view.setTransBudgetText(item.getTransBudgetText());
-            view.setTransportText(item.getTransportText());
-            view.setTransportIc(item.getTransportIc());
-            view.setTransportBudget(item.getTransportBudget());
 
             ImageButton del = (ImageButton) view.findViewById(R.id.deleteButton);
             del.setOnClickListener(new View.OnClickListener() {
@@ -125,15 +122,47 @@ public class PlanInitialActivity extends AppCompatActivity {
                         }
                     });
 
-                    /*Intent intent = new Intent(getApplicationContext(), DeleteActivity.class);
-                    startActivity(intent);*/
                 }
             });
 
-            ImageButton addT = (ImageButton) view.findViewById(R.id.transportAdd);
+            final ImageButton addT = (ImageButton) view.findViewById(R.id.transport_ic);
+            final TextView transText = (TextView) view.findViewById(R.id.transportText);
             addT.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    tDialog.setCancelable(false);
+                    tDialog.show();
+
+                    tDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            int transport = tDialog.getTransport();
+                            if(transport == 1){
+                                addT.setBackgroundResource(R.drawable.ic_walk_24px);
+                                transText.setText("Walk");
+                            }
+
+                            if(transport == 2){
+                                addT.setBackgroundResource(R.drawable.ic_bus_24px);
+                                transText.setText("Bus");
+                            }
+
+                            if(transport == 3){
+                                addT.setBackgroundResource(R.drawable.ic_subway_24px);
+                                transText.setText("Subway");
+                            }
+
+                            if(transport == 4){
+                                addT.setBackgroundResource(R.drawable.ic_taxi_24px);
+                                transText.setText("Taxi");
+                            }
+
+                            if(transport == 5){
+                                addT.setBackgroundResource(R.drawable.ic_car_24px);
+                                transText.setText("Car");
+                            }
+                        }
+                    });
 
                 }
             });

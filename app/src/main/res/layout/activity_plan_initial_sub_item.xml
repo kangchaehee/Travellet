@@ -84,10 +84,11 @@
             android:layout_below="@+id/place_linear"
             android:layout_toRightOf="@+id/line">
 
-            <ImageView
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/transport_ic"
+                android:background="@drawable/ic_walk_24px"
                 android:layout_marginLeft="4dp"
                 android:layout_margin="12dp"/>
 
@@ -99,10 +100,12 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/deep_grey"
                 android:textSize="14sp"
-                android:text="Car"
+                android:text="Walk"
                 android:fontFamily="@font/roboto_regular"/>
 
             <ImageView
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/ic_budget"
                 android:id="@+id/transportBudget"
                 android:layout_toRightOf="@id/transportText"
                 android:layout_width="48dp"

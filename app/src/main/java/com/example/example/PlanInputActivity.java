@@ -60,7 +60,7 @@ public class PlanInputActivity extends AppCompatActivity {
         lodging.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(category ==-1 || category != 1){
+                if(category != 1){
                     category = 1;
                     lodging.setBackgroundResource(R.drawable.ic_lodging_selected);
                     food.setBackgroundResource(R.drawable.ic_food);
@@ -74,7 +74,7 @@ public class PlanInputActivity extends AppCompatActivity {
         food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(category ==-1 || category != 2){
+                if(category != 2){
                     category = 2;
                     lodging.setBackgroundResource(R.drawable.ic_lodging);
                     food.setBackgroundResource(R.drawable.ic_food_selected);
@@ -88,7 +88,7 @@ public class PlanInputActivity extends AppCompatActivity {
         shopping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(category ==-1 || category != 3){
+                if(category != 3){
                     category = 3;
                     lodging.setBackgroundResource(R.drawable.ic_lodging);
                     food.setBackgroundResource(R.drawable.ic_food);
@@ -102,7 +102,7 @@ public class PlanInputActivity extends AppCompatActivity {
         tourism.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(category ==-1 || category != 4){
+                if(category != 4){
                     category = 4;
                     lodging.setBackgroundResource(R.drawable.ic_lodging);
                     food.setBackgroundResource(R.drawable.ic_food);
@@ -116,7 +116,7 @@ public class PlanInputActivity extends AppCompatActivity {
         etc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(category ==-1 || category != 5){
+                if(category != 5){
                     category = 5;
                     lodging.setBackgroundResource(R.drawable.ic_lodging);
                     food.setBackgroundResource(R.drawable.ic_food);
