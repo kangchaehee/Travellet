@@ -390,8 +390,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
         android:layout_below="@+id/relative1"
+        android:layout_above="@id/addButton"
         android:divider="@null"
         android:dividerHeight="0dp">
     </ListView>

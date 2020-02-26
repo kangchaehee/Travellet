@@ -12,14 +12,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.example.DeleteActivity;
-import com.example.example.DeleteDialog;
-import com.example.example.PlaceSearchActivity;
-import com.example.example.PlanInitialSubItem;
-import com.example.example.PlanInitialSubItemView;
-import com.example.example.PlanInputActivity;
-import com.example.example.R;
-
 import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
@@ -180,13 +172,25 @@ public class PlanInitialActivity extends AppCompatActivity {
                 int hour = intent.getIntExtra("hour", 0);
                 int min = intent.getIntExtra("min", 0);
                 String ap;
+                String sHour, sMin;
                 if(hour > 12) {
                     ap = "PM";
                     hour -= 12;
                 }
                 else
                     ap = "AM";
-                time = ap+ " "+hour+":"+min;
+
+                if(hour<10)
+                   sHour = "0"+hour;
+                else
+                    sHour = String.valueOf(hour);
+
+                if(min<10)
+                    sMin = "0"+hour;
+                else
+                    sMin = String.valueOf(min);
+
+                time = ap+ " "+sHour+":"+sMin;
                 name = intent.getStringExtra("title");
                 memo = intent.getStringExtra("memo");
                 adapter.addItem(new PlanInitialSubItem(time, name, memo, tbText, tText, tIc, tBudget));
