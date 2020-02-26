@@ -25,11 +25,11 @@ public class PlanInitialActivity extends AppCompatActivity {
     ArrayList<PlanInitialSubItem> items = new ArrayList<PlanInitialSubItem>();
     PlanSubAdapter adapter = new PlanSubAdapter();
 
-    String time, name, memo, tbText, tText;
-    int tIc, tBudget;
+    String time, name, memo;
 
     DeleteDialog oDialog;
     TransportDialog tDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,6 +126,7 @@ public class PlanInitialActivity extends AppCompatActivity {
                     tDialog.show();
 
                     tDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
                         @Override
                         public void onDismiss(DialogInterface dialog) {
                             int transport = tDialog.getTransport();
@@ -153,8 +154,13 @@ public class PlanInitialActivity extends AppCompatActivity {
                                 addT.setBackgroundResource(R.drawable.ic_car_24px);
                                 transText.setText("Car");
                             }
+
+                            item.setTransport(transport);
+                            tDialog.setTransport(transport);
                         }
+
                     });
+
 
                 }
             });
@@ -193,7 +199,7 @@ public class PlanInitialActivity extends AppCompatActivity {
                 time = ap+ " "+sHour+":"+sMin;
                 name = intent.getStringExtra("title");
                 memo = intent.getStringExtra("memo");
-                adapter.addItem(new PlanInitialSubItem(time, name, memo, tbText, tText, tIc, tBudget));
+                adapter.addItem(new PlanInitialSubItem(time, name, memo, 1));
                 adapter.notifyDataSetChanged();
             }
         }

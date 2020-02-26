@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import org.jsoup.Jsoup;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -136,6 +137,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
             String link ="", tel = "", title = "", address = "", type = "", image = " ";
             String dAddress = "", mapx = "", mapy = "", overview = "", directions="";
             NodeList nodeList = doc.getElementsByTagName("item");
+            org.jsoup.nodes.Document linkDoc, overviewDoc;
 
             for (int i = 0; i < nodeList.getLength(); i++) {
 
@@ -152,15 +154,15 @@ public class PlaceDetailActivity extends AppCompatActivity {
                             break;
 
                         case 78:
-                            type = "etc.";
+                            type = "Culture";
                             break;
 
                         case 85:
-                            type = "etc.";
+                            type = "etc";
                             break;
 
                         case 75:
-                            type = "etc.";
+                            type = "Leisure/Sports";
                             break;
 
                         case 80:
@@ -176,7 +178,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
                             break;
 
                         case 77:
-                            type = "etc";
+                            type = "Transportation";
                             break;
                     }
                 }
@@ -186,6 +188,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
                     NodeList linkNode = element.getElementsByTagName("homepage");
                     if(linkNode.item(0) !=null){
                         link = linkNode.item(0).getChildNodes().item(0).getNodeValue();
+                        linkDoc = Jsoup.parse(link);
+                        link = linkDoc.text();
                     }
                 }
 
@@ -212,6 +216,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
                     NodeList overviewNode = element.getElementsByTagName("overview");
                     if(overviewNode.item(0) !=null){
                         overview = overviewNode.item(0).getChildNodes().item(0).getNodeValue();
+                        overviewDoc = Jsoup.parse(overview);
+                        overview = overviewDoc.text();
                     }
                 }
 
@@ -255,6 +261,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
                     }
                 }
             }
+
+
 
             detailTitle.setText(title);
             detailType.setText(type);

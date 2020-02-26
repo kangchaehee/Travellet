@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class TransportDialog extends Dialog {
 
     TransportDialog m_tDialog;
-    int transport=-1;
+    int transport;
 
     ImageButton walk;
     ImageButton bus;
@@ -42,6 +42,10 @@ public class TransportDialog extends Dialog {
         subway = (ImageButton) findViewById(R.id.subway);
         taxi = (ImageButton) findViewById(R.id.taxi);
         car = (ImageButton) findViewById(R.id.car);
+
+        if (transport == 2){
+            bus.setBackgroundResource(R.drawable.ic_bus__pressed);
+        }
 
 
         walk.setOnClickListener(new View.OnClickListener() {
@@ -159,5 +163,9 @@ public class TransportDialog extends Dialog {
 
     public int getTransport(){
         return transport;
+    }
+
+    public void setTransport(int t){
+        transport = t;
     }
 }

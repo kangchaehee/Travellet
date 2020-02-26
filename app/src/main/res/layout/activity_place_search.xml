@@ -119,6 +119,46 @@
                 android:textSize="14sp" />
 
             <Button
+                android:id="@+id/searchCulture"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/button_background_border"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Culture"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/searchLeisure"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginLeft="8dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:background="@drawable/button_background_border"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Leisure/Sports"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/searchTransportation"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginLeft="8dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:background="@drawable/button_background_border"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Transportation"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
+
+            <Button
                 android:id="@+id/searchETC"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
