@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:lineSpacingExtra="35sp"
             android:text="KRW "
-            android:textColor="@color/black"
+            android:textColor="@color/soft_black"
             android:textSize="28sp"
             android:textStyle="normal"
             app:fontFamily="@font/roboto_medium" />
@@ -66,14 +66,12 @@
             android:lineSpacingExtra="35sp"
             android:textSize="28sp"
             android:textStyle="normal"
+            android:background="@null"
+            android:layout_centerVertical="true"
+            android:singleLine="true"
             app:fontFamily="@font/roboto_medium" />
 
-        <requestFocus/>
-
-
-
     </LinearLayout>
-
 
     <TextView
         android:id="@+id/textView2"
@@ -83,7 +81,7 @@
         android:textColor="@color/deep_grey"
         android:textSize="16sp"
         android:textStyle="normal"
-        app:fontFamily="@font/roboto_light"
+        app:fontFamily="@font/roboto_regular"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="32dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,7 +97,7 @@
         android:textSize="12sp"
         android:textStyle="normal"
         android:lineSpacingExtra="9sp"
-        app:fontFamily="@font/roboto_light"
+        app:fontFamily="@font/roboto_regular"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="32dp"
         app:layout_constraintStart_toStartOf="parent"
