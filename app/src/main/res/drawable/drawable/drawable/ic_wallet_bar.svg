@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="ic_wallet_bar" width="90" height="48" viewBox="0 0 90 48">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#dbdde4}
+        </style>
+    </defs>
+    <path id="사각형_321" d="M0 0h90v48H0z" class="cls-1" data-name="사각형 321"/>
+    <g id="ic_wallet" transform="translate(33 12)">
+        <g id="Icon_cash" transform="translate(3 5)">
+            <path id="Path" d="M0 2a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v2h-4a3 3 0 0 0 0 6h4v2a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2z" class="cls-2"/>
+            <path id="Shape" d="M6 4H2a2 2 0 0 1 0-4h4a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1zM2 1a1 1 0 1 0 1 1 1 1 0 0 0-1-1z" class="cls-2" transform="translate(12 5)"/>
+        </g>
+    </g>
+</svg>
