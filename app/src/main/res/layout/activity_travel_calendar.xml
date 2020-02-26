@@ -111,6 +111,7 @@
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="normal"
+        android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/imageView6" />
 
 </RelativeLayout>
