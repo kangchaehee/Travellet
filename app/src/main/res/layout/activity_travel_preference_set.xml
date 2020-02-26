@@ -1,225 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <LinearLayout
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".TravelTitleSet"
-        android:orientation="vertical">
-
-
-        <ImageButton
-            android:layout_height="48dp"
-            android:layout_width="48dp"
-            android:id="@+id/btn_back"
-            android:onClick="onButtonClick"
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="16dp"
-            android:background="@drawable/ic_back"
-            android:stateListAnimator="@null"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:layout_marginLeft="32dp"
-            android:textSize="28sp"
-            android:fontFamily="@font/roboto_medium"
-            android:textStyle="normal"
-            android:textColor="@color/black"
-            android:lineSpacingExtra="35sp"
-            android:text="What Is"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="8dp"
-            android:textSize="16sp"
-            android:fontFamily="@font/roboto_light"
-            android:textStyle="normal"
-            android:textColor="@color/deep_grey"
-            android:lineSpacingExtra="12sp"
-            android:text="Your Preference?"
-            />
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="80dp">
+            android:layout_height="match_parent"
+            tools:context=".TravelTitleSet"
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_shopping"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginRight="4dp"
-                android:background="@drawable/border_12r_grey"
-                android:drawableLeft="@drawable/ic_shopping_24px"
-                android:paddingLeft="16dp"
-                android:textSize="14sp"
-                android:fontFamily="@font/roboto_regular"
-                android:textStyle="normal"
-                android:textColor="@color/soft_black"
-                android:lineSpacingExtra="11sp"
-                android:text="Shopping"
-                android:layout_weight="1"
+
+            <ImageButton
+                android:layout_height="48dp"
+                android:layout_width="48dp"
+                android:id="@+id/btn_back"
+                android:onClick="onButtonClick"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="16dp"
+                android:background="@drawable/ic_back"
                 android:stateListAnimator="@null"/>
 
-            <Button
-                android:id="@+id/btn_food"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginLeft="4dp"
-                android:background="@drawable/border_12r_grey"
-                android:drawableLeft="@drawable/ic_food_24px"
-                android:paddingLeft="16dp"
-                android:textSize="14sp"
-                android:fontFamily="@font/roboto_regular"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginLeft="32dp"
+                android:textSize="28sp"
+                android:fontFamily="@font/roboto_medium"
                 android:textStyle="normal"
-                android:textColor="@color/soft_black"
-                android:lineSpacingExtra="11sp"
-                android:text="Food"
-                android:layout_weight="1"
-                android:stateListAnimator="@null"/>
+                android:textColor="@color/black"
+                android:lineSpacingExtra="35sp"
+                android:text="What Is"
+                />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="8dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_light"
+                android:textStyle="normal"
+                android:textColor="@color/deep_grey"
+                android:lineSpacingExtra="12sp"
+                android:text="Your Preference?"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="80dp">
+
+                <Button
+                    android:id="@+id/btn_shopping"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginRight="4dp"
+                    android:background="@drawable/border_12r_grey"
+                    android:drawableLeft="@drawable/ic_shopping_24px"
+                    android:paddingLeft="16dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="11sp"
+                    android:text="Shopping"
+                    android:layout_weight="1"
+                    android:stateListAnimator="@null"/>
+
+                <Button
+                    android:id="@+id/btn_food"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/border_12r_grey"
+                    android:drawableLeft="@drawable/ic_food_24px"
+                    android:paddingLeft="16dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="11sp"
+                    android:text="Food"
+                    android:layout_weight="1"
+                    android:stateListAnimator="@null"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:id="@+id/btn_rest"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginRight="4dp"
+                    android:background="@drawable/border_12r_grey"
+                    android:drawableLeft="@drawable/ic_rest_24px"
+                    android:paddingLeft="16dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="11sp"
+                    android:text="Rest"
+                    android:layout_weight="1"
+                    android:stateListAnimator="@null"/>
+
+                <Button
+                    android:id="@+id/btn_leisure"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/border_12r_grey"
+                    android:drawableLeft="@drawable/ic_leisure_24px"
+                    android:paddingLeft="16dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="11sp"
+                    android:text="Leisure"
+                    android:layout_weight="1"
+                    android:stateListAnimator="@null"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:id="@+id/btn_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginRight="4dp"
+                    android:background="@drawable/border_12r_grey"
+                    android:drawableLeft="@drawable/ic_history_24px"
+                    android:paddingLeft="16dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="11sp"
+                    android:text="History"
+                    android:layout_weight="1"
+                    android:stateListAnimator="@null"/>
+
+                <Button
+                    android:id="@+id/btn_nature"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@drawable/border_12r_grey"
+                    android:drawableLeft="@drawable/ic_nature_24px"
+                    android:paddingLeft="16dp"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="11sp"
+                    android:text="Nature"
+                    android:layout_weight="1"
+                    android:stateListAnimator="@null"/>
+            </LinearLayout>
         </LinearLayout>
+    </ScrollView>
 
+    <ImageView
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_Next"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="52dp"
+        android:layout_marginRight="52dp"
+        android:layout_marginTop="98dp"
+        android:background="@drawable/ic_progress_3" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="20dp">
+    <Button
+        android:id="@+id/btn_Next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_background_full"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:lineSpacingExtra="7sp"
+        android:onClick="onClick"
+        android:stateListAnimator="@null"
+        android:text="Next"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="normal" />
 
-            <Button
-                android:id="@+id/btn_rest"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginRight="4dp"
-                android:background="@drawable/border_12r_grey"
-                android:drawableLeft="@drawable/ic_rest_24px"
-                android:paddingLeft="16dp"
-                android:textSize="14sp"
-                android:fontFamily="@font/roboto_regular"
-                android:textStyle="normal"
-                android:textColor="@color/soft_black"
-                android:lineSpacingExtra="11sp"
-                android:text="Rest"
-                android:layout_weight="1"
-                android:stateListAnimator="@null"/>
-
-            <Button
-                android:id="@+id/btn_leisure"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginLeft="4dp"
-                android:background="@drawable/border_12r_grey"
-                android:drawableLeft="@drawable/ic_leisure_24px"
-                android:paddingLeft="16dp"
-                android:textSize="14sp"
-                android:fontFamily="@font/roboto_regular"
-                android:textStyle="normal"
-                android:textColor="@color/soft_black"
-                android:lineSpacingExtra="11sp"
-                android:text="Leisure"
-                android:layout_weight="1"
-                android:stateListAnimator="@null"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="20dp">
-
-            <Button
-                android:id="@+id/btn_history"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginRight="4dp"
-                android:background="@drawable/border_12r_grey"
-                android:drawableLeft="@drawable/ic_history_24px"
-                android:paddingLeft="16dp"
-                android:textSize="14sp"
-                android:fontFamily="@font/roboto_regular"
-                android:textStyle="normal"
-                android:textColor="@color/soft_black"
-                android:lineSpacingExtra="11sp"
-                android:text="History"
-                android:layout_weight="1"
-                android:stateListAnimator="@null"/>
-
-            <Button
-                android:id="@+id/btn_nature"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginLeft="4dp"
-                android:background="@drawable/border_12r_grey"
-                android:drawableLeft="@drawable/ic_nature_24px"
-                android:paddingLeft="16dp"
-                android:textSize="14sp"
-                android:fontFamily="@font/roboto_regular"
-                android:textStyle="normal"
-                android:textColor="@color/soft_black"
-                android:lineSpacingExtra="11sp"
-                android:text="Nature"
-                android:layout_weight="1"
-                android:stateListAnimator="@null"/>
-
-        </LinearLayout>
-
-
-        //버튼 글씨 정렬 다시 보기.
-        //슬라이드
-
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/btn_Next"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="52dp"
-            android:layout_marginRight="52dp"
-            android:layout_marginTop="98dp"
-            android:background="@drawable/ic_progress_3" />
-
-        <Button
-            android:id="@+id/btn_Next"
-            android:onClick="onClick"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginBottom="32dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/button_background_full"
-            android:fontFamily="@font/roboto_medium"
-            android:lineSpacingExtra="7sp"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="normal"
-            android:text="Next"
-            android:stateListAnimator="@null" />
-
-    </LinearLayout>
-
-</ScrollView>
+</RelativeLayout>
 
 
