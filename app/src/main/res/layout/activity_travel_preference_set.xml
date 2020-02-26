@@ -77,7 +77,8 @@
                     android:text="Shopping"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:textAllCaps="false"/>
 
                 <Button
                     android:id="@+id/btn_food"
@@ -94,7 +95,8 @@
                     android:text="Food"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:textAllCaps="false"/>
 
             </LinearLayout>
 
@@ -122,7 +124,8 @@
                     android:text="Rest"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:textAllCaps="false" />
 
                 <Button
                     android:id="@+id/btn_leisure"
@@ -139,7 +142,8 @@
                     android:text="Leisure"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:textAllCaps="false" />
 
             </LinearLayout>
 
@@ -167,7 +171,8 @@
                     android:text="History"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:textAllCaps="false"/>
 
                 <Button
                     android:id="@+id/btn_nature"
@@ -185,7 +190,8 @@
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
                     android:textStyle="normal"
-                    android:layout_marginBottom="98dp"/>
+                    android:layout_marginBottom="98dp"
+                    android:textAllCaps="false"/>
 
             </LinearLayout>
         </LinearLayout>
@@ -221,7 +227,8 @@
         android:text="Next"
         android:textColor="@color/white"
         android:textSize="14sp"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        android:textAllCaps="false"/>
 
 </RelativeLayout>
 

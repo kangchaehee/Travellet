@@ -72,7 +72,8 @@
                 android:text="Hotel"
                 android:textColor="@color/soft_black"
                 android:textSize="14sp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:textAllCaps="false"/>
 
             <Button
                 android:id="@+id/btn_condo"
@@ -90,7 +91,8 @@
                 android:text="Condo / Pension / Residence"
                 android:textColor="@color/soft_black"
                 android:textSize="14sp"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:textAllCaps="false"/>
 
             <Button
                 android:id="@+id/btn_hostel"
@@ -109,7 +111,8 @@
                 android:textColor="@color/soft_black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                android:layout_marginBottom="66dp"/>
+                android:layout_marginBottom="66dp"
+                android:textAllCaps="false"/>
 
 
         </LinearLayout>
@@ -149,6 +152,7 @@
         android:textColor="@color/white"
         android:textSize="14sp"
         android:textStyle="normal"
+        android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/imageView6" />
 
 
