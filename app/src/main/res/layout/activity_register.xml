@@ -258,7 +258,6 @@
                 android:layout_marginRight="32dp"
                 />
 
-
         </RelativeLayout>
 
         <ImageView
