@@ -21,7 +21,7 @@ public class SignIn extends AppCompatActivity {
     //Main Activity
     public void onClick(View view1){
 
-        Intent intent = new Intent(this, MainEmpty.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
         //버튼 눌렀을 때 색 변화 만들기.
