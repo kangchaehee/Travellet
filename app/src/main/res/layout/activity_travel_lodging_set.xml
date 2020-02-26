@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,47 +8,41 @@
     tools:context=".TravelTitleSet"
     android:background="@color/white">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/ic_back"
+        android:onClick="onButtonClick" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        //버튼 이미지로 달라고 하기.
-        //슬라이드 바 추가.
+        android:layout_height="match_parent"
+        android:layout_above="@+id/imageView6"
+        android:layout_below="@+id/btn_back"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
-
-            <ImageButton
-                android:id="@+id/btn_back"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/ic_back"
-                android:onClick="onButtonClick" />
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="28dp"
                 android:fontFamily="@font/roboto_medium"
                 android:lineSpacingExtra="35sp"
+                android:text="What Is"
                 android:textColor="@color/black"
                 android:textSize="28sp"
-                android:textStyle="normal"
-                android:text="What Is" />
+                android:textStyle="normal" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -57,10 +51,10 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/roboto_light"
                 android:lineSpacingExtra="12sp"
+                android:text="Your Lodging?"
                 android:textColor="@color/deep_grey"
                 android:textSize="16sp"
-                android:textStyle="normal"
-                android:text="Your Lodging?" />
+                android:textStyle="normal" />
 
             <Button
                 android:id="@+id/btn_hotel"
@@ -74,11 +68,11 @@
                 android:fontFamily="@font/roboto_regular"
                 android:lineSpacingExtra="11sp"
                 android:paddingLeft="24dp"
+                android:stateListAnimator="@null"
                 android:text="Hotel"
                 android:textColor="@color/soft_black"
                 android:textSize="14sp"
-                android:textStyle="normal"
-                android:stateListAnimator="@null" />
+                android:textStyle="normal" />
 
             <Button
                 android:id="@+id/btn_condo"
@@ -92,11 +86,11 @@
                 android:fontFamily="@font/roboto_regular"
                 android:lineSpacingExtra="11sp"
                 android:paddingLeft="24dp"
+                android:stateListAnimator="@null"
                 android:text="Condo / Pension / Residence"
                 android:textColor="@color/soft_black"
                 android:textSize="14sp"
-                android:textStyle="normal"
-                android:stateListAnimator="@null"  />
+                android:textStyle="normal" />
 
             <Button
                 android:id="@+id/btn_hostel"
@@ -110,51 +104,55 @@
                 android:fontFamily="@font/roboto_regular"
                 android:lineSpacingExtra="11sp"
                 android:paddingLeft="24dp"
+                android:stateListAnimator="@null"
                 android:text="Youth Hostel / Gest House"
                 android:textColor="@color/soft_black"
                 android:textSize="14sp"
                 android:textStyle="normal"
-                android:stateListAnimator="@null"  />
+                android:layout_marginBottom="66dp"/>
 
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/btn_Next"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="52dp"
-            android:layout_marginRight="52dp"
-            app:layout_constraintTop_toBottomOf="@id/linearLayout"
-            android:background="@drawable/ic_progress_2"
-            android:layout_marginTop="66dp"/>
-
-        <Button
-            android:id="@+id/btn_Next"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/button_background_full"
-            android:fontFamily="@font/roboto_medium"
-            android:gravity="center"
-            android:lineSpacingExtra="7sp"
-            android:onClick="onClick"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="normal"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@id/imageView6"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:text="Next"
-            android:stateListAnimator="@null"  />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_Next"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="52dp"
+        android:layout_marginRight="52dp"
+        android:background="@drawable/ic_progress_2"/>
 
-</ScrollView>
+    <Button
+        android:id="@+id/btn_Next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_background_full"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:lineSpacingExtra="7sp"
+        android:onClick="onClick"
+        android:stateListAnimator="@null"
+        android:text="Next"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:layout_constraintTop_toBottomOf="@id/imageView6" />
+
+
+
+</RelativeLayout>
+
+

@@ -4,98 +4,97 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".TravelPreferenceSet">
+
+
+    <ImageButton
+        android:layout_height="48dp"
+        android:layout_width="48dp"
+        android:id="@+id/btn_back"
+        android:onClick="onButtonClick"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"
+        android:background="@drawable/ic_back"
+        android:stateListAnimator="@null"/>
 
     <ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/progress"
+        android:layout_below="@+id/btn_back"
+        android:layout_marginBottom="-92dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".TravelTitleSet"
             android:orientation="vertical">
-
-
-            <ImageButton
-                android:layout_height="48dp"
-                android:layout_width="48dp"
-                android:id="@+id/btn_back"
-                android:onClick="onButtonClick"
-                android:layout_marginTop="24dp"
-                android:layout_marginLeft="16dp"
-                android:background="@drawable/ic_back"
-                android:stateListAnimator="@null"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="28dp"
                 android:layout_marginLeft="32dp"
-                android:textSize="28sp"
+                android:layout_marginTop="28dp"
                 android:fontFamily="@font/roboto_medium"
-                android:textStyle="normal"
-                android:textColor="@color/black"
                 android:lineSpacingExtra="35sp"
                 android:text="What Is"
-                />
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="normal" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="8dp"
-                android:textSize="16sp"
                 android:fontFamily="@font/roboto_light"
-                android:textStyle="normal"
-                android:textColor="@color/deep_grey"
                 android:lineSpacingExtra="12sp"
-                android:text="Your Preference?"/>
+                android:text="Your Preference?"
+                android:textColor="@color/deep_grey"
+                android:textSize="16sp"
+                android:textStyle="normal" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginLeft="32dp"
+                android:layout_marginTop="80dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginTop="80dp">
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btn_shopping"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:layout_marginRight="4dp"
+                    android:layout_weight="1"
                     android:background="@drawable/border_12r_grey"
                     android:drawableLeft="@drawable/ic_shopping_24px"
-                    android:paddingLeft="16dp"
-                    android:textSize="14sp"
                     android:fontFamily="@font/roboto_regular"
-                    android:textStyle="normal"
-                    android:textColor="@color/soft_black"
                     android:lineSpacingExtra="11sp"
+                    android:paddingLeft="16dp"
+                    android:stateListAnimator="@null"
                     android:text="Shopping"
-                    android:layout_weight="1"
-                    android:stateListAnimator="@null"/>
+                    android:textColor="@color/soft_black"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
 
                 <Button
                     android:id="@+id/btn_food"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:layout_marginLeft="4dp"
+                    android:layout_weight="1"
                     android:background="@drawable/border_12r_grey"
                     android:drawableLeft="@drawable/ic_food_24px"
-                    android:paddingLeft="16dp"
-                    android:textSize="14sp"
                     android:fontFamily="@font/roboto_regular"
-                    android:textStyle="normal"
-                    android:textColor="@color/soft_black"
                     android:lineSpacingExtra="11sp"
+                    android:paddingLeft="16dp"
+                    android:stateListAnimator="@null"
                     android:text="Food"
-                    android:layout_weight="1"
-                    android:stateListAnimator="@null"/>
+                    android:textColor="@color/soft_black"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
 
             </LinearLayout>
 
@@ -103,44 +102,44 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginLeft="32dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginTop="20dp">
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btn_rest"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:layout_marginRight="4dp"
+                    android:layout_weight="1"
                     android:background="@drawable/border_12r_grey"
                     android:drawableLeft="@drawable/ic_rest_24px"
-                    android:paddingLeft="16dp"
-                    android:textSize="14sp"
                     android:fontFamily="@font/roboto_regular"
-                    android:textStyle="normal"
-                    android:textColor="@color/soft_black"
                     android:lineSpacingExtra="11sp"
+                    android:paddingLeft="16dp"
+                    android:stateListAnimator="@null"
                     android:text="Rest"
-                    android:layout_weight="1"
-                    android:stateListAnimator="@null"/>
+                    android:textColor="@color/soft_black"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
 
                 <Button
                     android:id="@+id/btn_leisure"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:layout_marginLeft="4dp"
+                    android:layout_weight="1"
                     android:background="@drawable/border_12r_grey"
                     android:drawableLeft="@drawable/ic_leisure_24px"
-                    android:paddingLeft="16dp"
-                    android:textSize="14sp"
                     android:fontFamily="@font/roboto_regular"
-                    android:textStyle="normal"
-                    android:textColor="@color/soft_black"
                     android:lineSpacingExtra="11sp"
+                    android:paddingLeft="16dp"
+                    android:stateListAnimator="@null"
                     android:text="Leisure"
-                    android:layout_weight="1"
-                    android:stateListAnimator="@null"/>
+                    android:textColor="@color/soft_black"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
 
             </LinearLayout>
 
@@ -148,44 +147,46 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginLeft="32dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="32dp"
-                android:layout_marginTop="20dp">
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btn_history"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:layout_marginRight="4dp"
+                    android:layout_weight="1"
                     android:background="@drawable/border_12r_grey"
                     android:drawableLeft="@drawable/ic_history_24px"
-                    android:paddingLeft="16dp"
-                    android:textSize="14sp"
                     android:fontFamily="@font/roboto_regular"
-                    android:textStyle="normal"
-                    android:textColor="@color/soft_black"
                     android:lineSpacingExtra="11sp"
+                    android:paddingLeft="16dp"
+                    android:stateListAnimator="@null"
                     android:text="History"
-                    android:layout_weight="1"
-                    android:stateListAnimator="@null"/>
+                    android:textColor="@color/soft_black"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
 
                 <Button
                     android:id="@+id/btn_nature"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:layout_marginLeft="4dp"
+                    android:layout_weight="1"
                     android:background="@drawable/border_12r_grey"
                     android:drawableLeft="@drawable/ic_nature_24px"
-                    android:paddingLeft="16dp"
-                    android:textSize="14sp"
                     android:fontFamily="@font/roboto_regular"
-                    android:textStyle="normal"
-                    android:textColor="@color/soft_black"
                     android:lineSpacingExtra="11sp"
+                    android:paddingLeft="16dp"
+                    android:stateListAnimator="@null"
                     android:text="Nature"
-                    android:layout_weight="1"
-                    android:stateListAnimator="@null"/>
+                    android:textColor="@color/soft_black"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    android:layout_marginBottom="98dp"/>
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
