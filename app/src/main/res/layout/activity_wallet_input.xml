@@ -16,7 +16,8 @@
         android:background="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="16dp"/>
+        android:layout_marginLeft="16dp"
+        android:stateListAnimator="@null"/>
 
 
     <TextView
@@ -51,22 +52,24 @@
             android:layout_height="wrap_content"
             android:lineSpacingExtra="35sp"
             android:text="KRW "
-            android:textColor="@color/black"
+            android:textColor="@color/soft_black"
             android:textSize="28sp"
             android:textStyle="normal"
             app:fontFamily="@font/roboto_medium" />
 
         <EditText
             android:id="@+id/edit1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@null"
             android:hint="0"
-            android:textColor="@color/black"
             android:lineSpacingExtra="35sp"
+            android:singleLine="true"
+            android:textColor="@color/black"
             android:textSize="28sp"
             android:textStyle="normal"
             app:fontFamily="@font/roboto_medium" />
-
 
     </LinearLayout>
 
@@ -74,7 +77,7 @@
         android:id="@+id/cash"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toStartOf="@+id/card"
         app:layout_constraintTop_toBottomOf="@+id/textView0"
         android:background="@drawable/ic_cash"/>
@@ -85,9 +88,10 @@
         android:layout_height="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView0"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="48dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/ic_card"/>
+
 
 
     <TextView
@@ -98,7 +102,7 @@
         android:textColor="@color/deep_grey"
         android:textSize="16sp"
         android:textStyle="normal"
-        app:fontFamily="@font/roboto_light"
+        app:fontFamily="@font/roboto_regular"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="32dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +118,7 @@
         android:textSize="12sp"
         android:textStyle="normal"
         android:lineSpacingExtra="9sp"
-        app:fontFamily="@font/roboto_light"
+        app:fontFamily="@font/roboto_regular"
         android:layout_marginTop="16dp"
         android:layout_marginLeft="32dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,8 +135,23 @@
         android:layout_marginRight="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="5dp"
-        android:hint="memo"
+        android:background="@null"
+        android:layout_centerVertical="true"
+        android:singleLine="true"
         />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/icon_grey"
+        android:layout_below="@id/memo"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/memo"/>
+
 
     <TextView
         android:id="@+id/textView4"
@@ -148,7 +167,7 @@
         android:layout_marginRight="32dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/memo"
+        app:layout_constraintTop_toBottomOf="@+id/view"
         />
 
     <LinearLayout
@@ -172,7 +191,8 @@
                 android:layout_height="56dp"
                 android:layout_marginRight="2dp"
                 android:background="@drawable/ic_lodging"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:stateListAnimator="@null"/>
 
             <Button
                 android:id="@+id/food"
@@ -180,7 +200,8 @@
                 android:layout_height="56dp"
                 android:layout_marginRight="2dp"
                 android:background="@drawable/ic_food"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:stateListAnimator="@null"/>
 
             <Button
                 android:id="@+id/shopping"
@@ -188,7 +209,8 @@
                 android:layout_height="56dp"
                 android:layout_marginRight="2dp"
                 android:background="@drawable/ic_shopping"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:stateListAnimator="@null"/>
 
             <Button
                 android:id="@+id/tourism"
@@ -196,7 +218,8 @@
                 android:layout_height="56dp"
                 android:layout_marginRight="2dp"
                 android:background="@drawable/ic_tourism"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:stateListAnimator="@null"/>
 
             <Button
                 android:id="@+id/transport"
@@ -204,7 +227,8 @@
                 android:layout_height="56dp"
                 android:layout_marginRight="2dp"
                 android:background="@drawable/ic_transport"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:stateListAnimator="@null"/>
 
             <Button
                 android:id="@+id/etc"
@@ -212,7 +236,8 @@
                 android:layout_height="56dp"
                 android:layout_marginRight="2dp"
                 android:background="@drawable/ic_etc"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:stateListAnimator="@null"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -263,6 +288,7 @@
                     android:gravity="center"
                     android:layout_weight="1"
                     android:background="@color/white"
+                    android:stateListAnimator="@null"
                     />
 
                 <Button
@@ -277,7 +303,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"  />
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"  />
 
                 <Button
                     android:id="@+id/button3"
@@ -294,10 +321,10 @@
                     android:background="@color/white"  />
 
                 <Button
-                    android:id="@+id/buttonX"
+                    android:id="@+id/buttonP"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:text="*"
+                    android:text="+"
                     android:textSize="24sp"
                     android:fontFamily="@font/roboto_regular"
                     android:textStyle="normal"
@@ -305,7 +332,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
             </LinearLayout>
 
@@ -325,7 +353,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
                     android:id="@+id/button5"
@@ -339,7 +368,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
                     android:id="@+id/button6"
@@ -353,13 +383,14 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
-                    android:id="@+id/buttonD"
+                    android:id="@+id/buttonX"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:text="/"
+                    android:text="×"
                     android:textSize="24sp"
                     android:fontFamily="@font/roboto_regular"
                     android:textStyle="normal"
@@ -367,7 +398,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
             </LinearLayout>
 
             <LinearLayout
@@ -386,7 +418,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
                     android:id="@+id/button8"
@@ -400,7 +433,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
                     android:id="@+id/button9"
@@ -414,13 +448,14 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
-                    android:id="@+id/buttonZ"
+                    android:id="@+id/buttonD"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:text="."
+                    android:text="÷"
                     android:textSize="24sp"
                     android:fontFamily="@font/roboto_regular"
                     android:textStyle="normal"
@@ -428,26 +463,13 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <Button
-                    android:id="@+id/buttonP"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:text="+"
-                    android:textSize="24sp"
-                    android:fontFamily="@font/roboto_regular"
-                    android:textStyle="normal"
-                    android:textColor="@color/soft_black"
-                    android:lineSpacingExtra="18sp"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:background="@color/white"/>
 
                 <Button
                     android:id="@+id/button0"
@@ -461,7 +483,38 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
+
+                <Button
+                    android:id="@+id/buttonR"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="="
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
+
+                <Button
+                    android:id="@+id/buttonC"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:text="C"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="18sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
                 <Button
                     android:id="@+id/buttonM"
@@ -475,15 +528,8 @@
                     android:lineSpacingExtra="18sp"
                     android:gravity="center"
                     android:layout_weight="1"
-                    android:background="@color/white"/>
-
-                <Button
-                    android:id="@+id/buttonC"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:background="@drawable/ic_backspace"/>
+                    android:background="@color/white"
+                    android:stateListAnimator="@null"/>
 
             </LinearLayout>
 
@@ -509,7 +555,8 @@
         android:layout_marginBottom="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginRight="32dp"
-        android:text="Next" />
+        android:text="ADD"
+        android:stateListAnimator="@null"/>
 
     //버튼
 
