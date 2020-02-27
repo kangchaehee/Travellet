@@ -185,7 +185,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/lodging"
                 android:layout_width="50dp"
                 android:layout_height="56dp"
@@ -194,7 +194,7 @@
                 android:layout_weight="1"
                 android:stateListAnimator="@null"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/food"
                 android:layout_width="50dp"
                 android:layout_height="56dp"
@@ -203,7 +203,7 @@
                 android:layout_weight="1"
                 android:stateListAnimator="@null"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/shopping"
                 android:layout_width="50dp"
                 android:layout_height="56dp"
@@ -212,7 +212,7 @@
                 android:layout_weight="1"
                 android:stateListAnimator="@null"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/tourism"
                 android:layout_width="50dp"
                 android:layout_height="56dp"
@@ -221,7 +221,7 @@
                 android:layout_weight="1"
                 android:stateListAnimator="@null"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/transport"
                 android:layout_width="50dp"
                 android:layout_height="56dp"
@@ -230,7 +230,7 @@
                 android:layout_weight="1"
                 android:stateListAnimator="@null"/>
 
-            <Button
+            <ImageButton
                 android:id="@+id/etc"
                 android:layout_width="50dp"
                 android:layout_height="56dp"

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Bundle;
@@ -19,11 +20,218 @@ public class BudgetInput extends AppCompatActivity {
     private int a;
     private int where=0;
 
+    ImageButton lodging, food, shopping, tourism, transport, etc;
+    boolean lodgingState=false, foodState=false, shoppingState=false, tourismState=false, transportState=false, etcState=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wallet_input);
+
+        lodging = (ImageButton) findViewById(R.id.lodging);
+        food = (ImageButton) findViewById(R.id.food);
+        shopping = (ImageButton) findViewById(R.id.shopping);
+        tourism = (ImageButton) findViewById(R.id.tourism);
+        transport = (ImageButton) findViewById(R.id.transport);
+        etc = (ImageButton) findViewById(R.id.etc);
+
+
+        //카테고리 선택
+        //lodging
+        lodging.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!lodgingState){
+                    lodgingState = true;
+                    lodging.setBackgroundResource(R.drawable.ic_lodging_selected);
+
+                    foodState = false;
+                    food.setBackgroundResource(R.drawable.ic_food);
+
+                    shoppingState = false;
+                    shopping.setBackgroundResource(R.drawable.ic_shopping);
+
+                    tourismState = false;
+                    tourism.setBackgroundResource(R.drawable.ic_tourism);
+
+                    transportState = false;
+                    transport.setBackgroundResource(R.drawable.ic_transport);
+
+                    etcState = false;
+                    etc.setBackgroundResource(R.drawable.ic_etc);
+
+                }
+
+                else {
+                    lodgingState = false;
+                    lodging.setBackgroundResource(R.drawable.ic_lodging);
+                }
+            }
+        });
+
+        //food
+        food.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!foodState){
+                    foodState = true;
+                    food.setBackgroundResource(R.drawable.ic_food_selected);
+
+                    lodgingState = false;
+                    lodging.setBackgroundResource(R.drawable.ic_lodging);
+
+                    shoppingState = false;
+                    shopping.setBackgroundResource(R.drawable.ic_shopping);
+
+                    tourismState = false;
+                    tourism.setBackgroundResource(R.drawable.ic_tourism);
+
+                    transportState = false;
+                    transport.setBackgroundResource(R.drawable.ic_transport);
+
+                    etcState = false;
+                    etc.setBackgroundResource(R.drawable.ic_etc);
+
+                }
+
+                else {
+                    foodState = false;
+                    food.setBackgroundResource(R.drawable.ic_food);
+                }
+            }
+        });
+
+        //shopping
+        shopping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!shoppingState){
+                    shoppingState = true;
+                    shopping.setBackgroundResource(R.drawable.ic_shopping_selected);
+
+                    lodgingState = false;
+                    lodging.setBackgroundResource(R.drawable.ic_lodging);
+
+                    foodState = false;
+                    food.setBackgroundResource(R.drawable.ic_food);
+
+                    tourismState = false;
+                    tourism.setBackgroundResource(R.drawable.ic_tourism);
+
+                    transportState = false;
+                    transport.setBackgroundResource(R.drawable.ic_transport);
+
+                    etcState = false;
+                    etc.setBackgroundResource(R.drawable.ic_etc);
+
+                }
+
+                else {
+                    shoppingState = false;
+                    shopping.setBackgroundResource(R.drawable.ic_shopping);
+                }
+            }
+        });
+
+
+        //tourism
+        tourism.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!tourismState){
+                    tourismState = true;
+                    tourism.setBackgroundResource(R.drawable.ic_tourism_selected);
+
+                    lodgingState = false;
+                    lodging.setBackgroundResource(R.drawable.ic_lodging);
+
+                    shoppingState = false;
+                    shopping.setBackgroundResource(R.drawable.ic_shopping);
+
+                    foodState = false;
+                    food.setBackgroundResource(R.drawable.ic_food);
+
+                    transportState = false;
+                    transport.setBackgroundResource(R.drawable.ic_transport);
+
+                    etcState = false;
+                    etc.setBackgroundResource(R.drawable.ic_etc);
+
+                }
+
+                else {
+                    tourismState = false;
+                    tourism.setBackgroundResource(R.drawable.ic_tourism);
+                }
+            }
+        });
+
+        //transport
+        transport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!transportState){
+                    transportState = true;
+                    transport.setBackgroundResource(R.drawable.ic_transport_selected);
+
+                    lodgingState = false;
+                    lodging.setBackgroundResource(R.drawable.ic_lodging);
+
+                    shoppingState = false;
+                    shopping.setBackgroundResource(R.drawable.ic_shopping);
+
+                    foodState = false;
+                    food.setBackgroundResource(R.drawable.ic_food);
+
+                    tourismState = false;
+                    tourism.setBackgroundResource(R.drawable.ic_tourism);
+
+                    etcState = false;
+                    etc.setBackgroundResource(R.drawable.ic_etc);
+
+                }
+
+                else {
+                    transportState = false;
+                    transport.setBackgroundResource(R.drawable.ic_transport);
+                }
+            }
+        });
+
+        //etc
+        etc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!etcState){
+                    etcState = true;
+                    etc.setBackgroundResource(R.drawable.ic_etc_selected);
+
+                    lodgingState = false;
+                    lodging.setBackgroundResource(R.drawable.ic_lodging);
+
+                    shoppingState = false;
+                    shopping.setBackgroundResource(R.drawable.ic_shopping);
+
+                    foodState = false;
+                    food.setBackgroundResource(R.drawable.ic_food);
+
+                    tourismState = false;
+                    tourism.setBackgroundResource(R.drawable.ic_tourism);
+
+                    transportState = false;
+                    transport.setBackgroundResource(R.drawable.ic_transport);
+
+                }
+
+                else {
+                    etcState = false;
+                    etc.setBackgroundResource(R.drawable.ic_etc);
+                }
+            }
+        });
+
+
+
 
         Toast.makeText(getApplicationContext(),"Calculator",Toast.LENGTH_SHORT).show();
 
