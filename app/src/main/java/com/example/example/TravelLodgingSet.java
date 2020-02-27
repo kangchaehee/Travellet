@@ -33,7 +33,7 @@ public class TravelLodgingSet extends AppCompatActivity {
                     hotelState = true;
                     btn_hotel.setBackgroundResource(R.drawable.border);
                     //btn_hotel.setTextColor(getResources().getColor(R.color.white, getTheme()));
-
+//
                     condoState = false;
                     btn_condo.setBackgroundResource(R.drawable.border_12r_grey);
                     //btn_condo.setTextColor(getResources().getColor(R.color.blue, getTheme()));
