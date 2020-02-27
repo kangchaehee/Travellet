@@ -17,8 +17,9 @@ public class TravelBudgetShow extends AppCompatActivity {
     }
 
     //calendar
-    public void onButtonClick(View view1){Intent intent = new Intent(TravelBudgetShow.this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    public void onButtonClick(View view1){
+
+        Intent intent = new Intent(this, Calendar.class);
         startActivity(intent);
     }
 
@@ -26,13 +27,5 @@ public class TravelBudgetShow extends AppCompatActivity {
 
         Intent intent = new Intent(TravelBudgetShow.this, BudgetSet.class);
         startActivity(intent);
-        overridePendingTransition(0, 0);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-        overridePendingTransition(0, 0);
     }
 }
