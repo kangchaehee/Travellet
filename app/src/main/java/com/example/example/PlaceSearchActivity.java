@@ -23,6 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.jsoup.Jsoup;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+
 public class PlaceSearchActivity extends AppCompatActivity {
 
     Handler handler = new Handler();
@@ -48,8 +50,8 @@ public class PlaceSearchActivity extends AppCompatActivity {
     TextView textView;
     ImageButton back;
 
-    Button searchLodging, searchFood, searchShopping, searchTourism, searchETC;
-    boolean lodgingState=false, foodState=false, shoppingState=false, tourismState=false, etcState=false;
+    Button searchLodging, searchFood, searchShopping, searchTourism, searchCulture, searchLeisure, searchTransportation, searchETC;
+    boolean lodgingState=false, foodState=false, shoppingState=false, tourismState=false, etcState=false, cultureState=false, leisureState = false, transportationState=false;
     int searchType;
     int placeID[] = new int[5];
 
@@ -66,6 +68,7 @@ public class PlaceSearchActivity extends AppCompatActivity {
             StrictMode.setThreadPolicy(policy);
         }
 
+
         back = (ImageButton) findViewById(R.id.placeToPlan);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,8 +79,6 @@ public class PlaceSearchActivity extends AppCompatActivity {
 
 
         listView = (ListView) findViewById(R.id.listView);
-        //listView.setAdapter(adapter);
-        //textView = (TextView) findViewById(R.id.imageView);
 
         editText = (EditText) findViewById(R.id.placeSearchKey);
         ImageButton searchButton = (ImageButton) findViewById(R.id.SearchKeyButton);
@@ -87,6 +88,9 @@ public class PlaceSearchActivity extends AppCompatActivity {
         searchShopping = (Button) findViewById(R.id.searchShopping);
         searchTourism = (Button) findViewById(R.id.searchTourism);
         searchETC = (Button) findViewById(R.id.searchETC);
+        searchCulture = (Button) findViewById(R.id.searchCulture);
+        searchLeisure = (Button) findViewById(R.id.searchLeisure);
+        searchTransportation = (Button) findViewById(R.id.searchTransportation);
 
         searchLodging.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,9 +112,21 @@ public class PlaceSearchActivity extends AppCompatActivity {
                     searchTourism.setBackgroundResource(R.drawable.button_background_border);
                     searchTourism.setTextColor(getResources().getColor(R.color.blue, getTheme()));
 
+                    cultureState = false;
+                    searchCulture.setBackgroundResource(R.drawable.button_background_border);
+                    searchCulture.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    leisureState = false;
+                    searchLeisure.setBackgroundResource(R.drawable.button_background_border);
+                    searchLeisure.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
                     etcState = false;
                     searchETC.setBackgroundResource(R.drawable.button_background_border);
                     searchETC.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    transportationState = false;
+                    searchTransportation.setBackgroundResource(R.drawable.button_background_border);
+                    searchTransportation.setTextColor(getResources().getColor(R.color.blue, getTheme()));
 
                 }
 
@@ -143,6 +159,19 @@ public class PlaceSearchActivity extends AppCompatActivity {
                     tourismState = false;
                     searchTourism.setBackgroundResource(R.drawable.button_background_border);
                     searchTourism.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    cultureState = false;
+                    searchCulture.setBackgroundResource(R.drawable.button_background_border);
+                    searchCulture.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    leisureState = false;
+                    searchLeisure.setBackgroundResource(R.drawable.button_background_border);
+                    searchLeisure.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    transportationState = false;
+                    searchTransportation.setBackgroundResource(R.drawable.button_background_border);
+                    searchTransportation.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
 
                     etcState = false;
                     searchETC.setBackgroundResource(R.drawable.button_background_border);
@@ -180,6 +209,19 @@ public class PlaceSearchActivity extends AppCompatActivity {
                     searchTourism.setBackgroundResource(R.drawable.button_background_border);
                     searchTourism.setTextColor(getResources().getColor(R.color.blue, getTheme()));
 
+                    cultureState = false;
+                    searchCulture.setBackgroundResource(R.drawable.button_background_border);
+                    searchCulture.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    leisureState = false;
+                    searchLeisure.setBackgroundResource(R.drawable.button_background_border);
+                    searchLeisure.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    transportationState = false;
+                    searchTransportation.setBackgroundResource(R.drawable.button_background_border);
+                    searchTransportation.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+
                     etcState = false;
                     searchETC.setBackgroundResource(R.drawable.button_background_border);
                     searchETC.setTextColor(getResources().getColor(R.color.blue, getTheme()));
@@ -215,9 +257,21 @@ public class PlaceSearchActivity extends AppCompatActivity {
                     searchShopping.setBackgroundResource(R.drawable.button_background_border);
                     searchShopping.setTextColor(getResources().getColor(R.color.blue, getTheme()));
 
+                    cultureState = false;
+                    searchCulture.setBackgroundResource(R.drawable.button_background_border);
+                    searchCulture.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    leisureState = false;
+                    searchLeisure.setBackgroundResource(R.drawable.button_background_border);
+                    searchLeisure.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
                     etcState = false;
                     searchETC.setBackgroundResource(R.drawable.button_background_border);
                     searchETC.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    transportationState = false;
+                    searchTransportation.setBackgroundResource(R.drawable.button_background_border);
+                    searchTransportation.setTextColor(getResources().getColor(R.color.blue, getTheme()));
 
                 }
 
@@ -230,6 +284,147 @@ public class PlaceSearchActivity extends AppCompatActivity {
             }
         });
 
+        searchLeisure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!leisureState){
+                    tourismState = false;
+                    searchTourism.setBackgroundResource(R.drawable.button_background_border);
+                    searchTourism.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    lodgingState = false;
+                    searchLodging.setBackgroundResource(R.drawable.button_background_border);
+                    searchLodging.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    foodState = false;
+                    searchFood.setBackgroundResource(R.drawable.button_background_border);
+                    searchFood.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    shoppingState = false;
+                    searchShopping.setBackgroundResource(R.drawable.button_background_border);
+                    searchShopping.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    cultureState = false;
+                    searchCulture.setBackgroundResource(R.drawable.button_background_border);
+                    searchCulture.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    leisureState = true;
+                    searchLeisure.setBackgroundResource(R.drawable.button_background_full);
+                    searchLeisure.setTextColor(getResources().getColor(R.color.white, getTheme()));
+
+                    etcState = false;
+                    searchETC.setBackgroundResource(R.drawable.button_background_border);
+                    searchETC.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    transportationState = false;
+                    searchTransportation.setBackgroundResource(R.drawable.button_background_border);
+                    searchTransportation.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                }
+
+                else {
+                    leisureState = false;
+                    searchLeisure.setBackgroundResource(R.drawable.button_background_border);
+                    searchLeisure.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                }
+            }
+        });
+
+        searchCulture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!cultureState){
+                    tourismState = false;
+                    searchTourism.setBackgroundResource(R.drawable.button_background_border);
+                    searchTourism.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    lodgingState = false;
+                    searchLodging.setBackgroundResource(R.drawable.button_background_border);
+                    searchLodging.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    foodState = false;
+                    searchFood.setBackgroundResource(R.drawable.button_background_border);
+                    searchFood.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    shoppingState = false;
+                    searchShopping.setBackgroundResource(R.drawable.button_background_border);
+                    searchShopping.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    cultureState = true;
+                    searchCulture.setBackgroundResource(R.drawable.button_background_full);
+                    searchCulture.setTextColor(getResources().getColor(R.color.white, getTheme()));
+
+                    leisureState = false;
+                    searchLeisure.setBackgroundResource(R.drawable.button_background_border);
+                    searchLeisure.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    etcState = false;
+                    searchETC.setBackgroundResource(R.drawable.button_background_border);
+                    searchETC.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    transportationState = false;
+                    searchTransportation.setBackgroundResource(R.drawable.button_background_border);
+                    searchTransportation.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                }
+
+                else {
+                    cultureState = false;
+                    searchCulture.setBackgroundResource(R.drawable.button_background_border);
+                    searchCulture.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                }
+            }
+        });
+
+        searchTransportation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!transportationState){
+                    transportationState = true;
+                    searchTransportation.setBackgroundResource(R.drawable.button_background_full);
+                    searchTransportation.setTextColor(getResources().getColor(R.color.white, getTheme()));
+
+                    tourismState = false;
+                    searchTourism.setBackgroundResource(R.drawable.button_background_border);
+                    searchTourism.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    lodgingState = false;
+                    searchLodging.setBackgroundResource(R.drawable.button_background_border);
+                    searchLodging.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    foodState = false;
+                    searchFood.setBackgroundResource(R.drawable.button_background_border);
+                    searchFood.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    shoppingState = false;
+                    searchShopping.setBackgroundResource(R.drawable.button_background_border);
+                    searchShopping.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    cultureState = false;
+                    searchCulture.setBackgroundResource(R.drawable.button_background_border);
+                    searchCulture.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    leisureState = false;
+                    searchLeisure.setBackgroundResource(R.drawable.button_background_border);
+                    searchLeisure.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    etcState = false;
+                    searchETC.setBackgroundResource(R.drawable.button_background_border);
+                    searchETC.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                }
+
+                else {
+                    transportationState = false;
+                    searchTransportation.setBackgroundResource(R.drawable.button_background_border);
+                    searchTransportation.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                }
+            }
+        });
+
         searchETC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -237,7 +432,6 @@ public class PlaceSearchActivity extends AppCompatActivity {
                     etcState = true;
                     searchETC.setBackgroundResource(R.drawable.button_background_full);
                     searchETC.setTextColor(getResources().getColor(R.color.white, getTheme()));
-                    searchType = 76;
 
                     lodgingState = false;
                     searchLodging.setBackgroundResource(R.drawable.button_background_border);
@@ -255,6 +449,17 @@ public class PlaceSearchActivity extends AppCompatActivity {
                     searchTourism.setBackgroundResource(R.drawable.button_background_border);
                     searchTourism.setTextColor(getResources().getColor(R.color.blue, getTheme()));
 
+                    cultureState = false;
+                    searchCulture.setBackgroundResource(R.drawable.button_background_border);
+                    searchCulture.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    leisureState = false;
+                    searchLeisure.setBackgroundResource(R.drawable.button_background_border);
+                    searchLeisure.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+
+                    transportationState = false;
+                    searchTransportation.setBackgroundResource(R.drawable.button_background_border);
+                    searchTransportation.setTextColor(getResources().getColor(R.color.blue, getTheme()));
                 }
 
                 else {
@@ -283,8 +488,17 @@ public class PlaceSearchActivity extends AppCompatActivity {
                 else if(tourismState) {
                     searchType = 76;
                 }
-                else if(etcState) {
+                else if(cultureState) {
                     searchType = 78;
+                }
+                else if(leisureState) {
+                    searchType = 75;
+                }
+                else if(transportationState){
+                    searchType = 77;
+                }
+                else if(etcState) {
+                    searchType = 85;
                 }
                 else
                     searchType = -1;
@@ -450,7 +664,7 @@ public class PlaceSearchActivity extends AppCompatActivity {
                             break;
 
                         case 78:
-                            type = "etc.";
+                            type = "culture";
                             break;
 
                         case 85:
@@ -458,7 +672,7 @@ public class PlaceSearchActivity extends AppCompatActivity {
                             break;
 
                         case 75:
-                            type = "etc.";
+                            type = "leisure/sports";
                             break;
 
                         case 80:
@@ -474,7 +688,7 @@ public class PlaceSearchActivity extends AppCompatActivity {
                             break;
 
                         case 77:
-                            type = "etc";
+                            type = "transportation";
                             break;
                     }
                 }

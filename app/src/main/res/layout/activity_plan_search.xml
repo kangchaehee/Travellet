@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".planSearch">
+    android:orientation="vertical">
 
 
     <ImageButton
@@ -51,8 +50,8 @@
         android:layout_marginTop="40dp">
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:background="@drawable/ic_love_unpressed"
             android:layout_marginLeft="32dp"
@@ -113,8 +112,8 @@
         android:layout_marginTop="17dp">
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:background="@drawable/ic_love_unpressed"
             android:layout_marginLeft="32dp"
@@ -172,8 +171,8 @@
         android:layout_marginTop="17dp">
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:background="@drawable/ic_love_unpressed"
             android:layout_marginLeft="32dp"
@@ -233,8 +232,8 @@
         android:layout_marginTop="17dp">
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:background="@drawable/ic_love_unpressed"
             android:layout_marginLeft="32dp"
