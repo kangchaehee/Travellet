@@ -3,6 +3,7 @@ package com.example.example;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -63,7 +64,6 @@ public class PlanInitialActivity extends AppCompatActivity {
 
 
         oDialog = new DeleteDialog(this);
-        tDialog = new TransportDialog(this);
 
     }
 
@@ -115,16 +115,15 @@ public class PlanInitialActivity extends AppCompatActivity {
                     });
 
                 }
-            });
-
-            final ImageButton addT = (ImageButton) view.findViewById(R.id.transport_ic);
+            });           final ImageButton addT = (ImageButton) view.findViewById(R.id.transport_ic);
             final TextView transText = (TextView) view.findViewById(R.id.transportText);
             addT.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    tDialog.setCancelable(false);
+                    tDialog = new TransportDialog(PlanInitialActivity.this);
+                    //tDialog.setCancelable(false);
+                    tDialog.callFunction(item.getTransport());
                     tDialog.show();
-
                     tDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
 
                         @Override
@@ -154,14 +153,10 @@ public class PlanInitialActivity extends AppCompatActivity {
                                 addT.setBackgroundResource(R.drawable.ic_car_24px);
                                 transText.setText("Car");
                             }
-
                             item.setTransport(transport);
-                            tDialog.setTransport(transport);
                         }
 
                     });
-
-
                 }
             });
 

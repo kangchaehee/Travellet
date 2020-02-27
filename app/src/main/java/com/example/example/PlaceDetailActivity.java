@@ -90,7 +90,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
             urlBuilder.append("&" + URLEncoder.encode("overviewYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8")); /*콘텐츠 개요 조회여부*/
             urlBuilder.append("&" + URLEncoder.encode("transGuideYN","UTF-8") + "=" + URLEncoder.encode("Y", "UTF-8")); /*길안내조회*/
 
-            URL url = new URL(urlBuilder.toString());
+            URL url1 = new URL(urlBuilder.toString());
 
             ConnectivityManager conManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo netInfo = conManager.getActiveNetworkInfo();
@@ -99,12 +99,10 @@ public class PlaceDetailActivity extends AppCompatActivity {
             //startActivity(intent);
 
             if (netInfo != null && netInfo.isConnected()) {
-                new DownloadXml().execute(url.toString());
-                Log.d("good", "DownloadXml().execute(url.toString());");
+                new DownloadXml().execute(url1.toString());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            Log.d("error", "SearchKeyword에러");
         }
     }
 
@@ -197,6 +195,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
                     NodeList telNode = element.getElementsByTagName("tel");
                     if(telNode.item(0) !=null){
                         tel = telNode.item(0).getChildNodes().item(0).getNodeValue();
+                        linkDoc = Jsoup.parse(tel);
+                        tel = linkDoc.text();
                     }
                 }
 
@@ -224,6 +224,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 if (!nodeList.item(0).getNodeName().equals("addr1")) {
                     NodeList addressNode = element.getElementsByTagName("addr1");
                     address = addressNode.item(0).getChildNodes().item(0).getNodeValue();
+                    overviewDoc = Jsoup.parse(address);
+                    address = overviewDoc.text();
                 }
 
                 if (!nodeList.item(0).getNodeName().equals("addr2")) {
@@ -261,8 +263,6 @@ public class PlaceDetailActivity extends AppCompatActivity {
                     }
                 }
             }
-
-
 
             detailTitle.setText(title);
             detailType.setText(type);

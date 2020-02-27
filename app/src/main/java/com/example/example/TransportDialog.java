@@ -3,7 +3,9 @@ package com.example.example;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -15,6 +17,7 @@ public class TransportDialog extends Dialog {
 
     TransportDialog m_tDialog;
     int transport;
+    private Context context;
 
     ImageButton walk;
     ImageButton bus;
@@ -24,11 +27,11 @@ public class TransportDialog extends Dialog {
 
     public TransportDialog(Context context){
         super(context, android.R.style.Theme_Translucent_NoTitleBar);
+        this.context = context;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void callFunction(int t){
+        transport = t;
         WindowManager.LayoutParams lpWindow = new WindowManager.LayoutParams();
         lpWindow.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         lpWindow.dimAmount = 0.5f;
@@ -43,10 +46,25 @@ public class TransportDialog extends Dialog {
         taxi = (ImageButton) findViewById(R.id.taxi);
         car = (ImageButton) findViewById(R.id.car);
 
-        if (transport == 2){
+        if (transport == 1){
+            walk.setBackgroundResource(R.drawable.ic_walk_pressed);
+        }
+
+        else if(transport == 2){
             bus.setBackgroundResource(R.drawable.ic_bus__pressed);
         }
 
+        else if(transport == 3){
+            subway.setBackgroundResource(R.drawable.ic_subway__pressed);
+        }
+
+        else if(transport == 4){
+            taxi.setBackgroundResource(R.drawable.ic_taxi__pressed);
+        }
+
+        else if(transport == 5){
+            car.setBackgroundResource(R.drawable.ic_car__pressed);
+        }
 
         walk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,7 +172,22 @@ public class TransportDialog extends Dialog {
                 onClickOk(v);
             }
         });
+
     }
+
+    /*@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        WindowManager.LayoutParams lpWindow = new WindowManager.LayoutParams();
+        lpWindow.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+        lpWindow.dimAmount = 0.5f;
+        getWindow().setAttributes(lpWindow);
+        setContentView(R.layout.transport_dialog);
+
+        m_tDialog = this;
+
+
+    }*/
 
     public void onClickOk(View view){
 
@@ -165,7 +198,4 @@ public class TransportDialog extends Dialog {
         return transport;
     }
 
-    public void setTransport(int t){
-        transport = t;
-    }
 }

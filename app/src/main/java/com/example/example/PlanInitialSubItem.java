@@ -42,7 +42,7 @@ public class PlanInitialSubItem extends AppCompatActivity {
         this.placeMemo = placeMemo;
     }
 
-    public void setTransport(int transport){this.transport = transport;}
+    public void setTransport(int transport){ this.transport = transport; }
 
     public int getTransport() {
         return transport;

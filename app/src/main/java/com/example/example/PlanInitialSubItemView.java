@@ -48,7 +48,7 @@ public class PlanInitialSubItemView extends LinearLayout {
     }
 
     public void setPlaceMemo(String memo) {
-        this.placeName.setText(memo);
+        this.placeMemo.setText(memo);
     }
 
 

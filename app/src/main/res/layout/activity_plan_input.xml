@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:andorid="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
     <ImageButton
@@ -49,7 +50,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/select_time"
-                android:timePickerMode="spinner" />
+                android:timePickerMode="spinner"
+                />
 
             <!--<RelativeLayout
                 android:layout_width="match_parent"
@@ -218,6 +220,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_background_full"
+        style="?android:attr/borderlessButtonStyle"
         android:text="ADD"
         android:textColor="@color/white"
         android:textSize="14sp"
