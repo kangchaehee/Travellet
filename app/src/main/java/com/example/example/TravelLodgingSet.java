@@ -20,7 +20,7 @@ public class TravelLodgingSet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_lodging_set);
-//
+
         btn_hotel = (Button) findViewById(R.id.btn_hotel);
         btn_condo = (Button) findViewById(R.id.btn_condo);
         btn_hostel = (Button) findViewById(R.id.btn_hostel);
