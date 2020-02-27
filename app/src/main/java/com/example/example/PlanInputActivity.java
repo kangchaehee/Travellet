@@ -15,7 +15,7 @@ import android.widget.TimePicker;
 
 public class PlanInputActivity extends AppCompatActivity {
 
-    int hour, min, category=-1;
+    int hour, min, category=1;
     String place;
     String memo;
 
@@ -60,70 +60,63 @@ public class PlanInputActivity extends AppCompatActivity {
         lodging.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(category != 1){
-                    category = 1;
-                    lodging.setBackgroundResource(R.drawable.ic_lodging_selected);
-                    food.setBackgroundResource(R.drawable.ic_food);
-                    shopping.setBackgroundResource(R.drawable.ic_shopping);
-                    tourism.setBackgroundResource(R.drawable.ic_tourism);
-                    etc.setBackgroundResource(R.drawable.ic_etc);
-                }
+                category = 1;
+                lodging.setBackgroundResource(R.drawable.ic_lodging_selected);
+                food.setBackgroundResource(R.drawable.ic_food);
+                shopping.setBackgroundResource(R.drawable.ic_shopping);
+                tourism.setBackgroundResource(R.drawable.ic_tourism);
+                etc.setBackgroundResource(R.drawable.ic_etc);
+
             }
         });
 
         food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(category != 2){
-                    category = 2;
-                    lodging.setBackgroundResource(R.drawable.ic_lodging);
-                    food.setBackgroundResource(R.drawable.ic_food_selected);
-                    shopping.setBackgroundResource(R.drawable.ic_shopping);
-                    tourism.setBackgroundResource(R.drawable.ic_tourism);
-                    etc.setBackgroundResource(R.drawable.ic_etc);
-                }
+                category = 2;
+                lodging.setBackgroundResource(R.drawable.ic_lodging);
+                food.setBackgroundResource(R.drawable.ic_food_selected);
+                shopping.setBackgroundResource(R.drawable.ic_shopping);
+                tourism.setBackgroundResource(R.drawable.ic_tourism);
+                etc.setBackgroundResource(R.drawable.ic_etc);
             }
         });
 
         shopping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(category != 3){
-                    category = 3;
-                    lodging.setBackgroundResource(R.drawable.ic_lodging);
-                    food.setBackgroundResource(R.drawable.ic_food);
-                    shopping.setBackgroundResource(R.drawable.ic_shopping_selected);
-                    tourism.setBackgroundResource(R.drawable.ic_tourism);
-                    etc.setBackgroundResource(R.drawable.ic_etc);
-                }
+                category = 3;
+                lodging.setBackgroundResource(R.drawable.ic_lodging);
+                food.setBackgroundResource(R.drawable.ic_food);
+                shopping.setBackgroundResource(R.drawable.ic_shopping_selected);
+                tourism.setBackgroundResource(R.drawable.ic_tourism);
+                etc.setBackgroundResource(R.drawable.ic_etc);
+
             }
         });
 
         tourism.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(category != 4){
-                    category = 4;
-                    lodging.setBackgroundResource(R.drawable.ic_lodging);
-                    food.setBackgroundResource(R.drawable.ic_food);
-                    shopping.setBackgroundResource(R.drawable.ic_shopping);
-                    tourism.setBackgroundResource(R.drawable.ic_tourism_selected);
-                    etc.setBackgroundResource(R.drawable.ic_etc);
-                }
+                category = 4;
+                lodging.setBackgroundResource(R.drawable.ic_lodging);
+                food.setBackgroundResource(R.drawable.ic_food);
+                shopping.setBackgroundResource(R.drawable.ic_shopping);
+                tourism.setBackgroundResource(R.drawable.ic_tourism_selected);
+                etc.setBackgroundResource(R.drawable.ic_etc);
+
             }
         });
 
         etc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(category != 5){
-                    category = 5;
-                    lodging.setBackgroundResource(R.drawable.ic_lodging);
-                    food.setBackgroundResource(R.drawable.ic_food);
-                    shopping.setBackgroundResource(R.drawable.ic_shopping);
-                    tourism.setBackgroundResource(R.drawable.ic_tourism);
-                    etc.setBackgroundResource(R.drawable.ic_etc_selected);
-                }
+                category = 5;
+                lodging.setBackgroundResource(R.drawable.ic_lodging);
+                food.setBackgroundResource(R.drawable.ic_food);
+                shopping.setBackgroundResource(R.drawable.ic_shopping);
+                tourism.setBackgroundResource(R.drawable.ic_tourism);
+                etc.setBackgroundResource(R.drawable.ic_etc_selected);
             }
         });
 
@@ -131,7 +124,12 @@ public class PlanInputActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                returnToBack();
+                if(selectTitleText.equals("Select your trip place.")){
+                    selectTitleText.setTextColor(getColor(R.color.coral_red));
+                }
+
+                else
+                    returnToBack();
             }
         });
     }
@@ -162,6 +160,7 @@ public class PlanInputActivity extends AppCompatActivity {
         intent.putExtra("memo", memo);
         intent.putExtra("hour", hour);
         intent.putExtra("min", min);
+        intent.putExtra("type", category);
 
         setResult(RESULT_OK, intent);
         finish();

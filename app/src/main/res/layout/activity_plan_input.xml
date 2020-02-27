@@ -104,7 +104,7 @@
                     android:id="@+id/select_place"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
-                    android:text="Select your trip time"
+                    android:text="Select your trip place."
                     android:fontFamily="@font/roboto_light"/>
 
                 <ImageButton

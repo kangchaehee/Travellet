@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,11 +23,14 @@ public class PlanInitialActivity extends AppCompatActivity {
     // github test
     Button addButton, placeSearch;
 
+    ImageView calculation;
+
     ListView listView;
     ArrayList<PlanInitialSubItem> items = new ArrayList<PlanInitialSubItem>();
     PlanSubAdapter adapter = new PlanSubAdapter();
 
     String time, name, memo;
+    int type;
 
     DeleteDialog oDialog;
     TransportDialog tDialog;
@@ -51,6 +55,9 @@ public class PlanInitialActivity extends AppCompatActivity {
 
             }
         });
+
+        calculation = (ImageView) findViewById(R.id.calculation);
+        calculation.setColorFilter(R.color.blue);
 
         placeSearch = (Button) findViewById(R.id.placeSearch);
         placeSearch.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +103,10 @@ public class PlanInitialActivity extends AppCompatActivity {
             view.setPlaceName(item.getPlaceName());
             view.setPlaceMemo(item.getPlaceMemo());
 
+            if(getCount()>0){
+                calculation.setColorFilter(R.color.blue);
+            }
+
             ImageButton del = (ImageButton) view.findViewById(R.id.deleteButton);
             del.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -113,9 +124,14 @@ public class PlanInitialActivity extends AppCompatActivity {
                             }
                         }
                     });
+                    if(adapter.getCount()>0){
+                        calculation.setColorFilter(R.color.blue);
+                    }
 
                 }
-            });           final ImageButton addT = (ImageButton) view.findViewById(R.id.transport_ic);
+            });
+
+            final ImageButton addT = (ImageButton) view.findViewById(R.id.transport_ic);
             final TextView transText = (TextView) view.findViewById(R.id.transportText);
             addT.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -194,7 +210,8 @@ public class PlanInitialActivity extends AppCompatActivity {
                 time = ap+ " "+sHour+":"+sMin;
                 name = intent.getStringExtra("title");
                 memo = intent.getStringExtra("memo");
-                adapter.addItem(new PlanInitialSubItem(time, name, memo, 1));
+                type = intent.getIntExtra("type", 1);
+                adapter.addItem(new PlanInitialSubItem(time, name, memo, 1, type));
                 adapter.notifyDataSetChanged();
             }
         }

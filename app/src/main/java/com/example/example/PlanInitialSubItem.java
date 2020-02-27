@@ -8,13 +8,14 @@ public class PlanInitialSubItem extends AppCompatActivity {
 
 
     String placeTime, placeName, placeMemo, transBudgetText, transportText;
-    int transport;
+    int transport, placeType;
 
-    public PlanInitialSubItem(String placeTime, String placeName, String placeMemo, int transport) {
+    public PlanInitialSubItem(String placeTime, String placeName, String placeMemo, int transport, int placeType) {
         this.placeTime = placeTime;
         this.placeName = placeName;
         this.placeMemo = placeMemo;
         this.transport = transport;
+        this.placeType = placeType;
     }
 
 
@@ -48,6 +49,13 @@ public class PlanInitialSubItem extends AppCompatActivity {
         return transport;
     }
 
+    public int getPlaceType() {
+        return placeType;
+    }
+
+    public void setPlaceType(int placeType) {
+        this.placeType = placeType;
+    }
 
     @Override
     public String toString() {
@@ -55,6 +63,9 @@ public class PlanInitialSubItem extends AppCompatActivity {
                 "placeTime='" + placeTime + '\'' +
                 ", placeName='" + placeName + '\'' +
                 ", placeMemo='" + placeMemo + '\'' +
+                ", transBudgetText='" + transBudgetText + '\'' +
+                ", transport=" + transport +
+                ", placeType=" + placeType +
                 '}';
     }
 }
