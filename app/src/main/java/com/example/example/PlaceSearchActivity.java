@@ -29,7 +29,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
-//
+//서지선 바봉
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
