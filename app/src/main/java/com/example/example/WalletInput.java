@@ -13,7 +13,7 @@ import android.os.Bundle;
 
 public class WalletInput extends AppCompatActivity {
 
-    private Button button1, button2, button3, buttonP, button4, button5, button6, buttonX, button7, button8, button9, buttonD, button0, buttonR, buttonC, buttonM;
+    private Button button1, button2, button3, buttonP, button4, button5, button6, buttonX, button7, button8, button9, buttonD, button0, buttonPOINT, buttonC, buttonM;
 
     private EditText edit;
     private int a;
@@ -40,7 +40,7 @@ public class WalletInput extends AppCompatActivity {
         button9=(Button)findViewById(R.id.button9);
         buttonD=(Button)findViewById(R.id.buttonD);
         button0=(Button)findViewById(R.id.button0);
-        buttonR=(Button)findViewById(R.id.buttonR);
+        buttonPOINT=(Button)findViewById(R.id.buttonPOINT);
         buttonC=(Button)findViewById(R.id.buttonC);
         buttonM=(Button)findViewById(R.id.buttonM);
         edit=(EditText)findViewById(R.id.edit1);
@@ -93,7 +93,9 @@ public class WalletInput extends AppCompatActivity {
                 else if(v==button0){
                     edit.setText(edit.getText().toString()+0);
                 }
-                else if(v==buttonR) {
+
+                //이거 지금 기능은 = 인데, . 소수점으로 바꿔야함.
+                else if(v==buttonPOINT) {
                     if (where == 1) {
                         a = a + Integer.valueOf(edit.getText().toString().trim());
                         edit.setText(Integer.toString(a));
@@ -135,7 +137,7 @@ public class WalletInput extends AppCompatActivity {
         button9.setOnClickListener(cl);
         buttonD.setOnClickListener(cl);
         button0.setOnClickListener(cl);
-        buttonR.setOnClickListener(cl);
+        buttonPOINT.setOnClickListener(cl);
         buttonC.setOnClickListener(cl);
         buttonM.setOnClickListener(cl);
     }
