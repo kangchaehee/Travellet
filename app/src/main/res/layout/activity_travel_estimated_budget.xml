@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,47 +16,44 @@
         android:layout_marginLeft="16dp"
         android:background="@drawable/ic_back"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="28dp"
-        android:textSize="16sp"
-        android:fontFamily="@font/roboto_light"
-        android:textStyle="normal"
-        android:textColor="@color/deep_grey"
-        android:lineSpacingExtra="12sp"
-        android:text="Estimated Budgets"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="32dp"
-        android:textSize="28sp"
-        android:fontFamily="@font/roboto_medium"
-        android:textStyle="normal"
-        android:textColor="@color/black"
-        android:lineSpacingExtra="35sp"
-        android:text="$ 2,000.00"
-        />
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/btn_back"
+        android:layout_marginTop="28dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="63dp"
-            android:layout_marginRight="32dp"
-            android:orientation="vertical">
+            android:layout_marginRight="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:lineSpacingExtra="12sp"
+                android:text="Estimated Budgets"
+                android:textColor="@color/deep_grey"
+                android:textSize="16sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_medium"
+                android:lineSpacingExtra="35sp"
+                android:text="$ 2,000.00"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="normal" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
                 android:orientation="horizontal">
 
 
@@ -71,10 +68,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:lineSpacingExtra="11sp"
+                    android:text="Lodging"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
-                    android:textStyle="normal"
-                    android:text="Lodging" />
+                    android:textStyle="normal" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -82,10 +79,10 @@
                     android:fontFamily="@font/roboto_medium"
                     android:gravity="end"
                     android:lineSpacingExtra="11sp"
+                    android:text="40%"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="normal"
-                    android:text="40%" />
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <TextView
@@ -94,10 +91,10 @@
                 android:fontFamily="@font/roboto_light"
                 android:gravity="end"
                 android:lineSpacingExtra="9sp"
+                android:text="$ 1,800.00"
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
-                android:textStyle="normal"
-                android:text="$ 1,800.00" />
+                android:textStyle="normal" />
 
             //퍼센트 이미지 바
 
@@ -112,8 +109,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="26dp">
+                android:layout_marginTop="26dp"
+                android:orientation="horizontal">
 
 
                 <ImageView
@@ -127,10 +124,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:lineSpacingExtra="11sp"
+                    android:text="Food"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
-                    android:textStyle="normal"
-                    android:text="Food" />
+                    android:textStyle="normal" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -138,10 +135,10 @@
                     android:fontFamily="@font/roboto_medium"
                     android:gravity="end"
                     android:lineSpacingExtra="11sp"
+                    android:text="30%"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="normal"
-                    android:text="30%" />
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <TextView
@@ -150,10 +147,10 @@
                 android:fontFamily="@font/roboto_light"
                 android:gravity="end"
                 android:lineSpacingExtra="9sp"
+                android:text="$ 1,800.00"
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
-                android:textStyle="normal"
-                android:text="$ 1,800.00" />
+                android:textStyle="normal" />
 
             //퍼센트 바
 
@@ -168,8 +165,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="26dp">
+                android:layout_marginTop="26dp"
+                android:orientation="horizontal">
 
 
                 <ImageView
@@ -183,10 +180,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:lineSpacingExtra="11sp"
+                    android:text="Leisure/Culture"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
-                    android:textStyle="normal"
-                    android:text="Leisure/Culture" />
+                    android:textStyle="normal" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -194,10 +191,10 @@
                     android:fontFamily="@font/roboto_medium"
                     android:gravity="end"
                     android:lineSpacingExtra="11sp"
+                    android:text="11%"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="normal"
-                    android:text="11%" />
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <TextView
@@ -206,12 +203,13 @@
                 android:fontFamily="@font/roboto_light"
                 android:gravity="end"
                 android:lineSpacingExtra="9sp"
+                android:text="$ 1,800.00"
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
-                android:textStyle="normal"
-                android:text="$ 1,800.00" />
+                android:textStyle="normal" />
 
             //퍼센트 바
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -223,8 +221,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="26dp">
+                android:layout_marginTop="26dp"
+                android:orientation="horizontal">
 
 
                 <ImageView
@@ -238,10 +236,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:lineSpacingExtra="11sp"
+                    android:text="Shopping"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
-                    android:textStyle="normal"
-                    android:text="Shopping" />
+                    android:textStyle="normal" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -249,10 +247,10 @@
                     android:fontFamily="@font/roboto_medium"
                     android:gravity="end"
                     android:lineSpacingExtra="11sp"
+                    android:text="11%"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="normal"
-                    android:text="11%" />
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <TextView
@@ -261,12 +259,13 @@
                 android:fontFamily="@font/roboto_light"
                 android:gravity="end"
                 android:lineSpacingExtra="9sp"
+                android:text="$ 1,800.00"
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
-                android:textStyle="normal"
-                android:text="$ 1,800.00" />
+                android:textStyle="normal" />
 
             //퍼센트 바
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -279,8 +278,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="26dp">
+                android:layout_marginTop="26dp"
+                android:orientation="horizontal">
 
 
                 <ImageView
@@ -294,10 +293,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:lineSpacingExtra="11sp"
+                    android:text="Transportation"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
-                    android:textStyle="normal"
-                    android:text="Transportation" />
+                    android:textStyle="normal" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -305,10 +304,10 @@
                     android:fontFamily="@font/roboto_medium"
                     android:gravity="end"
                     android:lineSpacingExtra="11sp"
+                    android:text="8%"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="normal"
-                    android:text="8%" />
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <TextView
@@ -317,12 +316,13 @@
                 android:fontFamily="@font/roboto_light"
                 android:gravity="end"
                 android:lineSpacingExtra="9sp"
+                android:text="$ 1,800.00"
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
-                android:textStyle="normal"
-                android:text="$ 1,800.00" />
+                android:textStyle="normal" />
 
             //퍼센트 바
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -335,8 +335,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="26dp">
+                android:layout_marginTop="26dp"
+                android:orientation="horizontal">
 
 
                 <ImageView
@@ -350,10 +350,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:lineSpacingExtra="11sp"
+                    android:text="Etc"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
-                    android:textStyle="normal"
-                    android:text="Etc" />
+                    android:textStyle="normal" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -361,10 +361,10 @@
                     android:fontFamily="@font/roboto_medium"
                     android:gravity="end"
                     android:lineSpacingExtra="11sp"
+                    android:text="1%"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="normal"
-                    android:text="1%" />
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <TextView
@@ -373,12 +373,13 @@
                 android:fontFamily="@font/roboto_light"
                 android:gravity="end"
                 android:lineSpacingExtra="9sp"
+                android:text="$ 1,800.00"
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
-                android:textStyle="normal"
-                android:text="$ 1,800.00" />
+                android:textStyle="normal" />
 
             //퍼센트 바
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -391,8 +392,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="26dp">
+                android:layout_marginTop="26dp"
+                android:orientation="horizontal">
 
 
                 <ImageView
@@ -406,10 +407,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:lineSpacingExtra="11sp"
+                    android:text="Shopping"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
-                    android:textStyle="normal"
-                    android:text="Shopping" />
+                    android:textStyle="normal" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -417,54 +418,46 @@
                     android:fontFamily="@font/roboto_medium"
                     android:gravity="end"
                     android:lineSpacingExtra="11sp"
+                    android:text="11%"
                     android:textColor="@color/black"
                     android:textSize="14sp"
-                    android:textStyle="normal"
-                    android:text="11%" />
+                    android:textStyle="normal" />
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
                 android:gravity="end"
                 android:lineSpacingExtra="9sp"
+                android:text="$ 1,800.00"
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
-                android:textStyle="normal"
-                android:text="$ 1,800.00" />
-
-            //퍼센트 바
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/ic_progress_5" />
-
-
-            <Button
-                android:id="@+id/btn_Next"
-                android:onClick="onClick"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:layout_marginBottom="94dp"
-                android:background="@drawable/button_background_full"
-                android:fontFamily="@font/roboto_medium"
-                android:lineSpacingExtra="7sp"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="normal"
-                android:text="Ok"
-                android:textAllCaps="false"
-                android:stateListAnimator="@null" />
-
+                android:textStyle="normal" />
         </LinearLayout>
 
     </ScrollView>
-</LinearLayout>
+
+    <Button
+        android:id="@+id/btn_Next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_background_full"
+        android:fontFamily="@font/roboto_medium"
+        android:lineSpacingExtra="7sp"
+        android:onClick="onClick"
+        android:stateListAnimator="@null"
+        android:text="Ok"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="normal" />
+
+</RelativeLayout>
 
 
 
