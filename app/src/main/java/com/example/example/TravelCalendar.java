@@ -50,7 +50,7 @@ public class TravelCalendar extends AppCompatActivity {
     private void initViews() {
         calendarView = (CalendarView) findViewById(R.id.calendar_view);
         calendarView.setCalendarOrientation(OrientationHelper.HORIZONTAL);
-}
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

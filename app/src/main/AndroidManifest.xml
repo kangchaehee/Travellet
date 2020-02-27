@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TravelAddActivity"></activity>
+        <activity android:name=".WithFriendsActivity"></activity>
+        <activity android:name=".TravelAddActivity" />
         <activity android:name=".DeleteDialog" />
         <activity android:name=".PlaceSearchItem" />
         <activity android:name=".PlaceSearchItemView" />

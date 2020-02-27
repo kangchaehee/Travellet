@@ -267,9 +267,9 @@ public class TravelPreferenceSet extends AppCompatActivity {
 
     //Lodging set
     public void onButtonClick(View view1){
-
-        finish();
-        overridePendingTransition(0, 0);
+        Intent intent = new Intent(TravelPreferenceSet.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     // calendar

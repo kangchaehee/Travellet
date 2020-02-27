@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.Set;
+
 public class BudgetSet extends AppCompatActivity {
 
     @Override
@@ -16,8 +18,8 @@ public class BudgetSet extends AppCompatActivity {
 
     //Budget show
     public void onButtonClick(View view1){
-
-        Intent intent = new Intent(this, TravelBudgetShow.class);
+        Intent intent = new Intent(BudgetSet.this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
@@ -26,5 +28,12 @@ public class BudgetSet extends AppCompatActivity {
 
         Intent intent = new Intent(BudgetSet.this, TravelEstimatedBudget.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        overridePendingTransition(0, 0);
     }
 }
