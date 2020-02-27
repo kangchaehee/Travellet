@@ -31,7 +31,7 @@ public class TravelLodgingSet extends AppCompatActivity {
             public void onClick(View v) {
                 if(!hotelState){
                     hotelState = true;
-                    btn_hotel.setBackgroundResource(R.drawable.border);
+                    btn_hotel.setBackgroundResource(R.drawable.border_blue);
                     //btn_hotel.setTextColor(getResources().getColor(R.color.white, getTheme()));
 
                     condoState = false;
@@ -57,7 +57,7 @@ public class TravelLodgingSet extends AppCompatActivity {
             public void onClick(View v) {
                 if(!condoState){
                     condoState = true;
-                    btn_condo.setBackgroundResource(R.drawable.border);
+                    btn_condo.setBackgroundResource(R.drawable.border_blue);
                     //btn_condo.setTextColor(getResources().getColor(R.color.white, getTheme()));
 
                     hotelState = false;
@@ -83,7 +83,7 @@ public class TravelLodgingSet extends AppCompatActivity {
             public void onClick(View v) {
                 if(!hostelState){
                     hostelState = true;
-                    btn_hostel.setBackgroundResource(R.drawable.border);
+                    btn_hostel.setBackgroundResource(R.drawable.border_blue);
                     //btn_hostel.setTextColor(getResources().getColor(R.color.blue, getTheme()));
 
                     condoState = false;

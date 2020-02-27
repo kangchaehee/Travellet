@@ -35,7 +35,7 @@ public class TravelPreferenceSet extends AppCompatActivity {
             public void onClick(View v) {
                 if(!shoppingState){
                     shoppingState = true;
-                    btn_shopping.setBackgroundResource(R.drawable.border);
+                    btn_shopping.setBackgroundResource(R.drawable.border_blue);
                     //btn_shopping.setTextColor(getResources().getColor(R.color.white, getTheme()));
 
                     foodState = false;
@@ -74,7 +74,7 @@ public class TravelPreferenceSet extends AppCompatActivity {
             public void onClick(View v) {
                 if(!foodState){
                     foodState = true;
-                    btn_food.setBackgroundResource(R.drawable.border);
+                    btn_food.setBackgroundResource(R.drawable.border_blue);
                     //btn_shopping.setTextColor(getResources().getColor(R.color.white, getTheme()));
 
                     shoppingState = false;
@@ -113,7 +113,7 @@ public class TravelPreferenceSet extends AppCompatActivity {
             public void onClick(View v) {
                 if(!restState){
                     restState = true;
-                    btn_rest.setBackgroundResource(R.drawable.border);
+                    btn_rest.setBackgroundResource(R.drawable.border_blue);
                     //btn_rest.setTextColor(getResources().getColor(R.color.white, getTheme()));
 
                     shoppingState = false;
@@ -153,7 +153,7 @@ public class TravelPreferenceSet extends AppCompatActivity {
             public void onClick(View v) {
                 if(!leisureState){
                     leisureState = true;
-                    btn_leisure.setBackgroundResource(R.drawable.border);
+                    btn_leisure.setBackgroundResource(R.drawable.border_blue);
                     //btn_leisure.setTextColor(getResources().getColor(R.color.white, getTheme()));
 
                     shoppingState = false;
@@ -192,7 +192,7 @@ public class TravelPreferenceSet extends AppCompatActivity {
             public void onClick(View v) {
                 if(!historyState){
                     historyState = true;
-                    btn_history.setBackgroundResource(R.drawable.border);
+                    btn_history.setBackgroundResource(R.drawable.border_blue);
                     //btn_history.setTextColor(getResources().getColor(R.color.white, getTheme()));
 
                     shoppingState = false;
@@ -231,7 +231,7 @@ public class TravelPreferenceSet extends AppCompatActivity {
             public void onClick(View v) {
                 if(!natureState){
                     natureState = true;
-                    btn_nature.setBackgroundResource(R.drawable.border);
+                    btn_nature.setBackgroundResource(R.drawable.border_blue);
                     //btn_history.setTextColor(getResources().getColor(R.color.white, getTheme()));
 
                     shoppingState = false;
