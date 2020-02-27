@@ -2,6 +2,7 @@ package com.example.example;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,6 +42,9 @@ public class PlaceDetailActivity extends AppCompatActivity {
     ImageView detailImage;
     ImageButton back;
 
+    String title=" ", keyTitle;
+    Button moreInfo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +72,16 @@ public class PlaceDetailActivity extends AppCompatActivity {
         detailImage = (ImageView) findViewById(R.id.detailImage);
 
         getPlaceDetail(placeID);
+
+        moreInfo = (Button) findViewById(R.id.moreInfo);
+        moreInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+                intent.putExtra(SearchManager.QUERY, title);
+                startActivity(intent);
+            }
+        });
     }
 
     public void getPlaceDetail(int placeID) {
@@ -132,7 +147,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Document doc) {
-            String link ="", tel = "", title = "", address = "", type = "", image = " ";
+            String link ="", tel = "",  address = "", type = "", image = " ";
             String dAddress = "", mapx = "", mapy = "", overview = "", directions="";
             NodeList nodeList = doc.getElementsByTagName("item");
             org.jsoup.nodes.Document linkDoc, overviewDoc;
