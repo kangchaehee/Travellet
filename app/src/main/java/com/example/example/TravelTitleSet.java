@@ -16,9 +16,7 @@ public class TravelTitleSet extends AppCompatActivity {
 
     //Main Empty
     public void onButtonClick(View view1){
-
-        Intent intent = new Intent(this, MainEmpty.class);
-        startActivity(intent);
+        finish();
     }
 
     //travelLodgingSet
@@ -26,5 +24,7 @@ public class TravelTitleSet extends AppCompatActivity {
 
         Intent intent = new Intent(TravelTitleSet.this, TravelLodgingSet.class);
         startActivity(intent);
+        overridePendingTransition(0, 0);
+
     }
 }

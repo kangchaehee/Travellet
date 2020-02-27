@@ -105,13 +105,10 @@ public class TravelLodgingSet extends AppCompatActivity {
         });
     }
 
-
-
     //travel title set
     public void onButtonClick(View view1){
-
-        Intent intent = new Intent(this, TravelTitleSet.class);
-        startActivity(intent);
+        finish();
+        overridePendingTransition(0, 0);
     }
 
     //travel preference set
@@ -119,6 +116,13 @@ public class TravelLodgingSet extends AppCompatActivity {
 
         Intent intent = new Intent(TravelLodgingSet.this, TravelPreferenceSet.class);
         startActivity(intent);
+        overridePendingTransition(0, 0);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        overridePendingTransition(0, 0);
+    }
 }

@@ -99,6 +99,7 @@ public class TravelCalendar extends AppCompatActivity {
 
         Intent intent = new Intent(this, TravelPreferenceSet.class);
         startActivity(intent);
+        overridePendingTransition(0, 0);
     }
 
     // Budget show
@@ -106,6 +107,14 @@ public class TravelCalendar extends AppCompatActivity {
 
         Intent intent = new Intent(this, TravelBudgetShow.class);
         startActivity(intent);
+        overridePendingTransition(0, 0);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        overridePendingTransition(0, 0);
     }
 
 }

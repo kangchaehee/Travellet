@@ -42,7 +42,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
     ImageView detailImage;
     ImageButton back;
 
-    String title=" ", keyTitle;
+    String title=" ";
     Button moreInfo;
 
     @Override
