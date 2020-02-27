@@ -7,6 +7,7 @@ import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.View;
@@ -41,7 +42,6 @@ public class TravelCalendar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_calendar);
 
-
         setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
 
         initViews();
@@ -51,8 +51,6 @@ public class TravelCalendar extends AppCompatActivity {
         calendarView = (CalendarView) findViewById(R.id.calendar_view);
         calendarView.setCalendarOrientation(OrientationHelper.HORIZONTAL);
 }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -90,7 +88,6 @@ public class TravelCalendar extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
     private void clearSelectionsMenuClick() {
         calendarView.clearSelections();
