@@ -50,9 +50,7 @@ public class WalletInput extends AppCompatActivity {
             public void onClick(View v) {
                 if(!cardState){
                     cardState = true;
-
-                    //색깔 입히기
-                    card.setBackgroundResource(R.drawable.ic_cash);
+                    card.setBackgroundResource(R.drawable.ic_cash_selected);
                     //card.setTextColor(getResources().getColor(R.color.white, getTheme()));
 
                     cashState = false;

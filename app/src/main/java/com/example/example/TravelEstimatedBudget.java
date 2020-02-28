@@ -14,10 +14,19 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         setContentView(R.layout.activity_travel_estimated_budget);
     }
 
+    // travel budget set
+    public void onButtonClick(View view1){
+
+        Intent intent = new Intent(this, BudgetSet.class);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+    }
+
     // plan initial
     public void onClick(View view){
 
         Intent intent = new Intent(this, PlanInitialActivity.class);
         startActivity(intent);
+        overridePendingTransition(0, 0);
     }
 }
