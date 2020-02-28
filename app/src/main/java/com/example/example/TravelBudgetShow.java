@@ -27,7 +27,7 @@ public class TravelBudgetShow extends AppCompatActivity {
             public void onClick(View v) {
                 if(!frugalState){
                     frugalState = true;
-                    btn_frugal.setBackgroundResource(R.drawable.border);
+                    btn_frugal.setBackgroundResource(R.drawable.border_blue);
 
                     middleState = false;
                     btn_middle.setBackgroundResource(R.drawable.border_12r_grey);
@@ -49,7 +49,7 @@ public class TravelBudgetShow extends AppCompatActivity {
             public void onClick(View v) {
                 if(!middleState){
                     middleState = true;
-                    btn_middle.setBackgroundResource(R.drawable.border);
+                    btn_middle.setBackgroundResource(R.drawable.border_blue);
 
                     frugalState = false;
                     btn_frugal.setBackgroundResource(R.drawable.border_12r_grey);
@@ -71,7 +71,7 @@ public class TravelBudgetShow extends AppCompatActivity {
             public void onClick(View v) {
                 if(!luxuriousState){
                     luxuriousState = true;
-                    btn_luxurious.setBackgroundResource(R.drawable.border);
+                    btn_luxurious.setBackgroundResource(R.drawable.border_blue);
 
                     frugalState = false;
                     btn_frugal.setBackgroundResource(R.drawable.border_12r_grey);
@@ -93,11 +93,20 @@ public class TravelBudgetShow extends AppCompatActivity {
 
         Intent intent = new Intent(this, TravelCalendar.class);
         startActivity(intent);
+        overridePendingTransition(0, 0);
     }
 
     public void onClick(View view){
 
         Intent intent = new Intent(TravelBudgetShow.this, BudgetSet.class);
         startActivity(intent);
+        overridePendingTransition(0, 0);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        overridePendingTransition(0, 0);
     }
 }

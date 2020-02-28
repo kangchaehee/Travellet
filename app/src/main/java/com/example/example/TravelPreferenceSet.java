@@ -20,7 +20,6 @@ public class TravelPreferenceSet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_preference_set);
 
-
         btn_shopping = (Button) findViewById(R.id.btn_shopping);
         btn_food = (Button) findViewById(R.id.btn_food);
         btn_rest = (Button) findViewById(R.id.btn_rest);

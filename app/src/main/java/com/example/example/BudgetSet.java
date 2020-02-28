@@ -28,6 +28,7 @@ public class BudgetSet extends AppCompatActivity {
 
         Intent intent = new Intent(BudgetSet.this, TravelEstimatedBudget.class);
         startActivity(intent);
+        overridePendingTransition(0, 0);
     }
 
     @Override

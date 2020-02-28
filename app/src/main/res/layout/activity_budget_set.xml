@@ -31,9 +31,8 @@
             android:layout_marginLeft="32dp"
             android:textSize="28sp"
             android:fontFamily="@font/roboto_medium"
-            android:textStyle="bold"
+            android:textStyle="normal"
             android:textColor="@color/black"
-            android:letterSpacing="0.03"
             android:lineSpacingExtra="35sp"
             android:text="How Much" />
 
