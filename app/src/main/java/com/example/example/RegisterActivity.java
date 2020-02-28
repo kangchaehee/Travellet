@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 public class RegisterActivity extends AppCompatActivity {
 
+
     Button btn_female, btn_male, btn_register;
     boolean femaleState=false, maleState=false, registerState=false;
 
