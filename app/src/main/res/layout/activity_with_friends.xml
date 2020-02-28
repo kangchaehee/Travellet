@@ -1,7 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_back"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Travel Friend!"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:fontFamily="@font/roboto_medium"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="32dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Invite a friend or family to travel with.\n
+You can plan your trip together."
+        android:textColor="@color/deep_grey"
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_light"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="32dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_background_full"
+        android:layout_margin="32dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:text="Send Invitation Link"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_medium"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/icon_grey"
+        android:layout_margin="32dp"/>
+
+
+
 
 
 
