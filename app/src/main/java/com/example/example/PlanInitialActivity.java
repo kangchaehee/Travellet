@@ -2,6 +2,8 @@ package com.example.example;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +20,8 @@ import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 public class PlanInitialActivity extends AppCompatActivity {
     // github test
@@ -57,7 +61,6 @@ public class PlanInitialActivity extends AppCompatActivity {
         });
 
         calculation = (ImageView) findViewById(R.id.calculation);
-        calculation.setColorFilter(R.color.blue);
 
         placeSearch = (Button) findViewById(R.id.placeSearch);
         placeSearch.setOnClickListener(new View.OnClickListener() {
@@ -103,10 +106,6 @@ public class PlanInitialActivity extends AppCompatActivity {
             view.setPlaceName(item.getPlaceName());
             view.setPlaceMemo(item.getPlaceMemo());
 
-            if(getCount()>0){
-                calculation.setColorFilter(R.color.blue);
-            }
-
             ImageButton del = (ImageButton) view.findViewById(R.id.deleteButton);
             del.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -124,9 +123,6 @@ public class PlanInitialActivity extends AppCompatActivity {
                             }
                         }
                     });
-                    if(adapter.getCount()>0){
-                        calculation.setColorFilter(R.color.blue);
-                    }
 
                 }
             });
@@ -137,7 +133,6 @@ public class PlanInitialActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     tDialog = new TransportDialog(PlanInitialActivity.this);
-                    //tDialog.setCancelable(false);
                     tDialog.callFunction(item.getTransport());
                     tDialog.show();
                     tDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {

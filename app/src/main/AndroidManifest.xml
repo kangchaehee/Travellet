@@ -21,7 +21,13 @@
         <activity android:name=".PlaceSearchActivity" />
         <activity android:name=".PlaceDetailActivity" />
         <activity android:name=".PlanInitialSubItemView" />
-        <activity android:name=".PlanInitialActivity" />
+        <activity android:name=".PlanInitialActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".PlanInitialSubItem" />
         <activity android:name=".PlanInputActivity" />
         <activity android:name=".SelectPlaceActivity" />
@@ -40,11 +46,7 @@
         <activity android:name=".TravelLodgingSet" />
         <activity android:name=".MainEmpty" />
         <activity android:name=".SignIn">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".SplashActivity" />
         <activity android:name=".RegisterActivity" />

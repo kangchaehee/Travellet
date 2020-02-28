@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -17,7 +18,7 @@ public class PlanInputActivity extends AppCompatActivity {
 
     int hour, min, category=1;
     String place;
-    String memo;
+    String memo="null";
 
     TimePicker timePicker;
 
@@ -124,7 +125,7 @@ public class PlanInputActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(selectTitleText.equals("Select your trip place.")){
+                if(place == null){
                     selectTitleText.setTextColor(getColor(R.color.coral_red));
                 }
 
@@ -141,6 +142,7 @@ public class PlanInputActivity extends AppCompatActivity {
         if(requestCode == 103){
             if(intent != null){
                 place = intent.getStringExtra("selectTitle");
+                selectTitleText.setTextColor(getColor(R.color.soft_black));
                 selectTitleText.setText(place);
             }
         }
@@ -155,6 +157,38 @@ public class PlanInputActivity extends AppCompatActivity {
             min = timePicker.getCurrentMinute();
         }
         memo = editMemo.getText().toString();
+        if(memo == null){
+            Log.d("null", "null");
+        }
+        else
+            Log.d("memo", memo);
+        if(memo.length()<1){
+            switch (category){
+                case 1:
+                    memo = "Lodging";
+                    break;
+
+                case 2:
+                    memo = "Food";
+                    break;
+
+                case 3:
+                    memo = "Shopping";
+                    break;
+
+                case 4:
+                    memo = "Tourism";
+                    break;
+
+                case 5:
+                    memo = "etc";
+                    break;
+
+                default:
+                    memo = "null";
+                    break;
+            }
+        }
         Intent intent = new Intent();
         intent.putExtra("title", place);
         intent.putExtra("memo", memo);

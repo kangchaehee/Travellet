@@ -102,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/select_place"
-                    android:textColor="@color/soft_black"
+                    android:textColor="@color/soft_grey"
                     android:textSize="14sp"
                     android:text="Select your trip place."
                     android:fontFamily="@font/roboto_light"/>
@@ -179,7 +179,7 @@
                         android:layout_width="50dp"
                         android:layout_height="56dp"
                         android:id="@+id/lodging"
-                        android:background="@drawable/ic_lodging"/>
+                        android:background="@drawable/ic_lodging_selected"/>
 
                     <ImageButton
                         android:layout_marginLeft="10dp"
