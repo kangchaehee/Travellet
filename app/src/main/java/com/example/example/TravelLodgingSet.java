@@ -2,7 +2,11 @@ package com.example.example;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -25,6 +29,7 @@ public class TravelLodgingSet extends AppCompatActivity {
         btn_condo = (Button) findViewById(R.id.btn_condo);
         btn_hostel = (Button) findViewById(R.id.btn_hostel);
 
+        final Drawable[] compoundDrawables=btn_hotel.getCompoundDrawables();
 
         btn_hotel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,15 +37,18 @@ public class TravelLodgingSet extends AppCompatActivity {
                 if(!hotelState){
                     hotelState = true;
                     btn_hotel.setBackgroundResource(R.drawable.border_blue);
-                    //btn_hotel.setTextColor(getResources().getColor(R.color.white, getTheme()));
+                    //btn_hotel.setCompoundDrawablesWithIntrinsicBounds(null,null, getResources().getDrawable(R.drawable.ic_lodging_selected),null);
+
+                    //To Change drawableLeft color to BLUE programmatically
+
+                    Drawable drawableLeft=compoundDrawables[0].mutate();
+                    drawableLeft.setColorFilter(new PorterDuffColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN));
 
                     condoState = false;
                     btn_condo.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_condo.setTextColor(getResources().getColor(R.color.blue, getTheme()));
 
                     hostelState = false;
                     btn_hostel.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_hostel.setTextColor(getResources().getColor(R.color.blue, getTheme()));
 
                 }
 
