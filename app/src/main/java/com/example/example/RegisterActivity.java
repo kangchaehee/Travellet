@@ -1,7 +1,14 @@
 package com.example.example;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.AdapterView;
@@ -27,14 +34,11 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
        // Spinner spinner2 = findViewById(R.id.age);
-
         Spinner spinner = findViewById(R.id.country);
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.array_country, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
         spinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
 
 
@@ -102,6 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
             // Do nothing
         }
     }
+
 
     public void onClicked(View view){
         Intent intent = new Intent(this, SignIn.class);

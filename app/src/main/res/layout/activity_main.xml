@@ -50,7 +50,7 @@
         android:fontFamily="@font/roboto_medium"
         android:lineSpacingExtra="11sp"
         android:stateListAnimator="@null"
-        android:text="UPCOMMING"
+        android:text="UPCOMING"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="normal" />

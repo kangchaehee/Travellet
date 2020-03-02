@@ -271,10 +271,10 @@ public class TravelPreferenceSet extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // calendar
+    // Estimated budget
     public void onClick(View view){
 
-        Intent intent = new Intent(TravelPreferenceSet.this, TravelCalendar.class);
+        Intent intent = new Intent(TravelPreferenceSet.this, TravelEstimatedBudget.class);
         startActivity(intent);
         overridePendingTransition(0, 0);
     }

@@ -23,10 +23,10 @@ public class BudgetSet extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //estimated budget
+    //Travel Lodging set
     public void onClick(View view){
 
-        Intent intent = new Intent(BudgetSet.this, TravelEstimatedBudget.class);
+        Intent intent = new Intent(BudgetSet.this, TravelLodgingSet.class);
         startActivity(intent);
         overridePendingTransition(0, 0);
     }

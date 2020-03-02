@@ -94,7 +94,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginLeft="52dp"
         android:layout_marginRight="52dp"
-        android:background="@drawable/ic_progress_4"/>
+        android:background="@drawable/ic_progress_2"/>
 
     <Button
         android:id="@+id/btn_Next"

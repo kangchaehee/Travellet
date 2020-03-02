@@ -19,10 +19,10 @@ public class TravelTitleSet extends AppCompatActivity {
         finish();
     }
 
-    //travelLodgingSet
+    //travelcalendar
     public void onClick(View view){
 
-        Intent intent = new Intent(TravelTitleSet.this, TravelLodgingSet.class);
+        Intent intent = new Intent(TravelTitleSet.this, TravelCalendar.class);
         startActivity(intent);
         overridePendingTransition(0, 0);
 
