@@ -50,8 +50,9 @@
             android:text="Your Travel Title?"
             />
 
+
         <EditText
-            android:id="@+id/title"
+            android:id="@+id/edittitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="14sp"
