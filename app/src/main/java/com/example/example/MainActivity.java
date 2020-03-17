@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         up_delete = (ImageButton) findViewById(R.id.up_delete);
         past_delete = (ImageButton) findViewById(R.id.past_delete);
 
-
+        //
         Button button = (Button) findViewById(R.id.btn_upcomming);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
