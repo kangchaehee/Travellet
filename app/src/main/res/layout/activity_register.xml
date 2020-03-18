@@ -343,7 +343,7 @@
                 android:layout_height="wrap_content"
                 app:fontFamily="@font/roboto_regular"
                 android:lineSpacingExtra="9sp"
-                android:textColor="#bdbdbd"
+                android:textColor="@color/soft_grey"
                 android:textSize="12sp"
                 android:textStyle="normal"
                 android:text="Already have an account?"/>

@@ -38,7 +38,7 @@
         android:textSize="12sp"
         app:fontFamily="sans-serif"
         android:textStyle="normal"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:lineSpacingExtra="9sp"
         android:hint="Search the place."
         />
@@ -71,7 +71,7 @@
                 android:textSize="14sp"
                 app:fontFamily="sans-serif"
                 android:textStyle="normal"
-                android:textColor="#424242"
+                android:textColor="@color/soft_black"
                 android:lineSpacingExtra="11sp"
                 android:text="Sookmyung Women's University"
                 />
@@ -83,7 +83,7 @@
                 android:textSize="10sp"
                 app:fontFamily="sans-serif-light"
                 android:textStyle="normal"
-                android:textColor="#616161"
+                android:textColor="@color/deep_grey"
                 android:lineSpacingExtra="8sp"
                 android:text="Seoul, chungpa-dong"
                 />
