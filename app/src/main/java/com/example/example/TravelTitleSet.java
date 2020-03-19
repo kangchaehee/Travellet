@@ -43,7 +43,7 @@ public class TravelTitleSet extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
 
-        if(requestCode == 50){
+        if(requestCode == 1){
             if(intent != null){
                 title = intent.getStringExtra("edittitle");
                 edittitle.setTextColor(getColor(R.color.soft_black));
