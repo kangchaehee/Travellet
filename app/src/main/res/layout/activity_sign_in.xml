@@ -121,6 +121,7 @@
             android:singleLine="true" />
 
         <View
+            android:id="@+id/underbar"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/icon_grey"

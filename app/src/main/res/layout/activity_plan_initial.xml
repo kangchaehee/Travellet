@@ -386,28 +386,43 @@
 
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/con"
+    <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_height="match_parent"
         android:layout_below="@+id/relative1"
-        android:layout_above="@id/addButton"
-        android:divider="@null"
-        android:dividerHeight="0dp">
-    </ListView>
+        android:layout_alignParentBottom="true">
+
+        <RelativeLayout
+            android:id="@+id/relative2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/scroll">
+
+            <ListView
+                android:id="@+id/con"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="32dp"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:orientation="vertical"></ListView>
+
+        </RelativeLayout>
+    </ScrollView>
 
     <Button
-        android:layout_alignParentBottom="true"
         android:id="@+id/addButton"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_margin="32dp"
-        android:text="ADD"
-        android:textSize="14sp"
-        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_background_full"
         android:fontFamily="@font/roboto_medium"
-        android:background="@drawable/button_background_full"/>
+        android:text="ADD"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
 </RelativeLayout>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,9 +15,15 @@ import android.os.Bundle;
 
 public class BudgetInput extends AppCompatActivity {
 
+    int category=1;
+    String memo="null";
+
+    EditText editMemo;
+
     private Button button1, button2, button3, buttonP, button4, button5, button6, buttonX, button7, button8, button9, buttonD, button0, buttonPOINT, buttonC, buttonM;
 
-    private EditText edit;
+    Button btn_add;
+    private EditText edit1;
     private int a;
     private int where=0;
 
@@ -35,205 +42,102 @@ public class BudgetInput extends AppCompatActivity {
         transport = (ImageButton) findViewById(R.id.transport);
         etc = (ImageButton) findViewById(R.id.etc);
 
-
-        //카테고리 선택
-        //lodging
         lodging.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!lodgingState){
-                    lodgingState = true;
-                    lodging.setBackgroundResource(R.drawable.ic_lodging_selected);
+                category = 1;
+                lodging.setBackgroundResource(R.drawable.ic_lodging_selected);
+                food.setBackgroundResource(R.drawable.ic_food);
+                shopping.setBackgroundResource(R.drawable.ic_shopping);
+                tourism.setBackgroundResource(R.drawable.ic_tourism);
+                transport.setBackgroundResource(R.drawable.ic_transport);
+                etc.setBackgroundResource(R.drawable.ic_etc);
 
-                    foodState = false;
-                    food.setBackgroundResource(R.drawable.ic_food);
-
-                    shoppingState = false;
-                    shopping.setBackgroundResource(R.drawable.ic_shopping);
-
-                    tourismState = false;
-                    tourism.setBackgroundResource(R.drawable.ic_tourism);
-
-                    transportState = false;
-                    transport.setBackgroundResource(R.drawable.ic_transport);
-
-                    etcState = false;
-                    etc.setBackgroundResource(R.drawable.ic_etc);
-
-                }
-
-                else {
-                    lodgingState = false;
-                    lodging.setBackgroundResource(R.drawable.ic_lodging);
-                }
             }
         });
 
-        //food
         food.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!foodState){
-                    foodState = true;
-                    food.setBackgroundResource(R.drawable.ic_food_selected);
-
-                    lodgingState = false;
-                    lodging.setBackgroundResource(R.drawable.ic_lodging);
-
-                    shoppingState = false;
-                    shopping.setBackgroundResource(R.drawable.ic_shopping);
-
-                    tourismState = false;
-                    tourism.setBackgroundResource(R.drawable.ic_tourism);
-
-                    transportState = false;
-                    transport.setBackgroundResource(R.drawable.ic_transport);
-
-                    etcState = false;
-                    etc.setBackgroundResource(R.drawable.ic_etc);
-
-                }
-
-                else {
-                    foodState = false;
-                    food.setBackgroundResource(R.drawable.ic_food);
-                }
+                category = 2;
+                lodging.setBackgroundResource(R.drawable.ic_lodging);
+                food.setBackgroundResource(R.drawable.ic_food_selected);
+                shopping.setBackgroundResource(R.drawable.ic_shopping);
+                tourism.setBackgroundResource(R.drawable.ic_tourism);
+                transport.setBackgroundResource(R.drawable.ic_transport);
+                etc.setBackgroundResource(R.drawable.ic_etc);
             }
         });
 
-        //shopping
+
         shopping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!shoppingState){
-                    shoppingState = true;
-                    shopping.setBackgroundResource(R.drawable.ic_shopping_selected);
+                category = 3;
+                lodging.setBackgroundResource(R.drawable.ic_lodging);
+                food.setBackgroundResource(R.drawable.ic_food);
+                shopping.setBackgroundResource(R.drawable.ic_shopping_selected);
+                tourism.setBackgroundResource(R.drawable.ic_tourism);
+                transport.setBackgroundResource(R.drawable.ic_transport);
+                etc.setBackgroundResource(R.drawable.ic_etc);
 
-                    lodgingState = false;
-                    lodging.setBackgroundResource(R.drawable.ic_lodging);
-
-                    foodState = false;
-                    food.setBackgroundResource(R.drawable.ic_food);
-
-                    tourismState = false;
-                    tourism.setBackgroundResource(R.drawable.ic_tourism);
-
-                    transportState = false;
-                    transport.setBackgroundResource(R.drawable.ic_transport);
-
-                    etcState = false;
-                    etc.setBackgroundResource(R.drawable.ic_etc);
-
-                }
-
-                else {
-                    shoppingState = false;
-                    shopping.setBackgroundResource(R.drawable.ic_shopping);
-                }
             }
         });
 
-
-        //tourism
         tourism.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!tourismState){
-                    tourismState = true;
-                    tourism.setBackgroundResource(R.drawable.ic_tourism_selected);
+                category = 4;
+                lodging.setBackgroundResource(R.drawable.ic_lodging);
+                food.setBackgroundResource(R.drawable.ic_food);
+                shopping.setBackgroundResource(R.drawable.ic_shopping);
+                tourism.setBackgroundResource(R.drawable.ic_tourism_selected);
+                transport.setBackgroundResource(R.drawable.ic_transport);
+                etc.setBackgroundResource(R.drawable.ic_etc);
 
-                    lodgingState = false;
-                    lodging.setBackgroundResource(R.drawable.ic_lodging);
-
-                    shoppingState = false;
-                    shopping.setBackgroundResource(R.drawable.ic_shopping);
-
-                    foodState = false;
-                    food.setBackgroundResource(R.drawable.ic_food);
-
-                    transportState = false;
-                    transport.setBackgroundResource(R.drawable.ic_transport);
-
-                    etcState = false;
-                    etc.setBackgroundResource(R.drawable.ic_etc);
-
-                }
-
-                else {
-                    tourismState = false;
-                    tourism.setBackgroundResource(R.drawable.ic_tourism);
-                }
             }
         });
 
-        //transport
         transport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!transportState){
-                    transportState = true;
-                    transport.setBackgroundResource(R.drawable.ic_transport_selected);
-
-                    lodgingState = false;
-                    lodging.setBackgroundResource(R.drawable.ic_lodging);
-
-                    shoppingState = false;
-                    shopping.setBackgroundResource(R.drawable.ic_shopping);
-
-                    foodState = false;
-                    food.setBackgroundResource(R.drawable.ic_food);
-
-                    tourismState = false;
-                    tourism.setBackgroundResource(R.drawable.ic_tourism);
-
-                    etcState = false;
-                    etc.setBackgroundResource(R.drawable.ic_etc);
-
-                }
-
-                else {
-                    transportState = false;
-                    transport.setBackgroundResource(R.drawable.ic_transport);
-                }
+                category = 5;
+                lodging.setBackgroundResource(R.drawable.ic_lodging);
+                food.setBackgroundResource(R.drawable.ic_food);
+                shopping.setBackgroundResource(R.drawable.ic_shopping);
+                tourism.setBackgroundResource(R.drawable.ic_tourism);
+                transport.setBackgroundResource(R.drawable.ic_transport_selected);
+                etc.setBackgroundResource(R.drawable.ic_etc_selected);
             }
         });
 
-        //etc
         etc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!etcState){
-                    etcState = true;
-                    etc.setBackgroundResource(R.drawable.ic_etc_selected);
-
-                    lodgingState = false;
-                    lodging.setBackgroundResource(R.drawable.ic_lodging);
-
-                    shoppingState = false;
-                    shopping.setBackgroundResource(R.drawable.ic_shopping);
-
-                    foodState = false;
-                    food.setBackgroundResource(R.drawable.ic_food);
-
-                    tourismState = false;
-                    tourism.setBackgroundResource(R.drawable.ic_tourism);
-
-                    transportState = false;
-                    transport.setBackgroundResource(R.drawable.ic_transport);
-
-                }
-
-                else {
-                    etcState = false;
-                    etc.setBackgroundResource(R.drawable.ic_etc);
-                }
+                category = 6;
+                lodging.setBackgroundResource(R.drawable.ic_lodging);
+                food.setBackgroundResource(R.drawable.ic_food);
+                shopping.setBackgroundResource(R.drawable.ic_shopping);
+                tourism.setBackgroundResource(R.drawable.ic_tourism);
+                transport.setBackgroundResource(R.drawable.ic_transport);
+                etc.setBackgroundResource(R.drawable.ic_etc_selected);
             }
         });
 
+        btn_add = (Button) findViewById(R.id.btn_add);
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(edit1 == null){
+                    edit1.setTextColor(getColor(R.color.coral_red));
+                }
 
+                else
+                    returnToBack();
+            }
+        });
 
-
-        Toast.makeText(getApplicationContext(),"Calculator",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"Calculator",Toast.LENGTH_SHORT).show();
 
         button1=(Button)findViewById(R.id.button1);
         button2=(Button)findViewById(R.id.button2);
@@ -251,81 +155,81 @@ public class BudgetInput extends AppCompatActivity {
         buttonPOINT=(Button)findViewById(R.id.buttonPOINT);
         buttonC=(Button)findViewById(R.id.buttonC);
         buttonM=(Button)findViewById(R.id.buttonM);
-        edit=(EditText)findViewById(R.id.edit1);
+        edit1=(EditText)findViewById(R.id.edit1);
 
         View.OnClickListener cl = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(v==button1){
-                    edit.setText(edit.getText().toString()+1);
+                    edit1.setText(edit1.getText().toString()+1);
                 }
                 else if(v==button2){
-                    edit.setText(edit.getText().toString()+2);
+                    edit1.setText(edit1.getText().toString()+2);
                 }
                 else if(v==button3){
-                    edit.setText(edit.getText().toString()+3);
+                    edit1.setText(edit1.getText().toString()+3);
                 }
                 else if(v==buttonP){
-                    a=Integer.valueOf(edit.getText().toString().trim());
-                    edit.setText("");
+                    a=Integer.valueOf(edit1.getText().toString().trim());
+                    edit1.setText("");
                     where=1;
                 }
                 else if(v==button4){
-                    edit.setText(edit.getText().toString()+4);
+                    edit1.setText(edit1.getText().toString()+4);
                 }
                 else if(v==button5){
-                    edit.setText(edit.getText().toString()+5);
+                    edit1.setText(edit1.getText().toString()+5);
                 }
                 else if(v==button6){
-                    edit.setText(edit.getText().toString()+6);
+                    edit1.setText(edit1.getText().toString()+6);
                 }
                 else if(v==buttonX){
-                    a=Integer.valueOf(edit.getText().toString().trim());
-                    edit.setText("");
+                    a=Integer.valueOf(edit1.getText().toString().trim());
+                    edit1.setText("");
                     where=2;
                 }
                 else if(v==button7){
-                    edit.setText(edit.getText().toString()+7);
+                    edit1.setText(edit1.getText().toString()+7);
                 }
                 else if(v==button8){
-                    edit.setText(edit.getText().toString()+8);
+                    edit1.setText(edit1.getText().toString()+8);
                 }
                 else if(v==button9){
-                    edit.setText(edit.getText().toString()+9);
+                    edit1.setText(edit1.getText().toString()+9);
                 }
                 else if(v==buttonD){
-                    a=Integer.valueOf(edit.getText().toString().trim());
-                    edit.setText("");
+                    a=Integer.valueOf(edit1.getText().toString().trim());
+                    edit1.setText("");
                     where=3;
                 }
                 else if(v==button0){
-                    edit.setText(edit.getText().toString()+0);
+                    edit1.setText(edit1.getText().toString()+0);
                 }
                 //이거 지금 기능은 = 인데, . 소수점으로 바꿔야함.
                 else if(v==buttonPOINT) {
                     if (where == 1) {
-                        a = a + Integer.valueOf(edit.getText().toString().trim());
-                        edit.setText(Integer.toString(a));
+                        a = a + Integer.valueOf(edit1.getText().toString().trim());
+                        edit1.setText(Integer.toString(a));
                     }
                     else if(where==2){
-                        a = a * Integer.valueOf(edit.getText().toString().trim());
-                        edit.setText(Integer.toString(a));
+                        a = a * Integer.valueOf(edit1.getText().toString().trim());
+                        edit1.setText(Integer.toString(a));
                     }
                     else if(where==3){
-                        a = a / Integer.valueOf(edit.getText().toString().trim());
-                        edit.setText(Integer.toString(a));
+                        a = a / Integer.valueOf(edit1.getText().toString().trim());
+                        edit1.setText(Integer.toString(a));
                     }
                     else if(where==4){
-                        a = a - Integer.valueOf(edit.getText().toString().trim());
-                        edit.setText(Integer.toString(a));
+                        a = a - Integer.valueOf(edit1.getText().toString().trim());
+                        edit1.setText(Integer.toString(a));
                     }
                 }
                 else if(v==buttonC){
-                    edit.setText("");
+                    edit1.setText("");
                 }
                 else if(v==buttonM){
-                    a=Integer.valueOf(edit.getText().toString().trim());
-                    edit.setText("");
+                    a=Integer.valueOf(edit1.getText().toString().trim());
+                    edit1.setText("");
                     where=4;
                 }
             }
@@ -347,6 +251,50 @@ public class BudgetInput extends AppCompatActivity {
         buttonPOINT.setOnClickListener(cl);
         buttonC.setOnClickListener(cl);
         buttonM.setOnClickListener(cl);
+    }
+
+
+    public void returnToBack(){
+
+        memo = editMemo.getText().toString();
+        if(memo == null){
+            Log.d("null", "null");
+        }
+        else
+            Log.d("memo", memo);
+        if(memo.length()<1){
+            switch (category){
+                case 1:
+                    memo = "Lodging";
+                    break;
+
+                case 2:
+                    memo = "Food";
+                    break;
+
+                case 3:
+                    memo = "Shopping";
+                    break;
+
+                case 4:
+                    memo = "Tourism";
+                    break;
+
+                case 5:
+                    memo = "etc";
+                    break;
+
+                default:
+                    memo = "null";
+                    break;
+            }
+        }
+        Intent intent = new Intent();
+        intent.putExtra("memo", memo);
+        intent.putExtra("type", category);
+
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     //sign in

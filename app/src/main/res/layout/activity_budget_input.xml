@@ -106,7 +106,7 @@
         />
 
     <EditText
-        android:id="@+id/memo"
+        android:id="@+id/editMemo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -511,7 +511,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btn_Next"
+        android:id="@+id/btn_add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/button_background_full"
