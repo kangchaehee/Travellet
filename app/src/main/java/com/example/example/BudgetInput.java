@@ -138,7 +138,7 @@ public class BudgetInput extends AppCompatActivity {
         });
 
         //Toast.makeText(getApplicationContext(),"Calculator",Toast.LENGTH_SHORT).show();
-
+    /*
         button1=(Button)findViewById(R.id.button1);
         button2=(Button)findViewById(R.id.button2);
         button3=(Button)findViewById(R.id.button3);
@@ -251,6 +251,8 @@ public class BudgetInput extends AppCompatActivity {
         buttonPOINT.setOnClickListener(cl);
         buttonC.setOnClickListener(cl);
         buttonM.setOnClickListener(cl);
+
+        */
     }
 
 

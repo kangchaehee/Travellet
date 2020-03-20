@@ -62,6 +62,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="0"
+            android:inputType="number"
             android:textColor="@color/black"
             android:lineSpacingExtra="35sp"
             android:textSize="28sp"
@@ -119,18 +120,16 @@
         android:singleLine="true"
         />
 
+
     <View
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_below="@id/editMemo"
+        android:layout_marginStart="32dp"
         android:background="@color/icon_grey"
-        android:layout_below="@id/memo"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/memo"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/editMemo" />
 
     <TextView
         android:id="@+id/textView4"
@@ -233,8 +232,8 @@
         />
 
 
-    //계산기.
-
+        //계산기.
+    <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -509,6 +508,7 @@
         </LinearLayout>
 
     </LinearLayout>
+    -->
 
     <Button
         android:id="@+id/btn_add"
