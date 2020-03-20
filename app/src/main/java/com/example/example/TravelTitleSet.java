@@ -50,7 +50,6 @@ public class TravelTitleSet extends AppCompatActivity {
             }
         }
     }
-    
 
     public void returnToBack() {
 
@@ -73,6 +72,5 @@ public class TravelTitleSet extends AppCompatActivity {
         Intent intent = new Intent(TravelTitleSet.this, TravelCalendar.class);
         startActivity(intent);
         overridePendingTransition(0, 0);
-
     }
 }
