@@ -68,6 +68,7 @@
             android:layout_marginRight="32dp"
             app:fontFamily="@font/roboto_light"
             android:hint="Please enter your email."
+            android:inputType="textEmailAddress"
             android:letterSpacing="0.03"
             android:lineSpacingExtra="11sp"
             android:textColor="@color/soft_grey"
