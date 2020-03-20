@@ -52,7 +52,7 @@ public class SignIn extends AppCompatActivity {
         Edittext_pw = (EditText) findViewById(R.id.Edittext_pw);
 
         String id = Edittext_email.getText().toString();
-        String password = Edittext_pw.getText().toString();
+        final String password = Edittext_pw.getText().toString();
 
             // 아이디 이메일 양식인지 확인
         Edittext_email.setOnFocusChangeListener(new View.OnFocusChangeListener(){
@@ -71,8 +71,6 @@ public class SignIn extends AppCompatActivity {
                 }
             }
         });
-
-
 
     }
 

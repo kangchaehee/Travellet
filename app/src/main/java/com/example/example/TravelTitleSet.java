@@ -24,7 +24,6 @@ public class TravelTitleSet extends AppCompatActivity {
 
         edittitle = (EditText) findViewById(R.id.edittitle);
 
-
         btn_Next = (Button) findViewById(R.id.btn_Next);
         btn_Next.setOnClickListener(new View.OnClickListener() {
             @Override
