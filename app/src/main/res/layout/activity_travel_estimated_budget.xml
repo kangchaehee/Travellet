@@ -17,39 +17,50 @@
         android:layout_marginLeft="16dp"
         android:background="@drawable/ic_back"/>
 
+
+    <TextView
+        android:id="@+id/estimated"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_back"
+        android:layout_marginTop="28dp"
+        android:layout_marginLeft="32dp"
+        android:fontFamily="@font/roboto_light"
+        android:lineSpacingExtra="12sp"
+        android:text="Estimated Budgets"
+        android:textColor="@color/deep_grey"
+        android:textSize="16sp"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/estimated"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="32dp"
+        android:fontFamily="@font/roboto_medium"
+        android:lineSpacingExtra="35sp"
+        android:text="$ 2,000.00"
+        android:textColor="@color/black"
+        android:textSize="28sp"
+        android:layout_marginBottom="34dp"
+        android:textStyle="normal" />
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/btn_back"
-        android:layout_marginTop="28dp">
+        android:layout_below="@+id/money"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="29dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_light"
-                android:lineSpacingExtra="12sp"
-                android:text="Estimated Budgets"
-                android:textColor="@color/deep_grey"
-                android:textSize="16sp"
-                android:textStyle="normal" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/roboto_medium"
-                android:lineSpacingExtra="35sp"
-                android:text="$ 2,000.00"
-                android:textColor="@color/black"
-                android:textSize="28sp"
-                android:textStyle="normal" />
+            android:layout_marginRight="32dp"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -78,7 +89,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:gravity="right|end"
+                    android:gravity="end"
                     android:lineSpacingExtra="11sp"
                     android:text="40%"
                     android:textColor="@color/black"
@@ -90,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
-                android:gravity="right|end"
+                android:gravity="end"
                 android:lineSpacingExtra="9sp"
                 android:text="$ 1,800.00"
                 android:textColor="@color/deep_grey"
@@ -102,8 +113,6 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/ic_progress_6" />
 
@@ -134,7 +143,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:gravity="right|end"
+                    android:gravity="end"
                     android:lineSpacingExtra="11sp"
                     android:text="30%"
                     android:textColor="@color/black"
@@ -146,7 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
-                android:gravity="right|end"
+                android:gravity="end"
                 android:lineSpacingExtra="9sp"
                 android:text="$ 1,800.00"
                 android:textColor="@color/deep_grey"
@@ -158,8 +167,6 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/ic_progress_1" />
 
@@ -190,7 +197,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:gravity="right|end"
+                    android:gravity="end"
                     android:lineSpacingExtra="11sp"
                     android:text="11%"
                     android:textColor="@color/black"
@@ -202,7 +209,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
-                android:gravity="right|end"
+                android:gravity="end"
                 android:lineSpacingExtra="9sp"
                 android:text="$ 1,800.00"
                 android:textColor="@color/deep_grey"
@@ -214,8 +221,6 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/ic_progress_2" />
 
@@ -246,7 +251,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:gravity="right|end"
+                    android:gravity="end"
                     android:lineSpacingExtra="11sp"
                     android:text="11%"
                     android:textColor="@color/black"
@@ -258,7 +263,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
-                android:gravity="right|end"
+                android:gravity="end"
                 android:lineSpacingExtra="9sp"
                 android:text="$ 1,800.00"
                 android:textColor="@color/deep_grey"
@@ -270,8 +275,6 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/ic_progress_1" />
 
@@ -303,7 +306,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:gravity="right|end"
+                    android:gravity="end"
                     android:lineSpacingExtra="11sp"
                     android:text="8%"
                     android:textColor="@color/black"
@@ -315,7 +318,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
-                android:gravity="right|end"
+                android:gravity="end"
                 android:lineSpacingExtra="9sp"
                 android:text="$ 1,800.00"
                 android:textColor="@color/deep_grey"
@@ -327,8 +330,6 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/ic_progress_3" />
 
@@ -360,7 +361,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:gravity="right|end"
+                    android:gravity="end"
                     android:lineSpacingExtra="11sp"
                     android:text="1%"
                     android:textColor="@color/black"
@@ -372,7 +373,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
-                android:gravity="right|end"
+                android:gravity="end"
                 android:lineSpacingExtra="9sp"
                 android:text="$ 1,800.00"
                 android:textColor="@color/deep_grey"
@@ -384,8 +385,6 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/ic_progress_2" />
 
@@ -434,13 +433,11 @@
                 android:text="$ 1,800.00"
                 android:textColor="@color/deep_grey"
                 android:textSize="12sp"
-                android:textStyle="normal"/>
+                android:textStyle="normal" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
                 android:layout_marginTop="18dp"
                 android:layout_marginBottom="120dp"
                 android:background="@drawable/ic_progress_1" />
