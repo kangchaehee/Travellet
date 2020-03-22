@@ -9,9 +9,11 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,6 +36,13 @@ public class RegisterActivity extends AppCompatActivity {
 
     private Spinner spinner;
     private Spinner spinner2;
+
+    private final int GET_GALLERY_IMAGE = 200;
+    private ImageView selfie;
+
+
+    //private static final int PICK_FROM_CAMERA;
+    //private static final int PICK_FROM_ALBUM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +122,28 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        selfie = (ImageView)findViewById(R.id.selfie);
+        selfie.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent. setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                startActivityForResult(intent, GET_GALLERY_IMAGE);
+            }
+        });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            Uri selectedImageUri = data.getData();
+            selfie.setImageURI(selectedImageUri);
+        }
+    }
+
 
     public class MyOnItemSelectedListener implements OnItemSelectedListener{
         @Override
@@ -156,9 +186,9 @@ public class RegisterActivity extends AppCompatActivity {
             // Do nothing
         }
     }
-
-
      */
+
+
     public void onClicked(View view){
         Intent intent = new Intent(this, SignIn.class);
         startActivity(intent);

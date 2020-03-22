@@ -18,14 +18,14 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    UpcommingFragement fragment1;
+    UpcomingFragment fragment1;
     PastFragment fragment2;
     ImageButton up_delete, past_delete;
 
     //DeleteDialog oDialog;
 
     //ArrayList<PastFragment> items = new ArrayList<PastFragment>();
-    //ArrayList<UpcommingFragment> item = new ArrayList<UpcommingFragment>();
+    //ArrayList<UpcomingFragment> item = new ArrayList<UpcommingFragment>();
     //MainActivity.PlanSubAdapter adapter = new PlanInitialActivity.PlanSubAdapter();
 
 
@@ -34,15 +34,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        fragment1 = new UpcommingFragement();
+        fragment1 = new UpcomingFragment();
         fragment2 = new PastFragment();
 
-        Button btn_upcomming, btn_past;
+        Button btn_upcoming, btn_past;
 
         up_delete = (ImageButton) findViewById(R.id.up_delete);
         past_delete = (ImageButton) findViewById(R.id.past_delete);
         //
-        Button button = (Button) findViewById(R.id.btn_upcomming);
+        Button button = (Button) findViewById(R.id.btn_upcoming);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

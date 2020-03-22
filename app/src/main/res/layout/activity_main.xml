@@ -38,7 +38,7 @@
         app:fontFamily="@font/roboto_light" />
 
     <Button
-        android:id="@+id/btn_upcomming"
+        android:id="@+id/btn_upcoming"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
         android:layout_below="@+id/name"
@@ -63,7 +63,7 @@
         android:layout_below="@+id/name"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
-        android:layout_toEndOf="@+id/btn_upcomming"
+        android:layout_toEndOf="@+id/btn_upcoming"
         android:background="@color/white"
         android:lineSpacingExtra="11sp"
         android:stateListAnimator="@null"
