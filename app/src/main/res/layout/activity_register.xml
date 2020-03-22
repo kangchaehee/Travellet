@@ -255,7 +255,8 @@
                 android:id="@+id/age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
+                android:spinnerMode="dropdown"
+                android:layout_marginLeft="28dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="32dp"
                 />
@@ -266,7 +267,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bar"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="32dp"
             android:layout_marginLeft="32dp"/>
 
@@ -293,7 +294,7 @@
                 android:id="@+id/country"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
+                android:layout_marginLeft="28dp"
                 android:layout_marginTop="8dp"
                 android:spinnerMode="dropdown"
                 android:layout_marginRight="32dp"/>
@@ -305,7 +306,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bar"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="32dp"
             android:layout_marginLeft="32dp"/>
 

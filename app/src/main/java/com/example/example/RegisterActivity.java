@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
@@ -21,26 +22,46 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 
 public class RegisterActivity extends AppCompatActivity {
-
 
     Button btn_female, btn_male, btn_register;
     boolean femaleState=false, maleState=false, registerState=false;
 
+    private Spinner spinner;
+    private Spinner spinner2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-       // Spinner spinner2 = findViewById(R.id.age);
         Spinner spinner = findViewById(R.id.country);
+        Spinner spinner2 = findViewById(R.id.age);
+
+            //array_age
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
+                this, R.array.array_age, android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner2.setAdapter(adapter2);
+        spinner2.setOnItemSelectedListener(new MyOnItemSelectedListener());
+            //이건 화살표 색깔
+        spinner2.getBackground().setColorFilter(Color.parseColor("#c8cbd3"), PorterDuff.Mode.SRC_ATOP);
+
+
+            //array_country
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.array_country, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new MyOnItemSelectedListener());
+            //이건 화살표 색깔
+        spinner.getBackground().setColorFilter(Color.parseColor("#c8cbd3"), PorterDuff.Mode.SRC_ATOP);
+
 
         btn_female = (Button) findViewById(R.id.btn_female);
         btn_male = (Button) findViewById(R.id.btn_male);
@@ -97,6 +118,13 @@ public class RegisterActivity extends AppCompatActivity {
     public class MyOnItemSelectedListener implements OnItemSelectedListener{
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            ((TextView)view).setTextColor(getResources().getColor(R.color.soft_grey));
+
+            ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.soft_grey));
+            ((TextView) parent.getChildAt(0)).setTextSize(14);
+            //((TextView) parent.getChildAt(0)).setFontFeatureSettings(getResources().getFont(R.font.roboto_regular));
+
             //Toast.makeText(parent.getContext(),
             //        "Your country is "+parent.getItemAtPosition(position),
             //        Toast.LENGTH_SHORT).show();
@@ -108,13 +136,36 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
+    /*
+    public class MyOnItemSelectedListener2 implements OnItemSelectedListener{
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            ((TextView)view).setTextColor(getResources().getColor(R.color.soft_grey));
+
+            ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.soft_grey));
+            ((TextView) parent.getChildAt(0)).setTextSize(14);
+            //((TextView) parent.getChildAt(0)).setFontFeatureSettings(getResources().getFont(R.font.roboto_regular));
+
+            //Toast.makeText(parent.getContext(),
+            //        "Your country is "+parent.getItemAtPosition(position),
+            //        Toast.LENGTH_SHORT).show();
+        }
+        @Override
+        public void onNothingSelected(AdapterView<?> arg0) {
+            // Do nothing
+        }
+    }
+
+
+     */
     public void onClicked(View view){
         Intent intent = new Intent(this, SignIn.class);
         startActivity(intent);
 
     }
 
-    //signin 으로
+        //signin 으로
     public void onClick(View view){
 
         Intent intent = new Intent(this, SignIn.class);
@@ -122,7 +173,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    //signin 으로
+        //signin 으로
     public void onButtonClick(View v){
         Intent intent = new Intent(this, SignIn.class);
         startActivity(intent);
