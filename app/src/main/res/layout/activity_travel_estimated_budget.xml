@@ -55,6 +55,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="29dp">
 
+        //#1 lodging
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,104 +64,132 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
                 android:orientation="horizontal">
 
 
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_marginRight="4dp"
                     app:srcCompat="@drawable/ic_lodging_24px" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:lineSpacingExtra="11sp"
-                    android:text=" Lodging"
+                    android:text="Lodging"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
                     android:textStyle="normal" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_medium"
-                    android:gravity="end"
-                    android:lineSpacingExtra="11sp"
-                    android:text="40%"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+                    android:gravity="right">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:lineSpacingExtra="11sp"
+                        android:text="100%"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_light"
-                android:gravity="end"
-                android:lineSpacingExtra="9sp"
-                android:text="$ 1,800.00"
-                android:textColor="@color/deep_grey"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:gravity="right">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_light"
+                    android:gravity="right"
+                    android:lineSpacingExtra="9sp"
+                    android:text="$ 1,800.00"
+                    android:textColor="@color/deep_grey"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
 
-            //퍼센트 이미지 바
+            </LinearLayout>
 
+                // 퍼센트 이미지 바
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:background="@drawable/ic_progress_6" />
 
+                //#2 food
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
                 android:orientation="horizontal">
 
-
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_marginRight="4dp"
                     app:srcCompat="@drawable/ic_food_24px" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:lineSpacingExtra="11sp"
-                    android:text=" Food"
+                    android:text="Food"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
                     android:textStyle="normal" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_medium"
-                    android:gravity="end"
-                    android:lineSpacingExtra="11sp"
-                    android:text="30%"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+                    android:gravity="right">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:lineSpacingExtra="11sp"
+                        android:text="10%"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_light"
-                android:gravity="end"
-                android:lineSpacingExtra="9sp"
-                android:text="$ 1,800.00"
-                android:textColor="@color/deep_grey"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:gravity="right">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_light"
+                    android:gravity="right"
+                    android:lineSpacingExtra="9sp"
+                    android:text="$ 1,800.00"
+                    android:textColor="@color/deep_grey"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
 
             //퍼센트 바
 
@@ -170,8 +199,9 @@
                 android:layout_marginTop="18dp"
                 android:background="@drawable/ic_progress_1" />
 
+            //#3 Leisure/culture
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
                 android:orientation="horizontal">
@@ -180,41 +210,54 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_marginRight="4dp"
                     app:srcCompat="@drawable/ic_tourism_24px" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:lineSpacingExtra="11sp"
-                    android:text=" Leisure/Culture"
+                    android:text="Leisure/Culture"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
                     android:textStyle="normal" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_medium"
-                    android:gravity="end"
-                    android:lineSpacingExtra="11sp"
-                    android:text="11%"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+                    android:gravity="right">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:lineSpacingExtra="11sp"
+                        android:text="20%"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_light"
-                android:gravity="end"
-                android:lineSpacingExtra="9sp"
-                android:text="$ 1,800.00"
-                android:textColor="@color/deep_grey"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:gravity="right">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_light"
+                    android:gravity="right"
+                    android:lineSpacingExtra="9sp"
+                    android:text="$ 1,800.00"
+                    android:textColor="@color/deep_grey"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
 
             //퍼센트 바
 
@@ -224,8 +267,9 @@
                 android:layout_marginTop="18dp"
                 android:background="@drawable/ic_progress_2" />
 
+            //#4 shopping
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="26dp"
                 android:orientation="horizontal">
@@ -234,176 +278,11 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:layout_marginRight="2dp"
+                    android:layout_marginRight="4dp"
                     app:srcCompat="@drawable/ic_shopping_24px" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
-                    android:lineSpacingExtra="11sp"
-                    android:text=" Shopping"
-                    android:textColor="@color/soft_black"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_medium"
-                    android:gravity="end"
-                    android:lineSpacingExtra="11sp"
-                    android:text="11%"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_light"
-                android:gravity="end"
-                android:lineSpacingExtra="9sp"
-                android:text="$ 1,800.00"
-                android:textColor="@color/deep_grey"
-                android:textSize="12sp"
-                android:textStyle="normal" />
-
-            //퍼센트 바
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/ic_progress_1" />
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginRight="2dp"
-                    app:srcCompat="@drawable/ic_bus_24px" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
-                    android:lineSpacingExtra="11sp"
-                    android:text=" Transportation"
-                    android:textColor="@color/soft_black"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_medium"
-                    android:gravity="end"
-                    android:lineSpacingExtra="11sp"
-                    android:text="8%"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_light"
-                android:gravity="end"
-                android:lineSpacingExtra="9sp"
-                android:text="$ 1,800.00"
-                android:textColor="@color/deep_grey"
-                android:textSize="12sp"
-                android:textStyle="normal" />
-
-            //퍼센트 바
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/ic_progress_3" />
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginRight="2dp"
-                    app:srcCompat="@drawable/ic_etc_24px" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
-                    android:lineSpacingExtra="11sp"
-                    android:text=" Etc"
-                    android:textColor="@color/soft_black"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_medium"
-                    android:gravity="end"
-                    android:lineSpacingExtra="11sp"
-                    android:text="1%"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_light"
-                android:gravity="end"
-                android:lineSpacingExtra="9sp"
-                android:text="$ 1,800.00"
-                android:textColor="@color/deep_grey"
-                android:textSize="12sp"
-                android:textStyle="normal" />
-
-            //퍼센트 바
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/ic_progress_2" />
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:orientation="horizontal">
-
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginRight="2dp"
-                    app:srcCompat="@drawable/ic_shopping_24px" />
-
-                <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:lineSpacingExtra="11sp"
@@ -412,35 +291,186 @@
                     android:textSize="14sp"
                     android:textStyle="normal" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_medium"
-                    android:gravity="end"
-                    android:lineSpacingExtra="11sp"
-                    android:text="11%"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="normal" />
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+                    android:gravity="right">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:lineSpacingExtra="11sp"
+                        android:text="10%"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:gravity="right">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_light"
+                    android:gravity="right"
+                    android:lineSpacingExtra="9sp"
+                    android:text="$ 1,800.00"
+                    android:textColor="@color/deep_grey"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+            //퍼센트 바
+            <ImageView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_light"
-                android:gravity="end"
-                android:lineSpacingExtra="9sp"
-                android:text="$ 1,800.00"
-                android:textColor="@color/deep_grey"
-                android:textSize="12sp"
-                android:textStyle="normal" />
+                android:layout_marginTop="18dp"
+                android:background="@drawable/ic_progress_1" />
+
+                //#5 transport
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="4dp"
+                    app:srcCompat="@drawable/ic_bus_24px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:lineSpacingExtra="11sp"
+                    android:text="Transportation"
+                    android:textColor="@color/soft_black"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+                    android:gravity="right">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:lineSpacingExtra="11sp"
+                        android:text="45%"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:gravity="right">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_light"
+                    android:gravity="right"
+                    android:lineSpacingExtra="9sp"
+                    android:text="$ 1,800.00"
+                    android:textColor="@color/deep_grey"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+            //퍼센트 바
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/ic_progress_3" />
+
+                //#6 etc
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginRight="4dp"
+                    app:srcCompat="@drawable/ic_etc_24px" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:lineSpacingExtra="11sp"
+                    android:text="Etc"
+                    android:textColor="@color/soft_black"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+                    android:gravity="right">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:lineSpacingExtra="11sp"
+                        android:text="30%"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:gravity="right">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_light"
+                    android:gravity="right"
+                    android:lineSpacingExtra="9sp"
+                    android:text="$ 1,800.00"
+                    android:textColor="@color/deep_grey"
+                    android:textSize="12sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
+
+            //퍼센트 바
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:layout_marginBottom="120dp"
-                android:background="@drawable/ic_progress_1" />
+                android:background="@drawable/ic_progress_2"
+                android:layout_marginBottom="120dp"/>
 
         </LinearLayout>
 
