@@ -57,6 +57,7 @@ public class TravelTitleSet extends AppCompatActivity {
         }
     }
 
+    /*
     public void returnToBack() {
         title = Edittext_title.getText().toString();
         if (title == null) {
@@ -64,14 +65,11 @@ public class TravelTitleSet extends AppCompatActivity {
         } else
             Log.d("memo", title);
 
-
         Intent intent = new Intent();
-
         setResult(RESULT_OK, intent);
         finish();
     }
-
-
+    */
 
     //Main Empty
     public void onButtonClick(View view1){
@@ -89,6 +87,5 @@ public class TravelTitleSet extends AppCompatActivity {
         startActivity(intent);
         overridePendingTransition(0, 0);
     }
-
-     */
+    */
 }

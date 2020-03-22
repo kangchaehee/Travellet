@@ -3,6 +3,9 @@ package com.example.example;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -22,12 +25,16 @@ public class TravelBudgetShow extends AppCompatActivity {
         btn_middle = (Button) findViewById(R.id.btn_middle);
         btn_luxurious = (Button) findViewById(R.id.btn_luxurious);
 
+        final Drawable[] compoundDrawables=btn_frugal.getCompoundDrawables();
+
         btn_frugal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!frugalState){
                     frugalState = true;
                     btn_frugal.setBackgroundResource(R.drawable.border_blue);
+                    Drawable drawableLeft=compoundDrawables[0].mutate();
+                    drawableLeft.setColorFilter(new PorterDuffColorFilter(getColor(R.color.blue), PorterDuff.Mode.SRC_IN));
 
                     middleState = false;
                     btn_middle.setBackgroundResource(R.drawable.border_12r_grey);

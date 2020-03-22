@@ -39,10 +39,8 @@ public class TravelLodgingSet extends AppCompatActivity {
                     btn_hotel.setBackgroundResource(R.drawable.border_blue);
                     //btn_hotel.setCompoundDrawablesWithIntrinsicBounds(null,null, getResources().getDrawable(R.drawable.ic_lodging_selected),null);
 
-                    //To Change drawableLeft color to BLUE programmatically
-
                     Drawable drawableLeft=compoundDrawables[0].mutate();
-                    drawableLeft.setColorFilter(new PorterDuffColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN));
+                    drawableLeft.setColorFilter(new PorterDuffColorFilter(getColor(R.color.blue), PorterDuff.Mode.SRC_IN));
 
                     condoState = false;
                     btn_condo.setBackgroundResource(R.drawable.border_12r_grey);
@@ -67,6 +65,7 @@ public class TravelLodgingSet extends AppCompatActivity {
                     condoState = true;
                     btn_condo.setBackgroundResource(R.drawable.border_blue);
                     //btn_condo.setTextColor(getResources().getColor(R.color.white, getTheme()));
+
 
                     hotelState = false;
                     btn_hotel.setBackgroundResource(R.drawable.border_12r_grey);
