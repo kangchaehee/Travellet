@@ -96,7 +96,6 @@ public class TravelCalendar extends AppCompatActivity implements RadioGroup.OnCh
             case R.id.rb_single:
                 calendarView.setSelectionType(SelectionType.SINGLE);
                 break;
-
             case R.id.rb_multiple:
                 calendarView.setSelectionType(SelectionType.MULTIPLE);
                 break;
@@ -113,7 +112,6 @@ public class TravelCalendar extends AppCompatActivity implements RadioGroup.OnCh
                  */
         }
     }
-
 
         //preference set
     public void onButtonClick(View view1){

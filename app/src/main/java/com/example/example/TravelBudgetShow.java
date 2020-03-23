@@ -36,6 +36,7 @@ public class TravelBudgetShow extends AppCompatActivity {
                     Drawable drawableLeft=compoundDrawables[0].mutate();
                     drawableLeft.setColorFilter(new PorterDuffColorFilter(getColor(R.color.blue), PorterDuff.Mode.SRC_IN));
 
+
                     middleState = false;
                     btn_middle.setBackgroundResource(R.drawable.border_12r_grey);
 
