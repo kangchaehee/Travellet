@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -8,367 +7,367 @@
     android:layout_height="wrap_content"
     android:background="@color/white">
 
-    <LinearLayout
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/btn_back"
+        android:background="@drawable/ic_back"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"
+        android:onClick="onClicked"
+        android:stateListAnimator="@null"/>
+
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-        <ImageButton
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:id="@+id/btn_back"
-            android:background="@drawable/ic_back"
-            android:layout_marginTop="24dp"
-            android:layout_marginLeft="16dp"
-            android:onClick="onClicked"
-            android:stateListAnimator="@null"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="28dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp">
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="28sp"
-                app:fontFamily="@font/roboto_medium"
-                android:textStyle="normal"
-                android:textColor="@color/black"
-                android:lineSpacingExtra="35sp"
-                android:text="Register"
-                />
-
-            <ImageView
-                android:id="@+id/selfie"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/circle"
-                android:layout_alignParentRight="true"/>
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginRight="297dp"
-            android:baselineAligned="false"
-            app:fontFamily="@font/roboto_regular"
-            android:lineSpacingExtra="9sp"
-            android:text="Email"
-            android:textColor="@color/deep_grey"
-            android:textSize="12sp"
-            android:textStyle="normal" />
-
-        <EditText
-            android:id="@+id/Edittext_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="32dp"
-            app:fontFamily="@font/roboto_light"
-            android:imeOptions="actionDone"
-            android:hint="Please enter your email."
-            android:textColorHint="@color/soft_grey"
-            android:lineSpacingExtra="11sp"
-            android:textColor="@color/soft_black"
-            android:textSize="14sp"
-            android:textStyle="normal"
-            android:background="@null"
-            android:layout_centerVertical="true"
-            android:singleLine="true"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/icon_grey"
-            android:layout_below="@id/Edittext_email"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="8dp"/>
-
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="20dp"
-            app:fontFamily="@font/roboto_regular"
-            android:lineSpacingExtra="9sp"
-            android:textColor="@color/deep_grey"
-            android:textSize="12sp"
-            android:textStyle="normal"
-            android:text="Password"/>
-
-
-        <EditText
-            android:id="@+id/Edittext_pw"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="8dp"
-            android:imeOptions="actionDone"
-            app:fontFamily="@font/roboto_light"
-            android:hint="Please enter your password."
-            android:textColorHint="@color/soft_grey"
-            android:lineSpacingExtra="11sp"
-            android:inputType="textPassword"
-            android:textColor="@color/soft_black"
-            android:textSize="14sp"
-            android:textStyle="normal"
-            android:background="@null"
-            android:layout_centerVertical="true"
-            android:singleLine="true" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/icon_grey"
-            android:layout_below="@id/Edittext_pw"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="8dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="48dp"
-            app:fontFamily="@font/roboto_regular"
-            android:lineSpacingExtra="9sp"
-            android:textColor="@color/deep_grey"
-            android:textSize="12sp"
-            android:textStyle="normal"
-            android:text="Name"/>
-
-        <EditText
-            android:id="@+id/Edittext_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="8dp"
-            android:imeOptions="actionDone"
-            app:fontFamily="@font/roboto_light"
-            android:hint="Please enter a name to use."
-            android:textColorHint="@color/soft_grey"
-            android:lineSpacingExtra="11sp"
-            android:textColor="@color/soft_black"
-            android:textSize="14sp"
-            android:textStyle="normal"
-            android:background="@null"
-            android:layout_centerVertical="true"
-            android:singleLine="true"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/icon_grey"
-            android:layout_below="@id/Edittext_name"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginTop="8dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="8dp"
-            app:fontFamily="@font/roboto_regular"
-            android:lineSpacingExtra="9sp"
-            android:textColor="@color/deep_grey"
-            android:textSize="12sp"
-            android:textStyle="normal"
-            android:text="Sex"/>
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_female"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="16dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="28dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="28sp"
+                    app:fontFamily="@font/roboto_medium"
+                    android:textStyle="normal"
+                    android:textColor="@color/black"
+                    android:lineSpacingExtra="35sp"
+                    android:text="Register"
+                    />
+
+                <ImageView
+                    android:id="@+id/selfie"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/circle"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="297dp"
+                android:baselineAligned="false"
+                app:fontFamily="@font/roboto_regular"
+                android:lineSpacingExtra="9sp"
+                android:text="Email"
+                android:textColor="@color/deep_grey"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <EditText
+                android:id="@+id/Edittext_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="32dp"
+                app:fontFamily="@font/roboto_light"
+                android:imeOptions="actionDone"
+                android:hint="Please enter your email."
+                android:textColorHint="@color/soft_grey"
+                android:lineSpacingExtra="11sp"
+                android:textColor="@color/soft_black"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                android:background="@null"
+                android:layout_centerVertical="true"
+                android:singleLine="true"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/icon_grey"
+                android:layout_below="@id/Edittext_email"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="8dp"/>
+
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="20dp"
+                app:fontFamily="@font/roboto_regular"
+                android:lineSpacingExtra="9sp"
+                android:textColor="@color/deep_grey"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                android:text="Password"/>
+
+
+            <EditText
+                android:id="@+id/Edittext_pw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="8dp"
+                android:imeOptions="actionDone"
+                app:fontFamily="@font/roboto_light"
+                android:hint="Please enter your password."
+                android:textColorHint="@color/soft_grey"
+                android:lineSpacingExtra="11sp"
+                android:inputType="textPassword"
+                android:textColor="@color/soft_black"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                android:background="@null"
+                android:layout_centerVertical="true"
+                android:singleLine="true" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/icon_grey"
+                android:layout_below="@id/Edittext_pw"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="48dp"
+                app:fontFamily="@font/roboto_regular"
+                android:lineSpacingExtra="9sp"
+                android:textColor="@color/deep_grey"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                android:text="Name"/>
+
+            <EditText
+                android:id="@+id/Edittext_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="8dp"
+                android:imeOptions="actionDone"
+                app:fontFamily="@font/roboto_light"
+                android:hint="Please enter a name to use."
+                android:textColorHint="@color/soft_grey"
+                android:lineSpacingExtra="11sp"
+                android:textColor="@color/soft_black"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                android:background="@null"
+                android:layout_centerVertical="true"
+                android:singleLine="true"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/icon_grey"
+                android:layout_below="@id/Edittext_name"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="8dp"
-                android:background="@drawable/button"
-                android:onClick="onButtonClick"
-                android:textSize="14sp"
                 app:fontFamily="@font/roboto_regular"
+                android:lineSpacingExtra="9sp"
+                android:textColor="@color/deep_grey"
+                android:textSize="12sp"
                 android:textStyle="normal"
-                android:textColor="@color/blue"
-                android:lineSpacingExtra="11sp"
-                android:text="Female"
-                android:textAllCaps="false"
-                android:layout_weight="1"
-                android:stateListAnimator="@null"/>
+                android:text="Sex"/>
 
-
-            <Button
-                android:id="@+id/btn_male"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="32dp"
-                android:background="@drawable/button"
-                android:textSize="14sp"
-                android:onClick="onClicked"
-                app:fontFamily="@font/roboto_regular"
-                android:textStyle="normal"
-                android:textColor="@color/blue"
-                android:lineSpacingExtra="11sp"
-                android:text="Male"
-                android:textAllCaps="false"
-                android:layout_weight="1"
-                android:stateListAnimator="@null" />
-
-        </LinearLayout>
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="32dp"
-            app:fontFamily="@font/roboto_regular"
-            android:lineSpacingExtra="9sp"
-            android:textColor="@color/deep_grey"
-            android:textSize="12sp"
-            android:textStyle="normal"
-            android:text="Age"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:id="@+id/age"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"
-                android:layout_marginLeft="28dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginRight="32dp"
-                />
+                android:orientation="horizontal">
 
-        </RelativeLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bar"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginLeft="32dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="32dp"
-            app:fontFamily="@font/roboto_regular"
-            android:lineSpacingExtra="9sp"
-            android:textColor="@color/deep_grey"
-            android:textSize="12sp"
-            android:textStyle="normal"
-            android:text="Country"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:id="@+id/country"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="28dp"
-                android:layout_marginTop="8dp"
-                android:spinnerMode="dropdown"
-                android:layout_marginRight="32dp"/>
+                <Button
+                    android:id="@+id/btn_female"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/button"
+                    android:onClick="onButtonClick"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/blue"
+                    android:lineSpacingExtra="11sp"
+                    android:text="Female"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"
+                    android:stateListAnimator="@null"/>
 
 
-        </RelativeLayout>
+                <Button
+                    android:id="@+id/btn_male"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="32dp"
+                    android:background="@drawable/button"
+                    android:textSize="14sp"
+                    android:onClick="onClicked"
+                    app:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/blue"
+                    android:lineSpacingExtra="11sp"
+                    android:text="Male"
+                    android:textAllCaps="false"
+                    android:layout_weight="1"
+                    android:stateListAnimator="@null" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bar"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="32dp"
-            android:layout_marginLeft="32dp"/>
-
-
-
-        <Button
-            android:id="@+id/btn_register"
-            android:onClick="onClick"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="56dp"
-            android:layout_marginRight="32dp"
-            android:background="@drawable/border_24r_blue"
-            app:fontFamily="@font/roboto_medium"
-            android:lineSpacingExtra="7sp"
-            android:textColor="@color/blue"
-            android:textSize="14sp"
-            android:textStyle="normal"
-            android:textAllCaps="false"
-            android:text="Register"
-            android:gravity="center"
-            android:stateListAnimator="@null"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:layout_gravity="center">
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="32dp"
                 app:fontFamily="@font/roboto_regular"
                 android:lineSpacingExtra="9sp"
-                android:textColor="@color/soft_grey"
+                android:textColor="@color/deep_grey"
                 android:textSize="12sp"
                 android:textStyle="normal"
-                android:text="Already have an account?"/>
+                android:text="Age"/>
 
-            <Button
-                android:id="@+id/btn_signin"
-                android:onClick="onButtonClick"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:spinnerMode="dropdown"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="32dp"
+                    />
+
+            </RelativeLayout>
+
+            <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:textSize="12sp"
+                android:background="@drawable/bar"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginLeft="32dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="32dp"
                 app:fontFamily="@font/roboto_regular"
-                android:textStyle="normal"
-                android:textColor="@color/blue"
                 android:lineSpacingExtra="9sp"
-                android:text="Sign In"
+                android:textColor="@color/deep_grey"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                android:text="Country"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Spinner
+                    android:id="@+id/country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="8dp"
+                    android:spinnerMode="dropdown"
+                    android:layout_marginRight="32dp"/>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bar"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginLeft="32dp"/>
+
+            <Button
+                android:id="@+id/btn_register"
+                android:onClick="onClick"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="56dp"
+                android:layout_marginRight="32dp"
+                android:background="@drawable/border_24r_blue"
+                app:fontFamily="@font/roboto_medium"
+                android:lineSpacingExtra="7sp"
+                android:textColor="@color/blue"
+                android:textSize="14sp"
+                android:textStyle="normal"
                 android:textAllCaps="false"
-                android:stateListAnimator="@null"
-                />
+                android:text="Register"
+                android:gravity="center"
+                android:stateListAnimator="@null"/>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fontFamily="@font/roboto_regular"
+                    android:lineSpacingExtra="9sp"
+                    android:textColor="@color/soft_grey"
+                    android:textSize="12sp"
+                    android:textStyle="normal"
+                    android:text="Already have an account?"/>
+
+                <Button
+                    android:id="@+id/btn_signin"
+                    android:onClick="onButtonClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:textSize="12sp"
+                    app:fontFamily="@font/roboto_regular"
+                    android:textStyle="normal"
+                    android:textColor="@color/blue"
+                    android:lineSpacingExtra="9sp"
+                    android:text="Sign In"
+                    android:textAllCaps="false"
+                    android:stateListAnimator="@null"
+                    />
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
-</ScrollView>
-
+    </ScrollView>
+</LinearLayout>
 

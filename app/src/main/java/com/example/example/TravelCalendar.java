@@ -1,39 +1,29 @@
 package com.example.example;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-
 import androidx.annotation.IdRes;
 import androidx.annotation.Nullable;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.View;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
-
 import androidx.recyclerview.widget.OrientationHelper;
-
 import android.view.MenuItem;
+import android.widget.RadioGroup;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
 import com.applikeysolutions.cosmocalendar.utils.SelectionType;
 import com.applikeysolutions.cosmocalendar.view.CalendarView;
-
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
-//
-
-public class TravelCalendar extends AppCompatActivity {
+public class TravelCalendar extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener{
 
     private CalendarView calendarView;
 
@@ -48,8 +38,10 @@ public class TravelCalendar extends AppCompatActivity {
     }
 
     private void initViews() {
+
         calendarView = (CalendarView) findViewById(R.id.calendar_view);
         calendarView.setCalendarOrientation(OrientationHelper.HORIZONTAL);
+        ((RadioGroup) findViewById(R.id.rg_selection_type)).setOnCheckedChangeListener((RadioGroup.OnCheckedChangeListener) this);
     }
 
     @Override
@@ -78,9 +70,11 @@ public class TravelCalendar extends AppCompatActivity {
                     final int month = calendar.get(Calendar.MONTH);
                     final int year = calendar.get(Calendar.YEAR);
                     String week = new SimpleDateFormat("EE").format(calendar.getTime());
-                    String day_full = year + "년 "+ (month+1)  + "월 " + day + "일 " + week + "요일";
+                    String day_full = week +"day" + ". " + (month+1) + ". " + day + ". " + year;
+                    //String day_full = year + "년 "+ (month+1)  + "월 " + day + "일 " + week + "요일";
                     result += (day_full + "\n");
                 }
+                    //토스트 메세지 -> 없애장
                 Toast.makeText(TravelCalendar.this, result, Toast.LENGTH_LONG).show();
                 return true;
 
@@ -91,10 +85,37 @@ public class TravelCalendar extends AppCompatActivity {
 
     private void clearSelectionsMenuClick() {
         calendarView.clearSelections();
-
     }
 
-    //preference set
+
+    public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+        clearSelectionsMenuClick();
+        switch (checkedId) {
+
+            /*
+            case R.id.rb_single:
+                calendarView.setSelectionType(SelectionType.SINGLE);
+                break;
+
+            case R.id.rb_multiple:
+                calendarView.setSelectionType(SelectionType.MULTIPLE);
+                break;
+             */
+
+            case R.id.rb_range:
+                calendarView.setSelectionType(SelectionType.RANGE);
+                break;
+
+                /*
+            case R.id.rb_none:
+                calendarView.setSelectionType(SelectionType.NONE);
+                break;
+                 */
+        }
+    }
+
+
+        //preference set
     public void onButtonClick(View view1){
 
         Intent intent = new Intent(this, TravelPreferenceSet.class);
@@ -102,7 +123,7 @@ public class TravelCalendar extends AppCompatActivity {
         overridePendingTransition(0, 0);
     }
 
-    // Budget show
+        // Budget show
     public void onClick(View view){
 
         Intent intent = new Intent(this, TravelBudgetShow.class);

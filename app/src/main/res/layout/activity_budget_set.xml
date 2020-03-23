@@ -61,9 +61,10 @@
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_light"
+                android:textColorHint="@color/soft_grey"
                 android:hint="Please enter your initial budget."
                 android:lineSpacingExtra="11sp"
-                android:textColor="@color/soft_grey"
+                android:textColor="@color/soft_black"
                 android:textSize="14sp"
                 android:textStyle="normal"
                 android:layout_centerVertical="true"
@@ -104,10 +105,7 @@
 
     </LinearLayout>
 
-
-
-    //슬라이드 바 만들기.
-
+        //슬라이드바
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
