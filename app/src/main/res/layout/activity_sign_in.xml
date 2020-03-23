@@ -71,12 +71,14 @@
             android:inputType="textEmailAddress"
             android:letterSpacing="0.03"
             android:lineSpacingExtra="11sp"
-            android:textColor="@color/soft_grey"
+            android:textColorHint="@color/soft_grey"
+            android:textColor="@color/soft_black"
             android:textSize="14sp"
             android:textStyle="normal"
             android:background="@null"
             android:layout_centerVertical="true"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:imeOptions="actionDone"/>
 
         <View
             android:layout_width="match_parent"
@@ -112,14 +114,17 @@
             android:layout_marginRight="32dp"
             app:fontFamily="@font/roboto_light"
             android:hint="Please enter your password."
+            android:textColorHint="@color/soft_grey"
             android:letterSpacing="0.03"
+            android:inputType="textPassword"
             android:lineSpacingExtra="11sp"
-            android:textColor="@color/soft_grey"
+            android:textColor="@color/soft_black"
             android:textSize="14sp"
             android:textStyle="normal"
             android:background="@null"
             android:layout_centerVertical="true"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:imeOptions="actionDone" />
 
         <View
             android:id="@+id/underbar"

@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.AdapterView;
@@ -27,12 +28,14 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class RegisterActivity extends AppCompatActivity {
 
     Button btn_female, btn_male, btn_register;
-    boolean femaleState=false, maleState=false, registerState=false;
+    boolean femaleState=false, maleState=false;
 
     private Spinner spinner;
     private Spinner spinner2;
@@ -40,6 +43,8 @@ public class RegisterActivity extends AppCompatActivity {
     private final int GET_GALLERY_IMAGE = 200;
     private ImageView selfie;
 
+    EditText Edittext_email, Edittext_pw, Edittext_name;
+    String email, password, name;
 
     //private static final int PICK_FROM_CAMERA;
     //private static final int PICK_FROM_ALBUM;
@@ -48,6 +53,10 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        Edittext_email = (EditText) findViewById(R.id.Edittext_email);
+        Edittext_pw = (EditText) findViewById(R.id.Edittext_pw);
+        Edittext_name = (EditText) findViewById(R.id.Edittext_name);
 
         Spinner spinner = findViewById(R.id.country);
         Spinner spinner2 = findViewById(R.id.age);
@@ -74,8 +83,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         btn_female = (Button) findViewById(R.id.btn_female);
         btn_male = (Button) findViewById(R.id.btn_male);
-        btn_register = (Button) findViewById(R.id.btn_register);
-
 
         btn_female.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,9 +118,7 @@ public class RegisterActivity extends AppCompatActivity {
                     femaleState = false;
                     btn_female.setBackgroundResource(R.drawable.border_24r_blue);
                     btn_female.setTextColor(getResources().getColor(R.color.blue, getTheme()));
-
                 }
-
                 else {
                     maleState = false;
                     btn_male.setBackgroundResource(R.drawable.border_24r_blue);
@@ -129,6 +134,47 @@ public class RegisterActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent. setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 startActivityForResult(intent, GET_GALLERY_IMAGE);
+            }
+        });
+
+            // 아이디 이메일 양식인지 확인
+        Edittext_email = (EditText) findViewById(R.id.Edittext_email);
+
+        Edittext_email.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    Pattern p = Pattern.compile("^[a-zA-X0-9]@[a-zA-Z0-9].[a-zA-Z0-9]");
+                    Matcher m = p.matcher((Edittext_email).getText().toString());
+
+                    if ( !m.matches()){
+
+                        Toast.makeText(RegisterActivity.this,"Please enter in email format.",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+        });
+
+        btn_register = (Button) findViewById(R.id.btn_register);
+        btn_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = Edittext_email.getText().toString();
+                String password = Edittext_pw.getText().toString();
+                String name = Edittext_name.getText().toString();
+                if(email.length() == 0 || password.length() == 0 | name.length() == 0){
+                    Edittext_email.setHintTextColor(getColor(R.color.coral_red));
+                    Edittext_pw.setHintTextColor(getColor(R.color.coral_red));
+                    Edittext_name.setHintTextColor(getColor(R.color.coral_red));
+
+                }else{
+
+                    Intent intent = new Intent(RegisterActivity.this, SignIn.class);
+                    startActivity(intent);
+                    overridePendingTransition(0, 0);
+                }
+
             }
         });
     }
@@ -149,7 +195,7 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-            ((TextView)view).setTextColor(getResources().getColor(R.color.soft_grey));
+            ((TextView)view).setTextColor(getResources().getColor(R.color.soft_black));
 
             ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.soft_grey));
             ((TextView) parent.getChildAt(0)).setTextSize(14);
@@ -195,13 +241,13 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+    /*
         //signin 으로
     public void onClick(View view){
 
         Intent intent = new Intent(this, SignIn.class);
         startActivity(intent);
-    }
-
+    } */
 
         //signin 으로
     public void onButtonClick(View v){
@@ -209,6 +255,5 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-
 
 }

@@ -43,6 +43,7 @@ public class TravelTitleSet extends AppCompatActivity {
 
     }
 
+    /*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
@@ -55,19 +56,6 @@ public class TravelTitleSet extends AppCompatActivity {
                 Edittext_title.setText(title);
             }
         }
-    }
-
-    /*
-    public void returnToBack() {
-        title = Edittext_title.getText().toString();
-        if (title == null) {
-            Log.d("null", "null");
-        } else
-            Log.d("memo", title);
-
-        Intent intent = new Intent();
-        setResult(RESULT_OK, intent);
-        finish();
     }
     */
 
