@@ -26,6 +26,7 @@ import androidx.core.graphics.drawable.DrawableCompat;
 public class PlanInitialActivity extends AppCompatActivity {
     // github test
     Button addButton, placeSearch;
+    Button withFriends;
 
     ImageView calculation;
 
@@ -72,6 +73,14 @@ public class PlanInitialActivity extends AppCompatActivity {
             }
         });
 
+        withFriends = (Button) findViewById(R.id.withFriends);
+        withFriends.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), WithFriendsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         oDialog = new DeleteDialog(this);
 
