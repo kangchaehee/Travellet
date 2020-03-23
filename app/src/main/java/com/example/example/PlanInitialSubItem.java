@@ -9,13 +9,16 @@ public class PlanInitialSubItem extends AppCompatActivity {
 
     String placeTime, placeName, placeMemo, transBudgetText, transportText;
     int transport, placeType;
+    double x, y;
 
-    public PlanInitialSubItem(String placeTime, String placeName, String placeMemo, int transport, int placeType) {
+    public PlanInitialSubItem(String placeTime, String placeName, String placeMemo, int transport, int placeType, double x, double y) {
         this.placeTime = placeTime;
         this.placeName = placeName;
         this.placeMemo = placeMemo;
         this.transport = transport;
         this.placeType = placeType;
+        this.x = x;
+        this.y = y;
     }
 
 
@@ -55,6 +58,22 @@ public class PlanInitialSubItem extends AppCompatActivity {
 
     public void setPlaceType(int placeType) {
         this.placeType = placeType;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
     }
 
     @Override

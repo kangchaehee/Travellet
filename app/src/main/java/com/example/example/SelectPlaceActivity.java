@@ -45,6 +45,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
     ImageButton back;
 
     int placeID[] = new int[5];
+    double mapx, mapy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +118,8 @@ public class SelectPlaceActivity extends AppCompatActivity {
             PlaceSelectItemView view = new PlaceSelectItemView(getApplicationContext());
             PlaceSelectItem item = items.get(position);
             final String selectTitle = item.getTitle();
+            final double selectX = item.getMapx();
+            final double selectY = item.getMapy();
             view.setTitle(item.getTitle());
             view.setAddress(item.getAddress());
             view.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +127,8 @@ public class SelectPlaceActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent=new Intent();
                     intent.putExtra("selectTitle", selectTitle);
+                    intent.putExtra("selectX", selectX);
+                    intent.putExtra("selectY", selectY);
                     setResult(RESULT_OK, intent);
                     finish();
                 }
@@ -189,6 +194,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Document doc) {
             String title = "", address = "";
+            double mapx=0.0, mapy=0.0;
             NodeList nodeList = doc.getElementsByTagName("item");
 
             for (int i = 0; i < nodeList.getLength(); i++) {
@@ -227,8 +233,16 @@ public class SelectPlaceActivity extends AppCompatActivity {
                     NodeList addressNode = element.getElementsByTagName("addr1");
                     address = addressNode.item(0).getChildNodes().item(0).getNodeValue();
                 }
+                if (!nodeList.item(0).getNodeName().equals("mapx")) {
+                    NodeList xNode = element.getElementsByTagName("mapx");
+                    mapx = Integer.parseInt(xNode.item(0).getChildNodes().item(0).getNodeValue());
+                }
+                if (!nodeList.item(0).getNodeName().equals("mapy")) {
+                    NodeList yNode = element.getElementsByTagName("mapy");
+                    mapy = Integer.parseInt(yNode.item(0).getChildNodes().item(0).getNodeValue());
+                }
 
-                adapter.addItem(new PlaceSelectItem(title, address));
+                adapter.addItem(new PlaceSelectItem(title, address, mapx, mapy));
             }
             listView.setAdapter(adapter);
         }

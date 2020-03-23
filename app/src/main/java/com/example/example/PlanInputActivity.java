@@ -17,6 +17,7 @@ import android.widget.TimePicker;
 public class PlanInputActivity extends AppCompatActivity {
 
     int hour, min, category=1;
+    double x, y;
     String place;
     String memo="null";
 
@@ -142,6 +143,8 @@ public class PlanInputActivity extends AppCompatActivity {
         if(requestCode == 103){
             if(intent != null){
                 place = intent.getStringExtra("selectTitle");
+                x = intent.getDoubleExtra("selectX", 0);
+                y = intent.getDoubleExtra("selectY", 0);
                 selectTitleText.setTextColor(getColor(R.color.soft_black));
                 selectTitleText.setText(place);
             }
@@ -195,6 +198,8 @@ public class PlanInputActivity extends AppCompatActivity {
         intent.putExtra("hour", hour);
         intent.putExtra("min", min);
         intent.putExtra("type", category);
+        intent.putExtra("x", x);
+        intent.putExtra("y", y);
 
         setResult(RESULT_OK, intent);
         finish();
