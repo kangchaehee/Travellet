@@ -12,101 +12,101 @@ import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class TravelLodgingSet extends AppCompatActivity {
 
     Handler handler = new Handler();
 
-    Button btn_hotel, btn_condo, btn_hostel;
-    boolean hotelState=false, condoState=false, hostelState=false;
+    boolean linear1State=false, linear2State=false, linear3State=false;
+
+    private View linear1;
+    private View linear2;
+    private View linear3;
+
+    ImageView lodging1, lodging2, lodging3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_lodging_set);
 
-        btn_hotel = (Button) findViewById(R.id.btn_hotel);
-        btn_condo = (Button) findViewById(R.id.btn_condo);
-        btn_hostel = (Button) findViewById(R.id.btn_hostel);
+        linear1 = (View) findViewById(R.id.linear1);
+        linear2 = (View) findViewById(R.id.linear2);
+        linear3 = (View) findViewById(R.id.linear3);
 
-        final Drawable[] compoundDrawables=btn_hotel.getCompoundDrawables();
+        lodging1 = (ImageView) findViewById(R.id.lodging1);
+        lodging2 = (ImageView) findViewById(R.id.lodging2);
+        lodging3 = (ImageView) findViewById(R.id.lodging3);
 
-        btn_hotel.setOnClickListener(new View.OnClickListener() {
+        linear1.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
-                if(!hotelState){
-                    hotelState = true;
-                    btn_hotel.setBackgroundResource(R.drawable.border_blue);
-                    //btn_hotel.setCompoundDrawablesWithIntrinsicBounds(null,null, getResources().getDrawable(R.drawable.ic_lodging_selected),null);
+            public void onClick(View v1) {
 
-                    Drawable drawableLeft=compoundDrawables[0].mutate();
-                    drawableLeft.setColorFilter(new PorterDuffColorFilter(getColor(R.color.blue), PorterDuff.Mode.SRC_IN));
+                if(!linear1State){
+                    linear1State = true;
+                    linear1.setBackgroundResource(R.drawable.border_blue);
+                    lodging1.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
-                    condoState = false;
-                    btn_condo.setBackgroundResource(R.drawable.border_12r_grey);
+                    linear2State = false;
+                    linear2.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    hostelState = false;
-                    btn_hostel.setBackgroundResource(R.drawable.border_12r_grey);
-
+                    linear3State = false;
+                    linear3.setBackgroundResource(R.drawable.border_12r_grey);
                 }
 
                 else {
-                    hotelState = false;
-                    btn_hotel.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_hotel.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear1State = false;
+                    linear1.setBackgroundResource(R.drawable.border_12r_grey);
+                    lodging1.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    //budget1.setBackgroundResource(R.color.soft_grey);
                 }
             }
         });
 
-        btn_condo.setOnClickListener(new View.OnClickListener() {
+        linear2.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
-                if(!condoState){
-                    condoState = true;
-                    btn_condo.setBackgroundResource(R.drawable.border_blue);
-                    //btn_condo.setTextColor(getResources().getColor(R.color.white, getTheme()));
+            public void onClick(View v2) {
+                if(!linear2State){
+                    linear2State = true;
+                    linear2.setBackgroundResource(R.drawable.border_blue);
+                    lodging2.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
+                    linear1State = false;
+                    linear1.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    hotelState = false;
-                    btn_hotel.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_hotel.setTextColor(getResources().getColor(R.color.blue, getTheme()));
-
-                    hostelState = false;
-                    btn_hostel.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_hostel.setTextColor(getResources().getColor(R.color.blue, getTheme()));
-
+                    linear3State = false;
+                    linear3.setBackgroundResource(R.drawable.border_12r_grey);
                 }
 
                 else {
-                    condoState = false;
-                    btn_condo.setBackgroundResource(R.drawable.button_background_border);
-                    //btn_condo.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear2State = false;
+                    linear2.setBackgroundResource(R.drawable.border_12r_grey);
+                    lodging2.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+
                 }
             }
         });
 
-        btn_hostel.setOnClickListener(new View.OnClickListener() {
+        linear3.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
-                if(!hostelState){
-                    hostelState = true;
-                    btn_hostel.setBackgroundResource(R.drawable.border_blue);
-                    //btn_hostel.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+            public void onClick(View v3) {
+                if(!linear3State){
+                    linear3State = true;
+                    linear3.setBackgroundResource(R.drawable.border_blue);
+                    lodging3.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
-                    condoState = false;
-                    btn_condo.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_condo.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear1State = false;
+                    linear1.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    hotelState = false;
-                    btn_hotel.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_hotel.setTextColor(getResources().getColor(R.color.blue, getTheme()));
-
+                    linear2State = false;
+                    linear2.setBackgroundResource(R.drawable.border_12r_grey);
                 }
 
                 else {
-                    hostelState = false;
-                    btn_hostel.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_hostel.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear3State = false;
+                    linear3.setBackgroundResource(R.drawable.border_12r_grey);
+                    lodging3.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
                 }
             }
         });

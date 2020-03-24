@@ -22,7 +22,6 @@ public class TravelBudgetShow extends AppCompatActivity {
 
     Handler handler = new Handler();
 
-    //Button btn_frugal, btn_middle, btn_luxurious;
     boolean linear1State=false, linear2State=false, linear3State=false;
 
     private View linear1;
