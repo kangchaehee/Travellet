@@ -46,6 +46,8 @@ public class TravelLodgingSet extends AppCompatActivity {
                 if(!linear1State){
                     linear1State = true;
                     linear1.setBackgroundResource(R.drawable.border_blue);
+                    lodging2.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    lodging3.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
                     lodging1.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
                     linear2State = false;
@@ -53,13 +55,13 @@ public class TravelLodgingSet extends AppCompatActivity {
 
                     linear3State = false;
                     linear3.setBackgroundResource(R.drawable.border_12r_grey);
+
                 }
 
                 else {
                     linear1State = false;
                     linear1.setBackgroundResource(R.drawable.border_12r_grey);
                     lodging1.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
-                    //budget1.setBackgroundResource(R.color.soft_grey);
                 }
             }
         });
@@ -70,6 +72,8 @@ public class TravelLodgingSet extends AppCompatActivity {
                 if(!linear2State){
                     linear2State = true;
                     linear2.setBackgroundResource(R.drawable.border_blue);
+                    lodging1.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    lodging3.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
                     lodging2.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
                     linear1State = false;
@@ -77,6 +81,7 @@ public class TravelLodgingSet extends AppCompatActivity {
 
                     linear3State = false;
                     linear3.setBackgroundResource(R.drawable.border_12r_grey);
+
                 }
 
                 else {
@@ -94,6 +99,8 @@ public class TravelLodgingSet extends AppCompatActivity {
                 if(!linear3State){
                     linear3State = true;
                     linear3.setBackgroundResource(R.drawable.border_blue);
+                    lodging1.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    lodging2.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
                     lodging3.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
                     linear1State = false;

@@ -163,6 +163,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="32dp"
                 android:layout_marginLeft="32dp"
+                android:layout_marginBottom="66dp"
                 android:clickable="true"
                 android:background="@drawable/border_12r_grey">
 

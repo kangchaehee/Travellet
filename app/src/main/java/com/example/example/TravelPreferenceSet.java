@@ -3,263 +3,272 @@ package com.example.example;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class TravelPreferenceSet extends AppCompatActivity {
 
     Handler handler = new Handler();
 
-    Button btn_shopping, btn_food, btn_rest, btn_leisure, btn_history, btn_nature;
-    boolean shoppingState=false, foodState=false, restState=false, leisureState=false, historyState=false, natureState=false;
+    boolean linear1State=false, linear2State=false, linear3State=false, linear4State=false, linear5State=false, linear6State=false;
+
+    private View linear1;
+    private View linear2;
+    private View linear3;
+    private View linear4;
+    private View linear5;
+    private View linear6;
+
+    ImageView shopping, food, rest, leisure, history, nature;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_preference_set);
 
-        btn_shopping = (Button) findViewById(R.id.btn_shopping);
-        btn_food = (Button) findViewById(R.id.btn_food);
-        btn_rest = (Button) findViewById(R.id.btn_rest);
-        btn_leisure = (Button) findViewById(R.id.btn_leisure);
-        btn_history = (Button) findViewById(R.id.btn_history);
-        btn_nature = (Button) findViewById(R.id.btn_nature);
+        linear1 = (View) findViewById(R.id.linear1);
+        linear2 = (View) findViewById(R.id.linear2);
+        linear3 = (View) findViewById(R.id.linear3);
+        linear4 = (View) findViewById(R.id.linear4);
+        linear5 = (View) findViewById(R.id.linear5);
+        linear6 = (View) findViewById(R.id.linear6);
 
+        shopping = (ImageView) findViewById(R.id.shopping);
+        food = (ImageView) findViewById(R.id.food);
+        rest = (ImageView) findViewById(R.id.rest);
+        leisure = (ImageView) findViewById(R.id.leisure);
+        history = (ImageView) findViewById(R.id.history);
+        nature = (ImageView) findViewById(R.id.nature);
 
         //쇼핑
-        btn_shopping.setOnClickListener(new View.OnClickListener() {
+        linear1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!shoppingState){
-                    shoppingState = true;
-                    btn_shopping.setBackgroundResource(R.drawable.border_blue);
-                    //btn_shopping.setTextColor(getResources().getColor(R.color.white, getTheme()));
 
-                    foodState = false;
-                    btn_food.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_food.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                if(!linear1State){
+                    linear1State = true;
+                    linear1.setBackgroundResource(R.drawable.border_blue);
+                    food.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    rest.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    leisure.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    history.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    nature.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    shopping.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
-                    restState = false;
-                    btn_rest.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_rest.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear2State = false;
+                    linear2.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    leisureState = false;
-                    btn_leisure.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_leisure.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear3State = false;
+                    linear3.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    historyState = false;
-                    btn_history.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_history.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear4State = false;
+                    linear4.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    natureState = false;
-                    btn_nature.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_nature.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear5State = false;
+                    linear5.setBackgroundResource(R.drawable.border_12r_grey);
+
+                    linear6State = false;
+                    linear6.setBackgroundResource(R.drawable.border_12r_grey);
 
                 }
 
                 else {
-                    shoppingState = false;
-                    btn_shopping.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_shopping.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear1State = false;
+                    linear1.setBackgroundResource(R.drawable.border_12r_grey);
+                    shopping.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
                 }
             }
         });
 
-        //음식
-        btn_food.setOnClickListener(new View.OnClickListener() {
+        linear2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!foodState){
-                    foodState = true;
-                    btn_food.setBackgroundResource(R.drawable.border_blue);
-                    //btn_shopping.setTextColor(getResources().getColor(R.color.white, getTheme()));
+                if(!linear2State){
+                    linear2State = true;
+                    linear2.setBackgroundResource(R.drawable.border_blue);
+                    shopping.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    rest.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    leisure.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    history.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    nature.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    food.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
-                    shoppingState = false;
-                    btn_shopping.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_food.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear1State = false;
+                    linear1.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    restState = false;
-                    btn_rest.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_rest.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear3State = false;
+                    linear3.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    leisureState = false;
-                    btn_leisure.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_leisure.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear4State = false;
+                    linear4.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    historyState = false;
-                    btn_history.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_history.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear5State = false;
+                    linear5.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    natureState = false;
-                    btn_nature.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_nature.setTextColor(getResources().getColor(R.color.blue, getTheme()));
-
+                    linear6State = false;
+                    linear6.setBackgroundResource(R.drawable.border_12r_grey);
                 }
 
                 else {
-                    foodState = false;
-                    btn_food.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_shopping.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear2State = false;
+                    linear2.setBackgroundResource(R.drawable.border_12r_grey);
+                    food.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+
                 }
             }
         });
 
-        //휴식
-        btn_rest.setOnClickListener(new View.OnClickListener() {
+        linear3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!restState){
-                    restState = true;
-                    btn_rest.setBackgroundResource(R.drawable.border_blue);
-                    //btn_rest.setTextColor(getResources().getColor(R.color.white, getTheme()));
+                if(!linear3State){
+                    linear3State = true;
+                    linear3.setBackgroundResource(R.drawable.border_blue);
+                    shopping.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    food.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    leisure.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    history.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    nature.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    rest.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
-                    shoppingState = false;
-                    btn_shopping.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_shopping.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear1State = false;
+                    linear1.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    foodState = false;
-                    btn_food.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_food.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear2State = false;
+                    linear2.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    leisureState = false;
-                    btn_leisure.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_leisure.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear4State = false;
+                    linear4.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    historyState = false;
-                    btn_history.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_history.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear5State = false;
+                    linear5.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    natureState = false;
-                    btn_nature.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_nature.setTextColor(getResources().getColor(R.color.blue, getTheme()));
-
+                    linear6State = false;
+                    linear6.setBackgroundResource(R.drawable.border_12r_grey);
                 }
 
                 else {
-                    restState = false;
-                    btn_rest.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_shopping.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear3State = false;
+                    linear3.setBackgroundResource(R.drawable.border_12r_grey);
+                    rest.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
                 }
             }
         });
 
-
-        //레져
-        btn_leisure.setOnClickListener(new View.OnClickListener() {
+        linear4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!leisureState){
-                    leisureState = true;
-                    btn_leisure.setBackgroundResource(R.drawable.border_blue);
-                    //btn_leisure.setTextColor(getResources().getColor(R.color.white, getTheme()));
+                if(!linear4State){
+                    linear4State = true;
+                    linear4.setBackgroundResource(R.drawable.border_blue);
+                    shopping.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    food.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    rest.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    history.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    nature.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    leisure.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
-                    shoppingState = false;
-                    btn_shopping.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_shopping.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear1State = false;
+                    linear1.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    foodState = false;
-                    btn_food.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_food.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear2State = false;
+                    linear2.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    restState = false;
-                    btn_rest.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_rest.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear3State = false;
+                    linear3.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    historyState = false;
-                    btn_history.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_history.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear5State = false;
+                    linear5.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    natureState = false;
-                    btn_nature.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_nature.setTextColor(getResources().getColor(R.color.blue, getTheme()));
-
+                    linear6State = false;
+                    linear6.setBackgroundResource(R.drawable.border_12r_grey);
                 }
 
                 else {
-                    leisureState = false;
-                    btn_leisure.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_shopping.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear4State = false;
+                    linear4.setBackgroundResource(R.drawable.border_12r_grey);
+                    leisure.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
                 }
             }
         });
 
-        //역사
-        btn_history.setOnClickListener(new View.OnClickListener() {
+        linear5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!historyState){
-                    historyState = true;
-                    btn_history.setBackgroundResource(R.drawable.border_blue);
-                    //btn_history.setTextColor(getResources().getColor(R.color.white, getTheme()));
+                if(!linear5State){
+                    linear5State = true;
+                    linear5.setBackgroundResource(R.drawable.border_blue);
+                    shopping.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    food.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    rest.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    leisure.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    nature.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    history.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
-                    shoppingState = false;
-                    btn_shopping.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_shopping.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear1State = false;
+                    linear1.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    foodState = false;
-                    btn_food.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_food.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear2State = false;
+                    linear2.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    restState = false;
-                    btn_rest.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_leisure.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear3State = false;
+                    linear3.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    leisureState = false;
-                    btn_leisure.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_history.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear4State = false;
+                    linear4.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    natureState = false;
-                    btn_nature.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_nature.setTextColor(getResources().getColor(R.color.blue, getTheme()));
-
+                    linear6State = false;
+                    linear6.setBackgroundResource(R.drawable.border_12r_grey);
                 }
 
                 else {
-                    historyState = false;
-                    btn_history.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_shopping.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear5State = false;
+                    linear5.setBackgroundResource(R.drawable.border_12r_grey);
+                    history.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
                 }
             }
         });
 
-        //자연
-        btn_nature.setOnClickListener(new View.OnClickListener() {
+        linear6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!natureState){
-                    natureState = true;
-                    btn_nature.setBackgroundResource(R.drawable.border_blue);
-                    //btn_history.setTextColor(getResources().getColor(R.color.white, getTheme()));
+                if(!linear6State){
+                    linear6State = true;
+                    linear6.setBackgroundResource(R.drawable.border_blue);
+                    shopping.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    food.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    rest.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    leisure.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    history.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    nature.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
-                    shoppingState = false;
-                    btn_shopping.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_shopping.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear1State = false;
+                    linear1.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    foodState = false;
-                    btn_food.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_food.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear2State = false;
+                    linear2.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    restState = false;
-                    btn_rest.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_leisure.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear3State = false;
+                    linear3.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    historyState = false;
-                    btn_history.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_history.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear4State = false;
+                    linear4.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    leisureState = false;
-                    btn_leisure.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_nature.setTextColor(getResources().getColor(R.color.blue, getTheme()));
-
+                    linear5State = false;
+                    linear5.setBackgroundResource(R.drawable.border_12r_grey);
                 }
 
                 else {
-                    natureState = false;
-                    btn_nature.setBackgroundResource(R.drawable.border_12r_grey);
-                    //btn_shopping.setTextColor(getResources().getColor(R.color.blue, getTheme()));
+                    linear6State = false;
+                    linear6.setBackgroundResource(R.drawable.border_12r_grey);
+                    nature.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
                 }
+
             }
         });
     }

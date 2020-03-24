@@ -50,6 +50,8 @@ public class TravelBudgetShow extends AppCompatActivity {
                 if(!linear1State){
                     linear1State = true;
                     linear1.setBackgroundResource(R.drawable.border_blue);
+                    budget2.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    budget3.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
                     budget1.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
                     linear2State = false;
@@ -63,7 +65,7 @@ public class TravelBudgetShow extends AppCompatActivity {
                     linear1State = false;
                     linear1.setBackgroundResource(R.drawable.border_12r_grey);
                     budget1.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
-                    //budget1.setBackgroundResource(R.color.soft_grey);
+
                 }
             }
         });
@@ -74,6 +76,8 @@ public class TravelBudgetShow extends AppCompatActivity {
                 if(!linear2State){
                     linear2State = true;
                     linear2.setBackgroundResource(R.drawable.border_blue);
+                    budget1.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    budget3.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
                     budget2.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
                     linear1State = false;
@@ -98,6 +102,8 @@ public class TravelBudgetShow extends AppCompatActivity {
                 if(!linear3State){
                     linear3State = true;
                     linear3.setBackgroundResource(R.drawable.border_blue);
+                    budget1.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    budget2.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
                     budget3.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
                     linear1State = false;
