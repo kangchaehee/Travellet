@@ -115,9 +115,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }*/
 
-
-
-
     //travel title set
     public void onClick(View view1){
 
