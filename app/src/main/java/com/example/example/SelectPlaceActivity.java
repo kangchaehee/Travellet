@@ -44,7 +44,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
     TextView textView;
     ImageButton back;
 
-    int placeID[] = new int[5];
+    int placeID[] = new int[10];
     double mapx, mapy;
 
     @Override
@@ -79,8 +79,9 @@ public class SelectPlaceActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String keyword = editText.getText().toString();
-
+                Log.d("keyword: ", keyword);
                 items.clear();
+                Log.d("clear complete", keyword);
                 getPlaceListData(keyword);
             }
         });
@@ -157,6 +158,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
 
             ConnectivityManager conManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo netInfo = conManager.getActiveNetworkInfo();
+            Log.d("url: ", urlBuilder.toString());
 
             if (netInfo != null && netInfo.isConnected()) {
                 new DownloadXml().execute(url.toString());
@@ -217,7 +219,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
                         for(int j=0; j<placeDup.length; j++){
                             placeDup[j] = placeID[j];
                         }
-                        placeID = new int[placeID.length*2];
+                        placeID = new int[placeID.length+10];
                         for(int j=0; j<placeDup.length; j++){
                             placeID[j] = placeDup[j];
                         }
@@ -235,16 +237,20 @@ public class SelectPlaceActivity extends AppCompatActivity {
                 }
                 if (!nodeList.item(0).getNodeName().equals("mapx")) {
                     NodeList xNode = element.getElementsByTagName("mapx");
-                    mapx = Integer.parseInt(xNode.item(0).getChildNodes().item(0).getNodeValue());
+                    if(xNode.item(0) !=null){
+                        mapx = Double.parseDouble(xNode.item(0).getChildNodes().item(0).getNodeValue());
+                    }
                 }
                 if (!nodeList.item(0).getNodeName().equals("mapy")) {
                     NodeList yNode = element.getElementsByTagName("mapy");
-                    mapy = Integer.parseInt(yNode.item(0).getChildNodes().item(0).getNodeValue());
-                }
+                    if(yNode.item(0) !=null){
+                        mapy = Double.parseDouble(yNode.item(0).getChildNodes().item(0).getNodeValue());
+                    }                  }
 
                 adapter.addItem(new PlaceSelectItem(title, address, mapx, mapy));
             }
             listView.setAdapter(adapter);
+            Log.d("good", "listView.setAdapter(adapter);");
         }
 
     }

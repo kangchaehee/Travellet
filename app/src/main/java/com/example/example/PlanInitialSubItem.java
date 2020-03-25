@@ -6,10 +6,9 @@ import android.os.Bundle;
 
 public class PlanInitialSubItem extends AppCompatActivity {
 
-
-    String placeTime, placeName, placeMemo, transBudgetText, transportText;
+    String placeTime, placeName, placeMemo, transBudgetText;
     int transport, placeType;
-    double x, y;
+    double x, y, transBudget = 0;;
 
     public PlanInitialSubItem(String placeTime, String placeName, String placeMemo, int transport, int placeType, double x, double y) {
         this.placeTime = placeTime;
@@ -19,6 +18,7 @@ public class PlanInitialSubItem extends AppCompatActivity {
         this.placeType = placeType;
         this.x = x;
         this.y = y;
+
     }
 
 
@@ -74,6 +74,14 @@ public class PlanInitialSubItem extends AppCompatActivity {
 
     public void setY(double y) {
         this.y = y;
+    }
+
+    public double getTransBudget() {
+        return transBudget;
+    }
+
+    public void setTransBudget(double transBudget) {
+        this.transBudget = transBudget;
     }
 
     @Override

@@ -36,6 +36,9 @@ public class PlanInitialSubItemView extends LinearLayout {
         placeTime = (TextView) findViewById(R.id.place_time);
         placeName = (TextView) findViewById(R.id.placeName);
         placeMemo = (TextView) findViewById(R.id.placeMemo);
+        transportIc = (ImageView) findViewById(R.id.transport_ic);
+        transBudgetText = (TextView) findViewById(R.id.TransBudgetText);
+        transportText = (TextView) findViewById(R.id.transportText);
 
     }
 
@@ -49,6 +52,16 @@ public class PlanInitialSubItemView extends LinearLayout {
 
     public void setPlaceMemo(String memo) {
         this.placeMemo.setText(memo);
+    }
+
+    public void setTransportIc(int transport) {this.transportIc.setBackgroundResource(transport);}
+
+    public void setTransportText(String transport){
+        this.transportText.setText(transport);
+    }
+
+    public void setTransBudgetText(String budget){
+        this.transBudgetText.setText(budget);
     }
 
 

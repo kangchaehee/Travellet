@@ -386,32 +386,24 @@
 
     </RelativeLayout>
 
-    <ScrollView
-        android:id="@+id/scroll"
+    <ListView
+        android:id="@+id/con"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/relative1"
-        android:layout_alignParentBottom="true">
+        android:layout_above="@+id/addButton"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="20dp"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:orientation="vertical" />
 
-        <RelativeLayout
-            android:id="@+id/relative2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/scroll">
-
-            <ListView
-                android:id="@+id/con"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="32dp"
-                android:divider="@null"
-                android:dividerHeight="0dp"
-                android:orientation="vertical"></ListView>
-
-        </RelativeLayout>
-    </ScrollView>
 
     <Button
+        style="?android:attr/borderlessButtonStyle"
         android:id="@+id/addButton"
         android:layout_width="match_parent"
         android:layout_height="48dp"
