@@ -18,6 +18,7 @@ public class PlanInitialSubItem extends AppCompatActivity {
         this.placeType = placeType;
         this.x = x;
         this.y = y;
+
     }
 
 

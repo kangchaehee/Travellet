@@ -1,135 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@color/white">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/linear1"
+        android:orientation="horizontal"
+        android:background="@drawable/border_12r_grey">
 
         <ImageView
-            android:id="@+id/ic_place"
+            android:id="@+id/lodging1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="21dp"
-            android:background="@drawable/ic_place_24px"/>
-
-        <ImageView
-            android:layout_width="2dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="12dp"
-            android:layout_below="@id/ic_place"
-            android:id="@+id/line"/>
-
-        <TextView
-            android:id="@+id/place_time"
-            android:layout_toRightOf="@id/ic_place"
-            android:layout_marginLeft="4dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="21dp"
-            android:text="AM 10:00"
-            android:textColor="@color/soft_black"
-            android:textSize="14sp"
-            android:fontFamily="@font/roboto_medium"/>
-
-        <ImageButton
-            android:id="@+id/deleteButton"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_delete_point"/>
-
+            android:layout_gravity="center_vertical|left"
+            android:layout_marginLeft="16dp"
+            android:src="@drawable/ic_lodging_24px"
+            />
         <LinearLayout
-            android:id="@+id/place_linear"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/line"
-            android:layout_below="@id/place_time"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/border"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginLeft="8dp"
+            android:layout_gravity="center_vertical|left">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:id="@+id/placeName"
+                android:text="Lodging"
+                android:textSize="14sp"
+                android:layout_marginBottom="4dp"
+                android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/soft_black"
-                android:text="Lotte Hotel"
-                android:textSize="16sp"
-                android:fontFamily="@font/roboto_medium"/>
+                android:lineSpacingExtra="11sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/placeMemo"
+                android:text="Lotte Hotel"
+                android:fontFamily="@font/roboto_light"
+                android:textStyle="normal"
                 android:textSize="12sp"
                 android:textColor="@color/deep_grey"
-                android:fontFamily="@font/roboto_light"
-                android:layout_marginTop="8dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginRight="24dp"
-                android:layout_marginBottom="16dp"/>
+                android:lineSpacingExtra="9sp"/>
+
         </LinearLayout>
+    </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/place_linear"
-            android:layout_toRightOf="@+id/line">
-
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/transport_ic"
-                android:background="@drawable/ic_walk_24px"
-                android:layout_marginLeft="4dp"
-                android:layout_margin="12dp"/>
-
-            <TextView
-                android:id="@+id/transportText"
-                android:layout_toRightOf="@id/transport_ic"
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/deep_grey"
-                android:textSize="14sp"
-                android:text="Walk"
-                android:fontFamily="@font/roboto_regular"/>
-
-            <ImageView
-                android:layout_marginLeft="8dp"
-                android:background="@drawable/ic_budget"
-                android:id="@+id/transportBudget"
-                android:layout_toRightOf="@id/transportText"
-                android:layout_width="48dp"
-                android:layout_height="48dp"/>
-
-            <TextView
-                android:id="@+id/TransBudgetText"
-                android:layout_toRightOf="@id/transportBudget"
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/deep_grey"
-                android:textSize="14sp"
-                android:text="$00.00"
-                android:fontFamily="@font/roboto_regular"/>
-
-            <ImageButton
-                android:layout_alignParentRight="true"
-                android:id="@+id/transportAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_add_circle_24px"
-                android:layout_margin="12dp"/>
-        </RelativeLayout>
-    </RelativeLayout>
 
 </LinearLayout>
