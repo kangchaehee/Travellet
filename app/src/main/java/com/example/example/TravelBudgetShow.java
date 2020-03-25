@@ -1,99 +1,128 @@
 package com.example.example;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.drawable.DrawableCompat;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Layout;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class TravelBudgetShow extends AppCompatActivity {
+
     Handler handler = new Handler();
 
-    Button btn_frugal, btn_middle, btn_luxurious;
-    boolean frugalState=false, middleState=false, luxuriousState=false;
+    boolean linear1State=false, linear2State=false, linear3State=false;
+
+    private View linear1;
+    private View linear2;
+    private View linear3;
+
+    ImageView budget1, budget2, budget3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_budget_show);
-        btn_frugal = (Button) findViewById(R.id.btn_frugal);
-        btn_middle = (Button) findViewById(R.id.btn_middle);
-        btn_luxurious = (Button) findViewById(R.id.btn_luxurious);
 
-        final Drawable[] compoundDrawables=btn_frugal.getCompoundDrawables();
+        linear1 = (View) findViewById(R.id.linear1);
+        linear2 = (View) findViewById(R.id.linear2);
+        linear3 = (View) findViewById(R.id.linear3);
 
-        btn_frugal.setOnClickListener(new View.OnClickListener() {
+        budget1 = (ImageView) findViewById(R.id.budget1);
+        budget2 = (ImageView) findViewById(R.id.budget2);
+        budget3 = (ImageView) findViewById(R.id.budget3);
+
+        linear1.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
-                if(!frugalState){
-                    frugalState = true;
-                    btn_frugal.setBackgroundResource(R.drawable.border_blue);
-                    Drawable drawableLeft=compoundDrawables[0].mutate();
-                    drawableLeft.setColorFilter(new PorterDuffColorFilter(getColor(R.color.blue), PorterDuff.Mode.SRC_IN));
+            public void onClick(View v1) {
 
-                    middleState = false;
-                    btn_middle.setBackgroundResource(R.drawable.border_12r_grey);
+                if(!linear1State){
+                    linear1State = true;
+                    linear1.setBackgroundResource(R.drawable.border_blue);
+                    budget2.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    budget3.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    budget1.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
-                    luxuriousState = false;
-                    btn_luxurious.setBackgroundResource(R.drawable.border_12r_grey);
+                    linear2State = false;
+                    linear2.setBackgroundResource(R.drawable.border_12r_grey);
+
+                    linear3State = false;
+                    linear3.setBackgroundResource(R.drawable.border_12r_grey);
                 }
 
                 else {
-                    frugalState = false;
-                    btn_frugal.setBackgroundResource(R.drawable.border_12r_grey);
+                    linear1State = false;
+                    linear1.setBackgroundResource(R.drawable.border_12r_grey);
+                    budget1.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+
                 }
             }
         });
 
-        //중간
-        btn_middle.setOnClickListener(new View.OnClickListener() {
+        linear2.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
-                if(!middleState){
-                    middleState = true;
-                    btn_middle.setBackgroundResource(R.drawable.border_blue);
+            public void onClick(View v2) {
+                if(!linear2State){
+                    linear2State = true;
+                    linear2.setBackgroundResource(R.drawable.border_blue);
+                    budget1.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    budget3.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    budget2.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
-                    frugalState = false;
-                    btn_frugal.setBackgroundResource(R.drawable.border_12r_grey);
+                    linear1State = false;
+                    linear1.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    luxuriousState = false;
-                    btn_luxurious.setBackgroundResource(R.drawable.border_12r_grey);
+                    linear3State = false;
+                    linear3.setBackgroundResource(R.drawable.border_12r_grey);
                 }
 
                 else {
-                    middleState = false;
-                    btn_middle.setBackgroundResource(R.drawable.border_12r_grey);
+                    linear2State = false;
+                    linear2.setBackgroundResource(R.drawable.border_12r_grey);
+                    budget2.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+
                 }
             }
         });
 
-        //럭셔리
-        btn_luxurious.setOnClickListener(new View.OnClickListener() {
+        linear3.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View v) {
-                if(!luxuriousState){
-                    luxuriousState = true;
-                    btn_luxurious.setBackgroundResource(R.drawable.border_blue);
+            public void onClick(View v3) {
+                if(!linear3State){
+                    linear3State = true;
+                    linear3.setBackgroundResource(R.drawable.border_blue);
+                    budget1.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    budget2.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+                    budget3.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
 
-                    frugalState = false;
-                    btn_frugal.setBackgroundResource(R.drawable.border_12r_grey);
+                    linear1State = false;
+                    linear1.setBackgroundResource(R.drawable.border_12r_grey);
 
-                    middleState = false;
-                    btn_middle.setBackgroundResource(R.drawable.border_12r_grey);
+                    linear2State = false;
+                    linear2.setBackgroundResource(R.drawable.border_12r_grey);
                 }
 
                 else {
-                    luxuriousState = false;
-                    btn_luxurious.setBackgroundResource(R.drawable.border_12r_grey);
+                    linear3State = false;
+                    linear3.setBackgroundResource(R.drawable.border_12r_grey);
+                    budget3.setColorFilter(Color.parseColor("#dbdde4"), PorterDuff.Mode.SRC_IN );
+
                 }
             }
         });
     }
+
 
     //calendar
     public void onButtonClick(View view1){

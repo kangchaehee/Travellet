@@ -51,7 +51,7 @@
         android:lineSpacingExtra="11sp"
         android:stateListAnimator="@null"
         android:text="UPCOMING"
-        android:textColor="@color/black"
+        android:textColor="@color/soft_grey"
         android:textSize="14sp"
         android:textStyle="normal" />
 
@@ -111,8 +111,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/grey_bar"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="40dp">
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:id="@+id/container"
@@ -121,14 +120,16 @@
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
             android:orientation="vertical">
-
             <!--
-            <fragment
-                android:id="@+id/fragment"
-                android:name="com.example.example.UpcommingFragement"
+            <ListView
+                android:id="@+id/container"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-            -->
+                android:layout_height="wrap_content"
+                android:divider="@null"
+                android:dividerHeight="0dp"
+                android:orientation="vertical"></ListView>
+-->
+
         </LinearLayout>
 
     </ScrollView>

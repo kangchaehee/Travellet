@@ -9,13 +9,11 @@ import androidx.appcompat.widget.AppCompatButton;
 public class BitmapButton extends AppCompatButton {
     public BitmapButton(Context context) {
         super(context);
-
         init(context);
     }
 
     public BitmapButton(Context context, AttributeSet attrs) {
         super(context, attrs);
-
         init(context);
     }
 
