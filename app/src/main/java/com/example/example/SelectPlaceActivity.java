@@ -245,7 +245,8 @@ public class SelectPlaceActivity extends AppCompatActivity {
                     NodeList yNode = element.getElementsByTagName("mapy");
                     if(yNode.item(0) !=null){
                         mapy = Double.parseDouble(yNode.item(0).getChildNodes().item(0).getNodeValue());
-                    }                  }
+                    }
+                }
 
                 adapter.addItem(new PlaceSelectItem(title, address, mapx, mapy));
             }

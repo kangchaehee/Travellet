@@ -8,7 +8,7 @@ public class PlanInitialSubItem extends AppCompatActivity {
 
     String placeTime, placeName, placeMemo, transBudgetText;
     int transport, placeType;
-    double x, y, transBudget = 0;;
+    double x, y, transBudget = 0;
 
     public PlanInitialSubItem(String placeTime, String placeName, String placeMemo, int transport, int placeType, double x, double y) {
         this.placeTime = placeTime;

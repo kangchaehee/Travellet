@@ -344,7 +344,6 @@ public class PlanInitialActivity extends AppCompatActivity {
                             transportExp[0] = info.getInt("payment");
                             Log.d("json", String.valueOf(info));
                             Log.d("payment : %s", String.valueOf(info.getInt("payment")));
-                            Log.d("transportExp[0] : %s", String.valueOf(transportExp[0]));
                         }
 
                     } catch (JSONException e) {
