@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/coral_red">
+    android:background="@color/white"
+    android:layout_marginTop="22dp">
 
 
     <LinearLayout
@@ -23,7 +24,6 @@
             android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:layout_marginBottom="20dp"
             android:orientation="vertical">
 
             <TextView
@@ -71,5 +71,10 @@
             android:background="@drawable/ic_delete_point" />
 
     </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bar"/>
 
 </LinearLayout>
