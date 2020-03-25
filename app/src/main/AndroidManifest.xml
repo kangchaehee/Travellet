@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WithFriendsActivity"></activity>
+        <activity android:name=".ReportMain"></activity>
+        <activity android:name=".Navigation" />
+        <activity android:name=".WithFriendsActivity" />
         <activity android:name=".TravelAddActivity" />
         <activity android:name=".DeleteDialog" />
         <activity android:name=".PlaceSearchItem" />
@@ -21,7 +23,7 @@
         <activity android:name=".PlaceSearchActivity" />
         <activity android:name=".PlaceDetailActivity" />
         <activity android:name=".PlanInitialSubItemView" />
-        <activity android:name=".PlanInitialActivity"/>
+        <activity android:name=".PlanInitialActivity" />
         <activity android:name=".PlanInitialSubItem" />
         <activity android:name=".PlanInputActivity" />
         <activity android:name=".SelectPlaceActivity" />

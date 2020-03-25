@@ -6,6 +6,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -24,8 +25,10 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
 
 public class PlanInitialActivity extends AppCompatActivity {
-    // github test
+
     Button addButton, placeSearch;
+
+    //ViewGroup viewGroup;
 
     ImageView calculation;
 
@@ -39,10 +42,10 @@ public class PlanInitialActivity extends AppCompatActivity {
     DeleteDialog oDialog;
     TransportDialog tDialog;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_plan_initial);
@@ -74,6 +77,7 @@ public class PlanInitialActivity extends AppCompatActivity {
 
 
         oDialog = new DeleteDialog(this);
+
 
     }
 

@@ -51,7 +51,7 @@
         android:lineSpacingExtra="11sp"
         android:stateListAnimator="@null"
         android:text="UPCOMING"
-        android:textColor="@color/black"
+        android:textColor="@color/soft_grey"
         android:textSize="14sp"
         android:textStyle="normal" />
 
