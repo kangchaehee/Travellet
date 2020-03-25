@@ -315,11 +315,10 @@
             android:layout_alignParentRight="true">
 
             <ImageButton
-                android:id="@+id/list"
+                android:id="@+id/btn_list"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="@drawable/ic_view_list"/>
-
 
         </LinearLayout>
 
