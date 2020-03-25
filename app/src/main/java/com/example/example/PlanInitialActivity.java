@@ -363,6 +363,7 @@ public class PlanInitialActivity extends AppCompatActivity {
             odsayService.requestSearchPubTransPath(String.valueOf(SX), String.valueOf(SY), String.valueOf(EX), String.valueOf(EY), "0", "0", String.valueOf(searchType), onResultCallbackListener);
             //객체 초기화 -> (출발지 x좌표, 출발지 y좌표, 도착지 x좌표, 도착지 y좌표, opt가 뭐였지..., 정렬 기준, 교통 수단)
             Log.d("odSay : ", "odsayService.requestSearchPubTransPath");
+            Log.d("transportExp[0] : %s", String.valueOf(transportExp[0]));
 
         }
 
