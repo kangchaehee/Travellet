@@ -3,10 +3,14 @@ package com.example.example;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,23 +18,28 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 public class ProfileModify extends AppCompatActivity {
 
-    Spinner spinner = findViewById(R.id.country);
-    Spinner spinner2 = findViewById(R.id.age);
+    Spinner spinner;
+    Spinner spinner2;
 
     private final int GET_GALLERY_IMAGE = 200;
     private ImageView selfie;
 
-    EditText Edittext_name = findViewById(R.id.Edittext_name);
+    EditText Edittext_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_modify);
 
-        Spinner spinner = findViewById(R.id.country);
-        Spinner spinner2 = findViewById(R.id.age);
+        Edittext_name = findViewById(R.id.Edittext_name);
+
+        spinner = findViewById(R.id.country);
+        spinner2 = findViewById(R.id.age);
 
         //array_age
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
@@ -49,7 +58,8 @@ public class ProfileModify extends AppCompatActivity {
 
         spinner.setOnItemSelectedListener(new ProfileModify.MyOnItemSelectedListener());
 
-        selfie = (ImageView)findViewById(R.id.selfie);
+        selfie = (ImageView)findViewById(R.id.profile);
+        selfie.setClipToOutline(true);
         selfie.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -68,7 +78,26 @@ public class ProfileModify extends AppCompatActivity {
         if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
             Uri selectedImageUri = data.getData();
-            selfie.setImageURI(selectedImageUri);
+            if (selectedImageUri != null) {
+                try {
+
+                    Bitmap bm = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
+
+                    selfie.setBackground(new ShapeDrawable(new OvalShape()));
+                    selfie.setClipToOutline(true);
+                    selfie.setImageBitmap(bm);
+
+                } catch (FileNotFoundException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+            }
+
+
         }
     }
 
@@ -102,13 +131,11 @@ public class ProfileModify extends AppCompatActivity {
     //}
 
     public void onButtonClick(View view){
-
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
     }
 
     public void onClick(View view){
-
         Intent intent = new Intent(this, Profile.class);
         startActivity(intent);
     }

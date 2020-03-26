@@ -5,11 +5,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,6 +29,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -128,6 +134,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         selfie = (ImageView)findViewById(R.id.selfie);
+        selfie.setClipToOutline(true);
         selfie.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -184,9 +191,22 @@ public class RegisterActivity extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
-
             Uri selectedImageUri = data.getData();
-            selfie.setImageURI(selectedImageUri);
+            if (selectedImageUri != null) {
+                try {
+                    Bitmap bm = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
+
+                    selfie.setBackground(new ShapeDrawable(new OvalShape()));
+                    selfie.setClipToOutline(true);
+                    selfie.setImageBitmap(bm);
+                } catch (FileNotFoundException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
