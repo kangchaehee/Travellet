@@ -302,18 +302,15 @@ public class PlanInitialActivity extends AppCompatActivity {
         }
 
         for(int j=0; j<adapter.getCount()-1; j++){
-            transportExp = returnTransportExp(xList[j], yList[j], xList[j+1], yList[j+1], transportList[j]);
-            Log.d("transportType : ", String.valueOf(transportList[j]));
-            Log.d("transportExp : ", String.valueOf(transportExp));
-            items.get(j).setTransBudget(transportExp);
-            adapter.notifyDataSetChanged();
+            returnTransportExp(j, xList[j], yList[j], xList[j+1], yList[j+1], transportList[j]);
         }
     }
 
-    public double returnTransportExp(double SX, double SY, double EX, double EY, int transport){
+    public void returnTransportExp(int j, double SX, double SY, double EX, double EY, int transport){
         Log.d("x, y : %s", String.valueOf(SX) + String.valueOf(EX));
         int searchType;
         final double[] transportExp = {0};
+        final int x=j;
         if(transport==2 || transport == 3) {
             if (transport == 2)
                 searchType = 2;
@@ -344,6 +341,8 @@ public class PlanInitialActivity extends AppCompatActivity {
                             transportExp[0] = info.getInt("payment");
                             Log.d("json", String.valueOf(info));
                             Log.d("payment : %s", String.valueOf(info.getInt("payment")));
+                            items.get(x).setTransBudget(transportExp[0]);
+                            adapter.notifyDataSetChanged();
                         }
 
                     } catch (JSONException e) {
@@ -351,29 +350,36 @@ public class PlanInitialActivity extends AppCompatActivity {
                     }
                 }
 
+
                 // 호출 실패 시 실행
                 @Override
                 public void onError(int i, String s, API api) {
                     if (api == API.SEARCH_PUB_TRANS_PATH) {
                     }
                 }
+
+
             };
 
             odsayService.requestSearchPubTransPath(String.valueOf(SX), String.valueOf(SY), String.valueOf(EX), String.valueOf(EY), "0", "0", String.valueOf(searchType), onResultCallbackListener);
             //객체 초기화 -> (출발지 x좌표, 출발지 y좌표, 도착지 x좌표, 도착지 y좌표, opt가 뭐였지..., 정렬 기준, 교통 수단)
             Log.d("odSay : ", "odsayService.requestSearchPubTransPath");
-            Log.d("transportExp[0] : %s", String.valueOf(transportExp[0]));
 
         }
 
         else if(transport == 4){
             transportExp[0] = taxiFare(SX, SY, EX, EY);
+            items.get(x).setTransBudget(transportExp[0]);
+            adapter.notifyDataSetChanged();
         }
 
-        else
+        else {
             transportExp[0] = 0;
+            items.get(x).setTransBudget(transportExp[0]);
+            adapter.notifyDataSetChanged();
+        }
 
-        return transportExp[0];
+
     }
 
     private double busFare(double SX, double SY, double EX, double EY){

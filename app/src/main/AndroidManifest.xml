@@ -24,7 +24,9 @@
         <activity android:name=".PlaceSearchActivity" />
         <activity android:name=".PlaceDetailActivity" />
         <activity android:name=".PlanInitialSubItemView" />
-        <activity android:name=".PlanInitialActivity" />
+        <activity android:name=".PlanInitialActivity">
+
+        </activity>
         <activity android:name=".PlanInitialSubItem" />
         <activity android:name=".PlanInputActivity" />
         <activity android:name=".SelectPlaceActivity" />
