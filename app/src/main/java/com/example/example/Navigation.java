@@ -1,80 +1,129 @@
 package com.example.example;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.FragmentManager;
 
 public class Navigation extends AppCompatActivity {
+    ImageButton planButton, walletButton, reportButton, profileButton;
+    RelativeLayout bottomBar;
 
-    BottomNavigationView bottomNavigationView;
-
-    PlanInitialActivity fragment1;
-    WalletMain fragment2;
-    ReportMain fragment3;
-    Profile fragment4;
-
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    FragmentTransaction fragmentTransaction;
-
+    @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_navigation);
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        fragmentTransaction = fragmentManager.beginTransaction();
 
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.container, new PlanInitialActivity());
+        transaction.commit();
 
-        //프래그먼트 생성
-        fragment1 = new PlanInitialActivity();
-        fragment2 = new WalletMain();
-        fragment3 = new ReportMain();
-        fragment4 = new Profile();
+        bottomBar = (RelativeLayout) findViewById(R.id.bottomBar);
 
-        /*
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        planButton = (ImageButton) findViewById(R.id.planButton);
+        walletButton = (ImageButton) findViewById(R.id.walletButton);
+        reportButton = (ImageButton) findViewById(R.id.reportButton);
+        profileButton = (ImageButton) findViewById(R.id.profileButton);
 
+        planButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                switch (menuItem.getItemId()){
-
-                    //menu_bottom.xml에서 지정해줬던 아이디 값을 받아와서 각 아이디값마다 다른 이벤트를 발생
-                    case R.id.plan:{
-                        getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment1).commitAllowingStateLoss();
-                        return true;
-                    }
-
-                    case R.id.wallet:{
-                        getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment2).commitAllowingStateLoss();
-                        return true;
-                    }
-
-                    case R.id.report:{
-                        getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment3).commitAllowingStateLoss();
-                        return true;
-
-                    }
-
-                    case R.id.profile:{
-                        getSupportFragmentManager().beginTransaction().replace(R.id.main_layout, fragment4).commitAllowingStateLoss();
-                        return true;
-
-                    }
-
-                    default: return false;
-
-
-                }
+            public void onClick(View v) {
+                goPlan();
+                planButton.setBackgroundResource(R.drawable.ic_plan_bar_selected);
+                walletButton.setBackgroundResource(R.drawable.ic_wallet_bar);
+                reportButton.setBackgroundResource(R.drawable.ic_report_bar);
+                profileButton.setBackgroundResource(R.drawable.ic_profile_bar);
             }
-
         });
 
- */
+        walletButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goWallet();
+                planButton.setBackgroundResource(R.drawable.ic_plan_bar);
+                walletButton.setBackgroundResource(R.drawable.ic_wallet_bar_selected);
+                reportButton.setBackgroundResource(R.drawable.ic_report_bar);
+                profileButton.setBackgroundResource(R.drawable.ic_profile_bar);
+            }
+        });
+
+        reportButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                planButton.setBackgroundResource(R.drawable.ic_plan_bar);
+                walletButton.setBackgroundResource(R.drawable.ic_wallet_bar);
+                reportButton.setBackgroundResource(R.drawable.ic_report_bar_selected);
+                profileButton.setBackgroundResource(R.drawable.ic_profile_bar);
+            }
+        });
+
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goProfile();
+                planButton.setBackgroundResource(R.drawable.ic_plan_bar);
+                walletButton.setBackgroundResource(R.drawable.ic_wallet_bar);
+                reportButton.setBackgroundResource(R.drawable.ic_report_bar);
+                profileButton.setBackgroundResource(R.drawable.ic_profile_bar_selected);
+            }
+        });
+
+    }
+
+    public void goPlan(){
+        Fragment fragment;
+        fragment = new PlanInitialActivity();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    public void goWallet(){
+        Fragment fragment;
+        fragment = new WalletMain();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    /*public void goReport(){
+        Fragment fragment;
+        fragment = new Profile();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }*/
+
+    public void goProfile(){
+        Fragment fragment;
+        fragment = new Profile();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }

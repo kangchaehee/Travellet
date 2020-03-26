@@ -415,6 +415,6 @@
         android:fontFamily="@font/roboto_medium"
         android:text="ADD"
         android:textColor="@color/white"
-        android:textSize="14sp" />
+        android:textSize="14sp"/>
 
 </RelativeLayout>

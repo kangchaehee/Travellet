@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile">
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/textView"
@@ -16,24 +15,13 @@
         android:textColor="@color/black"
         android:textSize="28sp"
         android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="40dp"
         android:text="Hello," />
 
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginRight="32dp"
-        android:background="@drawable/ic_profime_circle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="centerCrop"/>
-
     <TextView
         android:id="@+id/textView2"
+        android:layout_below="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_light"
@@ -42,174 +30,201 @@
         android:textColor="@color/deep_grey"
         android:textSize="16sp"
         android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
         android:layout_marginTop="4dp"
         android:layout_marginLeft="32dp"
         android:text="Kang Chae Hee" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:fontFamily="@font/roboto_medium"
-        android:textStyle="normal"
-        android:textColor="@color/black"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="11sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="32dp"
-        android:text="PROFILE"
-        />
-
     <ImageView
-        android:id="@+id/bar"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@drawable/bar"/>
-    //바에서 60dp
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:fontFamily="@font/roboto_regular"
-        android:textStyle="normal"
-        android:textColor="@color/black"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="11sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bar"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="40dp"
-        android:text="Name"
-        />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_light"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="11sp"
-        android:textColor="@color/deep_grey"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/bar"
-        android:layout_marginLeft="49dp"
-        android:layout_marginTop="60dp"
-        android:hint="Kang Chae Hee" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/bar"
-        android:layout_marginLeft="32dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="38dp"
         android:layout_marginRight="32dp"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"/>
+        android:layout_alignParentRight="true"
+        android:background="@drawable/ic_profime_circle"
+        android:scaleType="centerCrop"/>
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:fontFamily="@font/roboto_regular"
-        android:textStyle="normal"
-        android:textColor="@color/black"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="11sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="40dp"
-        android:text="Age"
-        />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_light"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="11sp"
-        android:textColor="@color/deep_grey"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="16dp"
-        android:text="1998" />
-
-    <ImageView
-        android:id="@+id/imageView2"
+    <RelativeLayout
+        android:id="@+id/rel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/bar"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"/>
+        android:layout_below="@+id/textView2">
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:fontFamily="@font/roboto_regular"
-        android:textStyle="normal"
-        android:textColor="@color/black"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="11sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="40dp"
-        android:text="Country"
-        />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_medium"
+            android:textStyle="normal"
+            android:textColor="@color/black"
+            android:letterSpacing="0.03"
+            android:lineSpacingExtra="11sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="32dp"
+            android:text="PROFILE"
+            />
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_light"
-        android:letterSpacing="0.03"
-        android:lineSpacingExtra="11sp"
-        android:textColor="@color/deep_grey"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        android:layout_marginLeft="37dp"
-        android:layout_marginTop="16dp"
-        android:text="USA" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/icon_grey"
+            android:layout_below="@id/textView3"
+            android:layout_marginTop="16dp"/>
 
-    <ImageView
-        android:id="@+id/imageView3"
+   </RelativeLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/bar"
-        android:layout_marginLeft="32dp"
-        android:layout_marginRight="32dp"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8"/>
+        android:layout_below="@+id/rel"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rel1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textStyle="normal"
+                android:textColor="@color/black"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="11sp"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="40dp"
+                android:text="Name"
+                />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textView4"
+                android:fontFamily="@font/roboto_light"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="11sp"
+                android:textColor="@color/deep_grey"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                android:layout_marginLeft="49dp"
+                android:layout_marginTop="60dp"
+                android:hint="Kang Chae Hee" />
+
+            <ImageView
+                android:layout_below="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/bar"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textStyle="normal"
+                android:textColor="@color/black"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="11sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="40dp"
+                android:text="Age"
+                />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textView6"
+                android:fontFamily="@font/roboto_light"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="11sp"
+                android:textColor="@color/deep_grey"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                android:layout_marginLeft="49dp"
+                android:layout_marginTop="16dp"
+                android:hint="1998" />
+
+
+            <ImageView
+                android:layout_below="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/bar"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rel3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textStyle="normal"
+                android:textColor="@color/black"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="11sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="40dp"
+                android:text="Country"
+                />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textView8"
+                android:fontFamily="@font/roboto_light"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="11sp"
+                android:textColor="@color/deep_grey"
+                android:textSize="14sp"
+                android:textStyle="normal"
+                android:layout_marginLeft="49dp"
+                android:layout_marginTop="16dp"
+                android:hint="USA" />
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_below="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/bar"
+                android:layout_marginLeft="32dp"
+                android:layout_marginRight="32dp"/>
+
+        </RelativeLayout>
+    </LinearLayout>
 
 
     <Button
+        android:layout_alignParentBottom="true"
         android:id="@+id/btn_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -224,13 +239,7 @@
         android:textStyle="normal"
         android:layout_marginRight="32dp"
         android:layout_marginLeft="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Edit"
+       android:text="Edit"
         android:stateListAnimator="@null" />
 
-
-    //밑에 하단 바
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

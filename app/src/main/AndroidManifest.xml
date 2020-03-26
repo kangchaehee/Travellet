@@ -14,7 +14,13 @@
         android:theme="@style/AppTheme">
         <activity android:name=".WalletListSubItem"></activity>
         <activity android:name=".ReportMain" />
-        <activity android:name=".Navigation" />
+        <activity android:name=".Navigation">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".WithFriendsActivity" />
         <activity android:name=".TravelAddActivity" />
         <activity android:name=".DeleteDialog" />
@@ -52,11 +58,7 @@
 
         </activity>
         <activity android:name=".Profile">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".PlanSearch" />
         <activity android:name=".BudgetShow" />

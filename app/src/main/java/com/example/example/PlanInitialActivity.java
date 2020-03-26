@@ -1,5 +1,6 @@
 package com.example.example;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -36,12 +38,14 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.fragment.app.Fragment;
 
-public class PlanInitialActivity extends AppCompatActivity {
+public class PlanInitialActivity extends Fragment {
     // github test
     Button addButton, placeSearch;
     Button withFriends;
@@ -62,35 +66,40 @@ public class PlanInitialActivity extends AppCompatActivity {
     DeleteDialog oDialog;
     TransportDialog tDialog;
 
-
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_plan_initial);
+    public void onDetach() {
+        super.onDetach();
+    }
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_plan_initial, container, false);
         //버전 상향에 따른 네트워크 연결 조정
         if (Build.VERSION.SDK_INT > 9) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
 
-        listView = (ListView) findViewById(R.id.con);
+        listView = (ListView) rootView.findViewById(R.id.con);
         listView.setAdapter(adapter);
 
-        addButton = (Button) findViewById(R.id.addButton);
+        addButton = (Button) rootView.findViewById(R.id.addButton);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PlanInputActivity.class);
+                Intent intent = new Intent(getContext(), PlanInputActivity.class);
                 startActivityForResult(intent, 101);
 
             }
         });
 
-        calculation = (ImageView) findViewById(R.id.calculation);
+        calculation = (ImageView) rootView.findViewById(R.id.calculation);
         calculation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,26 +108,27 @@ public class PlanInitialActivity extends AppCompatActivity {
             }
         });
 
-        placeSearch = (Button) findViewById(R.id.placeSearch);
+        placeSearch = (Button) rootView.findViewById(R.id.placeSearch);
         placeSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PlaceSearchActivity.class);
+                Intent intent = new Intent(getContext(), PlaceSearchActivity.class);
 
                 startActivityForResult(intent, 102);
             }
         });
 
-        withFriends = (Button) findViewById(R.id.withFriends);
+        withFriends = (Button) rootView.findViewById(R.id.withFriends);
         withFriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), WithFriendsActivity.class);
+                Intent intent = new Intent(getContext(), WithFriendsActivity.class);
                 startActivity(intent);
             }
         });
 
-        oDialog = new DeleteDialog(this);
+        oDialog = new DeleteDialog(getContext());
+        return rootView;
 
     }
 
@@ -145,7 +155,7 @@ public class PlanInitialActivity extends AppCompatActivity {
 
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
-            PlanInitialSubItemView view= new PlanInitialSubItemView(getApplicationContext());
+            PlanInitialSubItemView view= new PlanInitialSubItemView(getContext());
             final PlanInitialSubItem item = items.get(position);
             view.setPlaceTime(item.getPlaceTime());
             view.setPlaceName(item.getPlaceName());
@@ -207,7 +217,7 @@ public class PlanInitialActivity extends AppCompatActivity {
             addT.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    tDialog = new TransportDialog(PlanInitialActivity.this);
+                    tDialog = new TransportDialog(getContext());
                     tDialog.callFunction(item.getTransport());
                     tDialog.show();
                     tDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -251,8 +261,10 @@ public class PlanInitialActivity extends AppCompatActivity {
         }
     }
 
+
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
 
         if(requestCode == 101){
@@ -320,7 +332,7 @@ public class PlanInitialActivity extends AppCompatActivity {
             Log.d("searchType : ", String.valueOf(searchType));
 
             // 싱글톤 생성, Key 값을 활용하여 객체 생성
-            ODsayService odsayService = ODsayService.init(getApplicationContext(), "TNRXyW/xqRXnX/zMI8tA2fbn4N+HPUuaIySAow33Qvs");
+            ODsayService odsayService = ODsayService.init(getContext(), "TNRXyW/xqRXnX/zMI8tA2fbn4N+HPUuaIySAow33Qvs");
             // 서버 연결 제한 시간(단위(초), default : 5초)
             odsayService.setReadTimeout(5000);
             // 데이터 획득 제한 시간(단위(초), default : 5초)
