@@ -234,7 +234,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
      */
 
-
     public void onClicked(View view){
         Intent intent = new Intent(this, SignIn.class);
         startActivity(intent);

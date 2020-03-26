@@ -51,7 +51,7 @@
                     android:id="@+id/selfie"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/circle"
+                    android:src="@drawable/ic_profime_circle"
                     android:layout_alignParentRight="true"/>
             </RelativeLayout>
 
