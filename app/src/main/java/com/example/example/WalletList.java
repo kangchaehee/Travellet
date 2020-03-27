@@ -43,8 +43,6 @@ public class WalletList extends AppCompatActivity {
 
             }
         });
-
-
     }
 
 

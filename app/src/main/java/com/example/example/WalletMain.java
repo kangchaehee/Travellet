@@ -2,6 +2,7 @@ package com.example.example;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,6 +29,8 @@ public class WalletMain extends Fragment {
     ListView listView;
     ArrayList<WalletMainItem> items = new ArrayList<WalletMainItem>();
     WalletAdapter adapter = new WalletAdapter();
+
+    ImageButton viewList;
 
     @Override
     public void onAttach(Context context) {
@@ -42,7 +46,15 @@ public class WalletMain extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_wallet_main, container, false);
+        viewList = rootView.findViewById(R.id.viewList);
 
+        viewList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), WalletList.class);
+
+            }
+        });
 
         return rootView;
 
