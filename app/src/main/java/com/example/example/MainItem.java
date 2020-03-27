@@ -3,14 +3,25 @@ package com.example.example;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainItem extends AppCompatActivity {
+    int image;
     String dDay, title, startDay, endDay, period;
 
     public MainItem(String dDay, String title, String startDay, String endDay) {
+        this.image = image;
         this.dDay = dDay;
         this.title = title;
         this.startDay = startDay;
         this.endDay = endDay;
     }
+
+    public int getImage() {
+        return image;
+    }
+
+    public void setImage(int image) {
+        this.image = image;
+    }
+
     public String getdDay() {
         return dDay;
     }

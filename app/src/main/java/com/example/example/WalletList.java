@@ -20,7 +20,7 @@ public class WalletList extends AppCompatActivity {
     ImageButton btn_list;
 
     ListView listView;
-    ArrayList<WalletListSubItem> items = new ArrayList<WalletListSubItem>();
+    static ArrayList<WalletListSubItem> items = new ArrayList<WalletListSubItem>();
     WalletSubAdapter adapter = new WalletSubAdapter();
 
     //TextView transBudget;
@@ -49,6 +49,7 @@ public class WalletList extends AppCompatActivity {
 
 
     class WalletSubAdapter extends BaseAdapter {
+
 
         @Override
         public int getCount() {

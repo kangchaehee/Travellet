@@ -4,8 +4,22 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:layout_marginTop="22dp">
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/t"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:textSize="12sp"
+        android:fontFamily="@font/roboto_light"
+        android:textStyle="normal"
+        android:textColor="@color/deep_grey"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="9sp"
+        android:gravity="center_horizontal"
+        android:text="You haven&apos;t traveled to Korea yet, have you?\nStart now. Plan and Enjoy!"
+        />
 
     <ListView
         android:layout_width="match_parent"

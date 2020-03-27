@@ -12,9 +12,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
@@ -31,9 +34,14 @@ public class ProfileModify extends AppCompatActivity {
 
     EditText Edittext_name;
 
+    ImageButton back;
+    Button save;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_profile_modify);
 
         Edittext_name = findViewById(R.id.Edittext_name);
@@ -69,6 +77,21 @@ public class ProfileModify extends AppCompatActivity {
             }
         });
 
+        back = (ImageButton) findViewById(R.id.btn_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        save = (Button) findViewById(R.id.btn_save);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -94,9 +117,7 @@ public class ProfileModify extends AppCompatActivity {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-
             }
-
 
         }
     }
@@ -130,13 +151,4 @@ public class ProfileModify extends AppCompatActivity {
     //    }
     //}
 
-    public void onButtonClick(View view){
-        Intent intent = new Intent(this, Profile.class);
-        startActivity(intent);
-    }
-
-    public void onClick(View view){
-        Intent intent = new Intent(this, Profile.class);
-        startActivity(intent);
-    }
 }

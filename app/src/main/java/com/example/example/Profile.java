@@ -16,6 +16,8 @@ import android.widget.Button;
 
 public class Profile extends Fragment {
 
+    Button editButton;
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -30,13 +32,21 @@ public class Profile extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_profile, container, false);
+        editButton = (Button)rootView.findViewById(R.id.btn_edit);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ProfileModify.class);
+                startActivity(intent);
+            }
+        });
         return rootView;
 
     }
 
-    public void onClick(View view){
+    /*public void onClick(View view){
 
         Intent intent = new Intent(getContext(), ProfileModify.class);
         startActivity(intent);
-    }
+    }*/
 }

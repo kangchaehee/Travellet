@@ -51,7 +51,7 @@
         android:lineSpacingExtra="11sp"
         android:stateListAnimator="@null"
         android:text="UPCOMING"
-        android:textColor="@color/soft_grey"
+        android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="normal" />
 
@@ -109,25 +109,6 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/grey_bar"
         android:id="@+id/container">
-
-        <TextView
-            android:id="@+id/t"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="54dp"
-            android:textSize="12sp"
-            android:fontFamily="@font/roboto_light"
-            android:textStyle="normal"
-            android:textColor="@color/deep_grey"
-            android:letterSpacing="0.03"
-            android:lineSpacingExtra="9sp"
-            android:gravity="center_horizontal"
-            android:text="You haven&apos;t traveled to Korea yet, have you?\nStart now. Plan and Enjoy!"
-            />
     </FrameLayout>
-
-
-
-
 
 </RelativeLayout>

@@ -2,11 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:background="@color/white">
 
     <HorizontalScrollView
+        android:layout_alignParentTop="true"
         android:id="@+id/horizontal"
         android:layout_width="match_parent"
         android:layout_height="96dp"
@@ -349,21 +348,21 @@
         android:layout_below="@id/relative">
 
         <ImageView
-            android:id="@+id/calculation"
+            android:id="@+id/cost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:background = "@drawable/ic_budget_calculation"/>
+            android:background = "@drawable/ic_cost"/>
 
         <TextView
             android:id="@+id/calculationText"
-            android:layout_toRightOf="@id/calculation"
+            android:layout_toRightOf="@id/cost"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/deep_grey"
             android:textSize="14sp"
-            android:text="calculation"
+            android:text="$ 0.0"
             android:fontFamily="@font/roboto_regular"/>
 
         <ImageView
@@ -381,12 +380,12 @@
             android:layout_height="wrap_content"
             android:textColor="@color/deep_grey"
             android:textSize="14sp"
-            android:text="$00.00"
+            android:text="$ 0.0"
             android:fontFamily="@font/roboto_regular"/>
 
     </RelativeLayout>
 
-    <ListView
+   <ListView
         android:id="@+id/con"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -401,7 +400,6 @@
         android:dividerHeight="0dp"
         android:orientation="vertical" />
 
-
     <Button
         style="?android:attr/borderlessButtonStyle"
         android:id="@+id/addButton"
@@ -415,6 +413,6 @@
         android:fontFamily="@font/roboto_medium"
         android:text="ADD"
         android:textColor="@color/white"
-        android:textSize="14sp" />
+        android:textSize="14sp"/>
 
 </RelativeLayout>

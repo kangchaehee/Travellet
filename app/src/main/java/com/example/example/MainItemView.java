@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainItemView extends LinearLayout {
+    ImageView image;
     TextView dDay, title, period;
 
     public MainItemView(Context context) {
@@ -26,9 +27,14 @@ public class MainItemView extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.activity_main_item, this, true);
 
+        image = (ImageView) findViewById(R.id.seoulImage);
         dDay = (TextView) findViewById(R.id.dDay);
         title = (TextView) findViewById(R.id.title);
         period = (TextView) findViewById(R.id.period);
+    }
+
+    public void setImage(int image){
+        this.image.setImageResource(image);
     }
 
     public void setdDay(String dDay){

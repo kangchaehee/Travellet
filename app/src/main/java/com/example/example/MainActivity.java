@@ -1,6 +1,8 @@
 package com.example.example;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     MainActivityUpcomingFragment fragment1;
     MainActivityPastFragment fragment2;
+    FrameLayout container;
 
     ImageButton up_delete, past_delete;
     Button btn_upcoming, btn_past;
@@ -30,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
     boolean upcomingState=false, pastState=false;
 
 
-    ListView listView;
-
-    TextView t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,60 +43,33 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        //listView = (ListView) findViewById(R.id.listView);
-        //listView.setAdapter(adapter);
-
-
         fragment1 = new MainActivityUpcomingFragment();
         fragment2 = new MainActivityPastFragment();
 
-        t = (TextView) findViewById(R.id.t);
-
+        getSupportFragmentManager().beginTransaction().add(R.id.container, fragment1).commit();
 
         btn_upcoming = (Button) findViewById(R.id.btn_upcoming);
+        btn_past = (Button) findViewById(R.id.btn_past);
+
         btn_upcoming.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v1) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
-                if(!upcomingState){
-                    upcomingState = true;
-                    btn_past.setTextColor(getColor(R.color.soft_grey));
-                    btn_upcoming.setTextColor(getColor(R.color.black));
-
-                    pastState = false;
-                    btn_past.setTextColor(getColor(R.color.soft_grey));
-                }
-                else {
-                    upcomingState = false;
-                    btn_upcoming.setTextColor(getColor(R.color.soft_grey));
-                }
-                t.setVisibility(View.GONE);
+                btn_upcoming.setTextColor(getColor(R.color.black));
+                btn_past.setTextColor(getColor(R.color.soft_grey));
             }
+
         });
 
-        btn_past = (Button) findViewById(R.id.btn_past);
+
         btn_past.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v2) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment2).commit();
-
-                if(!pastState){
-                    pastState = true;
-                    btn_upcoming.setTextColor(getColor(R.color.soft_grey));
-                    btn_past.setTextColor(getColor(R.color.black));
-
-                    upcomingState = false;
-                    btn_upcoming.setTextColor(getColor(R.color.soft_grey));
-                }
-                else {
-                    pastState = false;
-                    btn_past.setTextColor(getColor(R.color.soft_grey));
-                }
-                t.setVisibility(View.GONE);
+                btn_past.setTextColor(getColor(R.color.black));
+                btn_upcoming.setTextColor(getColor(R.color.soft_grey));
             }
         });
-
-        //oDialog = new DeleteDialog(this);
 
     }
     //travel title set

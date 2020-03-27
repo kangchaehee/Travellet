@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ic_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:background="@drawable/ic_place_24px"/>
+
+        <ImageView
+            android:layout_width="2dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="12dp"
+            android:layout_below="@id/ic_place"
+            android:id="@+id/line"/>
+
+        <TextView
+            android:id="@+id/walletTime"
+            android:layout_toRightOf="@id/ic_place"
+            android:layout_marginLeft="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:text="AM 10:00"
+            android:textColor="@color/soft_black"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_medium"/>
+
+        <LinearLayout
+            android:id="@+id/wallet_linear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/line"
+            android:layout_below="@id/walletTime"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/border"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:id="@+id/walletName"
+                android:textColor="@color/soft_black"
+                android:text="Lotte Hotel"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_medium"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/walletMemo"
+                android:textSize="12sp"
+                android:textColor="@color/deep_grey"
+                android:fontFamily="@font/roboto_light"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginBottom="16dp"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/wallet_linear"
+            android:layout_toRightOf="@+id/line">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cost_ic"
+                android:background="@drawable/ic_cost"
+                android:layout_marginLeft="12dp"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/costText"
+                android:layout_toRightOf="@id/cost_ic"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/deep_grey"
+                android:textSize="14sp"
+                android:text="$ 00.00"
+                android:fontFamily="@font/roboto_regular"/>
+
+            <ImageView
+                android:background="@drawable/ic_budget"
+                android:id="@+id/budget_ic"
+                android:layout_toRightOf="@id/costText"
+                android:layout_centerVertical="true"
+                android:layout_width="48dp"
+                android:layout_height="48dp"/>
+
+            <TextView
+                android:id="@+id/budgetText"
+                android:layout_toRightOf="@id/budget_ic"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/deep_grey"
+                android:textSize="14sp"
+                android:text="$ 00.00"
+                android:fontFamily="@font/roboto_regular"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

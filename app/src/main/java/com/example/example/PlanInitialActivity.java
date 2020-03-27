@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.odsay.odsayandroidsdk.API;
 import com.odsay.odsayandroidsdk.ODsayData;
@@ -55,7 +56,6 @@ public class PlanInitialActivity extends Fragment {
     ListView listView;
     ArrayList<PlanInitialSubItem> items = new ArrayList<PlanInitialSubItem>();
     PlanSubAdapter adapter = new PlanSubAdapter();
-    double[] budgetList = new double[5];
 
     String time, name, memo;
     int type;
@@ -63,17 +63,49 @@ public class PlanInitialActivity extends Fragment {
     double transportExp;
     TextView transBudget;
 
+    String[] timeList, titleList, memoList;
+    double[] budgetList;
+
     DeleteDialog oDialog;
     TransportDialog tDialog;
+
+    FragmentCallBack callback;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        if(context instanceof FragmentCallBack){
+            callback = (FragmentCallBack) context;
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        timeList = new String[adapter.getCount()];
+        titleList = new String[adapter.getCount()];
+        memoList = new String[adapter.getCount()];
+        budgetList = new double[adapter.getCount()];
+        for(int i=0; i<adapter.getCount(); i++){
+            timeList[i] = items.get(i).getPlaceTime();
+            titleList[i] = items.get(i).getPlaceName();
+            memoList[i] = items.get(i).getPlaceMemo();
+            budgetList[i] = items.get(i).getTransBudget();
+        }
+
+        if(callback != null){
+            callback.getPlanInfo(adapter.getCount(), timeList, titleList, memoList, budgetList);
+        }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+        if(callback != null){
+            callback = null;
+        }
+
     }
 
     @Nullable
@@ -369,8 +401,6 @@ public class PlanInitialActivity extends Fragment {
                     if (api == API.SEARCH_PUB_TRANS_PATH) {
                     }
                 }
-
-
             };
 
             odsayService.requestSearchPubTransPath(String.valueOf(SX), String.valueOf(SY), String.valueOf(EX), String.valueOf(EY), "0", "0", String.valueOf(searchType), onResultCallbackListener);

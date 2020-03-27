@@ -14,13 +14,19 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.FragmentManager;
 
-public class Navigation extends AppCompatActivity {
+public class Navigation extends AppCompatActivity implements FragmentCallBack{
     ImageButton planButton, walletButton, reportButton, profileButton;
     RelativeLayout bottomBar;
+
+    String time, title, memo;
+    double budget;
+    int size;
+    String[] timeList;
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
@@ -125,5 +131,10 @@ public class Navigation extends AppCompatActivity {
         transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    public void getPlanInfo(int size, String[] time, String[] title, String[] memo, double[] budget){
+        timeList = new String[size];
+
     }
 }

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,8 @@ public class MainActivityUpcomingFragment extends Fragment {
     double[] budgetList = new double[5];
     DeleteDialog oDialog;
 
+    TextView t;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -33,9 +36,8 @@ public class MainActivityUpcomingFragment extends Fragment {
         adapter.notifyDataSetChanged();
         listView.setAdapter(adapter);
 
-        adapter.addItem(new MainItem("D-14", "happy trip", "2020.03.04", "2020.04.01"));
-        adapter.addItem(new MainItem("D-15", "hello", "2020.03.05", "2020.04.02"));
-        adapter.addItem(new MainItem("D-16", "lalala", "2020.03.06", "2020.04.03"));
+        t = (TextView) rootView.findViewById(R.id.t);
+        adapter.addItem(new MainItem("D-10", "happy trip", "2020.01.04", "2020.02.01"));
 
         return rootView;
     }
@@ -49,6 +51,7 @@ public class MainActivityUpcomingFragment extends Fragment {
 
         public void addItem(MainItem item) {
             items.add(item);
+            t.setVisibility(View.GONE);
         }
 
         @Override
@@ -67,7 +70,7 @@ public class MainActivityUpcomingFragment extends Fragment {
             final MainItem item = items.get(position);
             view.setdDay(item.getdDay());
             view.setTitle(item.getTripTitle());
-            view.setPeriod(item.getStartDay()+"-"+item.getEndDay());
+            view.setPeriod(item.getStartDay()+" - "+item.getEndDay());
 
             ImageButton del = (ImageButton) view.findViewById(R.id.up_delete);
             del.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +89,6 @@ public class MainActivityUpcomingFragment extends Fragment {
                             }
                         }
                     });
-
                 }
             });
             return view;

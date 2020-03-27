@@ -24,6 +24,9 @@ public class MainActivityPastFragment extends Fragment {
     MainPlanAdapter adapter = new MainPlanAdapter();
     double[] budgetList = new double[5];
     DeleteDialog oDialog;
+    int[] imageList = {R.drawable.seoul1, R.drawable.seoul2, R.drawable.seoul3, R.drawable.seoul4, R.drawable.seoul5};
+
+    TextView t;
 
     @Nullable
     @Override
@@ -36,6 +39,8 @@ public class MainActivityPastFragment extends Fragment {
         items.clear();
         adapter.notifyDataSetChanged();
         listView.setAdapter(adapter);
+
+        t = (TextView) rootView.findViewById(R.id.t);
 
         adapter.addItem(new MainItem("D+100", "happy trip", "2020.01.04", "2020.02.01"));
         adapter.addItem(new MainItem("D+15", "hello", "2020.01.05", "2020.02.02"));
@@ -54,6 +59,7 @@ public class MainActivityPastFragment extends Fragment {
 
         public void addItem(MainItem item) {
             items.add(item);
+            t.setVisibility(View.GONE);
         }
 
         @Override
@@ -70,6 +76,7 @@ public class MainActivityPastFragment extends Fragment {
         public View getView(final int position, View convertView, ViewGroup parent) {
             MainItemView view= new MainItemView(getContext());
             final MainItem item = items.get(position);
+            view.setImage(imageList[position%5]);
             view.setdDay(item.getdDay());
             view.setTitle(item.getTripTitle());
             view.setPeriod(item.getStartDay()+"-"+item.getEndDay());

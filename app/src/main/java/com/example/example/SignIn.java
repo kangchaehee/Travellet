@@ -91,13 +91,11 @@ public class SignIn extends AppCompatActivity {
         });
 
     }
-    /*
         //sign in 버튼. 누르면 Main Activity로
     public void onClick(View view1) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
     }
-     */
 
         //register 버튼. 누르면 register로
     public void onButtonClick(View view2){
