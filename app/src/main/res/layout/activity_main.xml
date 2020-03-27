@@ -55,7 +55,6 @@
         android:textSize="14sp"
         android:textStyle="normal" />
 
-
     <Button
         android:id="@+id/btn_past"
         android:layout_width="wrap_content"
@@ -72,7 +71,6 @@
         android:textSize="14sp"
         android:textStyle="normal"
         app:fontFamily="@font/roboto_medium" />
-
 
     <Button
         android:id="@+id/btn_add"
@@ -106,33 +104,30 @@
         android:layout_marginEnd="1dp"
         android:src="@drawable/bar" />
 
-
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/grey_bar"
-        android:layout_alignParentStart="true">
+        android:id="@+id/container">
 
-        <LinearLayout
-            android:id="@+id/container"
+        <TextView
+            android:id="@+id/t"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
-            android:orientation="vertical">
-            <!--
-            <ListView
-                android:id="@+id/container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:divider="@null"
-                android:dividerHeight="0dp"
-                android:orientation="vertical"></ListView>
--->
+            android:layout_height="wrap_content"
+            android:layout_marginTop="54dp"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_light"
+            android:textStyle="normal"
+            android:textColor="@color/deep_grey"
+            android:letterSpacing="0.03"
+            android:lineSpacingExtra="9sp"
+            android:gravity="center_horizontal"
+            android:text="You haven&apos;t traveled to Korea yet, have you?\nStart now. Plan and Enjoy!"
+            />
+    </FrameLayout>
 
-        </LinearLayout>
 
-    </ScrollView>
+
 
 
 </RelativeLayout>

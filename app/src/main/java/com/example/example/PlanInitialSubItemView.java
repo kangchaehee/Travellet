@@ -41,7 +41,6 @@ public class PlanInitialSubItemView extends LinearLayout {
         transportText = (TextView) findViewById(R.id.transportText);
 
     }
-
     public void setPlaceTime(String time) {
         this.placeTime.setText(time);
     }

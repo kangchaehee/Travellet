@@ -28,44 +28,34 @@ public class MainActivity extends AppCompatActivity {
     Button btn_upcoming, btn_past;
 
     boolean upcomingState=false, pastState=false;
-/*
-    DeleteDialog oDialog;
+
 
     ListView listView;
-    ArrayList<MainActivitySubItem> items = new ArrayList<MainActivitySubItem>();
-    MainSubAdapter adapter = new MainSubAdapter();
 
-    //ArrayList<PastFragment> items = new ArrayList<PastFragment>();
-    //ArrayList<UpcomingFragment> item = new ArrayList<UpcomingFragment>();
-
- */
+    TextView t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_plan_initial);
 
-        listView = (ListView) findViewById(R.id.container);
-        listView.setAdapter(adapter);
+        //listView = (ListView) findViewById(R.id.listView);
+        //listView.setAdapter(adapter);
 
-         */
 
         fragment1 = new MainActivityUpcomingFragment();
         fragment2 = new MainActivityPastFragment();
 
-        up_delete = (ImageButton) findViewById(R.id.up_delete);
-        past_delete = (ImageButton) findViewById(R.id.past_delete);
+        t = (TextView) findViewById(R.id.t);
+
 
         btn_upcoming = (Button) findViewById(R.id.btn_upcoming);
         btn_upcoming.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v1) {
-
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
                 if(!upcomingState){
                     upcomingState = true;
@@ -79,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     upcomingState = false;
                     btn_upcoming.setTextColor(getColor(R.color.soft_grey));
                 }
+                t.setVisibility(View.GONE);
             }
         });
 
@@ -100,15 +91,13 @@ public class MainActivity extends AppCompatActivity {
                     pastState = false;
                     btn_past.setTextColor(getColor(R.color.soft_grey));
                 }
+                t.setVisibility(View.GONE);
             }
         });
 
         //oDialog = new DeleteDialog(this);
 
     }
-
-
-
     //travel title set
     public void onClick(View view1){
 
