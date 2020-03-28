@@ -22,6 +22,7 @@ import androidx.fragment.app.FragmentManager;
 public class Navigation extends AppCompatActivity implements FragmentCallBack{
     ImageButton planButton, walletButton, reportButton, profileButton;
     RelativeLayout bottomBar;
+    FrameLayout container;
 
     String time, title, memo;
     double budget;
@@ -90,6 +91,8 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
                 profileButton.setBackgroundResource(R.drawable.ic_profile_bar_selected);
             }
         });
+
+        container = findViewById(R.id.container);
 
     }
 

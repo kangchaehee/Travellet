@@ -166,9 +166,6 @@ public class WalletInput extends AppCompatActivity {
     //sign in
     public void onClick(View view1){
 
-
-        Intent intent = new Intent(this, WalletList.class);
-        startActivity(intent);
     }
 
 }

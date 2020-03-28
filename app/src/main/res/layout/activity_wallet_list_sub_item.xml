@@ -7,11 +7,10 @@
     android:background="@color/white">
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:id="@+id/linear1"
         android:orientation="horizontal"
-        android:layout_marginTop="40dp"
         android:clickable="true"
         android:background="@drawable/border_12r_grey">
 
@@ -20,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|left"
-            android:layout_marginLeft="24dp"
+            android:layout_marginLeft="16dp"
             android:src="@drawable/ic_lodging_24px"
             />
 
@@ -37,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="Lodging"
                 android:textSize="14sp"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="2dp"
                 android:fontFamily="@font/roboto_regular"
                 android:textColor="@color/soft_black"
@@ -48,6 +48,7 @@
                 android:layout_height="wrap_content"
                 android:text="Lotte Hotel"
                 android:layout_marginTop="2dp"
+                android:layout_marginBottom="8dp"
                 android:fontFamily="@font/roboto_light"
                 android:textStyle="normal"
                 android:textSize="12sp"
@@ -79,7 +80,7 @@
                 android:id="@+id/payment"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:background="@drawable/ic_car_24px"/>
+                android:background="@drawable/ic_card_24px"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

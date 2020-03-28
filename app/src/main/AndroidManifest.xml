@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WalletListSubItem"></activity>
+        <activity android:name=".WalletListSubItem" />
         <activity android:name=".ReportMain" />
         <activity android:name=".Navigation">
             <intent-filter>
@@ -30,17 +30,16 @@
         <activity android:name=".PlaceSearchActivity" />
         <activity android:name=".PlaceDetailActivity" />
         <activity android:name=".PlanInitialSubItemView" />
-        <activity android:name=".PlanInitialActivity">
-
-        </activity>
+        <activity android:name=".PlanInitialActivity" />
         <activity android:name=".PlanInitialSubItem" />
         <activity android:name=".PlanInputActivity" />
         <activity android:name=".SelectPlaceActivity" />
         <activity android:name=".TravelBudgetShow" />
         <activity android:name=".BudgetInput" />
-        <activity android:name=".PlanBudget" />
+        <activity android:name=".PlanBudget">
+
+        </activity>
         <activity android:name=".TravelTitleSet" />
-        <activity android:name=".WalletList" />
         <activity android:name=".WalletInput" />
         <activity android:name=".WalletCost" />
         <activity android:name=".WalletMain" />
@@ -50,22 +49,14 @@
         <activity android:name=".TravelPreferenceSet" />
         <activity android:name=".TravelLodgingSet" />
         <activity android:name=".MainEmpty" />
-        <activity android:name=".SignIn">
-
-        </activity>
+        <activity android:name=".SignIn" />
         <activity android:name=".SplashActivity" />
-        <activity android:name=".RegisterActivity">
-
-        </activity>
-        <activity android:name=".Profile">
-
-        </activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".Profile" />
         <activity android:name=".PlanSearch" />
         <activity android:name=".BudgetShow" />
         <activity android:name=".BudgetSet" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

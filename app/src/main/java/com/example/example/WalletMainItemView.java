@@ -26,7 +26,7 @@ public class WalletMainItemView extends LinearLayout {
 
     private void init(Context context) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.activity_wallet_list_sub_item, this, true);
+        inflater.inflate(R.layout.activity_wallet_main_item, this, true);
 
         w_time = (TextView) findViewById(R.id.walletTime);
         w_title = (TextView) findViewById(R.id.walletName);
@@ -34,8 +34,6 @@ public class WalletMainItemView extends LinearLayout {
         w_cost = (TextView) findViewById(R.id.costText);
         w_budget = (TextView) findViewById(R.id.budgetText);
 
-        ImageView cost = (ImageView) findViewById(R.id.cost_ic);
-        cost.setColorFilter(Color.parseColor("#427dff"), PorterDuff.Mode.SRC_IN );
     }
 
     public void setW_time(String time){

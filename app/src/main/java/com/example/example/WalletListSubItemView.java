@@ -16,8 +16,8 @@ import androidx.annotation.Nullable;
 import com.bumptech.glide.Glide;
 
 public class WalletListSubItemView extends LinearLayout {
-    TextView category, category_memo, money;
-    ImageView lodging, payment;
+    TextView category, place, money;
+    ImageView category_ic, payment;
 
     public WalletListSubItemView(Context context) {
         super(context);
@@ -34,20 +34,22 @@ public class WalletListSubItemView extends LinearLayout {
         inflater.inflate(R.layout.activity_wallet_list_sub_item, this, true);
 
         category = (TextView) findViewById(R.id.category);
-        category_memo = (TextView) findViewById(R.id.category_memo);
+        place = (TextView) findViewById(R.id.category_memo);
         money = (TextView) findViewById(R.id.money);
-        lodging = (ImageView) findViewById(R.id.lodging);
+        category_ic = (ImageView) findViewById(R.id.lodging);
         payment= (ImageView) findViewById(R.id.payment);
 
     }
 
     public void setCategory(String category) {this.category.setText(category);}
 
-    public void setCategory_memo(String category_memo) {this.category_memo.setText(category_memo);}
+    public void setPlace(String place) {this.place.setText(place);}
 
-    public void setMoney(int money) {this.money.setText(money);}
+    public void setMoney(double money) {this.money.setText("$ "+String.valueOf(money));}
 
-    public void setLodging(int lodging) {this.lodging.setBackgroundResource(lodging);}
+    public void setCategory_ic(int category_ic) {
+        this.category_ic.setBackgroundResource(category_ic);
+    }
 
     public void setPayment(int payment) {this.payment.setBackgroundResource(payment);}
 

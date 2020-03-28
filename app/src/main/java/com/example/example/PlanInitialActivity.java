@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -219,6 +220,16 @@ public class PlanInitialActivity extends Fragment {
             }
 
             view.setTransBudgetText(String.valueOf(item.getTransBudget()));
+
+            RelativeLayout i = view.findViewById(R.id.item);
+            i.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), PlanBudget.class);
+                    startActivity(intent);
+                }
+            });
+
 
             ImageButton del = (ImageButton) view.findViewById(R.id.deleteButton);
             del.setOnClickListener(new View.OnClickListener() {

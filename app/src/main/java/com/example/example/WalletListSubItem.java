@@ -8,14 +8,15 @@ import android.widget.TextView;
 
 public class WalletListSubItem extends AppCompatActivity {
 
-    String category, category_memo;
-    int money, lodging, payment;
+    String category, place;
+    int category_ic, payment;
+    double money;
 
-    public WalletListSubItem(String category, String category_memo, int money, int lodging, int payment) {
+    public WalletListSubItem(String category, String place, double money, int category_ic, int payment) {
         this.category = category;
-        this.category_memo = category_memo;
+        this.place = place;
         this.money = money;
-        this.lodging = lodging;
+        this.category_ic = category_ic;
         this.payment = payment;
     }
 
@@ -24,17 +25,17 @@ public class WalletListSubItem extends AppCompatActivity {
 
     public void setCategory(String category) { this.category = category; }
 
-    public String getCategory_memo() {return category_memo; }
+    public String getPlace() {return place; }
 
-    public void setCategory_memo(String category_memo) { this.category_memo = category_memo; }
+    public void setPlace(String place) { this.place = place; }
 
-    public void setMoney(int money) { this.money = money; }
+    public void setMoney(double money) { this.money = money; }
 
-    public int getMoney() { return money; }
+    public double getMoney() { return money; }
 
-    public void setLodging(int lodging) { this.lodging = lodging; }
+    public void setCategory_ic(int category_ic) { this.category_ic = category_ic; }
 
-    public int getLodging() { return lodging; }
+    public int getCategory_ic() { return category_ic; }
 
     public void setPayment(int payment) { this.payment = payment; }
 
@@ -44,9 +45,9 @@ public class WalletListSubItem extends AppCompatActivity {
     public String toString() {
         return "WalletListSubItem{" +
                 "category='" + category + '\'' +
-                ", category_memo='" + category_memo + '\'' +
+                ", place='" + place + '\'' +
                 ", money=" + money +
-                ", lodging=" + lodging +
+                ", lodging=" + category_ic +
                 ", payment=" + payment +
                 '}';
     }
