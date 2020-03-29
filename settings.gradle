@@ -1,3 +1,4 @@
-include ':app', ':jsoup-1.12.2', ':AirCalendar', ':SDK_release_v2.0.0'
+include ':app', ':jsoup-1.12.2', ':SDK_release_v2.0.0', ':AirCalendar'
 
 rootProject.name='example'
+project(':AirCalendar').projectDir = new File('app/libs/AirCalendar-master/AirCalendar')

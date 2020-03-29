@@ -58,7 +58,8 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.2.0'
     implementation 'com.github.applikeysolutions:cosmocalendar:1.0.4'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.github.yongbeam:AirCalendar:1.2.1'
     implementation project(path: ':SDK_release_v2.0.0')
+    implementation project(path: ':AirCalendar')
+
 
 }
