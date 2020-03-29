@@ -12,12 +12,12 @@
         <item name="7">토</item>
     </string-array>
     <string-array name="label_calendar_en">
-        <item name="1">M</item>
-        <item name="2">T</item>
-        <item name="3">W</item>
-        <item name="4">T</item>
-        <item name="5">F</item>
-        <item name="6">S</item>
-        <item name="7">S</item>
+        <item name="1">MON</item>
+        <item name="2">TUE</item>
+        <item name="3">WED</item>
+        <item name="4">THU</item>
+        <item name="5">FRI</item>
+        <item name="6">SAT</item>
+        <item name="7">SUN</item>
     </string-array>
 </resources>

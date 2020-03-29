@@ -44,11 +44,7 @@
         <activity android:name=".TravelLodgingSet" />
         <activity android:name=".MainEmpty" />
         <activity android:name=".SignIn" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".SplashActivity" />
         <activity android:name=".RegisterActivity" />
@@ -57,6 +53,13 @@
         <activity android:name=".BudgetShow" />
         <activity android:name=".BudgetSet" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".AirCalendarDatePickerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />

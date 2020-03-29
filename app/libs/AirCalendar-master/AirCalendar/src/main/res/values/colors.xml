@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="normal_day">#000000</color>
-    <color name="colorMonthDayLabelPaint">#424242</color>
-    <color name="selected_day_background">#4a4a4a</color>
-    <color name="selected_day_interval_text">#ffffff</color>
+    <color name="colorMonthDayLabelPaint">#000000</color>
+    <color name="selected_day_background">#D9E5FF</color>
+    <color name="selected_day_interval_text">#000000</color>
     <color name="selected_day_text">#ffffff</color>
-    <color name="colorWeekDayLineColor">#d8d8d8</color>
+    <color name="colorWeekDayLineColor">#dbdde4</color>
     <color name="colorWeekEndColor">#000000</color>
-    <color name="colorTest">#1abc9c</color>
-    <color name="colorMonthTextColor">#252525</color>
-    <color name="color_old_day_text_color">#bbbbbb</color>
+    <color name="colorTest">#427dff</color>
+    <color name="colorMonthTextColor">#424242</color>
+    <color name="color_old_day_text_color">#dbdde4</color>
+
+    <color name="black">#000000</color>
+    <color name="blue">#427dff</color>
+    <color name="white">#ffffff</color>
+    <color name="sun_yellow">#ffe327</color>
+    <color name="deep_grey">#616161</color>
+    <color name="soft_grey">#c8cbd3</color>
+    <color name="soft_black">#424242</color>
+    <color name="light_blue">#d9e5ff</color>
+    <color name="icon_grey">#dbdde4</color>
+    <color name="coral_red">#ff4242</color>
+    <color name="colorPrimary">#427dff</color>
+    <color name="colorPrimaryDark">#427dff</color>
+    <color name="colorAccent">#427dff</color>
+
 </resources>

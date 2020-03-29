@@ -33,7 +33,7 @@ public class TravelTitleSet extends AppCompatActivity {
                     Edittext_title.setHintTextColor(getColor(R.color.coral_red));
                     //btn_Next.isClickable(false);
                 }else{
-                    Intent intent = new Intent(TravelTitleSet.this, TravelCalendar.class);
+                    Intent intent = new Intent(TravelTitleSet.this, AirCalendarDatePickerActivity.class);
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                 }

@@ -22,7 +22,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  ***********************************************************************************/
-package com.yongbeom.aircalendar;
+package com.example.example;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,8 +33,6 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.yongbeom.aircalendar.core.AirCalendarIntent;
 import com.yongbeom.aircalendar.core.AirMonthAdapter;
@@ -52,6 +50,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class AirCalendarDatePickerActivity extends AppCompatActivity implements DatePickerController {
@@ -139,7 +139,7 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.aicalendar_activity_date_picker);
+        setContentView(com.yongbeom.aircalendar.R.layout.aicalendar_activity_date_picker);
 
         Intent getData = getIntent();
         FLAG = getData.getStringExtra(EXTRA_FLAG) != null ? getData.getStringExtra(EXTRA_FLAG) : "all";
@@ -182,16 +182,16 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
     }
 
     private void init() {
-        remove = findViewById(R.id.btn_back);
-        next = findViewById(R.id.btn_Next);
+        remove = findViewById(com.yongbeom.aircalendar.R.id.btn_back);
+        next = findViewById(com.yongbeom.aircalendar.R.id.btn_Next);
 
-        tv_day_one = findViewById(R.id.tv_day_one);
-        tv_day_two = findViewById(R.id.tv_day_two);
-        tv_day_three = findViewById(R.id.tv_day_three);
-        tv_day_four = findViewById(R.id.tv_day_four);
-        tv_day_five = findViewById(R.id.tv_day_five);
-        tv_day_six = findViewById(R.id.tv_day_six);
-        tv_day_seven = findViewById(R.id.tv_day_seven);
+        tv_day_one = findViewById(com.yongbeom.aircalendar.R.id.tv_day_one);
+        tv_day_two = findViewById(com.yongbeom.aircalendar.R.id.tv_day_two);
+        tv_day_three = findViewById(com.yongbeom.aircalendar.R.id.tv_day_three);
+        tv_day_four = findViewById(com.yongbeom.aircalendar.R.id.tv_day_four);
+        tv_day_five = findViewById(com.yongbeom.aircalendar.R.id.tv_day_five);
+        tv_day_six = findViewById(com.yongbeom.aircalendar.R.id.tv_day_six);
+        tv_day_seven = findViewById(com.yongbeom.aircalendar.R.id.tv_day_seven);
 
         if (getIntent().hasExtra(SELECT_TEXT)) {
             //tv_done_btn.setText(getIntent().getStringExtra(SELECT_TEXT));
@@ -201,11 +201,11 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
         if (weekDays.isEmpty()) {
             switch (language) {
                 case EN:
-                    List<String> enList = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.label_calendar_en)));
+                    List<String> enList = new ArrayList<>(Arrays.asList(getResources().getStringArray(com.yongbeom.aircalendar.R.array.label_calendar_en)));
                     weekDays.addAll(enList);
                     break;
                 case KO:
-                    List<String> koList = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.label_calender_week)));
+                    List<String> koList = new ArrayList<>(Arrays.asList(getResources().getStringArray(com.yongbeom.aircalendar.R.array.label_calender_week)));
                     weekDays.addAll(koList);
                     break;
             }
@@ -254,7 +254,7 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
 
         }
 
-        pickerView = findViewById(R.id.pickerView);
+        pickerView = findViewById(com.yongbeom.aircalendar.R.id.pickerView);
         pickerView.setIsMonthDayLabel(isMonthLabel);
         pickerView.setIsSingleSelect(isSingleSelect);
         pickerView.setMaxActiveMonth(maxActivieMonth);
@@ -310,40 +310,24 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
                     }
                 }
 
-                /*Intent resultIntent = new Intent(getApplicationContext(), );
+                Intent resultIntent = new Intent(getApplicationContext(), TravelBudgetShow.class);
+
                 resultIntent.putExtra(RESULT_SELECT_START_DATE, SELECT_START_DATE);
                 resultIntent.putExtra(RESULT_SELECT_END_DATE, SELECT_END_DATE);
-                resultIntent.putExtra(RESULT_SELECT_START_VIEW_DATE, tv_start_date.getText().toString());
-                resultIntent.putExtra(RESULT_SELECT_END_VIEW_DATE, tv_end_date.getText().toString());
                 resultIntent.putExtra(RESULT_FLAG, FLAG);
                 resultIntent.putExtra(RESULT_TYPE, FLAG);
                 resultIntent.putExtra(RESULT_STATE, "done");
-                setResult(RESULT_OK, resultIntent);
-                finish();*/
+                startActivity(resultIntent);
+                overridePendingTransition(0, 0);
             }
         });
 
-        tv_reset_btn.setOnClickListener(new View.OnClickListener() {
+        remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SELECT_START_DATE = "";
-                SELECT_END_DATE = "";
-                setContentView(R.layout.aicalendar_activity_date_picker);
-                init();
-            }
-        });
-
-        rl_popup_select_checkout_info_ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rl_checkout_select_info_popup.setVisibility(View.GONE);
-            }
-        });
-
-        rl_iv_back_btn_bg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
     }

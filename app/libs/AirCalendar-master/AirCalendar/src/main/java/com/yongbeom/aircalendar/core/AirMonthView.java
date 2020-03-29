@@ -226,7 +226,7 @@ class AirMonthView extends View {
     private void drawMonthTitle(Canvas canvas) {
 //        int x = (mWidth + 2 * mPadding) / 2;
         int x = mWidth / 13;
-        int y = (MONTH_HEADER_SIZE - MONTH_DAY_LABEL_TEXT_SIZE) / 2 + (MONTH_LABEL_TEXT_SIZE / 3);
+        int y = (MONTH_HEADER_SIZE - MONTH_DAY_LABEL_TEXT_SIZE) / 2 + (MONTH_LABEL_TEXT_SIZE / 1);
         StringBuilder stringBuilder = new StringBuilder(getMonthAndYearString().toLowerCase());
         stringBuilder.setCharAt(0, Character.toUpperCase(stringBuilder.charAt(0)));
         canvas.drawText(stringBuilder.toString(), x, y, mMonthTitlePaint);
@@ -536,7 +536,7 @@ class AirMonthView extends View {
         mMonthTitlePaint.setFakeBoldText(true);
         mMonthTitlePaint.setAntiAlias(true);
         mMonthTitlePaint.setTextSize(MONTH_LABEL_TEXT_SIZE);
-        mMonthTitlePaint.setTypeface(Typeface.create(mMonthTitleTypeface, Typeface.BOLD));
+        mMonthTitlePaint.setTypeface(Typeface.create(mMonthTitleTypeface, Typeface.NORMAL));
         mMonthTitlePaint.setColor(mMonthTextColor);
         mMonthTitlePaint.setTextAlign(Align.LEFT);
         mMonthTitlePaint.setStyle(Style.FILL);
