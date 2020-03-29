@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
@@ -34,13 +35,16 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.12.2'
     implementation 'com.google.code.findbugs:jsr305:2.0.1'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+    implementation 'androidx.room:room-runtime:2.1.0-alpha06'
+    implementation 'com.google.android.material:material:1.1.0-alpha05'
 
     implementation 'com.android.volley:volley:1.1.1'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
-
+    implementation 'com.android.support:appcompat-v7:28.2.0'
     implementation 'com.github.applikeysolutions:cosmocalendar:1.0.4'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation project(path: ':SDK_release_v2.0.0')
+    implementation project(path: ':AirCalendar')
 
 }

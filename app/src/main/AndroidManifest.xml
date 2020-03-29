@@ -46,6 +46,7 @@
         <activity android:name=".ProfileModify" />
         <activity android:name=".TravelEstimatedBudget" />
         <activity android:name=".TravelCalendar" />
+        <activity android:name=".TravelCalendar2" />
         <activity android:name=".TravelPreferenceSet" />
         <activity android:name=".TravelLodgingSet" />
         <activity android:name=".MainEmpty" />
