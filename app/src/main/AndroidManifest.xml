@@ -36,7 +36,6 @@
         <activity android:name=".TravelBudgetShow" />
         <activity android:name=".BudgetInput" />
         <activity android:name=".PlanBudget">
-
         </activity>
         <activity android:name=".TravelTitleSet" />
         <activity android:name=".WalletInput" />
@@ -49,7 +48,8 @@
         <activity android:name=".TravelPreferenceSet" />
         <activity android:name=".TravelLodgingSet" />
         <activity android:name=".MainEmpty" />
-        <activity android:name=".SignIn" />
+        <activity android:name=".SignIn" >
+        </activity>
         <activity android:name=".SplashActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Profile" />
@@ -57,6 +57,10 @@
         <activity android:name=".BudgetShow" />
         <activity android:name=".BudgetSet" />
         <activity android:name=".MainActivity" />
+
+        <activity android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
+
 
 </manifest>
