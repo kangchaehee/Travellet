@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.EntityDeletionOrUpdateAdapter;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Bundle;
@@ -26,7 +29,7 @@ public class WalletInput extends AppCompatActivity {
 
     int category = 1;
 
-    boolean cardState=false, cashState=false;
+    boolean cashState=false, cardState=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,49 +49,24 @@ public class WalletInput extends AppCompatActivity {
         button1=(Button)findViewById(R.id.button1);
         button2=(Button)findViewById(R.id.button2);
         button3=(Button)findViewById(R.id.button3);
-        //buttonP=(Button)findViewById(R.id.buttonP);
         button4=(Button)findViewById(R.id.button4);
         button5=(Button)findViewById(R.id.button5);
         button6=(Button)findViewById(R.id.button6);
-        //buttonX=(Button)findViewById(R.id.buttonX);
         button7=(Button)findViewById(R.id.button7);
         button8=(Button)findViewById(R.id.button8);
         button9=(Button)findViewById(R.id.button9);
-        //buttonD=(Button)findViewById(R.id.buttonD);
         button0=(Button)findViewById(R.id.button0);
-        //buttonR=(Button)findViewById(R.id.buttonR);
         buttonC=(ImageButton)findViewById(R.id.buttonC);
-        //buttonM=(Button)findViewById(R.id.buttonM);
 
         edit1 = (EditText) findViewById(R.id.edit1);
 
             //카드랑 현금 중에 선택
-        card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!cardState){
-                    cardState = true;
-                    card.setBackgroundResource(R.drawable.ic_cash_selected);
-
-                    cashState = false;
-                    cash.setBackgroundResource(R.drawable.ic_card);
-                }
-
-                else {
-                    cardState = false;
-                    card.setBackgroundResource(R.drawable.ic_card);
-
-                }
-            }
-        });
-
-
         cash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!cashState){
                     cashState = true;
-                    cash.setBackgroundResource(R.drawable.ic_cash);
+                    cash.setBackgroundResource(R.drawable.ic_cash_selected);
 
                     cardState = false;
                     card.setBackgroundResource(R.drawable.ic_card);
@@ -97,10 +75,29 @@ public class WalletInput extends AppCompatActivity {
                 else {
                     cashState = false;
                     cash.setBackgroundResource(R.drawable.ic_cash);
+
                 }
             }
         });
 
+        card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!cardState){
+                    cardState = true;
+                        //이거 누르면 색깔 바뀌는 거 왜 안되냐 개빡춍
+                    card.setBackgroundResource(R.drawable.ic_card);
+
+                    cashState = false;
+                    cash.setBackgroundResource(R.drawable.ic_cash);
+                }
+
+                else {
+                    cardState = false;
+                    card.setBackgroundResource(R.drawable.ic_card);
+                }
+            }
+        });
 
         //카테고리 선택
         lodging.setOnClickListener(new View.OnClickListener() {
