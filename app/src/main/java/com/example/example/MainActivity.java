@@ -26,14 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
     MainActivityUpcomingFragment fragment1;
     MainActivityPastFragment fragment2;
-    FrameLayout container;
-
-    ImageButton up_delete, past_delete;
     Button btn_upcoming, btn_past;
 
-    boolean upcomingState=false, pastState=false;
 
-
+    int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW, budgetType, budgetTotal, lodgingType, prefType;
+    String travelTitle;
+    float lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +40,23 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        Intent intent2 = getIntent();
+        startYear = intent2.getIntExtra("startYear", 0);
+        startMonth = intent2.getIntExtra("startMonth", 0);
+        startDay = intent2.getIntExtra("startDay", 0);
+        startDoW = intent2.getIntExtra("startDoW", 0);
+        endYear = intent2.getIntExtra("endYear", 0);
+        endMonth = intent2.getIntExtra("endMonth", 0);
+        endDay = intent2.getIntExtra("endDay", 0);
+        endDoW = intent2.getIntExtra("endDoW", 0);
+        travelTitle = intent2.getStringExtra("travelTitle");
+        budgetType = intent2.getIntExtra("budgetType", 0);
+        budgetTotal = intent2.getIntExtra("budget", 0);
+        lodgingType = intent2.getIntExtra("lodgingType", 0);
+        prefType = intent2.getIntExtra("prefType", 0);
+        lodgingBudget = intent2.getFloatExtra("lodgingBudget", 0);
+
 
         fragment1 = new MainActivityUpcomingFragment();
         fragment2 = new MainActivityPastFragment();

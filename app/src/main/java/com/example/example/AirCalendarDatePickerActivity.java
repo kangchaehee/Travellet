@@ -136,6 +136,9 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
     private int maxYear = -1;
     private int mSetStartYear = -1;
 
+    int start_year_int, start_month_int, start_day_int, start_dow_int, end_year_int, end_month_int, end_day_int, end_dow_int;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -315,12 +318,20 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
 
                 Intent resultIntent = new Intent(getApplicationContext(), TravelBudgetShow.class);
 
-                resultIntent.putExtra("startDay", SELECT_START_DATE);
-                resultIntent.putExtra("endDay", SELECT_END_DATE);
+                resultIntent.putExtra("startYear", start_year_int);
+                resultIntent.putExtra("startMonth", start_month_int);
+                resultIntent.putExtra("startDay", start_day_int);
+                resultIntent.putExtra("startDoW", start_dow_int);
+                resultIntent.putExtra("endYear", end_year_int);
+                resultIntent.putExtra("endMonth", end_month_int);
+                resultIntent.putExtra("endDay", end_day_int);
+                resultIntent.putExtra("endDoW", end_dow_int);
+                resultIntent.putExtra("travelTitle", title);
                 resultIntent.putExtra(RESULT_FLAG, FLAG);
                 resultIntent.putExtra(RESULT_TYPE, FLAG);
                 resultIntent.putExtra(RESULT_STATE, "done");
-                Toast.makeText(getApplicationContext(), title+"\n"+ SELECT_START_DATE+"\n"+ SELECT_END_DATE, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), title+"\n"+ start_year_int+" "+start_month_int+" "+start_day_int+" "+start_dow_int+
+                        "\n"+end_year_int+" "+end_month_int+" "+end_day_int+" "+end_dow_int, Toast.LENGTH_LONG).show();
                 startActivity(resultIntent);
                 overridePendingTransition(0, 0);
             }
@@ -352,11 +363,11 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
 
             String startDateDay = AirCalendarUtils.getDateDay(this, startSetDate, "yyyyMMdd", firstDayOfWeek);
 
-           /* tv_start_date.setText(year + "-" + start_month_str + "-" + start_day_str + " " + startDateDay);
-            tv_start_date.setTextColor(0xff4a4a4a);
+                /* tv_start_date.setText(year + "-" + start_month_str + "-" + start_day_str + " " + startDateDay);
+                tv_start_date.setTextColor(0xff4a4a4a);
 
-            tv_end_date.setText("-");
-            tv_end_date.setTextColor(0xff1abc9c);*/
+                tv_end_date.setText("-");
+                tv_end_date.setTextColor(0xff1abc9c);*/
             SELECT_END_DATE = "";
         } catch (Exception e) {
             e.printStackTrace();
@@ -371,16 +382,17 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
 
             cl.setTimeInMillis(selectedDays.getFirst().getDate().getTime());
 
+            start_year_int = cl.get(Calendar.YEAR);
             // 월
-            int start_month_int = (cl.get(Calendar.MONTH) + 1);
+            start_month_int = (cl.get(Calendar.MONTH) + 1);
             String start_month_str = String.format("%02d", start_month_int);
 
             // 일
-            int start_day_int = cl.get(Calendar.DAY_OF_MONTH);
+            start_day_int = cl.get(Calendar.DAY_OF_MONTH);
             String start_day_str = String.format("%02d", start_day_int);
 
             //요일
-            int start_dow_int = cl.get(Calendar.DAY_OF_WEEK);
+            start_dow_int = cl.get(Calendar.DAY_OF_WEEK);
             String start_day_of_week="";
             switch (start_dow_int) {
                 case 1:
@@ -406,22 +418,23 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
                     break;
             }
 
-            String startSetDate = cl.get(Calendar.YEAR) + start_month_str + start_day_str + start_day_of_week;
-            String startDateDay = AirCalendarUtils.getDateDay(this, startSetDate, "yyyyMMdd", firstDayOfWeek);
+            String startSetDate = cl.get(Calendar.YEAR) + start_month_int + start_day_int + start_day_of_week;
+//            String startDateDay = AirCalendarUtils.getDateDay(this, startSetDate, "yyyyMMdd", firstDayOfWeek);
             String startDate = cl.get(Calendar.YEAR) + "-" + start_month_str + "-" + start_day_str+"-"+start_day_of_week;
 
             cl.setTimeInMillis(selectedDays.getLast().getDate().getTime());
 
+            end_year_int = cl.get(Calendar.YEAR);
             // 월
-            int end_month_int = (cl.get(Calendar.MONTH) + 1);
+            end_month_int = (cl.get(Calendar.MONTH) + 1);
             String end_month_str = String.format("%02d", end_month_int);
 
             // 일
-            int end_day_int = cl.get(Calendar.DAY_OF_MONTH);
+            end_day_int = cl.get(Calendar.DAY_OF_MONTH);
             String end_day_str = String.format("%02d", end_day_int);
 
             //요일
-            int end_dow_int = cl.get(Calendar.DAY_OF_WEEK);
+            end_dow_int = cl.get(Calendar.DAY_OF_WEEK);
             String end_day_of_week="";
             switch (end_dow_int) {
                 case 1:
@@ -448,14 +461,14 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
             }
 
             String endSetDate = cl.get(Calendar.YEAR) + end_month_str + end_day_str + end_day_of_week;
-            String endDateDay = AirCalendarUtils.getDateDay(this, endSetDate, "yyyyMMdd", firstDayOfWeek);
+           // String endDateDay = AirCalendarUtils.getDateDay(this, endSetDate, "yyyyMMdd", firstDayOfWeek);
             String endDate = cl.get(Calendar.YEAR) + "-" + end_month_str + "-" + end_day_str + "-" + end_day_of_week;
 
-            /*tv_start_date.setText(startDate + " " + startDateDay);
-            tv_start_date.setTextColor(0xff4a4a4a);
+                    /*tv_start_date.setText(startDate + " " + startDateDay);
+                    tv_start_date.setTextColor(0xff4a4a4a);
 
-            tv_end_date.setText(endDate + " " + endDateDay);
-            tv_end_date.setTextColor(0xff4a4a4a);*/
+                    tv_end_date.setText(endDate + " " + endDateDay);
+                    tv_end_date.setTextColor(0xff4a4a4a);*/
 
             SELECT_START_DATE = startDate;
             SELECT_END_DATE = endDate;

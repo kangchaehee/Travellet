@@ -8,6 +8,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CancellationSignal;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,7 +40,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -63,6 +67,7 @@ public class PlanInitialActivity extends Fragment {
     double x, y;
     double transportExp;
     TextView transBudget;
+    LinearLayout con;
 
     String[] timeList, titleList, memoList;
     double[] budgetList;
@@ -71,6 +76,8 @@ public class PlanInitialActivity extends Fragment {
     TransportDialog tDialog;
 
     FragmentCallBack callback;
+
+    int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW, period;
 
     @Override
     public void onAttach(Context context) {
@@ -114,10 +121,26 @@ public class PlanInitialActivity extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_plan_initial, container, false);
         //버전 상향에 따른 네트워크 연결 조정
-        if (Build.VERSION.SDK_INT > 9) {
+        if (Build.VERSION.SDK_INT > 28) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
+
+        if(getArguments() != null){
+            startYear = getArguments().getInt("startYear", 0);
+            startDay = getArguments().getInt("startDay", 0);
+            startMonth = getArguments().getInt("startMonth", 0);
+            startDoW = getArguments().getInt("startDow", 0);
+            endYear = getArguments().getInt("endYear", 0);
+            endMonth = getArguments().getInt("endMonth", 0);
+            endDay = getArguments().getInt("endDay", 0);
+            endDoW = getArguments().getInt("endDow", 0);
+            Log.d("success", String.valueOf(startYear));
+        }
+        Log.d("fail", "argument is null.");
+
+        con = (LinearLayout) rootView.findViewById(R.id.planner);
+        addDay(startYear, startMonth, startDay, endYear, endMonth, endDay);
 
         listView = (ListView) rootView.findViewById(R.id.con);
         listView.setAdapter(adapter);
@@ -487,5 +510,93 @@ public class PlanInitialActivity extends Fragment {
         }
 
         return taxiFare;
+    }
+
+
+    public void addDay(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay){
+        Calendar startCal = Calendar.getInstance();
+        Calendar endCal = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd"); //년월일 표시
+
+        startMonth -=1;
+        endMonth -=1;
+        startCal.set(startYear, startMonth, startDay);
+        String startDate = dateFormat.format(startCal.getTime());
+        endCal.set(endYear, endMonth, endDay);
+        String endDate = dateFormat.format(endCal.getTime());
+        Log.d("period", startDate+"\n"+endDate);
+
+        int i=0;
+        while(!startDate.equals(endDate)){ //다르다면 실행, 동일 하다면 빠져나감
+
+            if(i==0) { //최초 실행 출력
+                int day = startCal.get(Calendar.DAY_OF_MONTH);
+                int dow = startCal.get(Calendar.DAY_OF_WEEK);
+
+                day_sub dayItem = new day_sub(getContext());
+                dayItem.setDay(day);
+                switch (dow) {
+                    case 1:
+                        dayItem.setDoW("SUN");
+                        break;
+                    case 2:
+                        dayItem.setDoW("MON");
+                        break;
+                    case 3:
+                        dayItem.setDoW("TUE");
+                        break;
+                    case 4:
+                        dayItem.setDoW("WED");
+                        break;
+                    case 5:
+                        dayItem.setDoW("THU");
+                        break;
+                    case 6:
+                        dayItem.setDoW("FRI");
+                        break;
+                    case 7:
+                        dayItem.setDoW("SAT");
+                        break;
+                }
+                con.addView(dayItem);
+            }
+
+            startCal.add(Calendar.DATE, 1); //1일 더해줌
+            startDate = dateFormat.format(startCal.getTime()); //비교를 위한 값 셋팅
+
+            int day = startCal.get(Calendar.DAY_OF_MONTH);
+            int dow = startCal.get(Calendar.DAY_OF_WEEK);
+
+            day_sub dayItem = new day_sub(getContext());
+            dayItem.setDay(day);
+            switch (dow) {
+                case 1:
+                    dayItem.setDoW("SUN");
+                    break;
+                case 2:
+                    dayItem.setDoW("MON");
+                    break;
+                case 3:
+                    dayItem.setDoW("TUE");
+                    break;
+                case 4:
+                    dayItem.setDoW("WED");
+                    break;
+                case 5:
+                    dayItem.setDoW("THU");
+                    break;
+                case 6:
+                    dayItem.setDoW("FRI");
+                    break;
+                case 7:
+                    dayItem.setDoW("SAT");
+                    break;
+            }
+            con.addView(dayItem);
+
+            i++;
+
+        }
+
     }
 }

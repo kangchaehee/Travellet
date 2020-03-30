@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BudgetShow"
@@ -52,11 +53,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/money"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="29dp">
+        android:layout_alignParentStart="true">
 
         //#1 lodging
         <LinearLayout
+
+            android:layout_marginTop="29dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"
@@ -92,11 +94,12 @@
                     android:gravity="right">
 
                     <TextView
+                        android:id="@+id/lodgingPer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
                         android:lineSpacingExtra="11sp"
-                        android:text="100%"
+                        android:text="40%"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="normal" />
@@ -110,6 +113,7 @@
                 android:orientation="horizontal"
                 android:gravity="right">
                 <TextView
+                    android:id="@+id/lodgingBudget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
@@ -123,11 +127,14 @@
             </LinearLayout>
 
                 // 퍼센트 이미지 바
-            <ImageView
+            <ProgressBar
+                android:id="@+id/progress1"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/progressbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/ic_progress_6" />
+                android:layout_height="6dp"
+                android:progress="25" />
 
                 //#2 food
             <LinearLayout
@@ -160,11 +167,12 @@
                     android:gravity="right">
 
                     <TextView
+                        android:id="@+id/foodPer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
                         android:lineSpacingExtra="11sp"
-                        android:text="10%"
+                        android:text="30%"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="normal" />
@@ -179,6 +187,7 @@
                 android:orientation="horizontal"
                 android:gravity="right">
                 <TextView
+                    android:id="@+id/foodBudget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
@@ -193,11 +202,14 @@
 
             //퍼센트 바
 
-            <ImageView
+            <ProgressBar
+                android:id="@+id/progress2"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/progressbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/ic_progress_1" />
+                android:layout_height="6dp"
+                android:progress="25" />
 
             //#3 Leisure/culture
             <LinearLayout
@@ -230,11 +242,12 @@
                     android:gravity="right">
 
                     <TextView
+                        android:id="@+id/leisurePer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
                         android:lineSpacingExtra="11sp"
-                        android:text="20%"
+                        android:text="11%"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="normal" />
@@ -247,6 +260,7 @@
                 android:orientation="horizontal"
                 android:gravity="right">
                 <TextView
+                    android:id="@+id/leisureBudget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
@@ -261,12 +275,14 @@
 
             //퍼센트 바
 
-            <ImageView
+            <ProgressBar
+                android:id="@+id/progress3"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/progressbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/ic_progress_2" />
-
+                android:layout_height="6dp"
+                android:progress="25" />
             //#4 shopping
             <LinearLayout
                 android:layout_width="match_parent"
@@ -298,6 +314,7 @@
                     android:gravity="right">
 
                     <TextView
+                        android:id="@+id/shoppingPer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
@@ -316,6 +333,7 @@
                 android:orientation="horizontal"
                 android:gravity="right">
                 <TextView
+                    android:id="@+id/shoppingBudget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
@@ -329,11 +347,14 @@
             </LinearLayout>
 
             //퍼센트 바
-            <ImageView
+            <ProgressBar
+                android:id="@+id/progress4"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/progressbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/ic_progress_1" />
+                android:layout_height="6dp"
+                android:progress="25" />
 
                 //#5 transport
             <LinearLayout
@@ -366,11 +387,12 @@
                     android:gravity="right">
 
                     <TextView
+                        android:id="@+id/transportPer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
                         android:lineSpacingExtra="11sp"
-                        android:text="45%"
+                        android:text="8%"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="normal" />
@@ -383,6 +405,7 @@
                 android:orientation="horizontal"
                 android:gravity="right">
                 <TextView
+                    android:id="@+id/transportBudget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
@@ -396,11 +419,14 @@
             </LinearLayout>
 
             //퍼센트 바
-            <ImageView
+            <ProgressBar
+                android:id="@+id/progress5"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/progressbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/ic_progress_3" />
+                android:layout_height="6dp"
+                android:progress="25" />
 
                 //#6 etc
             <LinearLayout
@@ -433,11 +459,12 @@
                     android:gravity="right">
 
                     <TextView
+                        android:id="@+id/etcPer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
                         android:lineSpacingExtra="11sp"
-                        android:text="30%"
+                        android:text="1%"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="normal" />
@@ -451,6 +478,7 @@
                 android:orientation="horizontal"
                 android:gravity="right">
                 <TextView
+                    android:id="@+id/etcBudget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
@@ -465,12 +493,14 @@
 
             //퍼센트 바
 
-            <ImageView
+            <ProgressBar
+                android:id="@+id/progress6"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:progressDrawable="@drawable/progressbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:background="@drawable/ic_progress_2"
-                android:layout_marginBottom="120dp"/>
+                android:layout_height="6dp"
+                android:progress="25" />
 
         </LinearLayout>
 

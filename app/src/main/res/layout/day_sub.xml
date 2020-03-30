@@ -1,0 +1,26 @@
+   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/all"
+        android:layout_width="40dp"
+        android:layout_height="48dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/dow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="12sp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="@color/black"
+            android:text="PLAN"/>
+
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_light"
+            android:textColor="@color/black"
+            android:text="ALL"/>
+    </LinearLayout>
