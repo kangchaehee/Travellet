@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.yongbeom.aircalendar.AirCalendarDatePickerActivity;
@@ -20,8 +21,8 @@ import java.util.List;
 public class TravelCalendar extends AppCompatActivity {
     public final static int REQUEST_CODE = 1;
 
-    //static ImageButton btn_back;
-    //static TextView tv_done_btn;
+    public static RelativeLayout rl_iv_back_btn_bg;
+    public static TextView tv_done_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,7 @@ public class TravelCalendar extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //btn_back = (ImageButton) findViewById(com.yongbeom.aircalendar.R.id.btn_back);
+        //rl_iv_back_btn_bg = (RelativeLayout) findViewById(com.yongbeom.aircalendar.R.id.rl_iv_back_btn_bg);
         //tv_done_btn = (TextView) findViewById(R.id.rl_done_btn);
 
         AirCalendarIntent intent = new AirCalendarIntent(this);
@@ -39,7 +40,7 @@ public class TravelCalendar extends AppCompatActivity {
         intent.setResetBtnText("Reset");
         intent.setWeekStart(Calendar.MONDAY);
 
-        /*
+
         tv_done_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +50,7 @@ public class TravelCalendar extends AppCompatActivity {
             }
         });
 
-         */
+
 
 //        ArrayList<String> weekDay = new ArrayList<>();
 //        weekDay.add("M");

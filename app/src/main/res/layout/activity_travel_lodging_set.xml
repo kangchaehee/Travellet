@@ -98,7 +98,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Accommodation Description"
+                        android:text="Providing services beyond accommodation"
                         android:fontFamily="@font/roboto_light"
                         android:textStyle="normal"
                         android:textSize="12sp"
@@ -147,7 +147,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Accommodation Description"
+                        android:text="Cookable independent accommodation"
                         android:fontFamily="@font/roboto_light"
                         android:textStyle="normal"
                         android:textSize="12sp"
@@ -197,7 +197,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Accommodation Description"
+                        android:text="public bathrooms and rooms"
                         android:fontFamily="@font/roboto_light"
                         android:textStyle="normal"
                         android:textSize="12sp"

@@ -49,22 +49,25 @@ public class ProfileModify extends AppCompatActivity {
         spinner = findViewById(R.id.country);
         spinner2 = findViewById(R.id.age);
 
-        //array_age
+            //array_age
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
                 this, R.array.array_age, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
         spinner2.setOnItemSelectedListener(new ProfileModify.MyOnItemSelectedListener());
-        //이건 화살표 색깔
+            //이건 화살표 색깔
         spinner2.getBackground().setColorFilter(Color.parseColor("#c8cbd3"), PorterDuff.Mode.SRC_ATOP);
 
-        //country
+
+            //country
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.array_country, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-
         spinner.setOnItemSelectedListener(new ProfileModify.MyOnItemSelectedListener());
+            //화살표 색깔
+        spinner.getBackground().setColorFilter(Color.parseColor("#c8cbd3"), PorterDuff.Mode.SRC_ATOP);
+
 
         selfie = (ImageView)findViewById(R.id.profile);
         selfie.setClipToOutline(true);
