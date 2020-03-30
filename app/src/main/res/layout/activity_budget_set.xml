@@ -99,14 +99,13 @@
                 android:textSize="27sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="parent"
-                android:text="KRW" />
+                android:text="￦" />
 
         </RelativeLayout>
 
 
     </LinearLayout>
 
-        //슬라이드바
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
