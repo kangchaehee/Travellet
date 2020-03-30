@@ -26,7 +26,7 @@ public class TravelEstimatedBudget extends AppCompatActivity {
     public void onClick(View view){
 
         Intent intent = new Intent(this, Navigation.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-        overridePendingTransition(0, 0);
     }
 }

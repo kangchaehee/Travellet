@@ -24,6 +24,7 @@ public class BudgetInput extends AppCompatActivity {
     private Button button1, button2, button3, buttonP, button4, button5, button6, buttonX, button7, button8, button9, buttonD, button0, buttonPOINT, buttonC, buttonM;
 
     Button btn_add;
+    ImageButton back;
     private EditText edit1;
     private int a;
     private int where=0;
@@ -38,6 +39,14 @@ public class BudgetInput extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_budget_input);
+
+        back = (ImageButton) findViewById(R.id.btn_back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         lodging = (ImageButton) findViewById(R.id.lodging);
         food = (ImageButton) findViewById(R.id.food);

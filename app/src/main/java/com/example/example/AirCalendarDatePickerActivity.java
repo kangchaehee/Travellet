@@ -296,6 +296,9 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent2 = getIntent();
+                String title = intent2.getStringExtra("travelTitle");
+
                 if ((SELECT_START_DATE == null || SELECT_START_DATE.equals("")) && (SELECT_END_DATE == null || SELECT_END_DATE.equals(""))) {
                     SELECT_START_DATE = "";
                     SELECT_END_DATE = "";
@@ -312,11 +315,12 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
 
                 Intent resultIntent = new Intent(getApplicationContext(), TravelBudgetShow.class);
 
-                resultIntent.putExtra(RESULT_SELECT_START_DATE, SELECT_START_DATE);
-                resultIntent.putExtra(RESULT_SELECT_END_DATE, SELECT_END_DATE);
+                resultIntent.putExtra("startDay", SELECT_START_DATE);
+                resultIntent.putExtra("endDay", SELECT_END_DATE);
                 resultIntent.putExtra(RESULT_FLAG, FLAG);
                 resultIntent.putExtra(RESULT_TYPE, FLAG);
                 resultIntent.putExtra(RESULT_STATE, "done");
+                Toast.makeText(getApplicationContext(), title+"\n"+ SELECT_START_DATE+"\n"+ SELECT_END_DATE, Toast.LENGTH_LONG).show();
                 startActivity(resultIntent);
                 overridePendingTransition(0, 0);
             }
@@ -375,9 +379,36 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
             int start_day_int = cl.get(Calendar.DAY_OF_MONTH);
             String start_day_str = String.format("%02d", start_day_int);
 
-            String startSetDate = cl.get(Calendar.YEAR) + start_month_str + start_day_str;
+            //요일
+            int start_dow_int = cl.get(Calendar.DAY_OF_WEEK);
+            String start_day_of_week="";
+            switch (start_dow_int) {
+                case 1:
+                    start_day_of_week = "SUN";
+                    break;
+                case 2:
+                    start_day_of_week = "MON";
+                    break;
+                case 3:
+                    start_day_of_week = "TUE";
+                    break;
+                case 4:
+                    start_day_of_week = "WED";
+                    break;
+                case 5:
+                    start_day_of_week = "THU";
+                    break;
+                case 6:
+                    start_day_of_week = "FRI";
+                    break;
+                case 7:
+                    start_day_of_week = "SAT";
+                    break;
+            }
+
+            String startSetDate = cl.get(Calendar.YEAR) + start_month_str + start_day_str + start_day_of_week;
             String startDateDay = AirCalendarUtils.getDateDay(this, startSetDate, "yyyyMMdd", firstDayOfWeek);
-            String startDate = cl.get(Calendar.YEAR) + "-" + start_month_str + "-" + start_day_str;
+            String startDate = cl.get(Calendar.YEAR) + "-" + start_month_str + "-" + start_day_str+"-"+start_day_of_week;
 
             cl.setTimeInMillis(selectedDays.getLast().getDate().getTime());
 
@@ -389,9 +420,36 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
             int end_day_int = cl.get(Calendar.DAY_OF_MONTH);
             String end_day_str = String.format("%02d", end_day_int);
 
-            String endSetDate = cl.get(Calendar.YEAR) + end_month_str + end_day_str;
+            //요일
+            int end_dow_int = cl.get(Calendar.DAY_OF_WEEK);
+            String end_day_of_week="";
+            switch (end_dow_int) {
+                case 1:
+                    end_day_of_week = "SUN";
+                    break;
+                case 2:
+                    end_day_of_week = "MON";
+                    break;
+                case 3:
+                    end_day_of_week = "TUE";
+                    break;
+                case 4:
+                    end_day_of_week = "WED";
+                    break;
+                case 5:
+                    end_day_of_week = "THU";
+                    break;
+                case 6:
+                    end_day_of_week = "FRI";
+                    break;
+                case 7:
+                    end_day_of_week = "SAT";
+                    break;
+            }
+
+            String endSetDate = cl.get(Calendar.YEAR) + end_month_str + end_day_str + end_day_of_week;
             String endDateDay = AirCalendarUtils.getDateDay(this, endSetDate, "yyyyMMdd", firstDayOfWeek);
-            String endDate = cl.get(Calendar.YEAR) + "-" + end_month_str + "-" + end_day_str;
+            String endDate = cl.get(Calendar.YEAR) + "-" + end_month_str + "-" + end_day_str + "-" + end_day_of_week;
 
             /*tv_start_date.setText(startDate + " " + startDateDay);
             tv_start_date.setTextColor(0xff4a4a4a);
@@ -405,5 +463,12 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        overridePendingTransition(0, 0);
     }
 }

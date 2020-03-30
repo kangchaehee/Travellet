@@ -28,7 +28,7 @@ public class PlanInputActivity extends AppCompatActivity {
     TextView selectTitleText;
     EditText editMemo;
 
-    ImageButton lodging, food, shopping, tourism, etc;
+    ImageButton lodging, food, shopping, tourism, etc, back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,14 @@ public class PlanInputActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_plan_input);
+
+        back = (ImageButton) findViewById(R.id.inputToPlan);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         timePicker = (TimePicker) findViewById(R.id.select_time);
 

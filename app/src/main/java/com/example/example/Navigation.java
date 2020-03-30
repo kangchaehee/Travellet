@@ -3,6 +3,7 @@ package com.example.example;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -139,5 +140,13 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
     public void getPlanInfo(int size, String[] time, String[] title, String[] memo, double[] budget){
         timeList = new String[size];
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

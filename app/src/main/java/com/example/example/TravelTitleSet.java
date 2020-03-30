@@ -28,12 +28,14 @@ public class TravelTitleSet extends AppCompatActivity {
         btn_Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String title = Edittext_title.getText().toString();
+                title = Edittext_title.getText().toString();
                 if(title == null || title.length() == 0){
                     Edittext_title.setHintTextColor(getColor(R.color.coral_red));
                     //btn_Next.isClickable(false);
                 }else{
                     Intent intent = new Intent(TravelTitleSet.this, AirCalendarDatePickerActivity.class);
+                    intent.putExtra("travelTitle", title);
+                    Toast.makeText(getApplicationContext(), title, Toast.LENGTH_LONG).show();
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                 }
@@ -61,10 +63,9 @@ public class TravelTitleSet extends AppCompatActivity {
 
     //Main Empty
     public void onButtonClick(View view1){
-
         Intent intent = new Intent(TravelTitleSet.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-        overridePendingTransition(0, 0);
     }
 
     /*
