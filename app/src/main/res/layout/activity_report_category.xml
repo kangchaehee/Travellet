@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/white"
+tools:context=".ReportCategory">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="60dp"
+        android:gravity="center">
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/piechart"
+            android:layout_width="250dp"
+            android:layout_height="250dp"/>
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginTop="82.8dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/square"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="12sp"
+                android:text="Lodging" />
+            
+            <TextView
+                android:id="@+id/lodging"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textStyle="normal"
+                android:textColor="@color/soft_black"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="12sp"
+                android:gravity="right"
+                android:text="$ 1,200"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bar"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="32.5dp"
+            android:layout_marginLeft="32.5dp"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/square2"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="12sp"
+                android:text="Food" />
+
+            <TextView
+                android:id="@+id/food"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textStyle="normal"
+                android:textColor="@color/soft_black"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="12sp"
+                android:gravity="right"
+                android:text="$ 1,200"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bar"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="32.5dp"
+            android:layout_marginLeft="32.5dp"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/square3"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="12sp"
+                android:text="Leisure/Culture" />
+
+            <TextView
+                android:id="@+id/leisure"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textStyle="normal"
+                android:textColor="@color/soft_black"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="12sp"
+                android:gravity="right"
+                android:text="$ 1,200"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bar"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="32.5dp"
+            android:layout_marginLeft="32.5dp"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/square4"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="12sp"
+                android:text="Shopping" />
+
+            <TextView
+                android:id="@+id/shopping"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textStyle="normal"
+                android:textColor="@color/soft_black"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="12sp"
+                android:gravity="right"
+                android:text="$ 1,200"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bar"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="32.5dp"
+            android:layout_marginLeft="32.5dp"/>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/square5"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="12sp"
+                android:text="Transport" />
+
+            <TextView
+                android:id="@+id/transport"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textStyle="normal"
+                android:textColor="@color/soft_black"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="12sp"
+                android:gravity="right"
+                android:text="$ 1,200"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bar"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="32.5dp"
+            android:layout_marginLeft="32.5dp"/>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="48dp"
+            android:layout_marginRight="48dp"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="8dp"
+                android:background="@drawable/square6"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="12sp"
+                android:text="Etc" />
+
+            <TextView
+                android:id="@+id/etc"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textStyle="normal"
+                android:textColor="@color/soft_black"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="12sp"
+                android:gravity="right"
+                android:text="$ 1,200"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bar"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="32.5dp"
+            android:layout_marginLeft="32.5dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

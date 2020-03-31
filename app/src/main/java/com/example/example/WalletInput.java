@@ -85,8 +85,7 @@ public class WalletInput extends AppCompatActivity {
             public void onClick(View v) {
                 if(!cardState){
                     cardState = true;
-                        //이거 누르면 색깔 바뀌는 거 왜 안되냐 개빡춍
-                    card.setBackgroundResource(R.drawable.ic_card);
+                    card.setBackgroundResource(R.drawable.ic_card_selected);
 
                     cashState = false;
                     cash.setBackgroundResource(R.drawable.ic_cash);

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Report">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="28sp"
+        android:fontFamily="@font/roboto_medium"
+        android:textStyle="normal"
+        android:textColor="@color/black"
+        android:letterSpacing="0.03"
+        android:lineSpacingExtra="35sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="32dp"
+        android:text="Expenses"
+        />
+
+    <Button
+        android:id="@+id/btn_daily"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:lineSpacingExtra="11sp"
+        android:letterSpacing="0.03"
+        android:stateListAnimator="@null"
+        android:text="DAILY"
+        android:textColor="@color/soft_grey"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:fontFamily="@font/roboto_medium" />
+
+    <Button
+        android:id="@+id/btn_category"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_below="@+id/textView"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/btn_daily"
+        android:background="@color/white"
+        android:fontFamily="@font/roboto_medium"
+        android:lineSpacingExtra="11sp"
+        android:stateListAnimator="@null"
+        android:text="CATEGORY"
+        android:letterSpacing="0.03"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:textStyle="normal" />
+
+    <ImageView
+        android:id="@+id/grey_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_category"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/bar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/grey_bar">
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+
+    </ScrollView>
+</RelativeLayout>
