@@ -168,9 +168,9 @@ public class TravelLodgingSet extends AppCompatActivity {
             intent.putExtra("budgetType", budgetType);
             intent.putExtra("budget", budget);
             intent.putExtra("lodgingType", lodgingType);
-            Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
+            /*Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
                     "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW
-                    +"\n"+budgetType+"\n"+budget+"\n"+lodgingType, Toast.LENGTH_LONG).show();
+                    +"\n"+budgetType+"\n"+budget+"\n"+lodgingType, Toast.LENGTH_LONG).show();*/
             startActivity(intent);
             overridePendingTransition(0, 0);
         }
