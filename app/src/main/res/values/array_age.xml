@@ -2,7 +2,6 @@
 <resources>
     <string-array name="array_age">
 
-        <item>Please select your year of birth.</item>
         <item>1960</item>
         <item>1961</item>
         <item>1962</item>

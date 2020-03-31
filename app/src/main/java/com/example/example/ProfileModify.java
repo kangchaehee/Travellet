@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
@@ -21,8 +22,10 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Array;
 
 public class ProfileModify extends AppCompatActivity {
 
@@ -39,7 +42,9 @@ public class ProfileModify extends AppCompatActivity {
 
     String country, name;
     int age;
-    Bitmap bm;
+    Bitmap image;
+    int ageIndex, countryIndex;
+    byte[] bytes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,23 +53,56 @@ public class ProfileModify extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_profile_modify);
 
-        Edittext_name = findViewById(R.id.Edittext_name);
+        Intent intent = getIntent();
+        name = intent.getStringExtra("name");
+        country = intent.getStringExtra("country");
+        age = intent.getIntExtra("age", 0);
+        image = (Bitmap) intent.getParcelableExtra("image");
 
+        Edittext_name = findViewById(R.id.Edittext_name);
         spinner = findViewById(R.id.country);
         spinner2 = findViewById(R.id.age);
+        selfie = (ImageView)findViewById(R.id.profile);
 
+        Edittext_name.setText(name);
+        if(image == null){
+            selfie.setBackgroundResource(R.drawable.ic_profime_circle);
+        }
+        else{
+            selfie.setBackground(new ShapeDrawable(new OvalShape()));
+            selfie.setClipToOutline(true);
+            selfie.setImageBitmap(image);
+        }
+
+        String[] ageArr = getResources().getStringArray(R.array.array_age);
+        String[] countryArr = getResources().getStringArray(R.array.array_country);
+
+        for(int i=0; i<ageArr.length; i++){
+            if(age == Integer.parseInt(ageArr[i])){
+                ageIndex = i;
+                break;
+            }
+        }
+
+        for(int i=0; i<countryArr.length; i++){
+            if(country.equals(countryArr[i])){
+                countryIndex = i;
+                break;
+            }
+        }
             //array_age
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
                 this, R.array.array_age, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
+        spinner2.setSelection(ageIndex);
         spinner2.setOnItemSelectedListener(new ProfileModify.MyOnItemSelectedListener());
             //이건 화살표 색깔
         spinner2.getBackground().setColorFilter(Color.parseColor("#c8cbd3"), PorterDuff.Mode.SRC_ATOP);
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                age = (int) parent.getItemAtPosition(position);
+                age = Integer.parseInt(parent.getItemAtPosition(position).toString());
             }
 
             @Override
@@ -79,6 +117,7 @@ public class ProfileModify extends AppCompatActivity {
                 this, R.array.array_country, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        spinner.setSelection(countryIndex);
         spinner.setOnItemSelectedListener(new ProfileModify.MyOnItemSelectedListener());
             //화살표 색깔
         spinner.getBackground().setColorFilter(Color.parseColor("#c8cbd3"), PorterDuff.Mode.SRC_ATOP);
@@ -94,8 +133,6 @@ public class ProfileModify extends AppCompatActivity {
             }
         });
 
-
-        selfie = (ImageView)findViewById(R.id.profile);
         selfie.setClipToOutline(true);
         selfie.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -126,13 +163,24 @@ public class ProfileModify extends AppCompatActivity {
         Intent intent = getIntent();
         intent.putExtra("country", country);
         intent.putExtra("age", age);
-        intent.putExtra("name", name);
+        intent.putExtra("name", Edittext_name.getText().toString());
+        BitmapDrawable drawable = (BitmapDrawable) selfie.getDrawable();
+        if(drawable == null){
+            image = null;
+        }
+        else{
+            image = drawable.getBitmap();
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            bytes = stream.toByteArray();
+        }
+        intent.putExtra("image", bytes);
+        setResult(RESULT_OK, intent);
         finish();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
@@ -140,11 +188,11 @@ public class ProfileModify extends AppCompatActivity {
             if (selectedImageUri != null) {
                 try {
 
-                    Bitmap bm = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
+                    image = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImageUri);
 
                     selfie.setBackground(new ShapeDrawable(new OvalShape()));
                     selfie.setClipToOutline(true);
-                    selfie.setImageBitmap(bm);
+                    selfie.setImageBitmap(image);
 
                 } catch (FileNotFoundException e) {
                     // TODO Auto-generated catch block
