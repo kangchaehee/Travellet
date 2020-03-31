@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     MainActivityUpcomingFragment fragment1;
     MainActivityPastFragment fragment2;
-    Button btn_upcoming, btn_past;
+    LinearLayout btn_upcoming, btn_past;
 
     int startYear, startMonth, startDay, endYear, endMonth, endDay, dDay;
     String travelTitle;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 endDay = intent2.getIntExtra("endDay", 0);
                 travelTitle = intent2.getStringExtra("travelTitle");
 
-                Toast.makeText(getApplicationContext(), travelTitle, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), travelTitle, Toast.LENGTH_LONG).show();
 
                 Bundle bundle = new Bundle();
                 bundle.putInt("startYear", startYear);
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                         bundle.putString("dDay", "D-Day");
                     }
                     else
-                        bundle.putString("dDay", "D + "+dDay);
+                        bundle.putString("dDay", "D+"+dDay);
                     fragment1.setArguments(bundle);
                 }
 
@@ -90,15 +91,21 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().add(R.id.container, fragment1).commit();
 
-        btn_upcoming = (Button) findViewById(R.id.btn_upcoming);
-        btn_past = (Button) findViewById(R.id.btn_past);
+        btn_upcoming = findViewById(R.id.btn_upcoming);
+        btn_past = findViewById(R.id.btn_past);
+        TextView upcomingTxt = findViewById(R.id.textView3);
+        TextView pastTxt = findViewById(R.id.textView2);
+        View line1 = findViewById(R.id.line);
+        View line2 = findViewById(R.id.line2);
 
         btn_upcoming.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v1) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
-                btn_upcoming.setTextColor(getColor(R.color.black));
-                btn_past.setTextColor(getColor(R.color.soft_grey));
+                upcomingTxt.setTextColor(getColor(R.color.black));
+                pastTxt.setTextColor(getColor(R.color.soft_grey));
+                line1.setVisibility(View.VISIBLE);
+                line2.setVisibility(View.INVISIBLE);
             }
 
         });
@@ -108,8 +115,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v2) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment2).commit();
-                btn_past.setTextColor(getColor(R.color.black));
-                btn_upcoming.setTextColor(getColor(R.color.soft_grey));
+                upcomingTxt.setTextColor(getColor(R.color.soft_grey));
+                pastTxt.setTextColor(getColor(R.color.black));
+                line1.setVisibility(View.INVISIBLE);
+                line2.setVisibility(View.VISIBLE);
             }
         });
 

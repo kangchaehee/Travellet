@@ -37,10 +37,21 @@ public class Profile extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ProfileModify.class);
-                startActivity(intent);
+                startActivityForResult(intent, 101);
             }
         });
         return rootView;
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if(requestCode == 101){
+            if(intent != null){
+
+            }
+        }
 
     }
 

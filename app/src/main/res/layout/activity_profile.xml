@@ -50,27 +50,41 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:fontFamily="@font/roboto_medium"
-            android:textStyle="normal"
-            android:textColor="@color/black"
-            android:letterSpacing="0.03"
-            android:lineSpacingExtra="11sp"
-            android:layout_marginTop="20dp"
+            android:orientation="vertical"
             android:layout_marginLeft="32dp"
-            android:text="PROFILE"
-            />
+            android:id="@+id/lin">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_gravity="center_horizontal"
+                android:textStyle="normal"
+                android:textColor="@color/black"
+                android:letterSpacing="0.03"
+                android:lineSpacingExtra="11sp"
+                android:layout_marginTop="20dp"
+                android:text="PROFILE"
+                />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="60dp"
+                android:layout_height="2dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/blue"/>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/icon_grey"
-            android:layout_below="@id/textView3"
-            android:layout_marginTop="16dp"/>
+            android:layout_below="@id/lin"/>
 
    </RelativeLayout>
 
@@ -118,7 +132,7 @@
                 android:layout_below="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/bar"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"/>
@@ -139,7 +153,7 @@
                 android:textColor="@color/black"
                 android:letterSpacing="0.03"
                 android:lineSpacingExtra="11sp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="40dp"
                 android:text="Age"
                 />
@@ -155,7 +169,7 @@
                 android:textSize="14sp"
                 android:textStyle="normal"
                 android:layout_marginLeft="128dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:hint="1998" />
 
 
@@ -163,7 +177,7 @@
                 android:layout_below="@+id/textView6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/bar"
                 android:layout_marginLeft="32dp"
                 android:layout_marginRight="32dp"/>
@@ -184,7 +198,7 @@
                 android:textColor="@color/black"
                 android:letterSpacing="0.03"
                 android:lineSpacingExtra="11sp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="40dp"
                 android:text="Country"
                 />
@@ -200,7 +214,7 @@
                 android:textSize="14sp"
                 android:textStyle="normal"
                 android:layout_marginLeft="128dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:hint="USA" />
 
 
@@ -209,7 +223,7 @@
                 android:layout_below="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="16dp"
                 android:src="@drawable/bar"
                 android:layout_marginLeft="32dp"

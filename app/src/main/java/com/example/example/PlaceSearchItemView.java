@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ public class PlaceSearchItemView extends LinearLayout {
 
     ImageView placeListThumb;
     TextView placeListName, placeListAddr, placeListType;
+    ImageButton like;
 
     public PlaceSearchItemView(Context context) {
         super(context);
@@ -36,14 +38,19 @@ public class PlaceSearchItemView extends LinearLayout {
         placeListName = (TextView) findViewById(R.id.placeListName);
         placeListAddr = (TextView) findViewById(R.id.placeListAddr);
         placeListType = (TextView) findViewById(R.id.placeListType);
+        like = findViewById(R.id.placeListLike);
 
     }
 
     public void setPlaceListThumb(String thumb) {
         GradientDrawable drawable = (GradientDrawable) getContext().getDrawable(R.drawable.image_rounding);
         placeListThumb.setBackground(drawable);
-        placeListThumb.setClipToOutline(true);
-        Glide.with(getContext()).load(thumb).into(placeListThumb);
+        if(!thumb.equals("NULL")){
+            placeListThumb.setClipToOutline(true);
+            Glide.with(getContext()).load(thumb).into(placeListThumb);
+        }
+        else{
+        }
     }
 
     public void setPlaceListName(String name) {

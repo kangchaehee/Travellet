@@ -37,6 +37,10 @@ public class ProfileModify extends AppCompatActivity {
     ImageButton back;
     Button save;
 
+    String country, name;
+    int age;
+    Bitmap bm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +61,17 @@ public class ProfileModify extends AppCompatActivity {
         spinner2.setOnItemSelectedListener(new ProfileModify.MyOnItemSelectedListener());
             //이건 화살표 색깔
         spinner2.getBackground().setColorFilter(Color.parseColor("#c8cbd3"), PorterDuff.Mode.SRC_ATOP);
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                age = (int) parent.getItemAtPosition(position);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
             //country
@@ -67,13 +82,23 @@ public class ProfileModify extends AppCompatActivity {
         spinner.setOnItemSelectedListener(new ProfileModify.MyOnItemSelectedListener());
             //화살표 색깔
         spinner.getBackground().setColorFilter(Color.parseColor("#c8cbd3"), PorterDuff.Mode.SRC_ATOP);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                country = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         selfie = (ImageView)findViewById(R.id.profile);
         selfie.setClipToOutline(true);
         selfie.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent. setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 startActivityForResult(intent, GET_GALLERY_IMAGE);
@@ -92,9 +117,17 @@ public class ProfileModify extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                returnToBack();
             }
         });
+    }
+
+    public void returnToBack(){
+        Intent intent = getIntent();
+        intent.putExtra("country", country);
+        intent.putExtra("age", age);
+        intent.putExtra("name", name);
+        finish();
     }
 
     @Override
@@ -124,7 +157,6 @@ public class ProfileModify extends AppCompatActivity {
 
         }
     }
-
 
     // country
     public class MyOnItemSelectedListener implements AdapterView.OnItemSelectedListener {

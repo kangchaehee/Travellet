@@ -1,5 +1,6 @@
 package com.example.example;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -53,7 +54,9 @@ public class PlaceSearchActivity extends AppCompatActivity {
     Button searchLodging, searchFood, searchShopping, searchTourism, searchCulture, searchLeisure, searchTransportation, searchETC;
     boolean lodgingState=false, foodState=false, shoppingState=false, tourismState=false, etcState=false, cultureState=false, leisureState = false, transportationState=false;
     int searchType;
-    int placeID[] = new int[5];
+    ArrayList<Integer> placeID = new ArrayList<Integer>();
+
+    //like db랑 연동해서 처리
 
 
     @Override
@@ -503,11 +506,13 @@ public class PlaceSearchActivity extends AppCompatActivity {
                 else
                     searchType = -1;
                 items.clear();
+                placeID.clear();
                 getPlaceListData(keyword, searchType);
             }
         });
 
     }
+
 
     class PlaceAdapter extends BaseAdapter {
 
@@ -547,14 +552,15 @@ public class PlaceSearchActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), PlaceDetailActivity.class);
-
-                    intent.putExtra("id", placeID[position]);
-
+                    intent.putExtra("id", placeID.get(position));
                     startActivity(intent);
                 }
             });
+
+
             return view;
         }
+
     }
 
     public void getPlaceListData(String keyword, int searchType) {
@@ -633,17 +639,8 @@ public class PlaceSearchActivity extends AppCompatActivity {
 
                 if (!nodeList.item(0).getNodeName().equals("contentid")) {
                     NodeList idNode = element.getElementsByTagName("contentid");
-                    if(i>= placeID.length){
-                        int[] placeDup = new int[placeID.length];
-                        for(int j=0; j<placeDup.length; j++){
-                            placeDup[j] = placeID[j];
-                        }
-                        placeID = new int[placeID.length*2];
-                        for(int j=0; j<placeDup.length; j++){
-                            placeID[j] = placeDup[j];
-                        }
-                    }
-                    placeID[i] = Integer.parseInt(idNode.item(0).getChildNodes().item(0).getNodeValue());
+
+                    placeID.add(Integer.parseInt(idNode.item(0).getChildNodes().item(0).getNodeValue()));
                 }
 
                 if (!nodeList.item(0).getNodeName().equals("title")) {
@@ -676,7 +673,7 @@ public class PlaceSearchActivity extends AppCompatActivity {
                             break;
 
                         case 80:
-                            type = "Accommodation";
+                            type = "Lodging";
                             break;
 
                         case 79:
@@ -692,7 +689,14 @@ public class PlaceSearchActivity extends AppCompatActivity {
                             break;
                     }
                 }
-                adapter.addItem(new PlaceSearchItem(thumbnail, title, address, type));
+
+                //db에 좋아요 눌렀던 항목 저장, 리스트뷰에 추가할 때 db에 등록되어 있는 애들은 true로 넘길 수 있도록
+                if(thumbnail.equals(" ")){
+                    Log.d("null: ", title);
+                    adapter.addItem(new PlaceSearchItem("NULL", title, address, type));
+                }
+                else
+                    adapter.addItem(new PlaceSearchItem(thumbnail, title, address, type));
             }
             listView.setAdapter(adapter);
         }

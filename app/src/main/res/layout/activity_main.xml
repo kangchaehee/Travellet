@@ -37,40 +37,83 @@
         android:textStyle="normal"
         app:fontFamily="@font/roboto_light" />
 
-    <Button
+    <LinearLayout
         android:id="@+id/btn_upcoming"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
+        android:layout_width="88dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/name"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="32dp"
+        android:orientation="vertical"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/white"
-        android:fontFamily="@font/roboto_medium"
-        android:lineSpacingExtra="11sp"
-        android:stateListAnimator="@null"
-        android:text="UPCOMING"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:textStyle="normal" />
+        android:layout_marginStart="32dp"
+        android:background="@color/white">
 
-    <Button
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="UPCOMING"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:layout_gravity="center_horizontal"
+            android:letterSpacing="0.03"
+            android:lineSpacingExtra="11sp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_medium"
+            />
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/blue"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/btn_past"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/btn_upcoming"
         android:layout_below="@+id/name"
+        android:orientation="vertical"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_toEndOf="@+id/btn_upcoming"
-        android:background="@color/white"
-        android:lineSpacingExtra="11sp"
-        android:stateListAnimator="@null"
-        android:text="PAST"
-        android:textColor="@color/soft_grey"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        app:fontFamily="@font/roboto_medium" />
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="PAST"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:layout_gravity="center_horizontal"
+            android:letterSpacing="0.03"
+            android:lineSpacingExtra="11sp"
+            android:layout_marginTop="20dp"
+
+            android:fontFamily="@font/roboto_medium"
+            />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/blue"
+            android:visibility="invisible"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/grey_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_past"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="1dp"
+        android:src="@drawable/bar" />
 
     <Button
         android:id="@+id/btn_add"
@@ -93,16 +136,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <ImageView
-        android:id="@+id/grey_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_past"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="1dp"
-        android:src="@drawable/bar" />
 
     <FrameLayout
         android:layout_width="match_parent"

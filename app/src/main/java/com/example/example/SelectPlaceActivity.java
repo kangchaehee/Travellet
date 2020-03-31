@@ -248,7 +248,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
                     }
                 }
 
-                adapter.addItem(new PlaceSelectItem(title, address, mapx, mapy));
+                adapter.addItem(new PlaceSelectItem(title, address, mapx, mapy, false));
             }
             listView.setAdapter(adapter);
             Log.d("good", "listView.setAdapter(adapter);");

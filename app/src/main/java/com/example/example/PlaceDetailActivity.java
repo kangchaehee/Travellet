@@ -36,12 +36,11 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class PlaceDetailActivity extends AppCompatActivity {
 
-    int placeID;
+    int placeID, position;
 
     TextView detailTitle, detailType, detailOverview, detailAddr, detailTel, detailLink;
     ImageView detailImage;
     ImageButton back;
-
     String title=" ";
     Button moreInfo;
 
@@ -54,14 +53,17 @@ public class PlaceDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         placeID = intent.getIntExtra("id", 0);
+        position = intent.getIntExtra("position", 0);
 
         back = (ImageButton) findViewById(R.id.detailToList);
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                returnToBack();
             }
         });
+
 
         detailTitle = (TextView) findViewById(R.id.detailTitle);
         detailType = (TextView) findViewById(R.id.detailType);
@@ -82,6 +84,16 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        returnToBack();
+    }
+
+    public void returnToBack(){
+        finish();
     }
 
     public void getPlaceDetail(int placeID) {
@@ -179,7 +191,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
                             break;
 
                         case 80:
-                            type = "Accommodation";
+                            type = "Lodging";
                             break;
 
                         case 79:
@@ -243,12 +255,6 @@ public class PlaceDetailActivity extends AppCompatActivity {
                     address = overviewDoc.text();
                 }
 
-                if (!nodeList.item(0).getNodeName().equals("addr2")) {
-                    NodeList dAddressNode = element.getElementsByTagName("addr2");
-                    if(dAddressNode.item(0) !=null){
-                        dAddress = dAddressNode.item(0).getChildNodes().item(0).getNodeValue();
-                    }
-                }
 
                 if (!nodeList.item(0).getNodeName().equals("mapx")) {
                     NodeList xNode = element.getElementsByTagName("mapx");
@@ -282,13 +288,15 @@ public class PlaceDetailActivity extends AppCompatActivity {
             detailTitle.setText(title);
             detailType.setText(type);
             detailOverview.setText(overview);
-            detailAddr.setText(address+"\n"+dAddress);
+            detailAddr.setText(address);
             detailTel.setText(tel);
             detailLink.setText(link);
             GradientDrawable drawable = (GradientDrawable) getApplicationContext().getDrawable(R.drawable.image_rounding);
             detailImage.setBackground(drawable);
-            detailImage.setClipToOutline(true);
-            Glide.with(getApplicationContext()).load(image).into(detailImage);
+            if(!image.equals(" ")){
+                detailImage.setClipToOutline(true);
+                Glide.with(getApplicationContext()).load(image).into(detailImage);
+            }
         }
     }
 }

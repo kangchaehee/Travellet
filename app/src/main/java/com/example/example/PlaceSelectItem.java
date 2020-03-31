@@ -10,12 +10,14 @@ public class PlaceSelectItem implements Serializable {
 
     String title, address;
     double mapx, mapy;
+    boolean likeState;
 
-    public PlaceSelectItem(String title, String address, double mapx, double mapy) {
+    public PlaceSelectItem(String title, String address, double mapx, double mapy, boolean likeState) {
         this.title = title;
         this.address = address;
         this.mapx = mapx;
         this.mapy = mapy;
+        this.likeState = likeState;
     }
 
     public String getTitle() {
@@ -48,6 +50,14 @@ public class PlaceSelectItem implements Serializable {
 
     public void setMapy(double mapy) {
         this.mapy = mapy;
+    }
+
+    public boolean isLikeState() {
+        return likeState;
+    }
+
+    public void setLikeState(boolean likeState) {
+        this.likeState = likeState;
     }
 
     @Override

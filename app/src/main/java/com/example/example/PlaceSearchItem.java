@@ -50,6 +50,7 @@ public class PlaceSearchItem implements Serializable {
         this.placeListType = placeListType;
     }
 
+
     @Override
     public String toString() {
         return "PlaceSearchItem{" +
