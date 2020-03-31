@@ -206,7 +206,6 @@ public class PlanInitialActivity extends Fragment {
     }
 
 
-
     public void addDay(int startYear, int startMonth, int startDay, int endYear, int endMonth, int endDay){
         Calendar startCal = Calendar.getInstance();
         Calendar endCal = Calendar.getInstance();

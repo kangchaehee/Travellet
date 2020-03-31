@@ -26,6 +26,10 @@ public class MainActivityPastFragment extends Fragment {
     DeleteDialog oDialog;
     int[] imageList = {R.drawable.seoul1, R.drawable.seoul2, R.drawable.seoul3, R.drawable.seoul4, R.drawable.seoul5};
 
+    int startYear, startMonth, startDay, endYear, endMonth, endDay;
+    String dDay;
+    String travelTitle;
+
     TextView t;
 
     @Nullable
@@ -35,16 +39,27 @@ public class MainActivityPastFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_main_past, container, false);
 
         listView = (ListView) rootView.findViewById(R.id.listView);
+        t = (TextView) rootView.findViewById(R.id.t);
 
         items.clear();
         adapter.notifyDataSetChanged();
         listView.setAdapter(adapter);
 
-        t = (TextView) rootView.findViewById(R.id.t);
+        if(getArguments() != null){
+            startYear = getArguments().getInt("startYear", 0);
+            startMonth = getArguments().getInt("startMonth", 0);
+            startDay = getArguments().getInt("startDay", 0);
+            endYear = getArguments().getInt("endYear", 0);
+            endMonth = getArguments().getInt("endMonth", 0);
+            endDay = getArguments().getInt("endDay", 0);
+            travelTitle = getArguments().getString("travelTitle");
+            dDay = getArguments().getString("dDay");
+            adapter.addItem(new MainItem(dDay, travelTitle, startYear+"."+startMonth+"."+startDay, endYear+"."+endMonth+"."+endDay));
+        }
 
-        adapter.addItem(new MainItem("D+100", "happy trip", "2020.01.04", "2020.02.01"));
-        adapter.addItem(new MainItem("D+15", "hello", "2020.01.05", "2020.02.02"));
-        adapter.addItem(new MainItem("D+16", "lalala", "2020.01.06", "2020.02.03"));
+        //adapter.addItem(new MainItem("D+100", "happy trip", "2020.01.04", "2020.02.01"));
+        //adapter.addItem(new MainItem("D+15", "hello", "2020.01.05", "2020.02.02"));
+        //adapter.addItem(new MainItem("D+16", "lalala", "2020.01.06", "2020.02.03"));
 
 
         return rootView;

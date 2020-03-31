@@ -23,6 +23,10 @@ public class MainActivityUpcomingFragment extends Fragment {
     double[] budgetList = new double[5];
     DeleteDialog oDialog;
 
+    int startYear, startMonth, startDay, endYear, endMonth, endDay;
+    String dDay;
+    String travelTitle;
+
     TextView t;
 
     @Nullable
@@ -37,7 +41,21 @@ public class MainActivityUpcomingFragment extends Fragment {
         listView.setAdapter(adapter);
 
         t = (TextView) rootView.findViewById(R.id.t);
-        adapter.addItem(new MainItem("D-10", "happy trip", "2020.01.04", "2020.02.01"));
+
+        if(getArguments() != null){
+            startYear = getArguments().getInt("startYear", 0);
+            startMonth = getArguments().getInt("startMonth", 0);
+            startDay = getArguments().getInt("startDay", 0);
+            endYear = getArguments().getInt("endYear", 0);
+            endMonth = getArguments().getInt("endMonth", 0);
+            endDay = getArguments().getInt("endDay", 0);
+            travelTitle = getArguments().getString("travelTitle");
+            dDay = getArguments().getString("dDay");
+
+            adapter.addItem(new MainItem(dDay, travelTitle, startYear+"."+startMonth+"."+startDay, endYear+"."+endMonth+"."+endDay));
+        }
+            //adapter.addItem(new MainItem("D-10", "happy trip", "2020.01.04", "2020.02.01"));
+
 
         return rootView;
     }

@@ -5,11 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -35,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class WalletMain extends Fragment {
+    ArrayList<day_sub> dayItems = new ArrayList<day_sub>();
 
     LinearLayout planner;
     FrameLayout con;
@@ -51,6 +54,7 @@ public class WalletMain extends Fragment {
         super.onDetach();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -67,19 +71,24 @@ public class WalletMain extends Fragment {
             endDoW = getArguments().getInt("endDow", 0);
             Log.d("success", String.valueOf(startYear));
         }
-        Log.d("fail", "argument is null.");
 
         planner = (LinearLayout) rootView.findViewById(R.id.planner);
+        day_sub dayItem = new day_sub(getContext());
+        dayItem.setDay(0);
+        dayItem.setDoW("PLAN");
+        planner.addView(dayItem);
+        dayItems.add(dayItem);
         addDay(startYear, startMonth, startDay, endYear, endMonth, endDay);
+        dayItem.selectItem();
 
         con = (FrameLayout) rootView.findViewById(R.id.con);
         Fragment fragment;
         fragment = new WalletMainFragment();
         Bundle bundle = new Bundle();
+        bundle.putInt("index", 0);
         bundle.putInt("startYear", startYear);
         bundle.putInt("startMonth", startMonth);
         bundle.putInt("startDay", startDay);
-        bundle.putInt("startDoW", startDoW);
         bundle.putInt("endYear", endYear);
         bundle.putInt("endMonth", endMonth);
         bundle.putInt("endDay", endDay);
@@ -89,6 +98,78 @@ public class WalletMain extends Fragment {
         transaction.replace(R.id.con, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+
+        day_sub all = dayItems.get(0);
+        all.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View v) {
+                //추가되는 일정 저장은 Db연결하고
+                for(int i=1; i<dayItems.size(); i++) {
+                    day_sub item = dayItems.get(i);
+                    int finalI = i;
+                    item.unItem();
+                }
+                all.selectItem();
+                Fragment fragment;
+                fragment = new WalletMainFragment();
+                Bundle bundle = new Bundle();
+                bundle.putInt("index", 0);
+                bundle.putInt("startYear", startYear);
+                bundle.putInt("startMonth", startMonth);
+                bundle.putInt("startDay", startDay);
+                bundle.putInt("endYear", endYear);
+                bundle.putInt("endMonth", endMonth);
+                bundle.putInt("endDay", endDay);
+                fragment.setArguments(bundle);
+                FragmentManager manager = getChildFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.replace(R.id.con, fragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        int size = dayItems.size();
+        for(int i=1; i<size; i++){
+            day_sub item = dayItems.get(i);
+            int finalI = i;
+            item.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
+                @Override
+                public void onClick(View v) {
+                    //추가되는 일정 저장은 Db연결하고
+                    for(int i=0; i<dayItems.size(); i++) {
+                        day_sub item = dayItems.get(i);
+                        int finalI = i;
+                        item.unItem();
+                    }
+                    item.selectItem();
+
+                    Calendar startCal = Calendar.getInstance();
+                    int m = startMonth-1;
+                    startCal.set(startYear, m, startDay);
+                    startCal.add(Calendar.DATE, finalI-1);
+                    int startYear = startCal.get(Calendar.YEAR);
+                    int startMonth = startCal.get(Calendar.MONTH);
+                    int startDay = startCal.get(Calendar.DAY_OF_MONTH);
+
+                    Fragment fragment;
+                    fragment = new WalletMainFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("index", finalI);
+                    bundle.putInt("startYear", startYear);
+                    bundle.putInt("startMonth", startMonth);
+                    bundle.putInt("startDay", startDay);
+                    fragment.setArguments(bundle);
+                    FragmentManager manager = getChildFragmentManager();
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    transaction.replace(R.id.con, fragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                }
+            });
+        }
 
         return rootView;
     }
@@ -114,6 +195,7 @@ public class WalletMain extends Fragment {
                 int dow = startCal.get(Calendar.DAY_OF_WEEK);
 
                 day_sub dayItem = new day_sub(getContext());
+                dayItems.add(dayItem);
                 dayItem.setDay(day);
                 switch (dow) {
                     case 1:
@@ -148,6 +230,7 @@ public class WalletMain extends Fragment {
             int dow = startCal.get(Calendar.DAY_OF_WEEK);
 
             day_sub dayItem = new day_sub(getContext());
+            dayItems.add(dayItem);
             dayItem.setDay(day);
             switch (dow) {
                 case 1:

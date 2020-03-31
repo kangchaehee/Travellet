@@ -16,6 +16,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -31,6 +32,10 @@ public class WalletMainFragment extends Fragment {
     ImageButton viewList;
     boolean listState = false;
 
+    int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW;
+
+    TextView day, period;
+
 
     public static WalletMainFragment newInstance() {
         return new WalletMainFragment();
@@ -41,6 +46,31 @@ public class WalletMainFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.wallet_main_fragment, container, false);
 
+        day = rootView.findViewById(R.id.day);
+        period = rootView.findViewById(R.id.period);
+
+        if(getArguments() != null){
+            int dayNum = getArguments().getInt("index");
+            if(dayNum == 0) {
+                day.setText("All");
+                startYear = getArguments().getInt("startYear", 0);
+                startDay = getArguments().getInt("startDay", 0);
+                startMonth = getArguments().getInt("startMonth", 0);
+                endYear = getArguments().getInt("endYear", 0);
+                endMonth = getArguments().getInt("endMonth", 0);
+                endDay = getArguments().getInt("endDay", 0);
+                period.setText(startYear + "." + startMonth + "." + startDay + " - " + endYear + "." + endMonth + "." + endDay);
+            }
+            else {
+                day.setText("DAY " + dayNum);
+                startYear = getArguments().getInt("startYear", 0);
+                startDay = getArguments().getInt("startDay", 0);
+                startMonth = getArguments().getInt("startMonth", 0);
+                period.setText(startYear + "." + startMonth + "." + startDay) ;
+            }
+
+        }
+
         viewList = rootView.findViewById(R.id.btn_list);
         listView1 = rootView.findViewById(R.id.mainList);
         listView1.setAdapter(adapterMain);
@@ -48,9 +78,10 @@ public class WalletMainFragment extends Fragment {
         listView2 = rootView.findViewById(R.id.viewList);
         listView2.setAdapter(adapterList);
 
-        adapterMain.addItem(new WalletMainItem("AM 10:00", "Lotte Hotel", "Lodging", 1200.0, 1000.0));
+        //리스트 추가된 거 확인하려면 얘네 주석 해제하면 됨.
+        //adapterMain.addItem(new WalletMainItem("AM 10:00", "Lotte Hotel", "Lodging", 1200.0, 1000.0));
 
-        adapterList.addItem(new WalletListSubItem("Lodging", "Lotte Hotel", 1000.0, R.drawable.ic_lodging_24px, R.drawable.ic_card_24px));
+        //adapterList.addItem(new WalletListSubItem("Lodging", "Lotte Hotel", 1000.0, R.drawable.ic_lodging_24px, R.drawable.ic_card_24px));
 
 
         viewList.setOnClickListener(new View.OnClickListener() {

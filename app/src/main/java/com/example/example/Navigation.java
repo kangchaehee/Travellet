@@ -76,8 +76,8 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         bundle.putInt("endMonth", endMonth);
         bundle.putInt("endDay", endDay);
         bundle.putInt("endDoW", endDoW);
-        Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
-                "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
+        //        "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW, Toast.LENGTH_LONG).show();
 
         plan.setArguments(bundle);
         transaction.add(R.id.container, plan);
@@ -203,7 +203,15 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("startYear", startYear);
+        intent.putExtra("startMonth", startMonth);
+        intent.putExtra("startDay", startDay);
+        intent.putExtra("endYear", endYear);
+        intent.putExtra("endMonth", endMonth);
+        intent.putExtra("endDay", endDay);
+        intent.putExtra("travelTitle", travelTitle);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         startActivity(intent);
     }
 }
