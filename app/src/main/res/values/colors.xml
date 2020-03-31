@@ -15,5 +15,8 @@
     <color name="colorPrimaryDark">#427dff</color>
     <color name="colorAccent">#427dff</color>
 
+    <color name="mint">#7ea</color>
+    <color name="purple">#425</color>
+
 
 </resources>

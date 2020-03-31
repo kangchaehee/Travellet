@@ -65,7 +65,8 @@ dependencies {
     implementation project(path: ':SDK_release_v2.0.0')
     implementation project(path: ':AirCalendar')
 
-    //왜 안돼?
-
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
 
 }

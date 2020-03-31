@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.example">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -10,16 +11,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme = "@style/AppTheme.NoActionBar">
-        <activity android:name=".WalletListSubItem" />
-        <activity android:name=".ReportMain" />
-        <activity android:name=".Navigation">
+        android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".ReportDaily"></activity>
+        <activity android:name=".Report">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ReportCategory" />
+        <activity android:name=".WalletListSubItem" />
+        <activity android:name=".ReportMain" />
+        <activity android:name=".Navigation" />
         <activity android:name=".WithFriendsActivity" />
         <activity android:name=".TravelAddActivity" />
         <activity android:name=".DeleteDialog" />
@@ -35,9 +39,10 @@
         <activity android:name=".SelectPlaceActivity" />
         <activity android:name=".TravelBudgetShow" />
         <activity android:name=".BudgetInput" />
-        <activity android:name=".PlanBudget">
+        <activity android:name=".PlanBudget" />
+        <activity android:name=".TravelTitleSet">
+
         </activity>
-        <activity android:name=".TravelTitleSet" />
         <activity android:name=".WalletInput" />
         <activity android:name=".WalletCost" />
         <activity android:name=".WalletMain" />
@@ -48,22 +53,18 @@
         <activity android:name=".TravelPreferenceSet" />
         <activity android:name=".TravelLodgingSet" />
         <activity android:name=".MainEmpty" />
-        <activity android:name=".SignIn">
-
-        </activity>
+        <activity android:name=".SignIn" />
         <activity android:name=".SplashActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Profile" />
         <activity android:name=".PlanSearch" />
         <activity android:name=".BudgetShow" />
         <activity android:name=".BudgetSet" />
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".AirCalendarDatePickerActivity"/>
-        <activity android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
+        <activity android:name=".MainActivity" />
+        <activity android:name=".AirCalendarDatePickerActivity" />
+        <activity
+            android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
     </application>
-
 
 </manifest>

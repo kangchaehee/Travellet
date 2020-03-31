@@ -174,15 +174,18 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         transaction.commit();
     }
 
-    /*public void goReport(){
+    /*
+    public void goReport(){
         Fragment fragment;
-        fragment = new Profile();
+        fragment = new Report();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
-    }*/
+    }
+
+     */
 
     public void goProfile(){
         Fragment fragment;
