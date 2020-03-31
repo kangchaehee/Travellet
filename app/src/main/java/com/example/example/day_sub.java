@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
+import androidx.core.content.res.ResourcesCompat;
 
 public class day_sub extends LinearLayout {
     TextView day, dow;
@@ -48,7 +49,7 @@ public class day_sub extends LinearLayout {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void selectItem(){
-        Typeface typeface = getResources().getFont(R.font.roboto_bold);
+        Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.roboto_bold);
         this.day.setTextColor(getResources().getColor(R.color.black));
         this.day.setTypeface(typeface);
         this.dow.setTextColor(getResources().getColor(R.color.black));
@@ -58,7 +59,7 @@ public class day_sub extends LinearLayout {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void unItem(){
-        Typeface typeface = getResources().getFont(R.font.roboto_regular);
+        Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.roboto_regular);
         this.day.setTextColor(getResources().getColor(R.color.soft_grey));
         this.day.setTypeface(typeface);
         this.dow.setTextColor(getResources().getColor(R.color.soft_grey));
