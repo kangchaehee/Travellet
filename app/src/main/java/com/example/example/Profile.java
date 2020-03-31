@@ -13,10 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class Profile extends Fragment {
 
     Button editButton;
+    TextView name, age, country;
 
     @Override
     public void onAttach(Context context) {

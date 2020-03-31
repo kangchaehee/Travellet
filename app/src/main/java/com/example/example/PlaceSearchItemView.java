@@ -38,7 +38,6 @@ public class PlaceSearchItemView extends LinearLayout {
         placeListName = (TextView) findViewById(R.id.placeListName);
         placeListAddr = (TextView) findViewById(R.id.placeListAddr);
         placeListType = (TextView) findViewById(R.id.placeListType);
-        like = findViewById(R.id.placeListLike);
 
     }
 
