@@ -102,37 +102,18 @@ public class PlanInitialFragment extends Fragment {
 
         if(getArguments() != null){
             int dayNum = getArguments().getInt("index");
-            if(dayNum == 0) {
-                budgetText.setVisibility(View.GONE);
-                budget.setVisibility(View.GONE);
-                calculation.setVisibility(View.GONE);
-                calculationText.setVisibility(View.GONE);
-                addButton.setVisibility(View.GONE);
+            budgetText.setVisibility(View.VISIBLE);
+            budget.setVisibility(View.VISIBLE);
+            calculation.setVisibility(View.VISIBLE);
+            calculationText.setVisibility(View.VISIBLE);
+            addButton.setVisibility(View.VISIBLE);
 
-                day.setText("All");
-                startYear = getArguments().getInt("startYear", 0);
-                startDay = getArguments().getInt("startDay", 0);
-                startMonth = getArguments().getInt("startMonth", 0);
-                Log.d("All startMonth: ", String.valueOf(startMonth));
-                endYear = getArguments().getInt("endYear", 0);
-                endMonth = getArguments().getInt("endMonth", 0);
-                endDay = getArguments().getInt("endDay", 0);
-                period.setText(startYear + "." + startMonth + "." + startDay + " - " + endYear + "." + endMonth + "." + endDay);
-            }
-            else {
-                budgetText.setVisibility(View.VISIBLE);
-                budget.setVisibility(View.VISIBLE);
-                calculation.setVisibility(View.VISIBLE);
-                calculationText.setVisibility(View.VISIBLE);
-                addButton.setVisibility(View.VISIBLE);
-
-                day.setText("DAY " + dayNum);
-                startYear = getArguments().getInt("startYear", 0);
-                startDay = getArguments().getInt("startDay", 0);
-                startMonth = getArguments().getInt("startMonth", 0)+1;
-                Log.d("dayMonth: ", String.valueOf(startMonth));
-                period.setText(startYear + "." + startMonth + "." + startDay) ;
-            }
+            day.setText("DAY " + dayNum);
+            startYear = getArguments().getInt("startYear", 0);
+            startDay = getArguments().getInt("startDay", 0);
+            startMonth = getArguments().getInt("startMonth", 0)+1;
+            Log.d("dayMonth: ", String.valueOf(startMonth));
+            period.setText(startYear + "." + startMonth + "." + startDay) ;
 
         }
 
@@ -267,10 +248,10 @@ public class PlanInitialFragment extends Fragment {
             });
 
             transBudget = (TextView) view.findViewById(R.id.TransBudgetText);
-
             final ImageButton addT = (ImageButton) view.findViewById(R.id.transport_ic);
             final TextView transText = (TextView) view.findViewById(R.id.transportText);
-            addT.setOnClickListener(new View.OnClickListener() {
+
+            transText.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     tDialog = new TransportDialog(getContext());
@@ -310,6 +291,49 @@ public class PlanInitialFragment extends Fragment {
                         }
                     });
                 }
+            });
+            addT.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    tDialog = new TransportDialog(getContext());
+                    tDialog.callFunction(item.getTransport());
+                    tDialog.show();
+                    tDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+
+                        @Override
+                        public void onDismiss(DialogInterface dialog) {
+                            int transport = tDialog.getTransport();
+                            if(transport == 1){
+                                addT.setBackgroundResource(R.drawable.ic_walk_24px);
+                                transText.setText("Walk");
+                            }
+
+                            if(transport == 2){
+                                addT.setBackgroundResource(R.drawable.ic_bus_24px);
+                                transText.setText("Bus");
+                            }
+
+                            if(transport == 3){
+                                addT.setBackgroundResource(R.drawable.ic_subway_24px);
+                                transText.setText("Subway");
+                            }
+
+                            if(transport == 4){
+                                addT.setBackgroundResource(R.drawable.ic_taxi_24px);
+                                transText.setText("Taxi");
+                            }
+
+                            if(transport == 5){
+                                addT.setBackgroundResource(R.drawable.ic_car_24px);
+                                transText.setText("Car");
+                            }
+                            item.setTransport(transport);
+                            calculation.setBackgroundResource(R.drawable.ic_budget_calculation);
+                        }
+                    });
+
+                }
+
             });
             return view;
         }

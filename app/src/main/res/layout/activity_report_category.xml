@@ -75,6 +75,7 @@ tools:context=".ReportCategory">
                 android:fontFamily="@font/roboto_regular"
                 android:letterSpacing="0.03"
                 android:lineSpacingExtra="12sp"
+                android:textColor="@color/soft_black"
                 android:text="Lodging" />
             
             <TextView

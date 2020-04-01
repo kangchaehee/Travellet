@@ -54,15 +54,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="10dp"
+        android:layout_marginTop="29dp"
         android:layout_below="@+id/money"
         android:layout_above="@id/btn_Next"
         android:scrollbars="none"
         android:layout_alignParentStart="true">
 
-        //#1 lodging
         <LinearLayout
 
-            android:layout_marginTop="29dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="32dp"

@@ -26,6 +26,7 @@ public class Report extends Fragment {
 
     LinearLayout btn_daily, btn_category;
     TextView txt1, txt2;
+    View line1, line2;
 
     @Nullable
     @Override
@@ -37,6 +38,9 @@ public class Report extends Fragment {
 
         getChildFragmentManager().beginTransaction().add(R.id.container, fragment1).commit();
 
+        line1 = rootView.findViewById(R.id.line1);
+        line2 = rootView.findViewById(R.id.line2);
+
         btn_daily = rootView.findViewById(R.id.btn_daily);
         txt1 = rootView.findViewById(R.id.txt1);
         btn_daily.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +49,8 @@ public class Report extends Fragment {
                 getChildFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
                 txt2.setTextColor(getResources().getColor(R.color.soft_grey));
                 txt1.setTextColor(getResources().getColor(R.color.black));
+                line1.setVisibility(View.VISIBLE);
+                line2.setVisibility(View.INVISIBLE);
             }
 
         });
@@ -57,6 +63,8 @@ public class Report extends Fragment {
                 getChildFragmentManager().beginTransaction().replace(R.id.container, fragment2).commit();
                 txt1.setTextColor(getResources().getColor(R.color.soft_grey));
                 txt2.setTextColor(getResources().getColor(R.color.black));
+                line1.setVisibility(View.INVISIBLE);
+                line2.setVisibility(View.VISIBLE);
             }
         });
 

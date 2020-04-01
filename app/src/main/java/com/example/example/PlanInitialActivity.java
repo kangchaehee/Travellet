@@ -113,13 +113,13 @@ public class PlanInitialActivity extends Fragment {
         planner.addView(dayItem);
         dayItems.add(dayItem);
         addDay(startYear, startMonth, startDay, endYear, endMonth, endDay);
-        dayItem.selectItem();
+        dayItems.get(1).selectItem();
 
         con = (FrameLayout) rootView.findViewById(R.id.con);
         Fragment fragment;
-        fragment = new PlanAllFragment();
+        fragment = new PlanInitialFragment();
         Bundle bundle = new Bundle();
-        bundle.putInt("index", 0);
+        bundle.putInt("index", 1);
         bundle.putInt("startYear", startYear);
         bundle.putInt("startMonth", startMonth);
         bundle.putInt("startDay", startDay);

@@ -51,23 +51,12 @@ public class WalletMainFragment extends Fragment {
 
         if(getArguments() != null){
             int dayNum = getArguments().getInt("index");
-            if(dayNum == 0) {
-                day.setText("All");
-                startYear = getArguments().getInt("startYear", 0);
-                startDay = getArguments().getInt("startDay", 0);
-                startMonth = getArguments().getInt("startMonth", 0);
-                endYear = getArguments().getInt("endYear", 0);
-                endMonth = getArguments().getInt("endMonth", 0);
-                endDay = getArguments().getInt("endDay", 0);
-                period.setText(startYear + "." + startMonth + "." + startDay + " - " + endYear + "." + endMonth + "." + endDay);
-            }
-            else {
-                day.setText("DAY " + dayNum);
-                startYear = getArguments().getInt("startYear", 0);
-                startDay = getArguments().getInt("startDay", 0);
-                startMonth = getArguments().getInt("startMonth", 0)+1;
-                period.setText(startYear + "." + startMonth + "." + startDay) ;
-            }
+            day.setText("DAY " + dayNum);
+            startYear = getArguments().getInt("startYear", 0);
+            startDay = getArguments().getInt("startDay", 0);
+            startMonth = getArguments().getInt("startMonth", 0)+1;
+            period.setText(startYear + "." + startMonth + "." + startDay) ;
+
 
         }
 

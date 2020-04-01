@@ -25,7 +25,6 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/progress"
         android:layout_below="@+id/btn_back"
-        android:layout_marginBottom="-92dp"
         android:orientation="vertical">
 
         <TextView
@@ -229,7 +228,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginBottom="98dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -313,7 +311,6 @@
     </LinearLayout>
 
 
-
     <ImageView
         android:id="@+id/progress"
         android:layout_width="match_parent"
@@ -323,7 +320,6 @@
         android:layout_alignParentRight="true"
         android:layout_marginLeft="52dp"
         android:layout_marginRight="52dp"
-        android:layout_marginTop="98dp"
         android:background="@drawable/ic_progress_6" />
 
     <Button

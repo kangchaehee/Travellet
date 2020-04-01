@@ -54,7 +54,6 @@ public class MainActivityUpcomingFragment extends Fragment {
             endMonth = getArguments().getInt("endMonth", 0);
             endDay = getArguments().getInt("endDay", 0);
             travelTitle = getArguments().getString("travelTitle");
-            Toast.makeText(getContext(), travelTitle, Toast.LENGTH_SHORT).show();
             dDay = getArguments().getString("dDay");
             budget = getArguments().getFloat("budget", 0);
             lodgingBudget = getArguments().getFloat("lodgingBudget", 0);

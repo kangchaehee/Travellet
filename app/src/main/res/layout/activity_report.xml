@@ -49,6 +49,7 @@
             app:fontFamily="@font/roboto_medium"/>
 
         <View
+            android:id="@+id/line1"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/blue"
@@ -81,6 +82,7 @@
             app:fontFamily="@font/roboto_medium"/>
 
         <View
+            android:id="@+id/line2"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/blue"

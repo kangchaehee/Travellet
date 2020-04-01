@@ -19,192 +19,193 @@
         android:background="@drawable/ic_x"
         android:stateListAnimator="@null"/>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_above="@+id/imageView6"
         android:layout_below="@+id/btn_back"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/roboto_medium"
+            android:lineSpacingExtra="35sp"
+            android:text="How Much"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_light"
+            android:lineSpacingExtra="12sp"
+            android:text="Is Your Budget?"
+            android:textColor="@color/deep_grey"
+            android:textSize="16sp"
+            android:textStyle="normal" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="80dp"
+            android:id="@+id/linear1"
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginLeft="32dp"
+            android:clickable="true"
+            android:background="@drawable/border_12r_grey">
 
-            <TextView
+            <ImageView
+                android:id="@+id/budget1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="28dp"
-                android:fontFamily="@font/roboto_medium"
-                android:lineSpacingExtra="35sp"
-                android:text="How Much"
-                android:textColor="@color/black"
-                android:textSize="28sp"
-                android:textStyle="normal" />
-
-            <TextView
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginLeft="24dp"
+                android:src="@drawable/ic_budeget_24px"
+                />
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/roboto_light"
-                android:lineSpacingExtra="12sp"
-                android:text="Is Your Budget?"
-                android:textColor="@color/deep_grey"
-                android:textSize="16sp"
-                android:textStyle="normal" />
+                android:orientation="vertical"
+                android:layout_marginLeft="24dp"
+                android:layout_gravity="center_vertical|left">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:id="@+id/linear1"
-                android:orientation="horizontal"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="32dp"
-                android:layout_marginLeft="32dp"
-                android:clickable="true"
-                android:background="@drawable/border_12r_grey">
-
-                <ImageView
-                    android:id="@+id/budget1"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|left"
-                    android:layout_marginLeft="24dp"
-                    android:src="@drawable/ic_budeget_24px"
-                    />
-                <LinearLayout
+                    android:text="Frugal"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="11sp"/>
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="24dp"
-                    android:layout_gravity="center_vertical|left">
+                    android:text="$ 800"
+                    android:fontFamily="@font/roboto_light"
+                    android:textStyle="normal"
+                    android:textSize="12sp"
+                    android:textColor="@color/deep_grey"
+                    android:lineSpacingExtra="9sp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Frugal"
-                        android:textSize="14sp"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/roboto_regular"
-                        android:textColor="@color/soft_black"
-                        android:lineSpacingExtra="11sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$ 800"
-                        android:fontFamily="@font/roboto_light"
-                        android:textStyle="normal"
-                        android:textSize="12sp"
-                        android:textColor="@color/deep_grey"
-                        android:lineSpacingExtra="9sp"/>
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:id="@+id/linear2"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="32dp"
-                android:layout_marginLeft="32dp"
-                android:clickable="true"
-                android:background="@drawable/border_12r_grey">
-
-                <ImageView
-                    android:id="@+id/budget2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|left"
-                    android:layout_marginLeft="24dp"
-                    android:src="@drawable/ic_budeget_24px"
-                    />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="24dp"
-                    android:layout_gravity="center_vertical|left">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Middle"
-                        android:textSize="14sp"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/roboto_regular"
-                        android:textColor="@color/soft_black"
-                        android:lineSpacingExtra="11sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$ 800 ~ $ 1200"
-                        android:fontFamily="@font/roboto_light"
-                        android:textStyle="normal"
-                        android:textSize="12sp"
-                        android:textColor="@color/deep_grey"
-                        android:lineSpacingExtra="9sp"/>
-
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:id="@+id/linear3"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginBottom="66dp"
-                android:clickable="true"
-                android:background="@drawable/border_12r_grey">
-
-                <ImageView
-                    android:id="@+id/budget3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|left"
-                    android:layout_marginLeft="24dp"
-                    android:src="@drawable/ic_budeget_24px"
-                    />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="24dp"
-                    android:layout_gravity="center_vertical|left">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Luxurious"
-                        android:textSize="14sp"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/roboto_regular"
-                        android:textColor="@color/soft_black"
-                        android:lineSpacingExtra="11sp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="$ 1200"
-                        android:fontFamily="@font/roboto_light"
-                        android:textStyle="normal"
-                        android:textSize="12sp"
-                        android:textColor="@color/deep_grey"
-                        android:lineSpacingExtra="9sp"/>
-
-                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/linear2"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginLeft="32dp"
+            android:clickable="true"
+            android:background="@drawable/border_12r_grey">
+
+            <ImageView
+                android:id="@+id/budget2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginLeft="24dp"
+                android:src="@drawable/ic_budeget_24px"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="24dp"
+                android:layout_gravity="center_vertical|left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Middle"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="11sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$ 800 ~ $ 1200"
+                    android:fontFamily="@font/roboto_light"
+                    android:textStyle="normal"
+                    android:textSize="12sp"
+                    android:textColor="@color/deep_grey"
+                    android:lineSpacingExtra="9sp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/linear3"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginLeft="32dp"
+            android:clickable="true"
+            android:background="@drawable/border_12r_grey">
+
+            <ImageView
+                android:id="@+id/budget3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|left"
+                android:layout_marginLeft="24dp"
+                android:src="@drawable/ic_budeget_24px"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="24dp"
+                android:layout_gravity="center_vertical|left">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Luxurious"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="8dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/soft_black"
+                    android:lineSpacingExtra="11sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$ 1200"
+                    android:fontFamily="@font/roboto_light"
+                    android:textStyle="normal"
+                    android:textSize="12sp"
+                    android:textColor="@color/deep_grey"
+                    android:lineSpacingExtra="9sp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
     </ScrollView>
 
 
