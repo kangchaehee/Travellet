@@ -3,6 +3,7 @@ package com.example.example;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.graphics.Color;
@@ -20,6 +21,7 @@ import com.github.mikephil.charting.components.Legend.LegendPosition;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 //import com.github.mikephil.charting.utils.Highlight;
@@ -33,12 +35,20 @@ public class ReportCategory extends Fragment {
     PieChart chart;
     float percent, hole;
 
+    TextView chartPer, chartText;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_report_category, container, false);
         PieChart pieChart = rootView.findViewById(R.id.piechart);
+        chartPer = rootView.findViewById(R.id.chartPer);
+        chartText = rootView.findViewById(R.id.charText);
+
+
+        chartPer.setText("10.0%");
+        chartText.setText("Lodging");
 
         ArrayList NoOfEmp = new ArrayList();
 
@@ -54,7 +64,7 @@ public class ReportCategory extends Fragment {
 
         category.add("Lodging");
         category.add("Food");
-        category.add("Leisure");
+        category.add("Leisure/Culture");
         category.add("Shopping");
         category.add("Transport");
         category.add("Etc");
@@ -62,12 +72,49 @@ public class ReportCategory extends Fragment {
         PieData data = new PieData(category, dataSet);
         // MPAndroidChart v3.X 오류 발생
         pieChart.setData(data);
-        dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
-        //int colors [] = {R.color.coral_red, R.color.sun_yellow, R.color.mint, R.color.light_blue, R.color.blue, R.color.purple};
-        //dataSet.setColor(colors);
+        //dataSet.setColors(ColorTemplate.JOYFUL_COLORS);
+        int colors [] = {getResources().getColor(R.color.category1), getResources().getColor(R.color.category2), getResources().getColor(R.color.category3), getResources().getColor(R.color.category4), getResources().getColor(R.color.category5), getResources().getColor(R.color.category6)};
+        dataSet.setColors(colors);
+        dataSet.setDrawValues(false);
 
         // 하단 x-Values List 안보이게. (색깔과 설명)
         pieChart.getLegend().setEnabled(false);
+
+        pieChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
+
+                chartPer.setText(String.valueOf(e.getVal())+"%");
+                int i = e.getXIndex();
+                switch (i){
+                    case 0:
+                        chartText.setText("Lodging");
+                        break;
+                    case 1:
+                        chartText.setText("Food");
+                        break;
+                    case 2:
+                        chartText.setText("Leisure/Culture");
+                        break;
+                    case 3:
+                        chartText.setText("Shopping");
+                        break;
+                    case 4:
+                        chartText.setText("Transport");
+                        break;
+                    case 5:
+                        chartText.setText("Etc");
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected() {
+                chartPer.setText("10.0%");
+                chartText.setText("Lodging");
+            }
+        });
 
         //퍼센트 나오게
         //pieChart.getLegend().setUsePercentValues(true);
@@ -77,10 +124,13 @@ public class ReportCategory extends Fragment {
         pieChart.setTransparentCircleRadius(percent);
 
         //x 값 텍스트를 파이 조각에 그리려면 true로 설정하십시오.
-        //pieChart.setDrawSliceText(boolean enabled);
+        pieChart.setDrawSliceText(false);
 
+        pieChart.setDescription("");
         //차트 내의 값이 원래 값이 아닌 백분율로 표시됩니다. To ValueFormatter형식에 제공된 값은 백분율로 제공됩니다.
-        //pieChart.setUsePercentValues(boolean enabled);
+        pieChart.setUsePercentValues(false);
+
+
 
         //PieChart의 중앙에 그려진 텍스트를 설정합니다. 더 긴 텍스트는 자동으로 "줄 바꿈"되어 파이 조각에 클리핑되지 않습니다.
         //PieChart.setCenterText(SpannableString text):
@@ -93,8 +143,6 @@ public class ReportCategory extends Fragment {
         pieChart.setHoleRadius(hole);
 
         //퍼센트 출력하는
-        //PieChart.setUsePercentValues(true);
-        //PieChart.setDescription("Smartphones Market Share");
 
         // 투명 원의 색상을 설정
         pieChart.setTransparentCircleColor(R.color.white);

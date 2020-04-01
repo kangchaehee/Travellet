@@ -13,14 +13,44 @@ tools:context=".ReportCategory">
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="60dp"
+        android:layout_marginBottom="46dp"
         android:gravity="center">
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/piechart"
+        <RelativeLayout
             android:layout_width="250dp"
-            android:layout_height="250dp"/>
+            android:layout_height="250dp">
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/piechart"
+                android:layout_width="250dp"
+                android:layout_height="250dp"/>
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/chartPer"
+                    android:textColor="@color/black"
+                    android:textSize="28sp"
+                    android:fontFamily="@font/roboto_medium"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/chartPer"
+                    android:id="@+id/charText"
+                    android:textColor="@color/soft_black"
+                    android:textSize="14sp"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/roboto_regular"/>
+
+            </RelativeLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"

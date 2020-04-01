@@ -5,6 +5,6 @@
     <corners
         android:radius="2dp"/>
 
-    <solid android:color="@color/sun_yellow" />
+    <solid android:color="@color/category2" />
 
 </shape>

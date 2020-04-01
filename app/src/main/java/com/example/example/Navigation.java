@@ -117,6 +117,7 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         reportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                goReport();
                 planButton.setBackgroundResource(R.drawable.ic_plan_bar);
                 walletButton.setBackgroundResource(R.drawable.ic_wallet_bar);
                 reportButton.setBackgroundResource(R.drawable.ic_report_bar_selected);
@@ -176,7 +177,7 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         transaction.commit();
     }
 
-    /*
+
     public void goReport(){
         Fragment fragment;
         fragment = new Report();
@@ -186,8 +187,6 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         transaction.addToBackStack(null);
         transaction.commit();
     }
-
-     */
 
     public void goProfile(){
         Fragment fragment;

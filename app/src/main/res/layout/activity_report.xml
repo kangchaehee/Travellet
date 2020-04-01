@@ -23,42 +23,71 @@
         android:text="Expenses"
         />
 
-    <Button
+    <LinearLayout
+        android:layout_width="42dp"
+        android:layout_height="wrap_content"
         android:id="@+id/btn_daily"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
+        android:orientation="vertical"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="20dp"
-        android:background="@color/white"
-        android:lineSpacingExtra="11sp"
-        android:letterSpacing="0.03"
-        android:stateListAnimator="@null"
-        android:text="DAILY"
-        android:textColor="@color/soft_grey"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        app:fontFamily="@font/roboto_medium" />
+        android:background="@color/white">
 
-    <Button
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="11sp"
+            android:letterSpacing="0.03"
+            android:id="@+id/txt1"
+            android:stateListAnimator="@null"
+            android:text="DAILY"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            app:fontFamily="@font/roboto_medium"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/blue"
+            android:layout_marginTop="16dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
         android:id="@+id/btn_category"
-        android:layout_width="wrap_content"
-        android:layout_height="19dp"
+        android:orientation="vertical"
         android:layout_below="@+id/textView"
+        android:layout_toRightOf="@+id/btn_daily"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
-        android:layout_toEndOf="@+id/btn_daily"
-        android:background="@color/white"
-        android:fontFamily="@font/roboto_medium"
-        android:lineSpacingExtra="11sp"
-        android:stateListAnimator="@null"
-        android:text="CATEGORY"
-        android:letterSpacing="0.03"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        android:textStyle="normal" />
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt2"
+            android:lineSpacingExtra="11sp"
+            android:letterSpacing="0.03"
+            android:stateListAnimator="@null"
+            android:text="CATEGORY"
+            android:textColor="@color/soft_grey"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            app:fontFamily="@font/roboto_medium"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/blue"
+            android:layout_marginTop="16dp"
+            android:visibility="invisible"/>
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/grey_bar"
@@ -67,12 +96,11 @@
         android:layout_below="@+id/btn_category"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp"
         android:src="@drawable/bar" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/grey_bar">
 
         <FrameLayout
