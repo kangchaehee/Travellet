@@ -41,7 +41,7 @@ import java.util.List;
 public class AirCalendarUtils {
 
     private static List<String> airCalendarWeekdays = new ArrayList<>();
-    private static AirCalendarIntent.Language airCalendarLanguage = AirCalendarIntent.Language.KO;
+    private static AirCalendarIntent.Language airCalendarLanguage = AirCalendarIntent.Language.EN;
 
     /**
      * @return
@@ -116,16 +116,9 @@ public class AirCalendarUtils {
         }
 
         if (airCalendarWeekdays.isEmpty()) {
-            switch (airCalendarLanguage) {
-                case KO:
-                    String[] weekdaysKo = context.getResources().getStringArray(R.array.label_calender_week);
-                    day = weekdaysKo[dayNum];
-                    break;
-                case EN:
-                    String[] weekdaysEn = context.getResources().getStringArray(R.array.label_calendar_en);
-                    day = weekdaysEn[dayNum];
-                    break;
-            }
+            String[] weekdaysEn = context.getResources().getStringArray(R.array.label_calendar_en);
+            day = weekdaysEn[dayNum];
+
             return day ;
         } else {
             return airCalendarWeekdays.get(dayNum);

@@ -54,6 +54,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
+import androidx.core.content.res.ResourcesCompat;
+
 class AirMonthView extends View {
     private String TAG = "AirMonthView";
 
@@ -98,6 +100,7 @@ class AirMonthView extends View {
     protected int mMonthTitleBGColor;
     protected int mPreviousDayColor;
     protected int mSelectedDaysBgColor;
+    protected int mIntervalDaysBgColor;
     protected int mSelectedDaysColor;
     protected int mWeekDayLineColor;
     protected int mWeekEndColor;
@@ -161,7 +164,8 @@ class AirMonthView extends View {
         mDayTextColor = typedArray.getColor(R.styleable.DayPickerView_colorDayName, resources.getColor(R.color.selected_day_text));
         mDayNumColor = typedArray.getColor(R.styleable.DayPickerView_colorNormalDay, resources.getColor(R.color.normal_day));
         mPreviousDayColor = typedArray.getColor(R.styleable.DayPickerView_colorPreviousDay, resources.getColor(R.color.normal_day));
-        mSelectedDaysBgColor = typedArray.getColor(R.styleable.DayPickerView_colorSelectedDayBackground, resources.getColor(R.color.selected_day_background));
+        mIntervalDaysBgColor = typedArray.getColor(R.styleable.DayPickerView_colorSelectedDayBackground, resources.getColor(R.color.selected_day_background));
+        mSelectedDaysBgColor = typedArray.getColor(R.styleable.DayPickerView_colorSelectedDayBackground, resources.getColor(R.color.blue));
         mSelectedDaysColor = typedArray.getColor(R.styleable.DayPickerView_colorSelectedDayText, resources.getColor(R.color.selected_day_interval_text));
         mMonthTitleBGColor = typedArray.getColor(R.styleable.DayPickerView_colorMonthName, resources.getColor(R.color.colorMonthTextColor));
         mWeekDayLineColor = typedArray.getColor(R.styleable.DayPickerView_colorWeekDayLineColor, resources.getColor(R.color.colorWeekDayLineColor));
@@ -347,22 +351,28 @@ class AirMonthView extends View {
                 if (mDrawRect) {
                     RectF rectF = new RectF(x - DAY_SELECTED_CIRCLE_SIZE, (y - MINI_DAY_NUMBER_TEXT_SIZE / 3) - DAY_SELECTED_CIRCLE_SIZE, x + DAY_SELECTED_CIRCLE_SIZE, (y - MINI_DAY_NUMBER_TEXT_SIZE / 3) + DAY_SELECTED_CIRCLE_SIZE);
                     canvas.drawRoundRect(rectF, 150.0f, 150.0f, mSelectedCirclePaint);
+
+                    mMonthNumPaint.setColor(mDayTextColor);
                 } else {
                     canvas.drawCircle(x, y - MINI_DAY_NUMBER_TEXT_SIZE / 3, DAY_SELECTED_CIRCLE_SIZE, mSelectedCirclePaint);
+
+                    mMonthNumPaint.setColor(mDayTextColor);
                 }
             }
 
             if (mHasToday && (mToday == day)) {
                 mMonthNumPaint.setColor(mCurrentDayTextColor);
-                mMonthNumPaint.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                //mMonthNumPaint.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
             }
 
             if (mToday > day && mStartYear == -1) {
                 mMonthNumPaint.setColor(mOldDayNumTextColor);
-                mMonthNumPaint.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+                Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.roboto_light);
+                mMonthNumPaint.setTypeface(typeface);
             } else {
                 mMonthNumPaint.setColor(mDayNumColor);
-                mMonthNumPaint.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+                Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.roboto_light);
+                mMonthNumPaint.setTypeface(typeface);
             }
 
             if (AirCalendarUtils.isWeekend(mYear + "-" + (mMonth + 1) + "-" + day)) {
@@ -426,17 +436,24 @@ class AirMonthView extends View {
 
             if ((mMonth == mSelectedBeginMonth && mSelectedBeginDay == day && mSelectedBeginYear == mYear) || (mMonth == mSelectedLastMonth && mSelectedLastDay == day && mSelectedLastYear == mYear)) {
                 mMonthNumPaint.setColor(mSelectedDaysColor);
+                mMonthNumPaint.setColor(mDayTextColor);
             }
 
             if ((mSelectedBeginDay != -1 && mSelectedLastDay != -1) && (mSelectedLastMonth != mSelectedBeginMonth || mSelectedBeginDay != mSelectedLastDay) && (mMonth == mSelectedBeginMonth && mSelectedBeginDay == day && mSelectedBeginYear == mYear)) {
                 mMonthNumPaint.setColor(mSelectedDaysColor);
-                RectF rectF = new RectF(x, (y - MINI_DAY_NUMBER_TEXT_SIZE / 3) - DAY_SELECTED_CIRCLE_SIZE, x + (bgw / 2), (y - MINI_DAY_NUMBER_TEXT_SIZE / 3) + DAY_SELECTED_CIRCLE_SIZE);
-                canvas.drawRoundRect(rectF, 0.0f, 0.0f, mSelectedIntervalPaint);
+                RectF rectF1 = new RectF(x, (y - MINI_DAY_NUMBER_TEXT_SIZE / 3) - DAY_SELECTED_CIRCLE_SIZE, x + (bgw / 2), (y - MINI_DAY_NUMBER_TEXT_SIZE / 3) + DAY_SELECTED_CIRCLE_SIZE);
+                canvas.drawRoundRect(rectF1, 0.0f, 0.0f, mSelectedIntervalPaint);
+                RectF rectF2 = new RectF(x - DAY_SELECTED_CIRCLE_SIZE, (y - MINI_DAY_NUMBER_TEXT_SIZE / 3) - DAY_SELECTED_CIRCLE_SIZE, x + DAY_SELECTED_CIRCLE_SIZE, (y - MINI_DAY_NUMBER_TEXT_SIZE / 3) + DAY_SELECTED_CIRCLE_SIZE);
+                canvas.drawRoundRect(rectF2, 150.0f, 150.0f, mSelectedCirclePaint);
+                mMonthNumPaint.setColor(mDayTextColor);
             }
             if ((mSelectedBeginDay != -1 && mSelectedLastDay != -1) && (mSelectedLastMonth != mSelectedBeginMonth || mSelectedBeginDay != mSelectedLastDay) && (mMonth == mSelectedLastMonth && mSelectedLastDay == day && mSelectedLastYear == mYear)) {
                 mMonthNumPaint.setColor(mSelectedDaysColor);
                 RectF rectF = new RectF(x - (bgw / 2), (y - MINI_DAY_NUMBER_TEXT_SIZE / 3) - DAY_SELECTED_CIRCLE_SIZE, x, (y - MINI_DAY_NUMBER_TEXT_SIZE / 3) + DAY_SELECTED_CIRCLE_SIZE);
                 canvas.drawRoundRect(rectF, 0.0f, 0.0f, mSelectedIntervalPaint);
+                RectF rectF2 = new RectF(x - DAY_SELECTED_CIRCLE_SIZE, (y - MINI_DAY_NUMBER_TEXT_SIZE / 3) - DAY_SELECTED_CIRCLE_SIZE, x + DAY_SELECTED_CIRCLE_SIZE, (y - MINI_DAY_NUMBER_TEXT_SIZE / 3) + DAY_SELECTED_CIRCLE_SIZE);
+                canvas.drawRoundRect(rectF2, 150.0f, 150.0f, mSelectedCirclePaint);
+                mMonthNumPaint.setColor(mDayTextColor);
             }
 
             if ((mSelectedBeginDay != -1 && mSelectedLastDay != -1 && mSelectedBeginYear == mSelectedLastYear &&
@@ -453,24 +470,27 @@ class AirMonthView extends View {
                     if (((mMonth == mSelectedBeginMonth && mSelectedLastMonth == mSelectedBeginMonth) && ((mSelectedBeginDay < mSelectedLastDay && day > mSelectedBeginDay && day < mSelectedLastDay) || (mSelectedBeginDay > mSelectedLastDay && day < mSelectedBeginDay && day > mSelectedLastDay))) ||
                             ((mSelectedBeginMonth < mSelectedLastMonth && mMonth == mSelectedBeginMonth && day > mSelectedBeginDay) || (mSelectedBeginMonth < mSelectedLastMonth && mMonth == mSelectedLastMonth && day < mSelectedLastDay)) ||
                             ((mSelectedBeginMonth > mSelectedLastMonth && mMonth == mSelectedBeginMonth && day < mSelectedBeginDay) || (mSelectedBeginMonth > mSelectedLastMonth && mMonth == mSelectedLastMonth && day > mSelectedLastDay))) {
-                        mMonthNumPaint.setColor(mSelectedDaysColor);
                         drawSelectorIntervalDayBackground(canvas, x, y, bgw);
+                        mMonthNumPaint.setColor(mSelectedDaysColor);
                     }
 
                     if ((mMonth > mSelectedBeginMonth && mMonth < mSelectedLastMonth && mSelectedBeginMonth < mSelectedLastMonth) || (mMonth < mSelectedBeginMonth && mMonth > mSelectedLastMonth && mSelectedBeginMonth > mSelectedLastMonth)) {
-                        mMonthNumPaint.setColor(mSelectedDaysColor);
+
                         drawSelectorIntervalDayBackground(canvas, x, y, bgw);
+                        mMonthNumPaint.setColor(mSelectedDaysColor);
                     }
                 }
                 if (mSelectedBeginYear != mSelectedLastYear) {
                     if ((mSelectedBeginYear == mYear && mSelectedBeginMonth == mMonth && mSelectedBeginDay < day) || (mSelectedLastYear == mYear && mSelectedLastMonth == mMonth && mSelectedLastDay > day)) {
-                        mMonthNumPaint.setColor(mSelectedDaysColor);
+
                         drawSelectorIntervalDayBackground(canvas, x, y, bgw);
+                        mMonthNumPaint.setColor(mSelectedDaysColor);
                     }
                     if ((mSelectedBeginYear < mSelectedLastYear && ((mMonth > mSelectedBeginMonth && mYear == mSelectedBeginYear) || (mMonth < mSelectedLastMonth && mYear == mSelectedLastYear))) ||
                             (mSelectedBeginYear > mSelectedLastYear && ((mMonth < mSelectedBeginMonth && mYear == mSelectedBeginYear) || (mMonth > mSelectedLastMonth && mYear == mSelectedLastYear)))) {
-                        mMonthNumPaint.setColor(mSelectedDaysColor);
+
                         drawSelectorIntervalDayBackground(canvas, x, y, bgw);
+                        mMonthNumPaint.setColor(mSelectedDaysColor);
                     }
                 }
             }
@@ -533,23 +553,23 @@ class AirMonthView extends View {
     protected void initView() {
         // 년월 타이틀을 그림
         mMonthTitlePaint = new Paint();
-        mMonthTitlePaint.setFakeBoldText(true);
+        //mMonthTitlePaint.setFakeBoldText(true);
         mMonthTitlePaint.setAntiAlias(true);
         mMonthTitlePaint.setTextSize(MONTH_LABEL_TEXT_SIZE);
-        mMonthTitlePaint.setTypeface(Typeface.create(mMonthTitleTypeface, Typeface.NORMAL));
+        Typeface typeface1 = ResourcesCompat.getFont(getContext(), R.font.roboto_regular);
+        mMonthTitlePaint.setTypeface(typeface1);
         mMonthTitlePaint.setColor(mMonthTextColor);
         mMonthTitlePaint.setTextAlign(Align.LEFT);
-        mMonthTitlePaint.setStyle(Style.FILL);
 
         mMonthTitleBGPaint = new Paint();
-        mMonthTitleBGPaint.setFakeBoldText(true);
+        //mMonthTitleBGPaint.setFakeBoldText(true);
         mMonthTitleBGPaint.setAntiAlias(true);
         mMonthTitleBGPaint.setColor(mMonthTitleBGColor);
         mMonthTitleBGPaint.setTextAlign(Align.CENTER);
         mMonthTitleBGPaint.setStyle(Style.FILL);
 
         mSelectedCirclePaint = new Paint();
-        mSelectedCirclePaint.setFakeBoldText(true);
+        //mSelectedCirclePaint.setFakeBoldText(true);
         mSelectedCirclePaint.setAntiAlias(true);
         mSelectedCirclePaint.setColor(mSelectedDaysBgColor);
         mSelectedCirclePaint.setTextAlign(Align.CENTER);
@@ -557,17 +577,17 @@ class AirMonthView extends View {
 
         mSelectedIntervalPaint = new Paint();
         mSelectedIntervalPaint.setAntiAlias(true);
-        mSelectedIntervalPaint.setColor(mSelectedDaysBgColor);
+        mSelectedIntervalPaint.setColor(mIntervalDaysBgColor);
 //        mSelectedIntervalPaint.setAlpha(SELECTED_CIRCLE_ALPHA);
 
         mMonthDayLabelPaint = new Paint();
         mMonthDayLabelPaint.setAntiAlias(true);
         mMonthDayLabelPaint.setTextSize(MONTH_DAY_LABEL_TEXT_SIZE);
         mMonthDayLabelPaint.setColor(getResources().getColor(R.color.colorMonthDayLabelPaint));
-        mMonthDayLabelPaint.setTypeface(Typeface.create(mDayOfWeekTypeface, Typeface.NORMAL));
-        mMonthDayLabelPaint.setStyle(Style.FILL);
+        Typeface typeface2 = ResourcesCompat.getFont(getContext(), R.font.roboto_regular);
+        mMonthDayLabelPaint.setTypeface(typeface2);
         mMonthDayLabelPaint.setTextAlign(Align.CENTER);
-        mMonthDayLabelPaint.setFakeBoldText(true);
+        //mMonthDayLabelPaint.setFakeBoldText(true);
 
         mWeekDayLinePaint = new Paint();
         mWeekDayLinePaint.setAntiAlias(true);

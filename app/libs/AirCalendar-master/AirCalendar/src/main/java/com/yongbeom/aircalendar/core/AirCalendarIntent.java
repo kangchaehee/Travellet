@@ -37,8 +37,7 @@ import java.util.List;
 public class AirCalendarIntent  extends Intent implements Parcelable {
 
     public enum Language {
-        EN,
-        KO
+        EN
     }
 
     private AirCalendarIntent() {

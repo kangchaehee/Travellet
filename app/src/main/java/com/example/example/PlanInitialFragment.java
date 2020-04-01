@@ -63,7 +63,7 @@ public class PlanInitialFragment extends Fragment {
     DeleteDialog oDialog;
     TransportDialog tDialog;
 
-    int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW;
+    int startYear, startMonth, startDay, endYear, endMonth, endDay;
 
     @Override
     public void onPause() {
@@ -113,6 +113,7 @@ public class PlanInitialFragment extends Fragment {
                 startYear = getArguments().getInt("startYear", 0);
                 startDay = getArguments().getInt("startDay", 0);
                 startMonth = getArguments().getInt("startMonth", 0);
+                Log.d("All startMonth: ", String.valueOf(startMonth));
                 endYear = getArguments().getInt("endYear", 0);
                 endMonth = getArguments().getInt("endMonth", 0);
                 endDay = getArguments().getInt("endDay", 0);
@@ -128,7 +129,8 @@ public class PlanInitialFragment extends Fragment {
                 day.setText("DAY " + dayNum);
                 startYear = getArguments().getInt("startYear", 0);
                 startDay = getArguments().getInt("startDay", 0);
-                startMonth = getArguments().getInt("startMonth", 0);
+                startMonth = getArguments().getInt("startMonth", 0)+1;
+                Log.d("dayMonth: ", String.valueOf(startMonth));
                 period.setText(startYear + "." + startMonth + "." + startDay) ;
             }
 

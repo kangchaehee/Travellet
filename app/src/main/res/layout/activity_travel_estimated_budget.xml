@@ -16,7 +16,8 @@
         android:onClick="onButtonClick"
         android:layout_marginTop="24dp"
         android:layout_marginLeft="16dp"
-        android:background="@drawable/ic_back"/>
+        android:background="@drawable/ic_back"
+        tools:ignore="OnClick" />
 
 
     <TextView
@@ -52,7 +53,10 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="10dp"
         android:layout_below="@+id/money"
+        android:layout_above="@id/btn_Next"
+        android:scrollbars="none"
         android:layout_alignParentStart="true">
 
         //#1 lodging
@@ -523,7 +527,8 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="14sp"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        tools:ignore="OnClick" />
 
 </RelativeLayout>
 

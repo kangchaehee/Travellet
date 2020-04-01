@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     int startYear, startMonth, startDay, endYear, endMonth, endDay, dDay;
     String travelTitle;
-    float lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget;
+    float budget, lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +57,15 @@ public class MainActivity extends AppCompatActivity {
                 endYear = intent2.getIntExtra("endYear", 0);
                 endMonth = intent2.getIntExtra("endMonth", 0);
                 endDay = intent2.getIntExtra("endDay", 0);
+                budget = intent2.getFloatExtra("budget", 0);
+                lodgingBudget = intent2.getFloatExtra("lodgingBudget", 0);
+                foodBudget = intent2.getFloatExtra("foodBudget", 0);
+                leisureBudget = intent2.getFloatExtra("leisureBudget", 0);
+                shoppingBudget = intent2.getFloatExtra("shoppingBudget", 0);
+                transportBudget = intent2.getFloatExtra("transportBudget", 0);
+                etcBudget = intent2.getFloatExtra("etcBudget", 0);
                 travelTitle = intent2.getStringExtra("travelTitle");
 
-                //Toast.makeText(getApplicationContext(), travelTitle, Toast.LENGTH_LONG).show();
 
                 Bundle bundle = new Bundle();
                 bundle.putInt("startYear", startYear);
@@ -69,6 +75,14 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putInt("endMonth", endMonth);
                 bundle.putInt("endDay", endDay);
                 bundle.putString("travelTitle", travelTitle);
+                Log.d("putBundle: ", travelTitle);
+                bundle.putFloat("budget", budget);
+                bundle.putFloat("lodgingBudget", lodgingBudget);
+                bundle.putFloat("foodBudget", foodBudget);
+                bundle.putFloat("leisureBudget", leisureBudget);
+                bundle.putFloat("shoppingBudget", shoppingBudget);
+                bundle.putFloat("transportBudget", transportBudget);
+                bundle.putFloat("etcBudget", etcBudget);
 
                 dDay = returnDday(startYear, startMonth, startDay);
                 if(dDay >=0){

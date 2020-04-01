@@ -74,14 +74,14 @@
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="24dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="37dp">
 
                         <LinearLayout
+                            android:id="@+id/lin"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:layout_marginBottom="11dp"
                             android:weightSum="7"
                             android:gravity="center">
 
@@ -96,22 +96,24 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:layout_centerHorizontal="true"
-                                    android:text="SUN"
-                                    android:textColor="@color/coral_red"
-                                    android:textSize="11sp" />
+                                    android:text="S"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/roboto_regular"/>
                             </RelativeLayout>
                             <RelativeLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1">
                                 <TextView
-                                    android:text="MON"
+                                    android:text="M"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:layout_centerHorizontal="true"
-                                    android:textSize="11sp"
-                                    android:textColor="#414141"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/roboto_regular"
                                     android:id="@+id/tv_day_two" />
                             </RelativeLayout>
                             <RelativeLayout
@@ -119,13 +121,14 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1">
                                 <TextView
-                                    android:text="TUE"
+                                    android:text="T"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:layout_centerHorizontal="true"
-                                    android:textSize="11sp"
-                                    android:textColor="#414141"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/roboto_regular"
                                     android:id="@+id/tv_day_three" />
                             </RelativeLayout>
                             <RelativeLayout
@@ -133,13 +136,14 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1">
                                 <TextView
-                                    android:text="WED"
+                                    android:text="W"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:layout_centerHorizontal="true"
-                                    android:textSize="11sp"
-                                    android:textColor="#414141"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/roboto_regular"
                                     android:id="@+id/tv_day_four"  />
                             </RelativeLayout>
                             <RelativeLayout
@@ -147,13 +151,14 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1">
                                 <TextView
-                                    android:text="THU"
+                                    android:text="T"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:layout_centerHorizontal="true"
-                                    android:textSize="11sp"
-                                    android:textColor="#414141"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/roboto_regular"
                                     android:id="@+id/tv_day_five"  />
                             </RelativeLayout>
                             <RelativeLayout
@@ -161,13 +166,14 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1">
                                 <TextView
-                                    android:text="FRI"
+                                    android:text="F"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:layout_centerHorizontal="true"
-                                    android:textSize="11sp"
-                                    android:textColor="#414141"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/roboto_regular"
                                     android:id="@+id/tv_day_six"/>
                             </RelativeLayout>
                             <RelativeLayout
@@ -175,13 +181,14 @@
                                 android:layout_height="match_parent"
                                 android:layout_weight="1">
                                 <TextView
-                                    android:text="SAT"
+                                    android:text="S"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
                                     android:layout_centerHorizontal="true"
-                                    android:textSize="11sp"
-                                    android:textColor="@color/blue"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/black"
+                                    android:fontFamily="@font/roboto_regular"
                                     android:id="@+id/tv_day_seven"/>
                             </RelativeLayout>
 
@@ -192,7 +199,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
                             android:background="#d8d8d8"
-                            android:layout_alignParentBottom="true"/>
+                            android:layout_below="@id/lin"
+                            android:layout_marginTop="11dp"/>
                     </RelativeLayout>
                 </LinearLayout>
 

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
@@ -57,7 +58,13 @@ public class ProfileModify extends AppCompatActivity {
         name = intent.getStringExtra("name");
         country = intent.getStringExtra("country");
         age = intent.getIntExtra("age", 0);
-        image = (Bitmap) intent.getParcelableExtra("image");
+        /*if( intent.getByteArrayExtra("image")== null){
+            image = null;
+        }
+        else{
+            bytes = intent.getByteArrayExtra("image");
+            image = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        }*/
 
         Edittext_name = findViewById(R.id.Edittext_name);
         spinner = findViewById(R.id.country);
@@ -65,14 +72,15 @@ public class ProfileModify extends AppCompatActivity {
         selfie = (ImageView)findViewById(R.id.profile);
 
         Edittext_name.setText(name);
-        if(image == null){
+
+        /*if(image == null){
             selfie.setBackgroundResource(R.drawable.ic_profime_circle);
         }
         else{
             selfie.setBackground(new ShapeDrawable(new OvalShape()));
             selfie.setClipToOutline(true);
             selfie.setImageBitmap(image);
-        }
+        }*/
 
         String[] ageArr = getResources().getStringArray(R.array.array_age);
         String[] countryArr = getResources().getStringArray(R.array.array_country);
@@ -164,9 +172,9 @@ public class ProfileModify extends AppCompatActivity {
         intent.putExtra("country", country);
         intent.putExtra("age", age);
         intent.putExtra("name", Edittext_name.getText().toString());
-        BitmapDrawable drawable = (BitmapDrawable) selfie.getDrawable();
+        /*BitmapDrawable drawable = (BitmapDrawable) selfie.getDrawable();
         if(drawable == null){
-            image = null;
+            bytes=null;
         }
         else{
             image = drawable.getBitmap();
@@ -174,7 +182,7 @@ public class ProfileModify extends AppCompatActivity {
             image.compress(Bitmap.CompressFormat.PNG, 100, stream);
             bytes = stream.toByteArray();
         }
-        intent.putExtra("image", bytes);
+        intent.putExtra("image", bytes);*/
         setResult(RESULT_OK, intent);
         finish();
     }

@@ -192,6 +192,7 @@ public class PlanInitialActivity extends Fragment {
                     bundle.putInt("index", finalI);
                     bundle.putInt("startYear", startYear);
                     bundle.putInt("startMonth", startMonth);
+                    Log.d("startMonth: ", String.valueOf(startMonth));
                     bundle.putInt("startDay", startDay);
                     fragment.setArguments(bundle);
                     FragmentManager manager = getChildFragmentManager();

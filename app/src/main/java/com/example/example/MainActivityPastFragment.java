@@ -1,6 +1,7 @@
 package com.example.example;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,7 @@ public class MainActivityPastFragment extends Fragment {
     int startYear, startMonth, startDay, endYear, endMonth, endDay;
     String dDay;
     String travelTitle;
+    float budget, lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget;
 
     TextView t;
 
@@ -54,6 +56,13 @@ public class MainActivityPastFragment extends Fragment {
             endDay = getArguments().getInt("endDay", 0);
             travelTitle = getArguments().getString("travelTitle");
             dDay = getArguments().getString("dDay");
+            budget = getArguments().getFloat("budget", 0);
+            lodgingBudget = getArguments().getFloat("lodgingBudget", 0);
+            foodBudget = getArguments().getFloat("foodBudget", 0);
+            leisureBudget = getArguments().getFloat("leisureBudget", 0);
+            shoppingBudget = getArguments().getFloat("shoppingBudget", 0);
+            transportBudget = getArguments().getFloat("transportBudget", 0);
+            etcBudget = getArguments().getFloat("etcBudget", 0);
             adapter.addItem(new MainItem(dDay, travelTitle, startYear+"."+startMonth+"."+startDay, endYear+"."+endMonth+"."+endDay));
         }
 
@@ -95,6 +104,29 @@ public class MainActivityPastFragment extends Fragment {
             view.setdDay(item.getdDay());
             view.setTitle(item.getTripTitle());
             view.setPeriod(item.getStartDay()+"-"+item.getEndDay());
+
+            view.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), Navigation.class);
+                    intent.putExtra("startYear", startYear);
+                    intent.putExtra("startMonth", startMonth);
+                    intent.putExtra("startDay", startDay);
+                    intent.putExtra("endYear", endYear);
+                    intent.putExtra("endMonth", endMonth);
+                    intent.putExtra("endDay", endDay);
+                    intent.putExtra("travelTitle", travelTitle);
+                    intent.putExtra("budget", budget);
+                    intent.putExtra("lodgingBudget", lodgingBudget);
+                    intent.putExtra("foodBudget", foodBudget);
+                    intent.putExtra("leisureBudget", leisureBudget);
+                    intent.putExtra("shoppingBudget", shoppingBudget);
+                    intent.putExtra("transportBudget", transportBudget);
+                    intent.putExtra("etcBudget", etcBudget);
+                    startActivity(intent);
+                }
+            });
 
             ImageButton del = (ImageButton) view.findViewById(R.id.up_delete);
             del.setOnClickListener(new View.OnClickListener() {

@@ -177,7 +177,7 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
 
         if (getIntent().hasExtra(WEEK_LANGUAGE)) {
             language = AirCalendarIntent.Language.valueOf(getIntent().getStringExtra(WEEK_LANGUAGE));
-            AirCalendarUtils.setLanguage(language);
+            AirCalendarUtils.setLanguage(AirCalendarIntent.Language.EN);
         }
 
         init();
@@ -207,10 +207,7 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
                     List<String> enList = new ArrayList<>(Arrays.asList(getResources().getStringArray(com.yongbeom.aircalendar.R.array.label_calendar_en)));
                     weekDays.addAll(enList);
                     break;
-                case KO:
-                    List<String> koList = new ArrayList<>(Arrays.asList(getResources().getStringArray(com.yongbeom.aircalendar.R.array.label_calender_week)));
-                    weekDays.addAll(koList);
-                    break;
+
             }
         }
 
@@ -265,7 +262,7 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
 
         pickerView.setFirstDayOfWeek(firstDayOfWeek);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy", Locale.KOREA);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy", Locale.ENGLISH);
         Date currentTime = new Date();
         String dTime = formatter.format(currentTime);
 

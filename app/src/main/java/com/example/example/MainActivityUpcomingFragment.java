@@ -1,6 +1,7 @@
 package com.example.example;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -23,9 +25,11 @@ public class MainActivityUpcomingFragment extends Fragment {
     double[] budgetList = new double[5];
     DeleteDialog oDialog;
 
+
     int startYear, startMonth, startDay, endYear, endMonth, endDay;
     String dDay;
     String travelTitle;
+    float budget, lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget;
 
     TextView t;
 
@@ -50,7 +54,15 @@ public class MainActivityUpcomingFragment extends Fragment {
             endMonth = getArguments().getInt("endMonth", 0);
             endDay = getArguments().getInt("endDay", 0);
             travelTitle = getArguments().getString("travelTitle");
+            Toast.makeText(getContext(), travelTitle, Toast.LENGTH_SHORT).show();
             dDay = getArguments().getString("dDay");
+            budget = getArguments().getFloat("budget", 0);
+            lodgingBudget = getArguments().getFloat("lodgingBudget", 0);
+            foodBudget = getArguments().getFloat("foodBudget", 0);
+            leisureBudget = getArguments().getFloat("leisureBudget", 0);
+            shoppingBudget = getArguments().getFloat("shoppingBudget", 0);
+            transportBudget = getArguments().getFloat("transportBudget", 0);
+            etcBudget = getArguments().getFloat("etcBudget", 0);
 
             adapter.addItem(new MainItem(dDay, travelTitle, startYear+"."+startMonth+"."+startDay, endYear+"."+endMonth+"."+endDay));
         }
@@ -89,6 +101,29 @@ public class MainActivityUpcomingFragment extends Fragment {
             view.setdDay(item.getdDay());
             view.setTitle(item.getTripTitle());
             view.setPeriod(item.getStartDay()+" - "+item.getEndDay());
+
+            view.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), Navigation.class);
+                    intent.putExtra("startYear", startYear);
+                    intent.putExtra("startMonth", startMonth);
+                    intent.putExtra("startDay", startDay);
+                    intent.putExtra("endYear", endYear);
+                    intent.putExtra("endMonth", endMonth);
+                    intent.putExtra("endDay", endDay);
+                    intent.putExtra("travelTitle", travelTitle);
+                    intent.putExtra("budget", budget);
+                    intent.putExtra("lodgingBudget", lodgingBudget);
+                    intent.putExtra("foodBudget", foodBudget);
+                    intent.putExtra("leisureBudget", leisureBudget);
+                    intent.putExtra("shoppingBudget", shoppingBudget);
+                    intent.putExtra("transportBudget", transportBudget);
+                    intent.putExtra("etcBudget", etcBudget);
+                    startActivity(intent);
+                }
+            });
 
             ImageButton del = (ImageButton) view.findViewById(R.id.up_delete);
             del.setOnClickListener(new View.OnClickListener() {

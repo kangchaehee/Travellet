@@ -14,16 +14,14 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".ReportDaily"></activity>
         <activity android:name=".Report">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ReportCategory" />
         <activity android:name=".WalletListSubItem" />
         <activity android:name=".ReportMain" />
-        <activity android:name=".Navigation" />
+        <activity android:name=".Navigation">
+
+        </activity>
         <activity android:name=".WithFriendsActivity" />
         <activity android:name=".TravelAddActivity" />
         <activity android:name=".DeleteDialog" />
@@ -53,14 +51,22 @@
         <activity android:name=".TravelPreferenceSet" />
         <activity android:name=".TravelLodgingSet" />
         <activity android:name=".MainEmpty" />
-        <activity android:name=".SignIn" />
+        <activity android:name=".SignIn">
+
+        </activity>
         <activity android:name=".SplashActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Profile" />
         <activity android:name=".PlanSearch" />
         <activity android:name=".BudgetShow" />
         <activity android:name=".BudgetSet" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".AirCalendarDatePickerActivity" />
         <activity
             android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"

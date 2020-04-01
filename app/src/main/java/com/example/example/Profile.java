@@ -21,12 +21,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
+
 public class Profile extends Fragment {
 
     Button editButton;
     TextView name, age, country;
     ImageView image;
     Bitmap imageB;
+    byte[] bytes;
 
     @Override
     public void onAttach(Context context) {
@@ -49,13 +52,18 @@ public class Profile extends Fragment {
         age = rootView.findViewById(R.id.age);
         country = rootView.findViewById(R.id.country);
         image = rootView.findViewById(R.id.image);
-        BitmapDrawable drawable = (BitmapDrawable) image.getDrawable();
+
+
+        /*BitmapDrawable drawable = (BitmapDrawable) image.getDrawable();
         if(drawable == null){
-            imageB = null;
+            bytes = null;
         }
         else{
             imageB = drawable.getBitmap();
-        }
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            imageB.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            bytes = stream.toByteArray();
+        }*/
 
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +72,7 @@ public class Profile extends Fragment {
                 intent.putExtra("name", name.getText().toString());
                 intent.putExtra("age", Integer.parseInt(age.getText().toString()));
                 intent.putExtra("country", country.getText().toString());
-                intent.putExtra("image", imageB);
+                intent.putExtra("image", bytes);
                 startActivityForResult(intent, 101);
             }
         });
@@ -77,23 +85,30 @@ public class Profile extends Fragment {
         super.onActivityResult(requestCode, resultCode, intent);
         if(requestCode == 101){
             if(intent != null){
+                Bitmap image;
                 String name = intent.getStringExtra("name");
                 int age = intent.getIntExtra("age", 0);
                 String country = intent.getStringExtra("country");
-                byte[] byteArr = intent.getByteArrayExtra("image");
-                Bitmap image = BitmapFactory.decodeByteArray(byteArr, 0, byteArr.length);
+                //이미지 파일 용량 개큰건 바이트로 변환해도 안넘어와서 db 사용해야할 듯.
+                /*if( intent.getByteArrayExtra("image")== null){
+                    image = null;
+                }
+                else{
+                    byte[] byteArr = intent.getByteArrayExtra("image");
+                    image = BitmapFactory.decodeByteArray(byteArr, 0, byteArr.length);
+                }*/
 
                 this.name.setText(name);
                 this.age.setText(String.valueOf(age));
                 this.country.setText(country);
-                if(image == null){
+                /*if(image == null){
                     this.image.setBackgroundResource(R.drawable.ic_profime_circle);
                 }
                 else{
                     this.image.setBackground(new ShapeDrawable(new OvalShape()));
                     this.image.setClipToOutline(true);
                     this.image.setImageBitmap(image);
-                }
+                }*/
             }
         }
 

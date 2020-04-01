@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -30,9 +32,9 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
     int size;
     String[] timeList;
 
-    int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW, budgetType, budgetTotal, lodgingType, prefType;
+    int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW, budgetType, lodgingType, prefType;
     String travelTitle;
-    float lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget;
+    float budgetTotal, lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget;
 
 
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -209,12 +211,21 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         intent.putExtra("startYear", startYear);
         intent.putExtra("startMonth", startMonth);
         intent.putExtra("startDay", startDay);
+        intent.putExtra("startDoW", startDoW);
         intent.putExtra("endYear", endYear);
         intent.putExtra("endMonth", endMonth);
         intent.putExtra("endDay", endDay);
+        intent.putExtra("endDoW", endDoW);
+        intent.putExtra("budget", budgetTotal);
+        intent.putExtra("lodgingBudget", lodgingBudget);
+        intent.putExtra("foodBudget", foodBudget);
+        intent.putExtra("leisureBudget", leisureBudget);
+        intent.putExtra("shoppingBudget", shoppingBudget);
+        intent.putExtra("transportBudget", transportBudget);
+        intent.putExtra("etcBudget", etcBudget);
         intent.putExtra("travelTitle", travelTitle);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 }

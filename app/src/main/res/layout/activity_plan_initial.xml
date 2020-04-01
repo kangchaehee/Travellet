@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="96dp"
         android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
         android:scrollbars="none">
 
         <LinearLayout
             android:id="@+id/planner"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="32dp"
             android:layout_marginTop="40dp"
             android:orientation="horizontal">
 
