@@ -68,7 +68,7 @@ public class MainActivityUpcomingFragment extends Fragment {
         }
             //adapter.addItem(new MainItem("D-10", "happy trip", "2020.01.04", "2020.02.01"));
 
-
+        oDialog = new DeleteDialog(getContext());
         return rootView;
     }
 

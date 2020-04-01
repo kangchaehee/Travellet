@@ -65,7 +65,7 @@ public class WalletMainFragment extends Fragment {
                 day.setText("DAY " + dayNum);
                 startYear = getArguments().getInt("startYear", 0);
                 startDay = getArguments().getInt("startDay", 0);
-                startMonth = getArguments().getInt("startMonth", 0);
+                startMonth = getArguments().getInt("startMonth", 0)+1;
                 period.setText(startYear + "." + startMonth + "." + startDay) ;
             }
 

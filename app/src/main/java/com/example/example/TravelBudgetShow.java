@@ -166,9 +166,9 @@ public class TravelBudgetShow extends AppCompatActivity {
             intent.putExtra("endDoW", endDoW);
             intent.putExtra("travelTitle", title);
             intent.putExtra("budgetType", budgetType);
-            Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
+            /*Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
                     "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW
-                    +"\n"+budgetType, Toast.LENGTH_LONG).show();
+                    +"\n"+budgetType, Toast.LENGTH_LONG).show();*/
 
             startActivity(intent);
             overridePendingTransition(0, 0);

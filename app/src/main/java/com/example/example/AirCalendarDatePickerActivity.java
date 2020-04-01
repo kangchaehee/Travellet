@@ -327,8 +327,8 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
                 resultIntent.putExtra(RESULT_FLAG, FLAG);
                 resultIntent.putExtra(RESULT_TYPE, FLAG);
                 resultIntent.putExtra(RESULT_STATE, "done");
-                Toast.makeText(getApplicationContext(), title+"\n"+ start_year_int+" "+start_month_int+" "+start_day_int+" "+start_dow_int+
-                        "\n"+end_year_int+" "+end_month_int+" "+end_day_int+" "+end_dow_int, Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), title+"\n"+ start_year_int+" "+start_month_int+" "+start_day_int+" "+start_dow_int+
+                 //       "\n"+end_year_int+" "+end_month_int+" "+end_day_int+" "+end_dow_int, Toast.LENGTH_LONG).show();
                 startActivity(resultIntent);
                 overridePendingTransition(0, 0);
             }

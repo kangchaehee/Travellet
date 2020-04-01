@@ -117,7 +117,7 @@ public class PlanInitialActivity extends Fragment {
 
         con = (FrameLayout) rootView.findViewById(R.id.con);
         Fragment fragment;
-        fragment = new PlanInitialFragment();
+        fragment = new PlanAllFragment();
         Bundle bundle = new Bundle();
         bundle.putInt("index", 0);
         bundle.putInt("startYear", startYear);
@@ -145,7 +145,7 @@ public class PlanInitialActivity extends Fragment {
                 }
                 all.selectItem();
                 Fragment fragment;
-                fragment = new PlanInitialFragment();
+                fragment = new PlanAllFragment();
                 Bundle bundle = new Bundle();
                 bundle.putInt("index", 0);
                 bundle.putInt("startYear", startYear);

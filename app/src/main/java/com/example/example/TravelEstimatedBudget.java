@@ -130,10 +130,10 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         intent.putExtra("shoppingBudget", shoppingB);
         intent.putExtra("transportBudget", transportB);
         intent.putExtra("etcBudget", etcB);
-        Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
-                "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW
-                +"\n"+budgetType+"\n"+budget+"\n"+lodgingType+"\n"+prefType
-                +"\n"+lodgingB+"\n"+foodB+"\n"+leisureB+"\n"+shoppingB+"\n"+transportB+"\n"+etcB, Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
+         //       "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW
+          //      +"\n"+budgetType+"\n"+budget+"\n"+lodgingType+"\n"+prefType
+           //     +"\n"+lodgingB+"\n"+foodB+"\n"+leisureB+"\n"+shoppingB+"\n"+transportB+"\n"+etcB, Toast.LENGTH_LONG).show();
 
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

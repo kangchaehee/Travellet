@@ -331,9 +331,9 @@ public class TravelPreferenceSet extends AppCompatActivity {
             intent.putExtra("budget", budget);
             intent.putExtra("lodgingType", lodgingType);
             intent.putExtra("prefType", prefType);
-            Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
-                    "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW
-                    +"\n"+budgetType+"\n"+budget+"\n"+lodgingType+"\n"+prefType, Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
+             //       "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW
+              //      +"\n"+budgetType+"\n"+budget+"\n"+lodgingType+"\n"+prefType, Toast.LENGTH_LONG).show();
             startActivity(intent);
             overridePendingTransition(0, 0);
         }

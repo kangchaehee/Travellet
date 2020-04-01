@@ -12,16 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".ReportDaily"></activity>
-        <activity android:name=".Report">
-
-        </activity>
+        <activity android:name=".WalletAllSub"></activity>
+        <activity android:name=".PlanAllSub" />
+        <activity android:name=".ReportDaily" />
+        <activity android:name=".Report" />
         <activity android:name=".ReportCategory" />
         <activity android:name=".WalletListSubItem" />
         <activity android:name=".ReportMain" />
-        <activity android:name=".Navigation">
-
-        </activity>
+        <activity android:name=".Navigation" />
         <activity android:name=".WithFriendsActivity" />
         <activity android:name=".TravelAddActivity" />
         <activity android:name=".DeleteDialog" />
@@ -38,9 +36,7 @@
         <activity android:name=".TravelBudgetShow" />
         <activity android:name=".BudgetInput" />
         <activity android:name=".PlanBudget" />
-        <activity android:name=".TravelTitleSet">
-
-        </activity>
+        <activity android:name=".TravelTitleSet" />
         <activity android:name=".WalletInput" />
         <activity android:name=".WalletCost" />
         <activity android:name=".WalletMain" />
@@ -51,9 +47,7 @@
         <activity android:name=".TravelPreferenceSet" />
         <activity android:name=".TravelLodgingSet" />
         <activity android:name=".MainEmpty" />
-        <activity android:name=".SignIn">
-
-        </activity>
+        <activity android:name=".SignIn" />
         <activity android:name=".SplashActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Profile" />

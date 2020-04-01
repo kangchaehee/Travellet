@@ -65,6 +65,7 @@ public class MainActivityPastFragment extends Fragment {
             etcBudget = getArguments().getFloat("etcBudget", 0);
             adapter.addItem(new MainItem(dDay, travelTitle, startYear+"."+startMonth+"."+startDay, endYear+"."+endMonth+"."+endDay));
         }
+        oDialog = new DeleteDialog(getContext());
 
         //adapter.addItem(new MainItem("D+100", "happy trip", "2020.01.04", "2020.02.01"));
         //adapter.addItem(new MainItem("D+15", "hello", "2020.01.05", "2020.02.02"));

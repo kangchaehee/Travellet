@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="24dp">
+
+        <ImageView
+            android:id="@+id/cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_cost"/>
+
+        <TextView
+            android:id="@+id/costText"
+            android:layout_toRightOf="@id/cost"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/deep_grey"
+            android:lineSpacingExtra="11sp"
+            android:textSize="14sp"
+            android:text="$ 0.0"
+            android:fontFamily="@font/roboto_regular"/>
+
+        <ImageView
+            android:id="@+id/budget"
+            android:layout_toRightOf="@id/costText"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ic_budget"/>
+
+        <TextView
+            android:id="@+id/budgetText"
+            android:layout_toRightOf="@id/budget"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/deep_grey"
+            android:lineSpacingExtra="11sp"
+            android:textSize="14sp"
+            android:text="$ 0.0"
+            android:fontFamily="@font/roboto_regular"/>
+
+        <ImageButton
+            android:id="@+id/btn_list"
+            android:layout_alignParentRight="true"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ic_view_list"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/relative1"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/lin"
+            />
+    </ScrollView>
+
+
+    <ListView
+        android:id="@+id/viewList"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/relative1"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:scrollbars="none"/>
+
+</RelativeLayout>

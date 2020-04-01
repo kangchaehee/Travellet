@@ -35,7 +35,7 @@ public class TravelTitleSet extends AppCompatActivity {
                 }else{
                     Intent intent = new Intent(TravelTitleSet.this, AirCalendarDatePickerActivity.class);
                     intent.putExtra("travelTitle", title);
-                    Toast.makeText(getApplicationContext(), title, Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), title, Toast.LENGTH_LONG).show();
                     startActivity(intent);
                     overridePendingTransition(0, 0);
                 }

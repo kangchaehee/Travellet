@@ -72,7 +72,7 @@
 
     <LinearLayout
         android:id="@+id/btn_past"
-        android:layout_width="35dp"
+        android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/btn_upcoming"
         android:layout_below="@+id/name"
