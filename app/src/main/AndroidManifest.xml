@@ -22,11 +22,7 @@
         <activity android:name=".WalletListSubItem" />
         <activity android:name=".ReportMain" />
         <activity android:name=".Navigation">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".WithFriendsActivity" />
         <activity android:name=".TravelAddActivity" />
@@ -63,7 +59,11 @@
         <activity android:name=".BudgetShow" />
         <activity android:name=".BudgetSet" />
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".AirCalendarDatePickerActivity" />
         <activity
