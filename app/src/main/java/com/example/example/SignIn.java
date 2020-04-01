@@ -178,7 +178,6 @@ public class SignIn extends AppCompatActivity {
         //register 버튼. 누르면 register로
     public void onButtonClick(View view2){
         Intent intent = new Intent(this, RegisterActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 }
