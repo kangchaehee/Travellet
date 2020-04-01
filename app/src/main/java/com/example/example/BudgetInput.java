@@ -21,7 +21,8 @@ public class BudgetInput extends AppCompatActivity {
 
     EditText editMemo;
 
-    private Button button1, button2, button3, buttonP, button4, button5, button6, buttonX, button7, button8, button9, buttonD, button0, buttonPOINT, buttonC, buttonM;
+    private Button button1, button2, button3, button4, button5, button6, button7, button8, button9, button0;
+    private ImageButton buttonC;
 
     Button btn_add;
     ImageButton back;
@@ -37,8 +38,22 @@ public class BudgetInput extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_budget_input);
+
+        button1=(Button)findViewById(R.id.button1);
+        button2=(Button)findViewById(R.id.button2);
+        button3=(Button)findViewById(R.id.button3);
+        button4=(Button)findViewById(R.id.button4);
+        button5=(Button)findViewById(R.id.button5);
+        button6=(Button)findViewById(R.id.button6);
+        button7=(Button)findViewById(R.id.button7);
+        button8=(Button)findViewById(R.id.button8);
+        button9=(Button)findViewById(R.id.button9);
+        button0=(Button)findViewById(R.id.button0);
+        buttonC=(ImageButton)findViewById(R.id.buttonC);
+
+        edit1 = (EditText) findViewById(R.id.edit1);
+
 
         back = (ImageButton) findViewById(R.id.btn_back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -150,122 +165,47 @@ public class BudgetInput extends AppCompatActivity {
             }
         });
 
-        //Toast.makeText(getApplicationContext(),"Calculator",Toast.LENGTH_SHORT).show();
-    /*
-        button1=(Button)findViewById(R.id.button1);
-        button2=(Button)findViewById(R.id.button2);
-        button3=(Button)findViewById(R.id.button3);
-        buttonP=(Button)findViewById(R.id.buttonP);
-        button4=(Button)findViewById(R.id.button4);
-        button5=(Button)findViewById(R.id.button5);
-        button6=(Button)findViewById(R.id.button6);
-        buttonX=(Button)findViewById(R.id.buttonX);
-        button7=(Button)findViewById(R.id.button7);
-        button8=(Button)findViewById(R.id.button8);
-        button9=(Button)findViewById(R.id.button9);
-        buttonD=(Button)findViewById(R.id.buttonD);
-        button0=(Button)findViewById(R.id.button0);
-        buttonPOINT=(Button)findViewById(R.id.buttonPOINT);
-        buttonC=(Button)findViewById(R.id.buttonC);
-        buttonM=(Button)findViewById(R.id.buttonM);
-        edit1=(EditText)findViewById(R.id.edit1);
-
         View.OnClickListener cl = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(v==button1){
-                    edit1.setText(edit1.getText().toString()+1);
-                }
-                else if(v==button2){
-                    edit1.setText(edit1.getText().toString()+2);
-                }
-                else if(v==button3){
-                    edit1.setText(edit1.getText().toString()+3);
-                }
-                else if(v==buttonP){
-                    a=Integer.valueOf(edit1.getText().toString().trim());
+                if (v == button1) {
+                    edit1.setText(edit1.getText().toString() + 1);
+                } else if (v == button2) {
+                    edit1.setText(edit1.getText().toString() + 2);
+                } else if (v == button3) {
+                    edit1.setText(edit1.getText().toString() + 3);
+                } else if (v == button4) {
+                    edit1.setText(edit1.getText().toString() + 4);
+                } else if (v == button5) {
+                    edit1.setText(edit1.getText().toString() + 5);
+                } else if (v == button6) {
+                    edit1.setText(edit1.getText().toString() + 6);
+                } else if (v == button7) {
+                    edit1.setText(edit1.getText().toString() + 7);
+                } else if (v == button8) {
+                    edit1.setText(edit1.getText().toString() + 8);
+                } else if (v == button9) {
+                    edit1.setText(edit1.getText().toString() + 9);
+                } else if (v == button0) {
+                    edit1.setText(edit1.getText().toString() + 0);
+                } else if (v == buttonC) {
                     edit1.setText("");
-                    where=1;
-                }
-                else if(v==button4){
-                    edit1.setText(edit1.getText().toString()+4);
-                }
-                else if(v==button5){
-                    edit1.setText(edit1.getText().toString()+5);
-                }
-                else if(v==button6){
-                    edit1.setText(edit1.getText().toString()+6);
-                }
-                else if(v==buttonX){
-                    a=Integer.valueOf(edit1.getText().toString().trim());
-                    edit1.setText("");
-                    where=2;
-                }
-                else if(v==button7){
-                    edit1.setText(edit1.getText().toString()+7);
-                }
-                else if(v==button8){
-                    edit1.setText(edit1.getText().toString()+8);
-                }
-                else if(v==button9){
-                    edit1.setText(edit1.getText().toString()+9);
-                }
-                else if(v==buttonD){
-                    a=Integer.valueOf(edit1.getText().toString().trim());
-                    edit1.setText("");
-                    where=3;
-                }
-                else if(v==button0){
-                    edit1.setText(edit1.getText().toString()+0);
-                }
-                //이거 지금 기능은 = 인데, . 소수점으로 바꿔야함.
-                else if(v==buttonPOINT) {
-                    if (where == 1) {
-                        a = a + Integer.valueOf(edit1.getText().toString().trim());
-                        edit1.setText(Integer.toString(a));
-                    }
-                    else if(where==2){
-                        a = a * Integer.valueOf(edit1.getText().toString().trim());
-                        edit1.setText(Integer.toString(a));
-                    }
-                    else if(where==3){
-                        a = a / Integer.valueOf(edit1.getText().toString().trim());
-                        edit1.setText(Integer.toString(a));
-                    }
-                    else if(where==4){
-                        a = a - Integer.valueOf(edit1.getText().toString().trim());
-                        edit1.setText(Integer.toString(a));
-                    }
-                }
-                else if(v==buttonC){
-                    edit1.setText("");
-                }
-                else if(v==buttonM){
-                    a=Integer.valueOf(edit1.getText().toString().trim());
-                    edit1.setText("");
-                    where=4;
                 }
             }
-
         };
+
         button1.setOnClickListener(cl);
         button2.setOnClickListener(cl);
         button3.setOnClickListener(cl);
-        buttonP.setOnClickListener(cl);
         button4.setOnClickListener(cl);
         button5.setOnClickListener(cl);
         button6.setOnClickListener(cl);
-        buttonX.setOnClickListener(cl);
         button7.setOnClickListener(cl);
         button8.setOnClickListener(cl);
         button9.setOnClickListener(cl);
-        buttonD.setOnClickListener(cl);
         button0.setOnClickListener(cl);
-        buttonPOINT.setOnClickListener(cl);
         buttonC.setOnClickListener(cl);
-        buttonM.setOnClickListener(cl);
 
-        */
     }
 
 
