@@ -19,6 +19,7 @@ public class ReportDaily extends Fragment {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_report_daily, container, false);
 
+
         return rootView;
     }
 }
