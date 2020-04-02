@@ -74,10 +74,11 @@ public class ReportDaily extends Fragment {
         legend.setEnabled(false);
 
 
-
         BarData data = new BarData(labels, barDataSet);
         chart.setData(data); // set the data and list of labels into chart
         chart.setDescription("");
+
+
 
         barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
 
