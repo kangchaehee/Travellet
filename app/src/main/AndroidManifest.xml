@@ -51,7 +51,7 @@
         <activity android:name=".TravelPreferenceSet" />
         <activity android:name=".TravelLodgingSet" />
         <activity android:name=".MainEmpty" />
-        <activity android:name=".SignIn">
+        <activity android:name=".SignIn" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -65,7 +65,6 @@
         <activity android:name=".BudgetShow" />
         <activity android:name=".BudgetSet" />
         <activity android:name=".MainActivity">
-
 
         </activity>
         <activity android:name=".AirCalendarDatePickerActivity" />

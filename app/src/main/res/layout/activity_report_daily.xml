@@ -6,6 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".ReportDaily">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="60dp">
 
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barchart"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"/>
+
+        </HorizontalScrollView>
+
+    </LinearLayout>
 </RelativeLayout>
