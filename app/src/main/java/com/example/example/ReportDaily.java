@@ -15,6 +15,7 @@ import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.Legend.LegendPosition;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -44,12 +45,12 @@ public class ReportDaily extends Fragment {
         BarChart chart = rootView.findViewById(R.id.barchart);
 
         ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(0f, 0));
-        entries.add(new BarEntry(1f, 1));
-        entries.add(new BarEntry(2f, 2));
-        entries.add(new BarEntry(3f, 3));
-        entries.add(new BarEntry(4f, 4));
-        entries.add(new BarEntry(5f, 5));
+        entries.add(new BarEntry(100f, 0));
+        entries.add(new BarEntry(150f, 1));
+        entries.add(new BarEntry(200f, 2));
+        entries.add(new BarEntry(500f, 3));
+        entries.add(new BarEntry(1000f, 4));
+        entries.add(new BarEntry(500f, 5));
 
         BarDataSet barDataSet = new BarDataSet(entries, "Inducesmile");
         //barDataSet.setBarBorderWidth(0.9f);
@@ -62,12 +63,23 @@ public class ReportDaily extends Fragment {
         labels.add("Day5");
         labels.add("Day6");
 
+        XAxis x = chart.getXAxis();
+        x.setTextColor(R.color.icon_grey);
+
+        YAxis y = chart.getAxisLeft();
+        y.setTextColor(R.color.soft_grey);
+
+        Legend legend = chart.getLegend();
+        legend.setTextColor(R.color.soft_grey);
+        legend.setEnabled(false);
+
+
+
         BarData data = new BarData(labels, barDataSet);
         chart.setData(data); // set the data and list of labels into chart
-        //chart.setDescription("Set Bar Chart Description Here");  // set the description
+        chart.setDescription("");
 
         barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        //chart.animateY(5000);
 
         return rootView;
     }

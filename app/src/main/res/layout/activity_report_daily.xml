@@ -1,28 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ReportDaily">
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <HorizontalScrollView
+
+        <LinearLayout
+            android:layout_marginTop="60dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="60dp">
+            android:layout_marginRight="32dp"
+            android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:id="@+id/cash"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/blue"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:letterSpacing="0.03"
+                        android:lineSpacingExtra="12sp"
+                        android:textColor="@color/soft_grey"
+                        android:text="Cash" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/card"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/light_blue"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:letterSpacing="0.03"
+                        android:lineSpacingExtra="12sp"
+                        android:textColor="@color/soft_grey"
+                        android:text="Card" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/total"
+                    android:gravity="right"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/sun_yellow"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:letterSpacing="0.03"
+                        android:lineSpacingExtra="12sp"
+                        android:textColor="@color/soft_grey"
+                        android:text="Total" />
+
+                </LinearLayout>
+            </LinearLayout>
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/barchart"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"/>
-
-        </HorizontalScrollView>
-
-    </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
