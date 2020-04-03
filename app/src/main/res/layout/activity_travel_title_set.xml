@@ -116,6 +116,7 @@
         android:textSize="14sp"
         android:textStyle="normal"
         android:text="Next"
+        android:textAllCaps="false"
         android:stateListAnimator="@null"/>
 
 

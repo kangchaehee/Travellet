@@ -40,7 +40,13 @@
         <activity android:name=".TravelBudgetShow" />
         <activity android:name=".BudgetInput" />
         <activity android:name=".PlanBudget" />
-        <activity android:name=".TravelTitleSet" />
+        <activity android:name=".TravelTitleSet">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".WalletInput" />
         <activity android:name=".WalletCost" />
         <activity android:name=".WalletMain" />
@@ -52,11 +58,7 @@
         <activity android:name=".TravelLodgingSet" />
         <activity android:name=".MainEmpty" />
         <activity android:name=".SignIn" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".SplashActivity" />
         <activity android:name=".RegisterActivity" />

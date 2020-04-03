@@ -44,7 +44,7 @@ public class ReportDaily extends Fragment {
 
     BarChart chart;
 
-    //float barSpace, barWidth, groupSpace;
+    float barSpace, barWidth, groupSpace;
     //String[] days;
     //TextView chartPer, chartText;
 
@@ -54,9 +54,7 @@ public class ReportDaily extends Fragment {
         View view = inflater.inflate(R.layout.activity_report_daily, null);
         initView(view);
         initChart();
-
         return view;
-
     }
 
     private void initView(View view) {
@@ -64,21 +62,21 @@ public class ReportDaily extends Fragment {
     }
 
     private void initChart(){
-        List<BarEntry> yvalue=new ArrayList<>();
 
-        yvalue.add(new BarEntry(new float[]{120,450},0));
-        yvalue.add(new BarEntry(new float[]{180,320},1));
+        List<BarEntry> yvalue=new ArrayList<>();
+        yvalue.add(new BarEntry(new float[]{20,50},0));
+        yvalue.add(new BarEntry(new float[]{80,100},1));
         yvalue.add(new BarEntry(new float[]{100,100},2));
-        yvalue.add(new BarEntry(new float[]{120,120},3));
-        yvalue.add(new BarEntry(new float[]{120,120},4));
+        yvalue.add(new BarEntry(new float[]{120,140},3));
+        yvalue.add(new BarEntry(new float[]{100,120},4));
 
         BarDataSet set=new BarDataSet(yvalue,"");
-        //set.setColors(new int[]{R.color.light_blue, R.color.blue});
-        int colors [] = {getResources().getColor(R.color.category3), getResources().getColor(R.color.category6)};
+        int colors [] = {getResources().getColor(R.color.category3), getResources().getColor(R.color.category5)};
         set.setColors(colors);
         set.setDrawValues(false);
-        chart.getLegend().setEnabled(false);
 
+        //float barSpace= 11;
+        //set.getBarSpace(barSpace);
 
         List<String> xvalue=new ArrayList<>();
         xvalue.add("Day1");
@@ -88,8 +86,36 @@ public class ReportDaily extends Fragment {
         xvalue.add("Day5");
 
         BarData data=new BarData(xvalue,set);
+        //chart.getBarData().setBarWidth(barWidth);
 
+        set.setBarSpacePercent(20f);
+        chart.getXAxis().setAxisMaxValue(5f);
+        XAxis xAxis = chart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setTextSize(10f);
+        xAxis.setTextColor(R.color.icon_grey);
+        xAxis.setDrawAxisLine(true);
+        xAxis.setDrawGridLines(false);
+
+
+        YAxis left = chart.getAxisLeft();
+        left.setDrawLabels(true); // axis labels
+        left.setDrawAxisLine(true); // axis line
+        left.setDrawGridLines(true); // grid lines
+        left.setTextColor(R.color.icon_grey);
+        left.setDrawZeroLine(true); // draw a zero line
+        chart.getAxisRight().setEnabled(false); // no right axis
+
+        Legend l = chart.getLegend();
+        l.setEnabled(false); //밑에 색깔 설명
+
+
+
+        barWidth = 20;
         chart.setDescription("");
         chart.setData(data);
+
+
+
     }
 }
