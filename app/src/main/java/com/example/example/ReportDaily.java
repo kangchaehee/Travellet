@@ -74,9 +74,8 @@ public class ReportDaily extends Fragment {
         int colors [] = {getResources().getColor(R.color.category3), getResources().getColor(R.color.category5)};
         set.setColors(colors);
         set.setDrawValues(false);
+        set.setBarSpacePercent(20f);
 
-        //float barSpace= 11;
-        //set.getBarSpace(barSpace);
 
         List<String> xvalue=new ArrayList<>();
         xvalue.add("Day1");
@@ -86,9 +85,7 @@ public class ReportDaily extends Fragment {
         xvalue.add("Day5");
 
         BarData data=new BarData(xvalue,set);
-        //chart.getBarData().setBarWidth(barWidth);
 
-        set.setBarSpacePercent(20f);
         chart.getXAxis().setAxisMaxValue(5f);
         XAxis xAxis = chart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -97,25 +94,20 @@ public class ReportDaily extends Fragment {
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(false);
 
-
         YAxis left = chart.getAxisLeft();
         left.setDrawLabels(true); // axis labels
         left.setDrawAxisLine(true); // axis line
         left.setDrawGridLines(true); // grid lines
         left.setTextColor(R.color.icon_grey);
+        left.setTextSize(10f);
         left.setDrawZeroLine(true); // draw a zero line
         chart.getAxisRight().setEnabled(false); // no right axis
 
         Legend l = chart.getLegend();
         l.setEnabled(false); //밑에 색깔 설명
 
-
-
-        barWidth = 20;
         chart.setDescription("");
         chart.setData(data);
-
-
 
     }
 }
