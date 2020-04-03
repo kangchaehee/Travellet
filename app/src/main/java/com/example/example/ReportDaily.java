@@ -52,51 +52,28 @@ public class ReportDaily extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_report_daily, container, false);
 
         BarChart Chart = (BarChart) rootView.findViewById(R.id.barchart);
+
+        barWidth = 0.3f;
+        barSpace = 0f;
+        groupSpace = 0.4f;
+
+        BarData data = new BarData(xAxis(), dataSets());
+
+        chart.getBarData();
+        chart.setData(data);
         chart.setDrawBarShadow(false);
         chart.setDrawValueAboveBar(true);
         chart.setDescription("");
         chart.setMaxVisibleValueCount(50);
         chart.setPinchZoom(false);
         chart.setDrawGridBackground(false);
-
-        ArrayList<BarEntry> entries1 = new ArrayList<>();
-        ArrayList<BarEntry> entries2 = new ArrayList<>();
-
-        entries1.add(new BarEntry(100f, 0));
-        entries1.add(new BarEntry(150f, 1));
-        entries1.add(new BarEntry(200f, 2));
-        entries1.add(new BarEntry(500f, 3));
-        entries1.add(new BarEntry(1000f, 4));
-        entries1.add(new BarEntry(500f, 5));
-
-        entries2.add(new BarEntry(1400f, 0));
-        entries2.add(new BarEntry(100f, 1));
-        entries2.add(new BarEntry(300f, 2));
-        entries2.add(new BarEntry(200f, 3));
-        entries2.add(new BarEntry(800f, 4));
-        entries2.add(new BarEntry(600f, 5));
-
-        BarDataSet barDataSet1 = new BarDataSet(entries1, "cash");
-        barDataSet1.setColor(R.color.light_blue);
-
-        BarDataSet barDataSet2 = new BarDataSet(entries2, "card");
-        barDataSet2.setColor(R.color.blue);
-
-        BarData data = new BarData(barDataSet1, barDataSet2);
-        chart.setData(data);
         data.setValueFormatter(new LargeValueFormatter());
 
-        barWidth = 0.3f;
-        barSpace = 0f;
-        groupSpace = 0.4f;
-
-        chart.setData(data);
-        chart.getBarData().setBarWidth(barWidth);
-        chart.getXAxis().setAxisMinimum(0);
-        chart.getXAxis().setAxisMaximum(0 + chart.getBarData().getGroupWidth(groupSpace, barSpace) * groupCount);
-        chart.groupBars(0, groupSpace, barSpace);
+        //chart.getBarData().setBarWidth(barWidth);
+        chart.getXAxis().setAxisMinValue(0);
+        //chart.getXAxis().setAxisMaxValue(0 + chart.getBarData().getGroupWidth(groupSpace, barSpace) * groupCount);
+        //chart.getgroupBars(0, groupSpace, barSpace);
         chart.getData().setHighlightEnabled(false);
-        chart.invalidate();
 
         /*
         Legend l = chart.getLegend();
@@ -111,4 +88,59 @@ public class ReportDaily extends Fragment {
         */
         return rootView;
     }
+
+    private List<IBarDataSet> dataSets() {
+        ArrayList<BarDataSet> dataSets = null;
+        ArrayList<BarEntry> valueSet1 = new ArrayList<>();
+        BarEntry v1e1 = new BarEntry(110.000f, 0); // Jan
+        valueSet1.add(v1e1);
+        BarEntry v1e2 = new BarEntry(40.000f, 1); // Feb
+        valueSet1.add(v1e2);
+        BarEntry v1e3 = new BarEntry(60.000f, 2); // Mar
+        valueSet1.add(v1e3);
+        BarEntry v1e4 = new BarEntry(30.000f, 3); // Apr
+        valueSet1.add(v1e4);
+        BarEntry v1e5 = new BarEntry(90.000f, 4); // May
+        valueSet1.add(v1e5);
+        BarEntry v1e6 = new BarEntry(100.000f, 5); // Jun
+        valueSet1.add(v1e6);
+
+        ArrayList<BarEntry> valueSet2 = new ArrayList<>();
+        BarEntry v2e1 = new BarEntry(150.000f, 0); // Jan
+        valueSet2.add(v2e1);
+        BarEntry v2e2 = new BarEntry(90.000f, 1); // Feb
+        valueSet2.add(v2e2);
+        BarEntry v2e3 = new BarEntry(120.000f, 2); // Mar
+        valueSet2.add(v2e3);
+        BarEntry v2e4 = new BarEntry(60.000f, 3); // Apr
+        valueSet2.add(v2e4);
+        BarEntry v2e5 = new BarEntry(20.000f, 4); // May
+        valueSet2.add(v2e5);
+        BarEntry v2e6 = new BarEntry(80.000f, 5); // Jun
+        valueSet2.add(v2e6);
+        BarDataSet barDataSet1 = new BarDataSet(valueSet1, "Brand 1");
+        barDataSet1.setColor(R.color.light_blue);
+        BarDataSet barDataSet2 = new BarDataSet(valueSet2, "Brand 2");
+        barDataSet2.setColor(R.color.blue);
+
+        dataSets = new ArrayList<>();
+        dataSets.add(barDataSet1);
+        dataSets.add(barDataSet2);
+
+        return dataSets();
+
+    }
+
+    private String[] xAxis() {
+        ArrayList<String> xAxis = new ArrayList<>();
+        xAxis.add("JAN");
+        xAxis.add("FEB");
+        xAxis.add("MAR");
+        xAxis.add("APR");
+        xAxis.add("MAY");
+        xAxis.add("JUN");
+        return xAxis();
+    }
+
+
 }
