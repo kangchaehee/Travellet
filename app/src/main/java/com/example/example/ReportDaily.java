@@ -77,6 +77,10 @@ public class ReportDaily extends Fragment {
         yvalue.add(new BarEntry(new float[]{120,140},3));
         yvalue.add(new BarEntry(new float[]{100,120},4));
         yvalue.add(new BarEntry(new float[]{10,120},5));
+        yvalue.add(new BarEntry(new float[]{100,100},6));
+        yvalue.add(new BarEntry(new float[]{120,140},7));
+        yvalue.add(new BarEntry(new float[]{100,120},8));
+        yvalue.add(new BarEntry(new float[]{10,120},9));
 
         BarDataSet set=new BarDataSet(yvalue,"");
         int colors [] = {getResources().getColor(R.color.category3), getResources().getColor(R.color.category5)};
@@ -92,6 +96,10 @@ public class ReportDaily extends Fragment {
         xvalue.add("Day4");
         xvalue.add("Day5");
         xvalue.add("Day6");
+        xvalue.add("Day7");
+        xvalue.add("Day8");
+        xvalue.add("Day9");
+        xvalue.add("Day10");
 
         BarData data=new BarData(xvalue,set);
 
@@ -112,13 +120,14 @@ public class ReportDaily extends Fragment {
         left.setDrawZeroLine(true); // draw a zero line
         chart.getAxisRight().setEnabled(false); // no right axis
         chart.setScaleEnabled(false); // zoom in 안되게
-        chart.setDescription("");
+        chart.setDescription();
         chart.setData(data);
+
+        chart.setHorizontalScrollBarEnabled(true);
         //chart.setBorderWidth(10f);
         //set.getBarSpacePercent();
         Legend l = chart.getLegend();
         l.setEnabled(false); //밑에 색깔 설명
-
 
         chartMon.setText("$ 1,200");
         chartDay.setText("Day 1");
