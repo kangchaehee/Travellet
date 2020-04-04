@@ -49,7 +49,7 @@ public class ReportDaily extends Fragment {
     BarChart chart;
     float barSpace, barWidth, groupSpace;
     //ScrollView vertical;
-    ImageView pay;
+    //ImageView pay;
     TextView chartDay, chartMon;
 
     @Nullable
@@ -114,40 +114,39 @@ public class ReportDaily extends Fragment {
         chart.setScaleEnabled(false); // zoom in 안되게
         chart.setDescription("");
         chart.setData(data);
-
+        //chart.setBorderWidth(10f);
+        //set.getBarSpacePercent();
         Legend l = chart.getLegend();
         l.setEnabled(false); //밑에 색깔 설명
-        //vertical.setHorizontalScrollBarEnabled(true);
 
 
-
-        chartMon.setText("1,200");
-        chartDay.setText("Day1");
+        chartMon.setText("$ 1,200");
+        chartDay.setText("Day 1");
 
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
 
-                chartMon.setText(String.valueOf(e.getVal())+"￦");
+                chartMon.setText("$ " + String.valueOf(e.getVal()));
                 int i = e.getXIndex();
                 switch (i){
                     case 0:
-                        chartDay.setText("Day1");
+                        chartDay.setText("Day 1");
                         break;
                     case 1:
-                        chartDay.setText("Day2");
+                        chartDay.setText("Day 2");
                         break;
                     case 2:
-                        chartDay.setText("Day3");
+                        chartDay.setText("Day 3");
                         break;
                     case 3:
-                        chartDay.setText("Day4");
+                        chartDay.setText("Day 4");
                         break;
                     case 4:
-                        chartDay.setText("Day5");
+                        chartDay.setText("Day 5");
                         break;
                     case 5:
-                        chartDay.setText("Day6");
+                        chartDay.setText("Day 6");
                         break;
 
                 }
@@ -155,8 +154,8 @@ public class ReportDaily extends Fragment {
 
             @Override
             public void onNothingSelected() {
-                chartMon.setText("1,200");
-                chartDay.setText("Lodging");
+                chartMon.setText("$ 1,200");
+                chartDay.setText("Day 1");
             }
         });
 
