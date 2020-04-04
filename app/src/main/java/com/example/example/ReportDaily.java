@@ -89,6 +89,7 @@ public class ReportDaily extends Fragment {
         set.setBarSpacePercent(20f);
 
 
+
         List<String> xvalue=new ArrayList<>();
         xvalue.add("Day1");
         xvalue.add("Day2");
@@ -102,6 +103,7 @@ public class ReportDaily extends Fragment {
         xvalue.add("Day10");
 
         BarData data=new BarData(xvalue,set);
+        //data.set
 
         chart.getXAxis().setAxisMaxValue(5f);
         XAxis xAxis = chart.getXAxis();
@@ -120,9 +122,8 @@ public class ReportDaily extends Fragment {
         left.setDrawZeroLine(true); // draw a zero line
         chart.getAxisRight().setEnabled(false); // no right axis
         chart.setScaleEnabled(false); // zoom in 안되게
-        chart.setDescription();
+        chart.setDescription(" ");
         chart.setData(data);
-
         chart.setHorizontalScrollBarEnabled(true);
         //chart.setBorderWidth(10f);
         //set.getBarSpacePercent();
