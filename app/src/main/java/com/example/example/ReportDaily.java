@@ -6,10 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.room.Index;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -43,10 +47,10 @@ import lecho.lib.hellocharts.formatter.AxisValueFormatter;
 public class ReportDaily extends Fragment {
 
     BarChart chart;
-
     float barSpace, barWidth, groupSpace;
-    //String[] days;
-    //TextView chartPer, chartText;
+    //ScrollView vertical;
+    ImageView pay;
+    TextView chartDay, chartMon;
 
     @Nullable
     @Override
@@ -59,6 +63,9 @@ public class ReportDaily extends Fragment {
 
     private void initView(View view) {
         chart = (BarChart) view.findViewById(R.id.barchart);
+        chartMon = (TextView) view.findViewById(R.id.chartMon);
+        chartDay = (TextView) view.findViewById(R.id.chartDay);
+
     }
 
     private void initChart(){
@@ -69,6 +76,7 @@ public class ReportDaily extends Fragment {
         yvalue.add(new BarEntry(new float[]{100,100},2));
         yvalue.add(new BarEntry(new float[]{120,140},3));
         yvalue.add(new BarEntry(new float[]{100,120},4));
+        yvalue.add(new BarEntry(new float[]{10,120},5));
 
         BarDataSet set=new BarDataSet(yvalue,"");
         int colors [] = {getResources().getColor(R.color.category3), getResources().getColor(R.color.category5)};
@@ -83,6 +91,7 @@ public class ReportDaily extends Fragment {
         xvalue.add("Day3");
         xvalue.add("Day4");
         xvalue.add("Day5");
+        xvalue.add("Day6");
 
         BarData data=new BarData(xvalue,set);
 
@@ -90,7 +99,7 @@ public class ReportDaily extends Fragment {
         XAxis xAxis = chart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextSize(10f);
-        xAxis.setTextColor(R.color.icon_grey);
+        xAxis.setTextColor(Color.parseColor("#c8cbd3")); // icon grey
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(false);
 
@@ -98,16 +107,58 @@ public class ReportDaily extends Fragment {
         left.setDrawLabels(true); // axis labels
         left.setDrawAxisLine(true); // axis line
         left.setDrawGridLines(true); // grid lines
-        left.setTextColor(R.color.icon_grey);
+        left.setTextColor(Color.parseColor("#c8cbd3")); // icon grey
         left.setTextSize(10f);
         left.setDrawZeroLine(true); // draw a zero line
         chart.getAxisRight().setEnabled(false); // no right axis
+        chart.setScaleEnabled(false); // zoom in 안되게
+        chart.setDescription("");
+        chart.setData(data);
 
         Legend l = chart.getLegend();
         l.setEnabled(false); //밑에 색깔 설명
+        //vertical.setHorizontalScrollBarEnabled(true);
 
-        chart.setDescription("");
-        chart.setData(data);
+
+
+        chartMon.setText("1,200");
+        chartDay.setText("Day1");
+
+        chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
+
+                chartMon.setText(String.valueOf(e.getVal())+"￦");
+                int i = e.getXIndex();
+                switch (i){
+                    case 0:
+                        chartDay.setText("Day1");
+                        break;
+                    case 1:
+                        chartDay.setText("Day2");
+                        break;
+                    case 2:
+                        chartDay.setText("Day3");
+                        break;
+                    case 3:
+                        chartDay.setText("Day4");
+                        break;
+                    case 4:
+                        chartDay.setText("Day5");
+                        break;
+                    case 5:
+                        chartDay.setText("Day6");
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected() {
+                chartMon.setText("1,200");
+                chartDay.setText("Lodging");
+            }
+        });
 
     }
 }
