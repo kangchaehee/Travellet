@@ -93,7 +93,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Providing services beyond accommodation"
+                    android:text="Providing services beyond lodging"
                     android:fontFamily="@font/roboto_light"
                     android:textStyle="normal"
                     android:textSize="12sp"
@@ -142,7 +142,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cookable independent accommodation"
+                    android:text="Cookable independent lodging"
                     android:fontFamily="@font/roboto_light"
                     android:textStyle="normal"
                     android:textSize="12sp"

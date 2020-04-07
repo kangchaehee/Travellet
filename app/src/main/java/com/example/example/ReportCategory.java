@@ -116,9 +116,6 @@ public class ReportCategory extends Fragment {
             }
         });
 
-        //퍼센트 나오게
-        //pieChart.getLegend().setUsePercentValues(true);
-
         // 원형 차트의 구멍 옆에 그려진 투명 원의 반경을 최대 반경의 백분율로 설정합니다 (최대 = 전체 차트의 반경). 기본값 55 %->는 중심 구멍보다 5 % 더 큼 기본
         float percent = 80;
         pieChart.setTransparentCircleRadius(percent);
@@ -130,8 +127,6 @@ public class ReportCategory extends Fragment {
         //차트 내의 값이 원래 값이 아닌 백분율로 표시됩니다. To ValueFormatter형식에 제공된 값은 백분율로 제공됩니다.
         pieChart.setUsePercentValues(false);
 
-
-
         //PieChart의 중앙에 그려진 텍스트를 설정합니다. 더 긴 텍스트는 자동으로 "줄 바꿈"되어 파이 조각에 클리핑되지 않습니다.
         //PieChart.setCenterText(SpannableString text):
 
@@ -141,8 +136,6 @@ public class ReportCategory extends Fragment {
         //원형 차트의 중심에있는 구멍의 반경을 최대 반경의 백분율로 설정합니다 (최대 = 전체 차트의 반경). 기본값은 50 %
         float hole = 80;
         pieChart.setHoleRadius(hole);
-
-        //퍼센트 출력하는
 
         // 투명 원의 색상을 설정
         pieChart.setTransparentCircleColor(R.color.white);

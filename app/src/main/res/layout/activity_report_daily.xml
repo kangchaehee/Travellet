@@ -76,7 +76,7 @@
                             android:letterSpacing="0.03"
                             android:lineSpacingExtra="12sp"
                             android:textColor="@color/soft_grey"
-                            android:text="Price: " />
+                            android:text="Unit: 1,000 ￦" />
 
 
                     </LinearLayout>
@@ -86,76 +86,152 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <LinearLayout
-                    android:id="@+id/linear8"
+
+                <HorizontalScrollView
+                    android:id="@+id/scroll"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:fillViewport="true">
 
-                    <com.github.mikephil.charting.charts.BarChart
-                        android:id="@+id/barchart"
-                        android:layout_marginTop="20dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="250dp" />
+                    <LinearLayout
+                        android:id="@+id/linear8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
+                        <com.github.mikephil.charting.charts.BarChart
+                            android:id="@+id/barchart"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp" />
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
 
                 <RelativeLayout
+                    android:id="@+id/relative"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/linear8"
+                    android:layout_below="@+id/scroll"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginTop="42dp">
+                    android:layout_marginTop="36dp">
 
-
-                    <ScrollView
-                        android:id="@+id/vertical"
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:id="@+id/linear"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:scrollbars="none">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginRight="18dp">
 
-                        <LinearLayout
-                            android:id="@+id/linear1"
+                        <TextView
+                            android:id="@+id/chartDay"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginLeft="18dp"
-                            android:layout_marginRight="18dp">
+                            android:gravity="right"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/soft_black"
+                            android:textSize="16sp"/>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="left"
-                                android:layout_marginLeft="14dp"
-                                android:text="Total"
-                                android:textColor="@color/soft_black"
-                                android:textSize="16sp"
-                                android:fontFamily="@font/roboto_regular"/>
-
-                            <TextView
-                                android:id="@+id/chartMon"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="20dp"
-                                android:fontFamily="@font/roboto_regular"
-                                android:textColor="@color/soft_black"
-                                android:textSize="16sp" />
-
-                            <TextView
-                                android:id="@+id/chartDay"
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:fontFamily="@font/roboto_regular"
-                                android:textColor="@color/soft_black"
-                                android:textSize="16sp"/>
-
-                        </LinearLayout>
+                    </LinearLayout>
 
 
-                    </ScrollView>
+                     <LinearLayout
+                         android:id="@+id/linear1"
+                         android:layout_below="@+id/linear"
+                         android:layout_width="fill_parent"
+                         android:layout_height="wrap_content"
+                         android:orientation="horizontal"
+                         android:layout_marginLeft="18dp"
+                         android:layout_marginRight="18dp">
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:gravity="left"
+                             android:layout_marginLeft="14dp"
+                             android:text="Total"
+                             android:textColor="@color/soft_black"
+                             android:textSize="16sp"
+                             android:fontFamily="@font/roboto_regular"/>
+
+                         <TextView
+                             android:id="@+id/chartMon"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_marginLeft="20dp"
+                             android:fontFamily="@font/roboto_regular"
+                             android:textColor="@color/soft_black"
+                             android:textSize="16sp" />
+
+                     </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linear1"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginRight="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:layout_marginLeft="14dp"
+                            android:text="Cash"
+                            android:textColor="@color/soft_black"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/roboto_regular"/>
+
+                        <TextView
+                            android:id="@+id/chartCash"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/soft_black"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linear3"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linear2"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginLeft="18dp"
+                        android:layout_marginRight="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="left"
+                            android:layout_marginLeft="14dp"
+                            android:text="Card"
+                            android:textColor="@color/soft_black"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/roboto_regular"/>
+
+                        <TextView
+                            android:id="@+id/chartCard"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/soft_black"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
                 </RelativeLayout>
             </RelativeLayout>
 
