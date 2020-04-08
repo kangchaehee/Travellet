@@ -32,21 +32,21 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         leisurePer = findViewById(R.id.leisurePer);
         shoppingPer = findViewById(R.id.shoppingPer);
         transportPer = findViewById(R.id.transportPer);
-        etcPer = findViewById(R.id.etcPer);
+        //etcPer = findViewById(R.id.etcPer);
 
         lodgingBar = findViewById(R.id.progress1);
         foodBar = findViewById(R.id.progress2);
         leisureBar = findViewById(R.id.progress3);
         shoppingBar = findViewById(R.id.progress4);
         transportBar = findViewById(R.id.progress5);
-        etcBar = findViewById(R.id.progress6);
+        //etcBar = findViewById(R.id.progress6);
 
         lodgingBudget = findViewById(R.id.lodgingBudget);
         foodBudget = findViewById(R.id.foodBudget);
         leisureBudget = findViewById(R.id.leisureBudget);
         shoppingBudget = findViewById(R.id.shoppingBudget);
         transportBudget = findViewById(R.id.transportBudget);
-        etcBudget = findViewById(R.id.etcBudget);
+        //etcBudget = findViewById(R.id.etcBudget);
 
 
         //각 카테고리 비율 설정
@@ -54,8 +54,8 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         food = 30;
         leisure = 11;
         shopping = 10;
-        transport = 8;
-        etc = 1;
+        transport = 9;
+        //etc = 1;
 
         //카테고리 비율에 맞게 텍스트랑 프로그레스 바 조정
         lodgingPer.setText(lodging+"%");
@@ -68,8 +68,8 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         shoppingBar.setProgress((int)shopping);
         transportPer.setText(String.valueOf(transport)+"%");
         transportBar.setProgress((int)transport);
-        etcPer.setText(String.valueOf(etc)+"%");
-        etcBar.setProgress((int)etc);
+        //etcPer.setText(String.valueOf(etc)+"%");
+        //etcBar.setProgress((int)etc);
 
         //최종 금액, 타입별 예산
         intent2 = getIntent();
@@ -79,7 +79,7 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         leisureB = total*leisure/100;
         shoppingB = total*shopping/100;
         transportB = total*transport/100;
-        etcB = total*etc/100;
+        //etcB = total*etc/100;
 
         //각 카테고리 예산 텍스트 조정
         lodgingBudget.setText("$ "+lodgingB);
@@ -87,7 +87,7 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         leisureBudget.setText("$ "+leisureB);
         shoppingBudget.setText("$ "+shoppingB);
         transportBudget.setText("$ "+transportB);
-        etcBudget.setText("$ "+etcB);
+        //etcBudget.setText("$ "+etcB);
     }
 
     // travel budget set
@@ -130,7 +130,7 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         intent.putExtra("leisureBudget", leisureB);
         intent.putExtra("shoppingBudget", shoppingB);
         intent.putExtra("transportBudget", transportB);
-        intent.putExtra("etcBudget", etcB);
+        //intent.putExtra("etcBudget", etcB);
         //Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
          //       "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW
           //      +"\n"+budgetType+"\n"+budget+"\n"+lodgingType+"\n"+prefType

@@ -92,8 +92,8 @@ public class ReportDaily extends Fragment {
         yvalue.add(new BarEntry(new float[]{120,140},3));
         yvalue.add(new BarEntry(new float[]{100,120},4));
         yvalue.add(new BarEntry(new float[]{10,120},5));
-        //yvalue.add(new BarEntry(new float[]{100,100},6));
-        //yvalue.add(new BarEntry(new float[]{120,140},7));
+        yvalue.add(new BarEntry(new float[]{100,100},6));
+        yvalue.add(new BarEntry(new float[]{120,140},7));
         //yvalue.add(new BarEntry(new float[]{100,120},8));
         //yvalue.add(new BarEntry(new float[]{10,120},9));
 
@@ -102,9 +102,7 @@ public class ReportDaily extends Fragment {
         set.setColors(colors);
         set.setBarSpacePercent(50f); // 바 사이 간격... 감동이다.
         set.setDrawValues(false);
-        //set.setBarSpacePercent(20f);
         set.isStacked();
-        //set.setBarSpacePercent(11f);
 
 
         List<String> xvalue=new ArrayList<>();
@@ -114,8 +112,8 @@ public class ReportDaily extends Fragment {
         xvalue.add("Day4");
         xvalue.add("Day5");
         xvalue.add("Day6");
-        //xvalue.add("Day7");
-        //xvalue.add("Day8");
+        xvalue.add("Day7");
+        xvalue.add("Day8");
         //xvalue.add("Day9");
         //xvalue.add("Day10");
 
@@ -146,31 +144,27 @@ public class ReportDaily extends Fragment {
         chart.setHorizontalScrollBarEnabled(true);
        //chart.setViewPortOffsets(0f, 0f, 0f, 0f); // day 랑 그래프 띄어져 있는 공간 넓이
 
-        float barWidth = 1f; //0.3
-        float groupSpace= 1f; //0.06
-        float barSpace = 1f; //0.0
+        float barWidth = 0.3f; //0.3
+        float groupSpace= 0.06f; //0.06
+        float barSpace = 0.0f; //0.0
         int groupCount = 3; //3
-
 
         chart.getBarData().setGroupSpace(groupSpace);
         chart.getBarData().setGroupSpace(barSpace);
         chart.getBarData().setGroupSpace(barWidth);
-        //chart.setDescriptionTypeface(getResources().getFont(R.font.roboto_regular));
-
-        //chart.groupBars(1f, groupSpace, barSpace);
 
         Legend l = chart.getLegend();
         l.setEnabled(false); //밑에 색깔 설명
 
-        //chart.getBarData().setBarWidth(BAR_WIDTH);
         chart.getWidth();
-        chart.canScrollHorizontally(1);
-        chart.getScrollX();
+        //chart.canScrollHorizontally(1);
+        //chart.getScrollX();
         chart.isHorizontalScrollBarEnabled();
         chart.setDoubleTapToZoomEnabled(false); // 줌인
 
         chartMon.setText("130,000 ￦");
         chartDay.setText("Day 1");
+
 
 
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
@@ -180,8 +174,6 @@ public class ReportDaily extends Fragment {
                 //chartMon.setText(String.valueof(e.getVal()) + ",000" + " ￦" )
                 chartMon.setText(String.format("%.0f", e.getVal())+ ",000" + " ￦"); //소수점 없애는거
                 int X = e.getXIndex();
-
-
                 int i = e.getXIndex();
                 switch (i){
                     case 0:
