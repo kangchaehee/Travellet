@@ -64,7 +64,7 @@ public class PlanInputActivity extends AppCompatActivity {
         food = (ImageButton) findViewById(R.id.food);
         shopping = (ImageButton) findViewById(R.id.shopping);
         tourism = (ImageButton) findViewById(R.id.tourism);
-        etc = (ImageButton) findViewById(R.id.etc);
+        //etc = (ImageButton) findViewById(R.id.etc);
 
 
         lodging.setOnClickListener(new View.OnClickListener() {
@@ -75,7 +75,7 @@ public class PlanInputActivity extends AppCompatActivity {
                 food.setBackgroundResource(R.drawable.ic_food);
                 shopping.setBackgroundResource(R.drawable.ic_shopping);
                 tourism.setBackgroundResource(R.drawable.ic_tourism);
-                etc.setBackgroundResource(R.drawable.ic_etc);
+                //etc.setBackgroundResource(R.drawable.ic_etc);
 
             }
         });
@@ -88,7 +88,7 @@ public class PlanInputActivity extends AppCompatActivity {
                 food.setBackgroundResource(R.drawable.ic_food_selected);
                 shopping.setBackgroundResource(R.drawable.ic_shopping);
                 tourism.setBackgroundResource(R.drawable.ic_tourism);
-                etc.setBackgroundResource(R.drawable.ic_etc);
+                //etc.setBackgroundResource(R.drawable.ic_etc);
             }
         });
 
@@ -100,7 +100,7 @@ public class PlanInputActivity extends AppCompatActivity {
                 food.setBackgroundResource(R.drawable.ic_food);
                 shopping.setBackgroundResource(R.drawable.ic_shopping_selected);
                 tourism.setBackgroundResource(R.drawable.ic_tourism);
-                etc.setBackgroundResource(R.drawable.ic_etc);
+                //etc.setBackgroundResource(R.drawable.ic_etc);
 
             }
         });
@@ -113,11 +113,11 @@ public class PlanInputActivity extends AppCompatActivity {
                 food.setBackgroundResource(R.drawable.ic_food);
                 shopping.setBackgroundResource(R.drawable.ic_shopping);
                 tourism.setBackgroundResource(R.drawable.ic_tourism_selected);
-                etc.setBackgroundResource(R.drawable.ic_etc);
+                //etc.setBackgroundResource(R.drawable.ic_etc);
 
             }
         });
-
+        /*
         etc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,7 +128,7 @@ public class PlanInputActivity extends AppCompatActivity {
                 tourism.setBackgroundResource(R.drawable.ic_tourism);
                 etc.setBackgroundResource(R.drawable.ic_etc_selected);
             }
-        });
+        });         */
 
         add = (Button) findViewById(R.id.addButton);
         add.setOnClickListener(new View.OnClickListener() {
@@ -191,10 +191,11 @@ public class PlanInputActivity extends AppCompatActivity {
                     memo = "Tourism";
                     break;
 
+                    /*
                 case 5:
                     memo = "etc";
                     break;
-
+                     */
                 default:
                     memo = "null";
                     break;

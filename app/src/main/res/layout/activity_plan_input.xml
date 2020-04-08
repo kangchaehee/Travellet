@@ -202,12 +202,14 @@
                         android:id="@+id/tourism"
                         android:background="@drawable/ic_tourism"/>
 
+                    <!--
                     <ImageButton
                         android:layout_marginLeft="10dp"
                         android:layout_width="50dp"
                         android:layout_height="56dp"
                         android:id="@+id/etc"
                         android:background="@drawable/ic_etc"/>
+                    -->
 
                 </LinearLayout>
             </RelativeLayout>
