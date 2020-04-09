@@ -5,16 +5,25 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.room.Index;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -43,6 +52,8 @@ import com.github.mikephil.charting.formatter.ValueFormatter;
 //import com.github.mikephil.charting.utils.PercentFormatter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import lecho.lib.hellocharts.formatter.AxisValueFormatter;
@@ -51,13 +62,34 @@ import lecho.lib.hellocharts.formatter.AxisValueFormatter;
 public class ReportDaily extends Fragment {
 
     BarChart chart;
-    float barSpace, barWidth, groupSpace;
-    float a, b;
+    float barSpace, barWidth, groupSpace, a, b;
     int groupCount;
+    int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW, period;
 
+    LinearLayout linear8;
+
+    FragmentCallBack callback;
     HorizontalScrollView scroll;
 
     TextView chartDay, chartMon, chartCard, chartCash;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(context instanceof FragmentCallBack){
+            callback = (FragmentCallBack) context;
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if(callback != null){
+            callback = null;
+        }
+
+    }
+
 
     @Nullable
     @Override
@@ -66,7 +98,6 @@ public class ReportDaily extends Fragment {
         initView(view);
         initChart();
         Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.roboto_regular);
-
         return view;
     }
 
@@ -74,35 +105,43 @@ public class ReportDaily extends Fragment {
         chart = (BarChart) view.findViewById(R.id.barchart);
         chartMon = (TextView) view.findViewById(R.id.chartMon);
         chartDay = (TextView) view.findViewById(R.id.chartDay);
-        chartCard = (TextView) view.findViewById(R.id.chartCard);
-        chartCash = (TextView) view.findViewById(R.id.chartCash);
+        //chartCard = (TextView) view.findViewById(R.id.chartCard);
+        //chartCash = (TextView) view.findViewById(R.id.chartCash);
 
     }
 
     private void initChart(){
 
-        //float a [] = {10, 20, 30, 40, 50, 60};
-        //float b [] = {100, 120, 130, 140, 110, 150};
+        List<BarEntry> yvalue = new ArrayList<>();
 
+        /*
+        float [] a = new float[]{10, 100, 120, 130, 50, 120};
+        float [] b = new float[]{10, 20, 30, 40, 50, 60};
 
-        List<BarEntry> yvalue=new ArrayList<>();
-        yvalue.add(new BarEntry(new float[]{80,50},0));
-        yvalue.add(new BarEntry(new float[]{80,100},1));
-        yvalue.add(new BarEntry(new float[]{100,100},2));
-        yvalue.add(new BarEntry(new float[]{120,140},3));
-        yvalue.add(new BarEntry(new float[]{100,120},4));
-        yvalue.add(new BarEntry(new float[]{10,120},5));
-        yvalue.add(new BarEntry(new float[]{100,100},6));
-        yvalue.add(new BarEntry(new float[]{120,140},7));
-        //yvalue.add(new BarEntry(new float[]{100,120},8));
-        //yvalue.add(new BarEntry(new float[]{10,120},9));
+        Iterator it = yvalue.iterator();
+            while(it.hasNext()){
+                float value = it.next();
+            }
+
+         */
+
+        yvalue.add(new BarEntry(new float[]{10, 60},0));
+        yvalue.add(new BarEntry(new float[]{30, 50},1));
+        yvalue.add(new BarEntry(new float[]{50, 40},2));
+        yvalue.add(new BarEntry(new float[]{60, 30},3));
+        yvalue.add(new BarEntry(new float[]{80, 20},4));
+        yvalue.add(new BarEntry(new float[]{100, 10},5));
+
 
         BarDataSet set=new BarDataSet(yvalue,"");
         int colors [] = {getResources().getColor(R.color.category3), getResources().getColor(R.color.category5)};
-        set.setColors(colors);
-        set.setBarSpacePercent(50f); // 바 사이 간격... 감동이다.
-        set.setDrawValues(false);
-        set.isStacked();
+        set.setColors(colors); //color
+        set.setBarSpacePercent(50f); // 바 사이 간격
+        set.setDrawValues(true); // 바 수치
+        set.isStacked(); //
+        set.isDrawValuesEnabled();
+        set.setValueTextSize(9f);
+        set.setValueTextColor(Color.parseColor("#c8cbd3"));
 
 
         List<String> xvalue=new ArrayList<>();
@@ -112,17 +151,13 @@ public class ReportDaily extends Fragment {
         xvalue.add("Day4");
         xvalue.add("Day5");
         xvalue.add("Day6");
-        xvalue.add("Day7");
-        xvalue.add("Day8");
-        //xvalue.add("Day9");
-        //xvalue.add("Day10");
 
         BarData data=new BarData(xvalue,set);
 
         chart.getXAxis().setAxisMaxValue(5f);
         XAxis xAxis = chart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextSize(11f);
+        xAxis.setTextSize(10f);
         xAxis.setTextColor(Color.parseColor("#c8cbd3")); // icon grey
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(false);
@@ -136,6 +171,7 @@ public class ReportDaily extends Fragment {
         left.setTextColor(Color.parseColor("#c8cbd3")); // icon grey
         left.setTextSize(11f);
         left.setDrawZeroLine(true); // draw a zero line
+        //left.getValueFormatter();
 
         chart.getAxisRight().setEnabled(false); // no right axis
         chart.setScaleEnabled(false);
@@ -153,27 +189,26 @@ public class ReportDaily extends Fragment {
         chart.getBarData().setGroupSpace(barSpace);
         chart.getBarData().setGroupSpace(barWidth);
 
+        chart.getXValCount();
         Legend l = chart.getLegend();
         l.setEnabled(false); //밑에 색깔 설명
 
         chart.getWidth();
-        //chart.canScrollHorizontally(1);
-        //chart.getScrollX();
         chart.isHorizontalScrollBarEnabled();
         chart.setDoubleTapToZoomEnabled(false); // 줌인
-
+        chart.setDrawValueAboveBar(true);
         chartMon.setText("130,000 ￦");
         chartDay.setText("Day 1");
 
 
-
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+
             @Override
             public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
 
                 //chartMon.setText(String.valueof(e.getVal()) + ",000" + " ￦" )
                 chartMon.setText(String.format("%.0f", e.getVal())+ ",000" + " ￦"); //소수점 없애는거
-                int X = e.getXIndex();
+
                 int i = e.getXIndex();
                 switch (i){
                     case 0:
@@ -214,6 +249,8 @@ public class ReportDaily extends Fragment {
                         break;
 
                 }
+
+
             }
 
             @Override
@@ -221,6 +258,7 @@ public class ReportDaily extends Fragment {
                 chartMon.setText("130,000 ￦");
                 chartDay.setText("Day 1");
             }
+
         });
 
     }
