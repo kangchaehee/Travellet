@@ -78,6 +78,12 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         bundle.putInt("endMonth", endMonth);
         bundle.putInt("endDay", endDay);
         bundle.putInt("endDoW", endDoW);
+        bundle.putFloat("lodgingTotal", lodgingBudget);
+        bundle.putFloat("foodTotal", foodBudget);
+        bundle.putFloat("leisureTotal", leisureBudget);
+        bundle.putFloat("shoppingTotal", shoppingBudget);
+        bundle.putFloat("transportTotal", transportBudget);
+        bundle.putFloat("etcTotal", etcBudget);
         //Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
         //        "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW, Toast.LENGTH_LONG).show();
 

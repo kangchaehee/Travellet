@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.odsay.odsayandroidsdk.API;
 import com.odsay.odsayandroidsdk.ODsayData;
@@ -64,6 +65,10 @@ public class PlanInitialFragment extends Fragment {
     TransportDialog tDialog;
 
     int startYear, startMonth, startDay, endYear, endMonth, endDay;
+    float lodgingT, foodT, leisureT, shoppingT, transportT, etcT;
+    float lodgingD, foodD, leisureD, shoppingD, transportD, etcD;
+    int lodging=0, food=0, leisure=0, shopping=0, transport=0, etc=0;
+
 
     @Override
     public void onPause() {
@@ -112,7 +117,12 @@ public class PlanInitialFragment extends Fragment {
             startYear = getArguments().getInt("startYear", 0);
             startDay = getArguments().getInt("startDay", 0);
             startMonth = getArguments().getInt("startMonth", 0)+1;
-            Log.d("dayMonth: ", String.valueOf(startMonth));
+            lodgingT = getArguments().getFloat("lodgingTotal", 0);
+            foodT = getArguments().getFloat("foodTotal", 0);
+            leisureT = getArguments().getFloat("leisureTotal", 0);
+            shoppingT = getArguments().getFloat("shoppingTotal", 0);
+            transportT = getArguments().getFloat("transportTotal", 0);
+            etcT = getArguments().getFloat("etcTotal", 0);
             period.setText(startYear + "." + startMonth + "." + startDay) ;
 
         }
@@ -370,6 +380,29 @@ public class PlanInitialFragment extends Fragment {
                 name = intent.getStringExtra("title");
                 memo = intent.getStringExtra("memo");
                 type = intent.getIntExtra("type", 1);
+                switch(type){
+                    case 1:
+                        lodging += 1;
+                        lodgingD = lodgingT/lodging;
+                        break;
+                    case 2:
+                        food += 1;
+                        foodD = foodT/food;
+                        break;
+                    case 3:
+                        shopping += 1;
+                        shoppingD = shoppingT/shopping;
+                        break;
+                    case 4:
+                        leisure += 1;
+                        leisureD = leisureT/leisure;
+                        break;
+                    case 5:
+                        etc += 1;
+                        etcD = etcT/etc;
+                        break;
+                }
+                Toast.makeText(getContext(), "lodging="+lodgingD+"\nfood="+foodD+"\nshopping="+shoppingD+"\ntourism="+leisureD, Toast.LENGTH_LONG).show();
                 x = intent.getDoubleExtra("x", 0);
                 y = intent.getDoubleExtra("y", 0);
                 //transport =1;
