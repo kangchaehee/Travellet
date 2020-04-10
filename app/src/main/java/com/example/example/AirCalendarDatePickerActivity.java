@@ -316,7 +316,7 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
                     }
                 }
 
-                Intent resultIntent = new Intent(getApplicationContext(), TravelBudgetShow.class);
+                Intent resultIntent = new Intent(getApplicationContext(), BudgetSet.class);
 
                 resultIntent.putExtra("startYear", start_year_int);
                 resultIntent.putExtra("startMonth", start_month_int);

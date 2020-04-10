@@ -233,7 +233,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:lineSpacingExtra="11sp"
-                    android:text="Leisure/Culture"
+                    android:text="Tourism"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
                     android:textStyle="normal" />
