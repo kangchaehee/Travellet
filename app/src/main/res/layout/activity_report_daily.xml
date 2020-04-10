@@ -117,38 +117,17 @@
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginTop="20dp">
-
-                    <LinearLayout
-                        android:id="@+id/linear"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="15dp"
-                        android:layout_marginLeft="18dp"
-                        android:layout_marginRight="18dp">
-
-                        <TextView
-                            android:id="@+id/chartDay"
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:fontFamily="@font/roboto_regular"
-                            android:textColor="@color/soft_black"
-                            android:textSize="16sp"/>
-
-                    </LinearLayout>
+                    android:layout_marginTop="40dp">
 
 
                      <LinearLayout
                          android:id="@+id/linear1"
-                         android:layout_below="@+id/linear"
                          android:layout_width="match_parent"
                          android:layout_height="wrap_content"
                          android:orientation="horizontal"
                          android:layout_marginLeft="18dp"
                          android:layout_marginRight="18dp"
-                         android:weightSum="2">
+                         android:weightSum="3">
 
                          <TextView
                              android:layout_width="match_parent"
@@ -163,15 +142,25 @@
                              android:id="@+id/chartMon"
                              android:layout_width="match_parent"
                              android:layout_weight="1"
-                             android:gravity="right"
-                             android:layout_gravity="right"
+                             android:gravity="center"
                              android:layout_height="wrap_content"
                              android:fontFamily="@font/roboto_regular"
                              android:textColor="@color/soft_black"
                              android:textSize="16sp" />
 
+                         <TextView
+                             android:id="@+id/chartDay"
+                             android:layout_width="fill_parent"
+                             android:layout_height="wrap_content"
+                             android:gravity="right"
+                             android:layout_weight="1"
+                             android:fontFamily="@font/roboto_regular"
+                             android:textColor="@color/soft_black"
+                             android:textSize="16sp"/>
+
                      </LinearLayout>
 
+                    <!--
                     <LinearLayout
                         android:id="@+id/linear2"
                         android:layout_width="fill_parent"
@@ -233,7 +222,7 @@
                             android:textSize="16sp" />
 
                     </LinearLayout>
-
+-->
                 </RelativeLayout>
             </RelativeLayout>
 
