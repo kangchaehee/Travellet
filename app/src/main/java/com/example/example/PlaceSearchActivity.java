@@ -55,6 +55,10 @@ public class PlaceSearchActivity extends AppCompatActivity {
     boolean lodgingState=false, foodState=false, shoppingState=false, tourismState=false, etcState=false, cultureState=false, leisureState = false, transportationState=false;
     int searchType;
     ArrayList<Integer> placeID = new ArrayList<Integer>();
+    ArrayList<Double> placeX = new ArrayList<Double>();
+    ArrayList<Double> placeY = new ArrayList<Double>();
+    ArrayList<String> placeTitle = new ArrayList<String>();
+    ArrayList<String> placeAddr = new ArrayList<String>();
 
     //like db랑 연동해서 처리
 
@@ -553,6 +557,12 @@ public class PlaceSearchActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(getApplicationContext(), PlaceDetailActivity.class);
                     intent.putExtra("id", placeID.get(position));
+                    intent.putExtra("title", placeTitle.get(position));
+                    intent.putExtra("address", placeAddr.get(position));
+                    intent.putExtra("x", placeX.get(position));
+                    intent.putExtra("y", placeY.get(position));
+                    Log.d("intent x: ", String.valueOf(placeX.get(position)));
+                    Log.d("intent y: ", String.valueOf(placeY.get(position)));
                     startActivity(intent);
                 }
             });
@@ -588,7 +598,6 @@ public class PlaceSearchActivity extends AppCompatActivity {
 
             if (netInfo != null && netInfo.isConnected()) {
                 new DownloadXml().execute(url.toString());
-                Log.d("good", "DownloadXml().execute(url.toString());");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -621,7 +630,7 @@ public class PlaceSearchActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Document doc) {
-            String title = "", address = "", type = "";
+            String title = "", address = "", type = "", mapx="", mapy="";
             NodeList nodeList = doc.getElementsByTagName("item");
 
             for (int i = 0; i < nodeList.getLength(); i++) {
@@ -646,10 +655,12 @@ public class PlaceSearchActivity extends AppCompatActivity {
                 if (!nodeList.item(0).getNodeName().equals("title")) {
                     NodeList titleNode = element.getElementsByTagName("title");
                     title = titleNode.item(0).getChildNodes().item(0).getNodeValue();
+                    placeTitle.add(titleNode.item(0).getChildNodes().item(0).getNodeValue());
                 }
                 if (!nodeList.item(0).getNodeName().equals("addr1")) {
                     NodeList addressNode = element.getElementsByTagName("addr1");
                     address = addressNode.item(0).getChildNodes().item(0).getNodeValue();
+                    placeAddr.add(addressNode.item(0).getChildNodes().item(0).getNodeValue());
                 }
                 if (!nodeList.item(0).getNodeName().equals("contenttypeid")) {
                     NodeList typeNode = element.getElementsByTagName("contenttypeid");
@@ -688,11 +699,27 @@ public class PlaceSearchActivity extends AppCompatActivity {
                             type = "transportation";
                             break;
                     }
+                    if (!nodeList.item(0).getNodeName().equals("mapx")) {
+                        NodeList xNode = element.getElementsByTagName("mapx");
+                        if(xNode.item(0) !=null){
+                            mapx = xNode.item(0).getChildNodes().item(0).getNodeValue();
+                            placeX.add(Double.parseDouble(xNode.item(0).getChildNodes().item(0).getNodeValue()));
+                            Log.d("placeX: ", mapx);
+                        }
+                    }
+
+                    if (!nodeList.item(0).getNodeName().equals("mapy")) {
+                        NodeList yNode = element.getElementsByTagName("mapy");
+                        if(yNode.item(0) !=null){
+                            mapy = yNode.item(0).getChildNodes().item(0).getNodeValue();
+                            placeY.add(Double.parseDouble(yNode.item(0).getChildNodes().item(0).getNodeValue()));
+                            Log.d("placeY: ", mapy);
+                        }
+                    }
                 }
 
                 //db에 좋아요 눌렀던 항목 저장, 리스트뷰에 추가할 때 db에 등록되어 있는 애들은 true로 넘길 수 있도록
                 if(thumbnail.equals(" ")){
-                    Log.d("null: ", title);
                     adapter.addItem(new PlaceSearchItem("NULL", title, address, type));
                 }
                 else

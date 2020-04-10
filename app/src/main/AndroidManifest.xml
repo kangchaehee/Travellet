@@ -30,7 +30,13 @@
         <activity android:name=".PlaceSearchItem" />
         <activity android:name=".PlaceSearchItemView" />
         <activity android:name=".PlaceSelectItem" />
-        <activity android:name=".PlaceSearchActivity" />
+        <activity android:name=".PlaceSearchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".PlaceDetailActivity" />
         <activity android:name=".PlanInitialSubItemView" />
         <activity android:name=".PlanInitialActivity" />
@@ -73,6 +79,11 @@
         <activity
             android:name="com.yongbeom.aircalendar.AirCalendarDatePickerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCvnWf43FkeqO5OhkhsuX4V2_qzfZcDB3o"/>
     </application>
 
 </manifest>

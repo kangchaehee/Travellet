@@ -54,7 +54,7 @@ public class PlanInitialFragment extends Fragment {
     String time, name, memo;
     int type;
     double x, y;
-    double transportExp;
+    double transportExp=0;
     TextView transBudget;
     FragmentCallBack callback;
 
@@ -230,7 +230,7 @@ public class PlanInitialFragment extends Fragment {
             i.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(getContext(), PlanBudget.class);
+                    Intent intent = new Intent(getContext(), PlanInputActivity.class);
                     startActivity(intent);
                 }
             });
@@ -302,6 +302,18 @@ public class PlanInitialFragment extends Fragment {
                     });
                 }
             });
+
+            ImageView budgetImg = view.findViewById(R.id.transportBudget);
+            TextView budgetTxt = view.findViewById(R.id.TransBudgetText);
+
+            budgetImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), PlanBudget.class);
+                    //intent.putExtra()
+                }
+            });
+
             addT.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

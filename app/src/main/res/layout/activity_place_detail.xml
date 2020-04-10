@@ -15,6 +15,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbars="none"
         android:layout_below="@id/detailToList">
 
         <LinearLayout
@@ -91,20 +92,6 @@
                 android:layout_marginTop="40dp"
                 android:textSize="16sp"
                 android:textColor="@color/deep_grey"
-                android:text="Lotte Hotels and Resorts is a South Korea
-n luxury hotel chain operated by Lotte Hot
-el Co., Ltd., the hospitality arm of Lotte Co
-rporation. The company was founded in M
-ay 1973. Starting with the opening of Lott
-e Hotel Seoul in 1979, luxury chain hotels opened in Jamsil, Busan, Jeju, and Ulsan. \n\n
-
-The first business hotel, Lotte City Hotel M
-apo, opened in April 2009, and the first ove
-rseas chain, Lotte Hotel Moscow, opened i
-n June 2010. On December 8, 2011, the se
-cond business hotel, Lotte City Hotel Gim
-po Airport opened within the Lotte Mall Gi
-mpo Airport complex"
                 android:fontFamily="@font/roboto_light"/>
 
             <View
@@ -126,7 +113,17 @@ mpo Airport complex"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
+                <fragment
+                    android:layout_marginTop="32dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+
                 <TextView
+                    android:layout_below="@+id/map"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
@@ -137,6 +134,7 @@ mpo Airport complex"
                     android:id="@+id/addr"/>
 
                 <TextView
+                    android:layout_below="@+id/map"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
@@ -219,26 +217,11 @@ mpo Airport complex"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/icon_grey"
-                    android:layout_marginTop="16dp"/>
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="50dp"/>
 
 
             </RelativeLayout>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_background_full"
-                android:text="Direction"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:fontFamily="@font/roboto_medium"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="32dp"
-                android:layout_centerHorizontal="true"
-                android:layout_alignParentBottom="true"
-                android:id="@+id/direction"
-                android:stateListAnimator="@null"/>
-
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

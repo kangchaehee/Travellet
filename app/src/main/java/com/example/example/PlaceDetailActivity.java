@@ -20,6 +20,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.jsoup.Jsoup;
 import org.w3c.dom.Document;
@@ -34,15 +42,19 @@ import java.net.URLEncoder;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-public class PlaceDetailActivity extends AppCompatActivity {
+
+public class PlaceDetailActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     int placeID, position;
 
     TextView detailTitle, detailType, detailOverview, detailAddr, detailTel, detailLink;
     ImageView detailImage;
     ImageButton back;
-    String title=" ";
     Button moreInfo;
+    String title=" ", address;
+    double x=0.0, y=0.0;
+
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +65,14 @@ public class PlaceDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         placeID = intent.getIntExtra("id", 0);
-        position = intent.getIntExtra("position", 0);
+        title = intent.getStringExtra("title");
+        address = intent.getStringExtra("address");
+        x=intent.getDoubleExtra("x", 0);
+        y=intent.getDoubleExtra("y", 0);
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
         back = (ImageButton) findViewById(R.id.detailToList);
 
@@ -63,7 +82,6 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 returnToBack();
             }
         });
-
 
         detailTitle = (TextView) findViewById(R.id.detailTitle);
         detailType = (TextView) findViewById(R.id.detailType);
@@ -84,6 +102,8 @@ public class PlaceDetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
 
     @Override
@@ -126,7 +146,9 @@ public class PlaceDetailActivity extends AppCompatActivity {
             //startActivity(intent);
 
             if (netInfo != null && netInfo.isConnected()) {
-                new DownloadXml().execute(url1.toString());
+                DownloadXml downloadXml = new DownloadXml();
+                downloadXml.execute(url1.toString());
+
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -255,36 +277,14 @@ public class PlaceDetailActivity extends AppCompatActivity {
                     address = overviewDoc.text();
                 }
 
-
-                if (!nodeList.item(0).getNodeName().equals("mapx")) {
-                    NodeList xNode = element.getElementsByTagName("mapx");
-                    if(xNode.item(0) !=null){
-                        mapx = xNode.item(0).getChildNodes().item(0).getNodeValue();
-                    }
-                }
-
-                if (!nodeList.item(0).getNodeName().equals("mapy")) {
-                    NodeList yNode = element.getElementsByTagName("mapy");
-                    if(yNode.item(0) !=null){
-                        mapy = yNode.item(0).getChildNodes().item(0).getNodeValue();
-                    }
-                }
-
                 if (!nodeList.item(0).getNodeName().equals("overview")) {
                     NodeList overviewNode = element.getElementsByTagName("overview");
                     if(overviewNode.item(0) !=null){
-                        mapx = overviewNode.item(0).getChildNodes().item(0).getNodeValue();
+                        overview = overviewNode.item(0).getChildNodes().item(0).getNodeValue();
                     }
                 }
 
-                if (!nodeList.item(0).getNodeName().equals("directions")) {
-                    NodeList directionsNode = element.getElementsByTagName("directions");
-                    if(directionsNode.item(0) !=null){
-                        mapx = directionsNode.item(0).getChildNodes().item(0).getNodeValue();
-                    }
-                }
             }
-
             detailTitle.setText(title);
             detailType.setText(type);
             detailOverview.setText(overview);
@@ -299,4 +299,24 @@ public class PlaceDetailActivity extends AppCompatActivity {
             }
         }
     }
+
+
+    @Override
+    public void onMapReady(final GoogleMap googleMap) {
+        mMap = googleMap;
+
+        LatLng SEOUL = new LatLng(y, x);
+        Log.d("SEOUL x: ", String.valueOf(x));
+        Log.d("SEOUL y: ", String.valueOf(y));
+
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(SEOUL);
+        markerOptions.title(title);
+        //markerOptions.snippet(address);
+        mMap.addMarker(markerOptions);
+        this.mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SEOUL, 14));
+
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+    }
+
 }
