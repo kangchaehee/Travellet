@@ -16,9 +16,9 @@ import android.widget.TimePicker;
 
 public class PlanInputActivity extends AppCompatActivity {
 
-    int hour, min, category=1;
+    int hour, min, category, position;
     double x, y;
-    String place;
+    String place, time;
     String memo="null";
 
     TimePicker timePicker;
@@ -37,25 +37,9 @@ public class PlanInputActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_plan_input);
 
-        back = (ImageButton) findViewById(R.id.inputToPlan);
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
         timePicker = (TimePicker) findViewById(R.id.select_time);
 
         placeSelect = (ImageButton) findViewById(R.id.SelectPlaceButton);
-        placeSelect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SelectPlaceActivity.class);
-                startActivityForResult(intent, 103);
-            }
-        });
-
         selectTitleText = (TextView) findViewById(R.id.select_place);
 
         editMemo = (EditText) findViewById(R.id.memo);
@@ -64,7 +48,71 @@ public class PlanInputActivity extends AppCompatActivity {
         food = (ImageButton) findViewById(R.id.food);
         shopping = (ImageButton) findViewById(R.id.shopping);
         tourism = (ImageButton) findViewById(R.id.tourism);
-        //etc = (ImageButton) findViewById(R.id.etc);
+        etc = (ImageButton) findViewById(R.id.etc);
+
+        add = (Button) findViewById(R.id.addButton);
+
+
+        Intent intent = getIntent();
+        position = intent.getIntExtra("position", 0);
+        x = intent.getDoubleExtra("x", 0);
+        y = intent.getDoubleExtra("y", 0);
+        if(intent.getStringExtra("place")!=null){
+            add.setText("EDIT");
+            place = intent.getStringExtra("place");
+            selectTitleText.setText(place);
+            selectTitleText.setTextColor(getColor(R.color.soft_black));
+        }
+        if(intent.getStringExtra("time")!=null){
+            time = intent.getStringExtra("time");
+            String[] arr = time.split(":");
+            String[] arr1 = arr[0].split(" ");
+            if(arr1[0].equals("AM"))
+                hour = Integer.parseInt(arr1[1]);
+            else
+                hour = Integer.parseInt(arr1[1]+12);
+            min = Integer.parseInt(arr[1]);
+            timePicker.setHour(hour);
+            timePicker.setMinute(min);
+        }
+        if(intent.getStringExtra("memo")!=null)
+            editMemo.setText(intent.getStringExtra("memo"));
+        category = intent.getIntExtra("type", 1);
+        switch(category){
+            case 1:
+                lodging.setBackgroundResource(R.drawable.ic_lodging_selected);
+                break;
+            case 2:
+                food.setBackgroundResource(R.drawable.ic_food_selected);
+                break;
+            case 3:
+                shopping.setBackgroundResource(R.drawable.ic_shopping_selected);
+                break;
+            case 4:
+                tourism.setBackgroundResource(R.drawable.ic_tourism_selected);
+                break;
+            case 5:
+                etc.setBackgroundResource(R.drawable.ic_etc_selected);
+                break;
+            default:
+                break;
+        }
+
+        back = (ImageButton) findViewById(R.id.inputToPlan);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        placeSelect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SelectPlaceActivity.class);
+                startActivityForResult(intent, 103);
+            }
+        });
 
 
         lodging.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +165,6 @@ public class PlanInputActivity extends AppCompatActivity {
 
             }
         });
-        /*
         etc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,9 +175,9 @@ public class PlanInputActivity extends AppCompatActivity {
                 tourism.setBackgroundResource(R.drawable.ic_tourism);
                 etc.setBackgroundResource(R.drawable.ic_etc_selected);
             }
-        });         */
+        });
 
-        add = (Button) findViewById(R.id.addButton);
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -209,6 +256,7 @@ public class PlanInputActivity extends AppCompatActivity {
         intent.putExtra("type", category);
         intent.putExtra("x", x);
         intent.putExtra("y", y);
+        intent.putExtra("position", position);
 
         setResult(RESULT_OK, intent);
         finish();
