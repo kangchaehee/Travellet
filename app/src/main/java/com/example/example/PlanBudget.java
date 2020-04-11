@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -27,6 +29,7 @@ public class PlanBudget extends AppCompatActivity {
 
     int type, tType;
     double tBudget=0, lodgingB=0, foodB=0, tourismB=0, shoppingB=0, etcB=0, budget=0;
+    int lodging=0, food=0, shopping=0, tourism=0, etc=0;
 
     String memo, title;
 
@@ -40,6 +43,7 @@ public class PlanBudget extends AppCompatActivity {
 
         Intent intent = getIntent();
         type = intent.getIntExtra("type", 0);
+
         tType = intent.getIntExtra("transportT", 0);
 
         switch(tType){
@@ -77,7 +81,7 @@ public class PlanBudget extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                returnToBack();
             }
         });
 
@@ -201,6 +205,26 @@ public class PlanBudget extends AppCompatActivity {
                 String memo = intent.getStringExtra("memo");
                 String budget = intent.getStringExtra("budget");
                 int type = intent.getIntExtra("type", 0);
+                if(Double.parseDouble(budget) == 0.0){
+                    switch(type){
+                        case 1:
+                            lodging +=1;
+                            break;
+                        case 2:
+                            food +=1;
+                            break;
+                        case 3:
+                            shopping+=1;
+                            break;
+                        case 4:
+                            tourism +=1;
+                            break;
+                        case 5:
+                            etc+=1;
+                            break;
+                    }
+                }
+
                 adapter.addItem(new PlanBudgetItem(type, Double.parseDouble(budget)));
                 adapter.notifyDataSetChanged();
             }
@@ -210,6 +234,26 @@ public class PlanBudget extends AppCompatActivity {
                 String memo = intent.getStringExtra("memo");
                 String budget = intent.getStringExtra("budget");
                 int type = intent.getIntExtra("type", 0);
+                Toast.makeText(getApplicationContext(), String.valueOf(Double.parseDouble(budget)>0), Toast.LENGTH_LONG).show();
+                if(Double.parseDouble(budget)>0){
+                    switch(type){
+                        case 1:
+                            lodging -=1;
+                            break;
+                        case 2:
+                            food -=1;
+                            break;
+                        case 3:
+                            shopping-=1;
+                            break;
+                        case 4:
+                            tourism -=1;
+                            break;
+                        case 5:
+                            etc-=1;
+                            break;
+                    }
+                }
                 int position = intent.getIntExtra("position", 0);
                 items.get(position).setBudget(Double.parseDouble(budget));
                 items.get(position).setCategory(type);
@@ -219,9 +263,24 @@ public class PlanBudget extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        returnToBack();
+    }
+
     public void returnToBack(){
         Intent intent = new Intent();
-        intent.putExtra("total", budget);
+        intent.putExtra("lodging", lodging);
+        intent.putExtra("food", food);
+        intent.putExtra("shopping", shopping);
+        intent.putExtra("tourism", tourism);
+        intent.putExtra("etc", etc);
+        intent.putExtra("lodgingBudget", lodgingB);
+        intent.putExtra("foodBudget", foodB);
+        intent.putExtra("shoppingBudget", shoppingB);
+        intent.putExtra("tourismBudget", tourismB);
+        intent.putExtra("etcBudget", etcB);
+        Log.d("total1", "lodging="+lodging+"\nfood="+food+"\nshopping="+shopping+"\ntourism="+tourism+"\netc="+etc);
         setResult(RESULT_OK, intent);
         finish();
     }

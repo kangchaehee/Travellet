@@ -65,7 +65,7 @@ public class PlanInitialActivity extends Fragment {
     FragmentCallBack callback;
 
     int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW, period;
-    float lodgingT, foodT, leisureT, shoppingT, transportT, etcT;
+    double budgetTotal;
     int lodging=0, food=0, leisure=0, shopping=0, transport=0, etc=0;
 
     @Override
@@ -105,13 +105,7 @@ public class PlanInitialActivity extends Fragment {
             endMonth = getArguments().getInt("endMonth", 0);
             endDay = getArguments().getInt("endDay", 0);
             endDoW = getArguments().getInt("endDow", 0);
-            lodgingT = getArguments().getFloat("lodgingTotal", 0);
-            foodT = getArguments().getFloat("foodTotal", 0);
-            leisureT = getArguments().getFloat("leisureTotal", 0);
-            shoppingT = getArguments().getFloat("shoppingTotal", 0);
-            transportT = getArguments().getFloat("transportTotal", 0);
-            etcT = getArguments().getFloat("etcTotal", 0);
-            Log.d("success", String.valueOf(startYear));
+            budgetTotal = getArguments().getDouble("total", 0);
         }
 
         planner = (LinearLayout) rootView.findViewById(R.id.planner);
@@ -134,12 +128,7 @@ public class PlanInitialActivity extends Fragment {
         bundle.putInt("endYear", endYear);
         bundle.putInt("endMonth", endMonth);
         bundle.putInt("endDay", endDay);
-        bundle.putFloat("lodgingTotal", lodgingT);
-        bundle.putFloat("foodTotal", foodT);
-        bundle.putFloat("leisureTotal", leisureT);
-        bundle.putFloat("shoppingTotal", shoppingT);
-        bundle.putFloat("transportTotal", transportT);
-        bundle.putFloat("etcTotal", etcT);
+        bundle.putDouble("total", budgetTotal);
         fragment.setArguments(bundle);
         FragmentManager manager = getChildFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();

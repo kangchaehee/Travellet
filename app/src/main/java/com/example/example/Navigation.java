@@ -34,7 +34,7 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
 
     int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW, budgetType, lodgingType, prefType;
     String travelTitle;
-    float budgetTotal, lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget;
+    double budgetTotal, lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget;
 
 
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -55,16 +55,7 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         endDay = intent2.getIntExtra("endDay", 0);
         endDoW = intent2.getIntExtra("endDoW", 0);
         travelTitle = intent2.getStringExtra("travelTitle");
-        budgetType = intent2.getIntExtra("budgetType", 0);
         budgetTotal = intent2.getIntExtra("budget", 0);
-        lodgingType = intent2.getIntExtra("lodgingType", 0);
-        prefType = intent2.getIntExtra("prefType", 0);
-        lodgingBudget = intent2.getFloatExtra("lodgingBudget", 0);
-        foodBudget = intent2.getFloatExtra("foodBudget", 0);
-        leisureBudget = intent2.getFloatExtra("leisureBudget", 0);
-        shoppingBudget = intent2.getFloatExtra("shoppingBudget", 0);
-        transportBudget = intent2.getFloatExtra("transportBudget", 0);
-        etcBudget = intent2.getFloatExtra("etcBudget", 0);
 
         Fragment plan = new PlanInitialActivity();
         FragmentManager manager = getSupportFragmentManager();
@@ -78,12 +69,7 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         bundle.putInt("endMonth", endMonth);
         bundle.putInt("endDay", endDay);
         bundle.putInt("endDoW", endDoW);
-        bundle.putFloat("lodgingTotal", lodgingBudget);
-        bundle.putFloat("foodTotal", foodBudget);
-        bundle.putFloat("leisureTotal", leisureBudget);
-        bundle.putFloat("shoppingTotal", shoppingBudget);
-        bundle.putFloat("transportTotal", transportBudget);
-        bundle.putFloat("etcTotal", etcBudget);
+        bundle.putDouble("total", budgetTotal);
         //Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
         //        "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW, Toast.LENGTH_LONG).show();
 
@@ -222,12 +208,6 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         intent.putExtra("endDay", endDay);
         intent.putExtra("endDoW", endDoW);
         intent.putExtra("budget", budgetTotal);
-        intent.putExtra("lodgingBudget", lodgingBudget);
-        intent.putExtra("foodBudget", foodBudget);
-        intent.putExtra("leisureBudget", leisureBudget);
-        intent.putExtra("shoppingBudget", shoppingBudget);
-        intent.putExtra("transportBudget", transportBudget);
-        intent.putExtra("etcBudget", etcBudget);
         intent.putExtra("travelTitle", travelTitle);
 
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

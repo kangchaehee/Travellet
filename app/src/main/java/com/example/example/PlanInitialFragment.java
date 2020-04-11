@@ -15,6 +15,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -54,7 +55,6 @@ public class PlanInitialFragment extends Fragment {
     String time, name, memo;
     int type;
     double x, y;
-    double transportExp=0;
     TextView transBudget;
     FragmentCallBack callback;
 
@@ -65,9 +65,10 @@ public class PlanInitialFragment extends Fragment {
     TransportDialog tDialog;
 
     int startYear, startMonth, startDay, endYear, endMonth, endDay;
-    float lodgingT, foodT, leisureT, shoppingT, transportT, etcT;
-    float lodgingD, foodD, leisureD, shoppingD, transportD, etcD;
-    int lodging=0, food=0, leisure=0, shopping=0, transport=0, etc=0;
+    double budgetTotal=0, budgetRemainder=0;
+    double transportTotal=0;
+    double lodgingBudget=0, foodBudget=0, shoppingBudget=0, tourismBudget=0, etcBudget=0;
+    int lodging=0, food=0, tourism=0, shopping=0, transport=0, etc=0;
 
 
     @Override
@@ -117,12 +118,7 @@ public class PlanInitialFragment extends Fragment {
             startYear = getArguments().getInt("startYear", 0);
             startDay = getArguments().getInt("startDay", 0);
             startMonth = getArguments().getInt("startMonth", 0)+1;
-            lodgingT = getArguments().getFloat("lodgingTotal", 0);
-            foodT = getArguments().getFloat("foodTotal", 0);
-            leisureT = getArguments().getFloat("leisureTotal", 0);
-            shoppingT = getArguments().getFloat("shoppingTotal", 0);
-            transportT = getArguments().getFloat("transportTotal", 0);
-            etcT = getArguments().getFloat("etcTotal", 0);
+            budgetTotal = getArguments().getDouble("total", 0);
             period.setText(startYear + "." + startMonth + "." + startDay) ;
 
         }
@@ -142,6 +138,32 @@ public class PlanInitialFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 totalExp();
+                Intent intent = new Intent(getContext(), TravelEstimatedBudget.class);
+                budgetRemainder = budgetTotal - transportTotal - lodgingBudget - foodBudget- shoppingBudget - tourismBudget - etcBudget;
+                intent.putExtra("total", budgetRemainder);
+                intent.putExtra("lodging", lodging);
+                intent.putExtra("food", food);
+                intent.putExtra("shopping", shopping);
+                intent.putExtra("tourism", tourism);
+                intent.putExtra("etc", etc);
+                startActivity(intent);
+                calculation.setBackgroundResource(R.drawable.ic_budget_calculation_selected);
+            }
+        });
+
+        calculationText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                totalExp();
+                Intent intent = new Intent(getContext(), TravelEstimatedBudget.class);
+                budgetRemainder = budgetTotal - transportTotal - lodgingBudget - foodBudget- shoppingBudget - tourismBudget - etcBudget;
+                intent.putExtra("total", budgetRemainder);
+                intent.putExtra("lodging", lodging);
+                intent.putExtra("food", food);
+                intent.putExtra("shopping", shopping);
+                intent.putExtra("tourism", tourism);
+                intent.putExtra("etc", etc);
+                startActivity(intent);
                 calculation.setBackgroundResource(R.drawable.ic_budget_calculation_selected);
             }
         });
@@ -226,7 +248,7 @@ public class PlanInitialFragment extends Fragment {
 
             view.setTransBudgetText(String.valueOf(item.getTransBudget()));
 
-            RelativeLayout i = view.findViewById(R.id.item);
+            LinearLayout i = view.findViewById(R.id.place_linear);
             i.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -423,26 +445,21 @@ public class PlanInitialFragment extends Fragment {
                 switch(type){
                     case 1:
                         lodging += 1;
-                        lodgingD = lodgingT/lodging;
                         break;
                     case 2:
                         food += 1;
-                        foodD = foodT/food;
                         break;
                     case 3:
                         shopping += 1;
-                        shoppingD = shoppingT/shopping;
                         break;
                     case 4:
-                        leisure += 1;
-                        leisureD = leisureT/leisure;
+                        tourism += 1;
                         break;
                     case 5:
                         etc += 1;
-                        etcD = etcT/etc;
                         break;
                 }
-                Toast.makeText(getContext(), "lodging="+lodgingD+"\nfood="+foodD+"\nshopping="+shoppingD+"\ntourism="+leisureD, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "lodging="+lodging+"\nfood="+food+"\nshopping="+shopping+"\ntourism="+tourism+"\netc="+etc, Toast.LENGTH_LONG).show();
                 x = intent.getDoubleExtra("x", 0);
                 y = intent.getDoubleExtra("y", 0);
                 //transport =1;
@@ -479,29 +496,43 @@ public class PlanInitialFragment extends Fragment {
                 name = intent.getStringExtra("title");
                 memo = intent.getStringExtra("memo");
                 type = intent.getIntExtra("type", 1);
+
+                switch(items.get(position).getPlaceType()){
+                    case 1:
+                        lodging -= 1;
+                        break;
+                    case 2:
+                        food -= 1;
+                        break;
+                    case 3:
+                        shopping -= 1;
+                        break;
+                    case 4:
+                        tourism -= 1;
+                        break;
+                    case 5:
+                        etc -= 1;
+                        break;
+                }
+
                 switch(type){
                     case 1:
                         lodging += 1;
-                        lodgingD = lodgingT/lodging;
                         break;
                     case 2:
                         food += 1;
-                        foodD = foodT/food;
                         break;
                     case 3:
                         shopping += 1;
-                        shoppingD = shoppingT/shopping;
                         break;
                     case 4:
-                        leisure += 1;
-                        leisureD = leisureT/leisure;
+                        tourism += 1;
                         break;
                     case 5:
                         etc += 1;
-                        etcD = etcT/etc;
                         break;
                 }
-                Toast.makeText(getContext(), "lodging="+lodgingD+"\nfood="+foodD+"\nshopping="+shoppingD+"\ntourism="+leisureD, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "lodging="+lodging+"\nfood="+food+"\nshopping="+shopping+"\ntourism="+tourism+"\netc="+etc, Toast.LENGTH_LONG).show();
                 x = intent.getDoubleExtra("x", 0);
                 y = intent.getDoubleExtra("y", 0);
                 //transport =1;
@@ -517,7 +548,20 @@ public class PlanInitialFragment extends Fragment {
         }
 
         if(requestCode == 103){
-            intent.getDoubleExtra("total", 0);
+            if(intent != null){
+                lodging += intent.getIntExtra("lodging", 0);
+                food += intent.getIntExtra("food", 0);
+                shopping += intent.getIntExtra("shopping", 0);
+                tourism += intent.getIntExtra("tourism", 0);
+                etc += intent.getIntExtra("etc", 0);
+                lodgingBudget += intent.getDoubleExtra("lodgingBudget", 0);
+                foodBudget += intent.getDoubleExtra("foodBudget", 0);
+                shoppingBudget += intent.getDoubleExtra("shppingBudget", 0);
+                tourismBudget += intent.getDoubleExtra("tourismBudget", 0);
+                etcBudget += intent.getDoubleExtra("etcBudget", 0);
+
+                Log.d("total", "lodging="+lodging+"\nfood="+food+"\nshopping="+shopping+"\ntourism="+tourism+"\netc="+etc);
+            }
         }
     }
 
@@ -572,6 +616,7 @@ public class PlanInitialFragment extends Fragment {
                             Log.d("json", String.valueOf(info));
                             Log.d("payment : %s", String.valueOf(info.getInt("payment")));
                             items.get(x).setTransBudget(transportExp[0]);
+                            transportTotal += transportExp[0];
                             adapter.notifyDataSetChanged();
                         }
 
@@ -597,12 +642,14 @@ public class PlanInitialFragment extends Fragment {
 
         else if(transport == 4){
             transportExp[0] = taxiFare(SX, SY, EX, EY);
+            transportTotal += transportExp[0];
             items.get(x).setTransBudget(transportExp[0]);
             adapter.notifyDataSetChanged();
         }
 
         else {
             transportExp[0] = 0;
+            transportTotal += transportExp[0];
             items.get(x).setTransBudget(transportExp[0]);
             adapter.notifyDataSetChanged();
         }

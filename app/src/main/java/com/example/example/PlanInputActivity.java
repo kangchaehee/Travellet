@@ -123,7 +123,7 @@ public class PlanInputActivity extends AppCompatActivity {
                 food.setBackgroundResource(R.drawable.ic_food);
                 shopping.setBackgroundResource(R.drawable.ic_shopping);
                 tourism.setBackgroundResource(R.drawable.ic_tourism);
-                //etc.setBackgroundResource(R.drawable.ic_etc);
+                etc.setBackgroundResource(R.drawable.ic_etc);
 
             }
         });
@@ -136,7 +136,7 @@ public class PlanInputActivity extends AppCompatActivity {
                 food.setBackgroundResource(R.drawable.ic_food_selected);
                 shopping.setBackgroundResource(R.drawable.ic_shopping);
                 tourism.setBackgroundResource(R.drawable.ic_tourism);
-                //etc.setBackgroundResource(R.drawable.ic_etc);
+                etc.setBackgroundResource(R.drawable.ic_etc);
             }
         });
 
@@ -148,7 +148,7 @@ public class PlanInputActivity extends AppCompatActivity {
                 food.setBackgroundResource(R.drawable.ic_food);
                 shopping.setBackgroundResource(R.drawable.ic_shopping_selected);
                 tourism.setBackgroundResource(R.drawable.ic_tourism);
-                //etc.setBackgroundResource(R.drawable.ic_etc);
+                etc.setBackgroundResource(R.drawable.ic_etc);
 
             }
         });
@@ -161,7 +161,7 @@ public class PlanInputActivity extends AppCompatActivity {
                 food.setBackgroundResource(R.drawable.ic_food);
                 shopping.setBackgroundResource(R.drawable.ic_shopping);
                 tourism.setBackgroundResource(R.drawable.ic_tourism_selected);
-                //etc.setBackgroundResource(R.drawable.ic_etc);
+                etc.setBackgroundResource(R.drawable.ic_etc);
 
             }
         });
@@ -238,11 +238,11 @@ public class PlanInputActivity extends AppCompatActivity {
                     memo = "Tourism";
                     break;
 
-                    /*
+
                 case 5:
                     memo = "etc";
                     break;
-                     */
+
                 default:
                     memo = "null";
                     break;

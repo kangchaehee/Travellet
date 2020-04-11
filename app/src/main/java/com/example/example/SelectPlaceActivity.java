@@ -81,7 +81,6 @@ public class SelectPlaceActivity extends AppCompatActivity {
                 String keyword = editText.getText().toString();
                 Log.d("keyword: ", keyword);
                 items.clear();
-                Log.d("clear complete", keyword);
                 getPlaceListData(keyword);
             }
         });
@@ -182,6 +181,8 @@ public class SelectPlaceActivity extends AppCompatActivity {
                 doc = db.parse(new InputSource(url.openStream()));
                 doc.getDocumentElement().normalize();
 
+                Log.d("clear complete", "ddd");
+
             } catch (Exception e) {
                 Toast.makeText(getBaseContext(), "Parsing Error", Toast.LENGTH_SHORT).show();
             }
@@ -234,6 +235,7 @@ public class SelectPlaceActivity extends AppCompatActivity {
                 if (!nodeList.item(0).getNodeName().equals("addr1")) {
                     NodeList addressNode = element.getElementsByTagName("addr1");
                     address = addressNode.item(0).getChildNodes().item(0).getNodeValue();
+                    Log.d("clear complete", address);
                 }
                 if (!nodeList.item(0).getNodeName().equals("mapx")) {
                     NodeList xNode = element.getElementsByTagName("mapx");
