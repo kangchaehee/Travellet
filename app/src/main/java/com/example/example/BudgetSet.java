@@ -49,7 +49,7 @@ public class BudgetSet extends AppCompatActivity {
                     Edittext_budget.setHintTextColor(getColor(R.color.coral_red));
                     //btn_Next.isClickable(false);
                 }else{
-                    Intent intent = new Intent(BudgetSet.this, TravelEstimatedBudget.class);
+                    Intent intent = new Intent(BudgetSet.this, Navigation.class);
 
                     intent.putExtra("startYear", startYear);
                     intent.putExtra("startMonth", startMonth);

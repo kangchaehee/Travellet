@@ -16,7 +16,6 @@
         <activity android:name=".PlanAllSub" />
         <activity android:name=".ReportDaily" />
         <activity android:name=".Report" >
-
         </activity>
         <activity android:name=".ReportCategory" />
         <activity android:name=".WalletListSubItem" />
@@ -31,11 +30,6 @@
         <activity android:name=".PlaceSearchItemView" />
         <activity android:name=".PlaceSelectItem" />
         <activity android:name=".PlaceSearchActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".PlaceDetailActivity" />
         <activity android:name=".PlanInitialSubItemView" />

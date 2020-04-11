@@ -68,6 +68,7 @@
             android:layout_marginRight="32dp"
             android:orientation="vertical">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -359,7 +360,8 @@
                 android:layout_height="6dp"
                 android:progress="25" />
 
-                //#5 transport
+
+                //#5 etc
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -371,14 +373,14 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginRight="4dp"
-                    app:srcCompat="@drawable/ic_bus_24px" />
+                    app:srcCompat="@drawable/ic_etc_24px" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_regular"
                     android:lineSpacingExtra="11sp"
-                    android:text="Transportation"
+                    android:text="Etc"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
                     android:textStyle="normal" />
@@ -390,12 +392,12 @@
                     android:gravity="right">
 
                     <TextView
-                        android:id="@+id/transportPer"
+                        android:id="@+id/etcPer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
                         android:lineSpacingExtra="11sp"
-                        android:text="8%"
+                        android:text="9%"
                         android:textColor="@color/black"
                         android:textSize="14sp"
                         android:textStyle="normal" />
@@ -408,7 +410,7 @@
                 android:orientation="horizontal"
                 android:gravity="right">
                 <TextView
-                    android:id="@+id/transportBudget"
+                    android:id="@+id/etcBudget"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
@@ -423,7 +425,7 @@
 
             //퍼센트 바
             <ProgressBar
-                android:id="@+id/progress5"
+                android:id="@+id/progress6"
                 android:layout_marginTop="8dp"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:progressDrawable="@drawable/progressbar"
@@ -432,6 +434,7 @@
                 android:progress="25" />
 
         </LinearLayout>
+
     </ScrollView>
 
     <Button
@@ -440,9 +443,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="32dp"
         android:layout_marginBottom="32dp"
-        android:layout_marginTop="20dp"
         android:background="@drawable/button_background_full"
         android:fontFamily="@font/roboto_medium"
         android:lineSpacingExtra="7sp"
