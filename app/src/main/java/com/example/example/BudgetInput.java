@@ -16,8 +16,9 @@ import android.os.Bundle;
 
 public class BudgetInput extends AppCompatActivity {
 
-    int category=1;
+    int category, position;
     String memo="null";
+    String budget = "";
 
     EditText editMemo;
 
@@ -31,7 +32,6 @@ public class BudgetInput extends AppCompatActivity {
     private int where=0;
 
     ImageButton lodging, food, shopping, tourism, transport, etc;
-    boolean lodgingState=false, foodState=false, shoppingState=false, tourismState=false, transportState=false, etcState=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,48 @@ public class BudgetInput extends AppCompatActivity {
         buttonC=(ImageButton)findViewById(R.id.buttonC);
 
         edit1 = (EditText) findViewById(R.id.edit1);
+        editMemo = findViewById(R.id.editMemo);
+
+        lodging = (ImageButton) findViewById(R.id.lodging);
+        food = (ImageButton) findViewById(R.id.food);
+        shopping = (ImageButton) findViewById(R.id.shopping);
+        tourism = (ImageButton) findViewById(R.id.tourism);
+        transport = (ImageButton) findViewById(R.id.transport);
+        etc = (ImageButton) findViewById(R.id.etc);
+
+
+        Intent intent = getIntent();
+        budget = String.valueOf((int) intent.getDoubleExtra("budget", 0));
+        position = intent.getIntExtra("position", 0);
+        if(budget == null || budget.equals(0)){
+            edit1.setText("");
+        }
+        else
+            edit1.setText(budget);
+        category = intent.getIntExtra("type", 0);
+        switch(category){
+            case 1:
+                lodging.setBackgroundResource(R.drawable.ic_lodging_selected);
+                break;
+            case 2:
+                food.setBackgroundResource(R.drawable.ic_food_selected);
+                break;
+            case 3:
+                shopping.setBackgroundResource(R.drawable.ic_shopping_selected);
+                break;
+            case 4:
+                tourism.setBackgroundResource(R.drawable.ic_tourism_selected);
+                break;
+            case 5:
+                transport.setBackgroundResource(R.drawable.ic_transport_selected);
+                break;
+            case 6:
+                etc.setBackgroundResource(R.drawable.ic_etc_selected);
+                break;
+            default:
+                break;
+        }
+
 
 
         back = (ImageButton) findViewById(R.id.btn_back);
@@ -63,12 +105,6 @@ public class BudgetInput extends AppCompatActivity {
             }
         });
 
-        lodging = (ImageButton) findViewById(R.id.lodging);
-        food = (ImageButton) findViewById(R.id.food);
-        shopping = (ImageButton) findViewById(R.id.shopping);
-        tourism = (ImageButton) findViewById(R.id.tourism);
-        transport = (ImageButton) findViewById(R.id.transport);
-        etc = (ImageButton) findViewById(R.id.etc);
 
         lodging.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -210,13 +246,8 @@ public class BudgetInput extends AppCompatActivity {
 
 
     public void returnToBack(){
-
+        budget = edit1.getText().toString();
         memo = editMemo.getText().toString();
-        if(memo == null){
-            Log.d("null", "null");
-        }
-        else
-            Log.d("memo", memo);
         if(memo.length()<1){
             switch (category){
                 case 1:
@@ -236,9 +267,11 @@ public class BudgetInput extends AppCompatActivity {
                     break;
 
                 case 5:
+                    memo = "transport";
+                    break;
+                case 6:
                     memo = "etc";
                     break;
-
                 default:
                     memo = "null";
                     break;
@@ -247,7 +280,8 @@ public class BudgetInput extends AppCompatActivity {
         Intent intent = new Intent();
         intent.putExtra("memo", memo);
         intent.putExtra("type", category);
-
+        intent.putExtra("budget", budget);
+        intent.putExtra("position", position);
         setResult(RESULT_OK, intent);
         finish();
     }

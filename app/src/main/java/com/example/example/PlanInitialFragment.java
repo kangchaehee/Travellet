@@ -152,7 +152,7 @@ public class PlanInitialFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), PlaceSearchActivity.class);
 
-                startActivityForResult(intent, 102);
+                startActivity(intent);
             }
         });
 
@@ -231,7 +231,14 @@ public class PlanInitialFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(), PlanInputActivity.class);
-                    startActivity(intent);
+                    intent.putExtra("position", position);
+                    intent.putExtra("time", item.getPlaceTime());
+                    intent.putExtra("place", item.getPlaceName());
+                    intent.putExtra("memo", item.getPlaceMemo());
+                    intent.putExtra("type", item.getPlaceType());
+                    intent.putExtra("x", item.getX());
+                    intent.putExtra("y", item.getY());
+                    startActivityForResult(intent, 102);
                 }
             });
 
@@ -310,9 +317,30 @@ public class PlanInitialFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(), PlanBudget.class);
-                    //intent.putExtra()
+                    intent.putExtra("position", position);
+                    intent.putExtra("transportB", items.get(position).getTransBudget());
+                    intent.putExtra("transportT", items.get(position).getTransport());
+                    intent.putExtra("type", items.get(position).getPlaceType());
+                    intent.putExtra("memo", items.get(position).getPlaceMemo());
+                    intent.putExtra("title", items.get(position).getPlaceName());
+                    startActivityForResult(intent, 103);
                 }
             });
+
+            budgetTxt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getContext(), PlanBudget.class);
+                    intent.putExtra("position", position);
+                    intent.putExtra("transportB", items.get(position).getTransBudget());
+                    intent.putExtra("transportT", items.get(position).getTransport());
+                    intent.putExtra("type", items.get(position).getPlaceType());
+                    intent.putExtra("memo", items.get(position).getPlaceMemo());
+                    intent.putExtra("title", items.get(position).getPlaceName());
+                    startActivityForResult(intent, 103);
+                }
+            });
+
 
             addT.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -421,6 +449,75 @@ public class PlanInitialFragment extends Fragment {
                 adapter.addItem(new PlanInitialSubItem(time, name, memo, 1, type, x, y));
                 adapter.notifyDataSetChanged();
             }
+        }
+
+        if(requestCode == 102){
+            if(intent != null){
+                int position = intent.getIntExtra("position", 0);
+                int hour = intent.getIntExtra("hour", 0);
+                int min = intent.getIntExtra("min", 0);
+                String ap;
+                String sHour, sMin;
+                if(hour > 12) {
+                    ap = "PM";
+                    hour -= 12;
+                }
+                else
+                    ap = "AM";
+
+                if(hour<10)
+                    sHour = "0"+hour;
+                else
+                    sHour = String.valueOf(hour);
+
+                if(min<10)
+                    sMin = "0"+hour;
+                else
+                    sMin = String.valueOf(min);
+
+                time = ap+ " "+sHour+":"+sMin;
+                name = intent.getStringExtra("title");
+                memo = intent.getStringExtra("memo");
+                type = intent.getIntExtra("type", 1);
+                switch(type){
+                    case 1:
+                        lodging += 1;
+                        lodgingD = lodgingT/lodging;
+                        break;
+                    case 2:
+                        food += 1;
+                        foodD = foodT/food;
+                        break;
+                    case 3:
+                        shopping += 1;
+                        shoppingD = shoppingT/shopping;
+                        break;
+                    case 4:
+                        leisure += 1;
+                        leisureD = leisureT/leisure;
+                        break;
+                    case 5:
+                        etc += 1;
+                        etcD = etcT/etc;
+                        break;
+                }
+                Toast.makeText(getContext(), "lodging="+lodgingD+"\nfood="+foodD+"\nshopping="+shoppingD+"\ntourism="+leisureD, Toast.LENGTH_LONG).show();
+                x = intent.getDoubleExtra("x", 0);
+                y = intent.getDoubleExtra("y", 0);
+                //transport =1;
+                items.get(position).setPlaceTime(time);
+                items.get(position).setPlaceName(name);
+                items.get(position).setPlaceMemo(memo);
+                items.get(position).setPlaceType(type);
+                items.get(position).setX(x);
+                items.get(position).setY(y);
+
+                adapter.notifyDataSetChanged();
+            }
+        }
+
+        if(requestCode == 103){
+            intent.getDoubleExtra("total", 0);
         }
     }
 

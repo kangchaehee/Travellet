@@ -105,6 +105,7 @@
                     android:textColor="@color/soft_grey"
                     android:textSize="14sp"
                     android:text="Select your trip place."
+                    android:layout_marginRight="10dp"
                     android:fontFamily="@font/roboto_light"/>
 
                 <ImageButton
@@ -179,7 +180,7 @@
                         android:layout_width="50dp"
                         android:layout_height="56dp"
                         android:id="@+id/lodging"
-                        android:background="@drawable/ic_lodging_selected"/>
+                        android:background="@drawable/ic_lodging"/>
 
                     <ImageButton
                         android:layout_marginLeft="10dp"
@@ -202,14 +203,14 @@
                         android:id="@+id/tourism"
                         android:background="@drawable/ic_tourism"/>
 
-                    <!--
+
                     <ImageButton
                         android:layout_marginLeft="10dp"
                         android:layout_width="50dp"
                         android:layout_height="56dp"
                         android:id="@+id/etc"
                         android:background="@drawable/ic_etc"/>
-                    -->
+
 
                 </LinearLayout>
             </RelativeLayout>

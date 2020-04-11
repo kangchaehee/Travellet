@@ -19,8 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="28dp"
+        android:layout_marginRight="32dp"
         android:letterSpacing="0.03"
-        android:lineSpacingExtra="35sp"
         android:text="Lotte Hotel"
         android:textColor="@color/black"
         android:textSize="28sp"
@@ -37,6 +37,7 @@
         android:textStyle="normal"
         android:text="memo memo"
         android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto_light"
         />
 
