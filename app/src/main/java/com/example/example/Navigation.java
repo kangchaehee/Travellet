@@ -3,7 +3,10 @@ package com.example.example;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -22,6 +25,8 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.fragment.app.FragmentManager;
 
+import static java.sql.DriverManager.println;
+
 public class Navigation extends AppCompatActivity implements FragmentCallBack{
     ImageButton planButton, walletButton, reportButton, profileButton;
     RelativeLayout bottomBar;
@@ -35,6 +40,8 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
     int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW, budgetType, lodgingType, prefType;
     String travelTitle;
     double budgetTotal, lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget;
+
+    SQLiteDatabase database;
 
 
     @RequiresApi(api = Build.VERSION_CODES.P)
@@ -213,4 +220,5 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
+
 }

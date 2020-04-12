@@ -22,7 +22,7 @@ import org.w3c.dom.Text;
 
 public class TravelEstimatedBudget extends AppCompatActivity {
     int lodging, food, tourism, shopping, transport, etc;
-    double total, lodgingB, foodB, leisureB, shoppingB, transportB, etcB;
+    double total, total2, lodgingB, foodB, leisureB, shoppingB, transportB, etcB;
 
     TextView lodgingPer, foodPer, leisurePer, shoppingPer, transportPer, etcPer;
     TextView lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget, totalBudget;
@@ -69,6 +69,7 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         //토탈에서 남은 금액이랑 금액 설정 안한거 몇갠지
         Intent intent = getIntent();
         total = intent.getDoubleExtra("total", 0);
+        total2 = total;
         totalBudget.setText(String.valueOf(total));
 
         lodging = intent.getIntExtra("lodging", 0);
@@ -107,7 +108,8 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //progress가 바뀐 선택 값
-                totalBudget.setText(String.valueOf((int)total-progress*200));
+                total2 = total-foodB-shoppingB - leisureB - etc;
+                totalBudget.setText(String.valueOf((int)total2-progress*200));
                 int percent= (progress*200)*100/(int)total;
                 lodgingPer.setText(String.valueOf((percent))+"%");
                 lodgingBudget.setText("₩ "+String.valueOf(progress*200));
@@ -119,6 +121,7 @@ public class TravelEstimatedBudget extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                //total2 = total2-lodgingB;
             }
         });
 
@@ -126,11 +129,12 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //progress가 바뀐 선택 값
-                totalBudget.setText(String.valueOf((int)total-progress*200));
+                total2 = total-lodgingB-shoppingB-leisureB - etc;
+                totalBudget.setText(String.valueOf((int)total2-progress*200));
                 int percent= (progress*200)*100/(int)total;
                 foodPer.setText(String.valueOf(percent)+"%");
                 foodBudget.setText("₩ "+String.valueOf(progress*200));
-               foodB = progress*200;
+                foodB = progress*200;
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -138,6 +142,7 @@ public class TravelEstimatedBudget extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                //total2 = total2 - foodB;
             }
         });
 
@@ -145,7 +150,8 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //progress가 바뀐 선택 값
-                totalBudget.setText(String.valueOf((int)total-progress*200));
+                total2 = total-lodgingB-shoppingB-leisureB - etc;
+                totalBudget.setText(String.valueOf((int)total2-progress*200));
                 int percent= (progress*200)*100/(int)total;
                 shoppingPer.setText(String.valueOf(percent)+"%");
                 shoppingBudget.setText("₩ "+String.valueOf(progress*200));
@@ -164,7 +170,8 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //progress가 바뀐 선택 값
-                totalBudget.setText(String.valueOf((int)total-progress*200));
+                total2 = total-lodgingB-shoppingB-leisureB - etc;
+                totalBudget.setText(String.valueOf((int)total2-progress*200));
                 int percent= (progress*200)*100/(int)total;
                 leisurePer.setText(String.valueOf(percent)+"%");
                 leisureBudget.setText("₩ "+String.valueOf(progress*200));
@@ -183,7 +190,8 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //progress가 바뀐 선택 값
-                totalBudget.setText(String.valueOf((int)total-progress*200));
+                total2 = total-lodgingB-shoppingB-leisureB - etc;
+                totalBudget.setText(String.valueOf((int)total2-progress*200));
                 int percent= (progress*200)*100/(int)total;
                 etcPer.setText(String.valueOf(percent)+"%");
                 etcBudget.setText("₩ "+String.valueOf(progress*200));

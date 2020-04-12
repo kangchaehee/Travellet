@@ -18,7 +18,7 @@ public class BudgetInput extends AppCompatActivity {
 
     int category, position;
     String memo="null";
-    String budget = "";
+    String budget = "0";
 
     EditText editMemo;
 
@@ -66,7 +66,8 @@ public class BudgetInput extends AppCompatActivity {
         Intent intent = getIntent();
         budget = String.valueOf((int) intent.getDoubleExtra("budget", 0));
         position = intent.getIntExtra("position", 0);
-        if(budget == null || budget.equals(0)){
+        Log.d("zero", String.valueOf(budget));
+        if(budget == null || budget.equals("0")){
             edit1.setText("");
         }
         else
