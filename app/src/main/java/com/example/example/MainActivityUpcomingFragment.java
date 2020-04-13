@@ -154,7 +154,7 @@ public class MainActivityUpcomingFragment extends Fragment {
                         intent.putExtra("shoppingBudget", shoppingBudget);
                         intent.putExtra("transportBudget", transportBudget);
                         intent.putExtra("etcBudget", etcBudget);
-                        intent.putExtra("totalBudget", totalBudget);
+                        intent.putExtra("budget", totalBudget);
                         Log.d("startYear", startYear+"\n"+startMonth+"\n"+startDay);
 
                     }

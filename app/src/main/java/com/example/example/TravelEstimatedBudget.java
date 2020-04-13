@@ -27,7 +27,7 @@ import org.w3c.dom.Text;
 
 public class TravelEstimatedBudget extends AppCompatActivity {
     int lodging=0, food=0, tourism=0, shopping=0, transport=0, etc=0;
-    double total, total2, lodgingB, foodB, leisureB, shoppingB, transportB, etcB;
+    double total, total2, lodgingB, foodB, leisureB, shoppingB, transportB, etcB, remain;
 
     TextView lodgingPer, foodPer, leisurePer, shoppingPer, transportPer, etcPer;
     TextView lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget, totalBudget;
@@ -74,9 +74,9 @@ public class TravelEstimatedBudget extends AppCompatActivity {
 
         //토탈에서 남은 금액이랑 금액 설정 안한거 몇갠지
         Intent intent = getIntent();
-        total = intent.getDoubleExtra("total", 0);
-        total2 = total;
-        totalBudget.setText(String.valueOf(total));
+        total = 0;
+        remain = intent.getDoubleExtra("total", 0);
+        total2 = remain;
 
         openDatabase("database");
         if (database != null) {
@@ -125,13 +125,16 @@ public class TravelEstimatedBudget extends AppCompatActivity {
                     default:
                         break;
                 }
-
-                Log.d("database", "#"+i+"->"+t+", "+budget);
+                total += budget;
+                Log.d("database", "#"+i+"->"+t+", "+budget+", "+total);
             }
 
             cursor.close();
             cursor2.close();
         }
+
+        remain -= total;
+        totalBudget.setText(String.valueOf(remain));
 
         if(lodging == 0)
             lodgingLin.setVisibility(View.GONE);
@@ -149,11 +152,11 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             etcLin.setVisibility(View.GONE);
 
         //카테고리별 예산 max=total
-        lodgingBar.setMax((int)total/200);
-        foodBar.setMax((int)total/200);
-        leisureBar.setMax((int)total/200);
-        shoppingBar.setMax((int)total/200);
-        etcBar.setMax((int)total/200);
+        lodgingBar.setMax((int)remain/1000);
+        foodBar.setMax((int)remain/1000);
+        leisureBar.setMax((int)remain/1000);
+        shoppingBar.setMax((int)remain/1000);
+        etcBar.setMax((int)remain/1000);
 
         //각 카테고리 예산 텍스트 조정
         lodgingBudget.setText("$ "+lodgingB);
@@ -168,12 +171,12 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //progress가 바뀐 선택 값
-                total2 = total-foodB-shoppingB - leisureB - etc;
-                totalBudget.setText(String.valueOf((int)total2-progress*200));
-                int percent= (progress*200)*100/(int)total;
+                total2 = remain-foodB-shoppingB - leisureB - etcB;
+                totalBudget.setText(String.valueOf((int)total2-progress*1000));
+                int percent= (progress*1000)*100/(int)total;
                 lodgingPer.setText(String.valueOf((percent))+"%");
-                lodgingBudget.setText("₩ "+String.valueOf(progress*200));
-                lodgingB = progress*200;
+                lodgingBudget.setText("₩ "+String.valueOf(progress*1000));
+                lodgingB = progress*1000;
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -189,12 +192,12 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //progress가 바뀐 선택 값
-                total2 = total-lodgingB-shoppingB-leisureB - etc;
-                totalBudget.setText(String.valueOf((int)total2-progress*200));
-                int percent= (progress*200)*100/(int)total;
+                total2 = remain-lodgingB-shoppingB-leisureB - etcB;
+                totalBudget.setText(String.valueOf((int)total2-progress*1000));
+                int percent= (progress*1000)*100/(int)remain;
                 foodPer.setText(String.valueOf(percent)+"%");
-                foodBudget.setText("₩ "+String.valueOf(progress*200));
-                foodB = progress*200;
+                foodBudget.setText("₩ "+String.valueOf(progress*1000));
+                foodB = progress*1000;
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -210,12 +213,12 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //progress가 바뀐 선택 값
-                total2 = total-lodgingB-shoppingB-leisureB - etc;
-                totalBudget.setText(String.valueOf((int)total2-progress*200));
-                int percent= (progress*200)*100/(int)total;
+                total2 = remain-lodgingB-foodB-leisureB - etcB;
+                totalBudget.setText(String.valueOf((int)total2-progress*1000));
+                int percent= (progress*1000)*100/(int)remain;
                 shoppingPer.setText(String.valueOf(percent)+"%");
-                shoppingBudget.setText("₩ "+String.valueOf(progress*200));
-                shoppingB = progress*200;
+                shoppingBudget.setText("₩ "+String.valueOf(progress*1000));
+                shoppingB = progress*1000;
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -230,12 +233,12 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //progress가 바뀐 선택 값
-                total2 = total-lodgingB-shoppingB-leisureB - etc;
-                totalBudget.setText(String.valueOf((int)total2-progress*200));
-                int percent= (progress*200)*100/(int)total;
+                total2 = remain-lodgingB-shoppingB-foodB - etcB;
+                totalBudget.setText(String.valueOf((int)total2-progress*1000));
+                int percent= (progress*1000)*100/(int)remain;
                 leisurePer.setText(String.valueOf(percent)+"%");
-                leisureBudget.setText("₩ "+String.valueOf(progress*200));
-                leisureB = progress*200;
+                leisureBudget.setText("₩ "+String.valueOf(progress*1000));
+                leisureB = progress*1000;
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -250,12 +253,12 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //progress가 바뀐 선택 값
-                total2 = total-lodgingB-shoppingB-leisureB - etc;
-                totalBudget.setText(String.valueOf((int)total2-progress*200));
-                int percent= (progress*200)*100/(int)total;
+                total2 = remain-lodgingB-shoppingB-leisureB - foodB;
+                totalBudget.setText(String.valueOf((int)total2-progress*1000));
+                int percent= (progress*1000)*100/(int)remain;
                 etcPer.setText(String.valueOf(percent)+"%");
-                etcBudget.setText("₩ "+String.valueOf(progress*200));
-                etcB = progress*200;
+                etcBudget.setText("₩ "+String.valueOf(progress*1000));
+                etcB = progress*1000;
             }
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
@@ -304,6 +307,17 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             sql = "update CategoryBudgetTable set budget = ? where category = 6";
             Object[] params6 = {etcB};
             database.execSQL(sql, params2);
+            String sql1 = "select category, budget from BudgetTable";
+            Cursor cursor2 = database.rawQuery(sql1, null);
+            for(int i=0; i<cursor2.getCount(); i++){
+                cursor2.moveToNext();
+                int t = cursor2.getInt(0);
+                double budget = cursor2.getDouble(1);
+
+                Log.d("category budget", "#"+i+"->"+t+", "+budget);
+            }
+
+            cursor2.close();
         }
         finish();
     }
