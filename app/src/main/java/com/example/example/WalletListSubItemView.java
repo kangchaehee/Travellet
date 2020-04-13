@@ -45,13 +45,41 @@ public class WalletListSubItemView extends LinearLayout {
 
     public void setPlace(String place) {this.place.setText(place);}
 
-    public void setMoney(double money) {this.money.setText("$ "+String.valueOf(money));}
+    public void setMoney(double money) {this.money.setText("₩ "+String.valueOf(money));}
 
     public void setCategory_ic(int category_ic) {
-        this.category_ic.setBackgroundResource(category_ic);
+        switch (category_ic){
+            case 1:
+                this.category_ic.setBackgroundResource(R.drawable.ic_lodging_24px);
+                break;
+            case 2:
+                this.category_ic.setBackgroundResource(R.drawable.ic_food_24px);
+                break;
+            case 3:
+                this.category_ic.setBackgroundResource(R.drawable.ic_shopping_24px);
+                break;
+            case 4:
+                this.category_ic.setBackgroundResource(R.drawable.ic_tourism_24px);
+                break;
+            case 5:
+                this.category_ic.setBackgroundResource(R.drawable.ic_bus_24px);
+                break;
+            case 6:
+                this.category_ic.setBackgroundResource(R.drawable.ic_etc_24px);
+                break;
+
+        }
+        //this.category_ic.setBackgroundResource(category_ic);
     }
 
-    public void setPayment(int payment) {this.payment.setBackgroundResource(payment);}
+    public void setPayment(int payment) {
+        if(payment == 1){
+            this.payment.setBackgroundResource(R.drawable.ic_cash_24px);
+        }
+        else{
+            this.payment.setBackgroundResource(R.drawable.ic_card_24px);
+        }
+    }
 
 }
 

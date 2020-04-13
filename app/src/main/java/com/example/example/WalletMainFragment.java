@@ -2,18 +2,24 @@ package com.example.example;
 
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -36,6 +42,9 @@ public class WalletMainFragment extends Fragment {
 
     TextView day, period;
 
+    SQLiteDatabase database;
+    int dayNum;
+
 
     public static WalletMainFragment newInstance() {
         return new WalletMainFragment();
@@ -50,7 +59,7 @@ public class WalletMainFragment extends Fragment {
         period = rootView.findViewById(R.id.period);
 
         if(getArguments() != null){
-            int dayNum = getArguments().getInt("index");
+            dayNum = getArguments().getInt("index");
             day.setText("DAY " + dayNum);
             startYear = getArguments().getInt("startYear", 0);
             startDay = getArguments().getInt("startDay", 0);
@@ -59,6 +68,17 @@ public class WalletMainFragment extends Fragment {
 
 
         }
+
+        openDatabase("database");
+
+        if (database != null) {
+            //_id 는 내부적으로 생성되는 아이디!
+            Log.d("database", "CostTable");
+            String sql = "create table if not exists " + "CostTable" + "(_id integer PRIMARY KEY autoincrement, wallet_position, date, type, cost, payment, position, place)";
+            database.execSQL(sql);
+        }
+        settingListMain(dayNum);
+        settingListSub(dayNum);
 
         viewList = rootView.findViewById(R.id.btn_list);
         listView1 = rootView.findViewById(R.id.mainList);
@@ -125,11 +145,14 @@ public class WalletMainFragment extends Fragment {
             view.setW_cost(item.getW_cost());
             view.setW_budget(item.getW_budget());
 
-            RelativeLayout i = view.findViewById(R.id.item);
+            LinearLayout i = view.findViewById(R.id.wallet_linear);
             i.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(), WalletCost.class);
+                    intent.putExtra("wallet_position", position);
+                    intent.putExtra("date", dayNum);
+                    intent.putExtra("place", item.getW_title());
                     startActivity(intent);
                 }
             });
@@ -175,4 +198,148 @@ public class WalletMainFragment extends Fragment {
         }
     }
 
+    public void openDatabase(String databaseName){
+        DatabaseHelper helper = new DatabaseHelper(getContext(), databaseName, null, 4);
+        database = helper.getWritableDatabase();
+    }
+
+    class DatabaseHelper extends SQLiteOpenHelper {
+
+        public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+            super(context, name, factory, version);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            if(db != null){
+                //_id 는 내부적으로 생성되는 아이디!
+                String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
+                db.execSQL(sql);
+
+                sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
+                db.execSQL(sql);
+
+                //println("테이블 생성됨.");
+            }else{
+                //println("먼저 데이터베이스를 오픈하세요.");
+            }
+
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            //println("onUpgrade 호출됨: "+oldVersion + ", " + newVersion);
+
+            if(newVersion > 1) {
+                db.execSQL("drop table if exists " + "PlanTable");
+                db.execSQL("drop table if exists " + "BudgetTable");
+                //println("테이블 삭제함");
+
+                if (db != null) {
+                    //_id 는 내부적으로 생성되는 아이디!
+                    String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
+                    db.execSQL(sql);
+
+                    //_id 는 내부적으로 생성되는 아이디!
+                    sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
+                    db.execSQL(sql);
+
+                    //println("테이블 새로 생성됨.");
+                } else {
+                    //println("먼저 데이터베이스를 오픈하세요.");
+                }
+            }
+        }
+    }
+
+    public  void settingListMain(int dayNum){
+        if(database != null){
+            String sql = "select date, year, month, day, type, place, hour, min, memo, total_budget, total_cost from "+ "WalletTable"+" where date = "+dayNum;
+            Cursor cursor = database.rawQuery(sql, null);
+            //println("조회된 데이터 개수: "+cursor.getCount());
+
+            for(int i=0; i<cursor.getCount(); i++){
+                cursor.moveToNext();
+                int date = cursor.getInt(0);
+                int year = cursor.getInt(1);
+                int month = cursor.getInt(2);
+                int day = cursor.getInt(3);
+                int type = cursor.getInt(4);
+                String place = cursor.getString(5);
+                int hour = cursor.getInt(6);
+                int min = cursor.getInt(7);
+                String memo = cursor.getString(8);
+                double total_budget = cursor.getDouble(9);
+                double total_cost = cursor.getDouble(10);
+
+                String ap;
+                String sHour, sMin;
+                if(hour > 12) {
+                    ap = "PM";
+                    hour -= 12;
+                }
+                else
+                    ap = "AM";
+
+                if(hour<10)
+                    sHour = "0"+hour;
+                else
+                    sHour = String.valueOf(hour);
+
+                if(min<10)
+                    sMin = "0"+hour;
+                else
+                    sMin = String.valueOf(min);
+
+                String time = ap+ " "+sHour+":"+sMin;
+
+                Log.d("database", "#"+i+"->"+date+", "+year+", "+month+", "+day+", "+type+", "+place+", "+hour+", "+min+", "+memo+", "+total_budget);
+                adapterMain.addItem(new WalletMainItem(time, place, memo, total_cost, total_budget));
+            }
+
+            cursor.close();
+        }
+    }
+
+    public  void settingListSub(int dayNum){
+        if(database != null){
+            String sql = "select type, place, cost, payment from "+ "CostTable"+" where date = "+dayNum;
+            Cursor cursor = database.rawQuery(sql, null);
+            //println("조회된 데이터 개수: "+cursor.getCount());
+
+            for(int i=0; i<cursor.getCount(); i++){
+                String typeStr="";
+                cursor.moveToNext();
+                int type = cursor.getInt(0);
+                switch (type){
+                    case 1:
+                        typeStr = "Lodging";
+                        break;
+                    case 2:
+                        typeStr = "Food";
+                        break;
+                    case 3:
+                        typeStr = "Shopping";
+                        break;
+                    case 4:
+                        typeStr = "Tourism";
+                        break;
+                    case 5:
+                        typeStr = "Transport";
+                        break;
+                    case 6:
+                        typeStr = "Etc";
+                        break;
+                }
+                String place = cursor.getString(1);
+                double cost = cursor.getDouble(2);
+                int payment = cursor.getInt(3);
+
+                Log.d("database", "#"+i+"->"+type+", "+place+", "+cost+", "+payment);
+                adapterList.addItem(new WalletListSubItem(typeStr, place, cost, type, payment));
+            }
+
+            cursor.close();
+        }
+    }
 }

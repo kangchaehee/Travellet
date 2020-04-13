@@ -10,7 +10,7 @@ public class PlanInitialSubItem extends AppCompatActivity {
     int transport, placeType;
     double x, y, transBudget = 0;
 
-    public PlanInitialSubItem(String placeTime, String placeName, String placeMemo, int transport, int placeType, double x, double y) {
+    public PlanInitialSubItem(String placeTime, String placeName, String placeMemo, int transport, int placeType, double x, double y, double totalBudget) {
         this.placeTime = placeTime;
         this.placeName = placeName;
         this.placeMemo = placeMemo;
@@ -18,6 +18,7 @@ public class PlanInitialSubItem extends AppCompatActivity {
         this.placeType = placeType;
         this.x = x;
         this.y = y;
+        transBudget = totalBudget;
 
     }
 

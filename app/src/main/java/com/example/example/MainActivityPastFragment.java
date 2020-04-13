@@ -1,7 +1,11 @@
 package com.example.example;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +37,8 @@ public class MainActivityPastFragment extends Fragment {
     float budget, lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget;
 
     TextView t;
+
+    SQLiteDatabase database;
 
     @Nullable
     @Override
@@ -70,7 +76,13 @@ public class MainActivityPastFragment extends Fragment {
         //adapter.addItem(new MainItem("D+100", "happy trip", "2020.01.04", "2020.02.01"));
         //adapter.addItem(new MainItem("D+15", "hello", "2020.01.05", "2020.02.02"));
         //adapter.addItem(new MainItem("D+16", "lalala", "2020.01.06", "2020.02.03"));
+        openDatabase("database");
+        if(database != null){
+            String sql = "create table if not exists " + "MainTable" + "(_id integer PRIMARY KEY autoincrement, position integer, start_year integer, start_month integer, start_day integer, end_year integer, end_month integer, end_day integer, d_day integer, title text, total_budget double, lodging_budget double, food_budget double, shopping_budget double, tourism_budget double, etc_budget double, transport_budget double, state integer)";
+            database.execSQL(sql);
+        }
 
+        settingList();
 
         return rootView;
     }
@@ -154,6 +166,85 @@ public class MainActivityPastFragment extends Fragment {
         }
     }
 
+    public void openDatabase(String databaseName){
+        DatabaseHelper helper = new DatabaseHelper(getContext(), databaseName, null, 4);
+        database = helper.getWritableDatabase();
+    }
+
+    class DatabaseHelper extends SQLiteOpenHelper {
+
+        public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+            super(context, name, factory, version);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            if(db != null){
+                //_id 는 내부적으로 생성되는 아이디!
+                String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
+                db.execSQL(sql);
+
+                sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
+                db.execSQL(sql);
+
+                //println("테이블 생성됨.");
+            }else{
+                //println("먼저 데이터베이스를 오픈하세요.");
+            }
+
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            //println("onUpgrade 호출됨: "+oldVersion + ", " + newVersion);
+
+            if(newVersion > 1) {
+                db.execSQL("drop table if exists " + "PlanTable");
+                db.execSQL("drop table if exists " + "BudgetTable");
+                //println("테이블 삭제함");
+
+                if (db != null) {
+                    //_id 는 내부적으로 생성되는 아이디!
+                    String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
+                    db.execSQL(sql);
+
+                    //_id 는 내부적으로 생성되는 아이디!
+                    sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
+                    db.execSQL(sql);
+
+                    //println("테이블 새로 생성됨.");
+                } else {
+                    //println("먼저 데이터베이스를 오픈하세요.");
+                }
+            }
+        }
+    }
+
+    public  void settingList(){
+        if(database != null){
+            //adapter.addItem(new MainItem(dDay, travelTitle, startYear+"."+startMonth+"."+startDay, endYear+"."+endMonth+"."+endDay));
+            String sql = "select d_day, title, start_year, start_month, start_day, end_year, end_month, end_day from "+ "MainTable"+" where state = 1";
+            Cursor cursor = database.rawQuery(sql, null);
+            //println("조회된 데이터 개수: "+cursor.getCount());
+
+            for(int i=0; i<cursor.getCount(); i++){
+                cursor.moveToNext();
+                int dDay = cursor.getInt(0);
+                String travelTitle = cursor.getString(1);
+                int startYear = cursor.getInt(2);
+                int startMonth = cursor.getInt(3);
+                int startDay = cursor.getInt(4);
+                int endYear = cursor.getInt(5);
+                int endMonth = cursor.getInt(6);
+                int endDay = cursor.getInt(7);
+
+                //Log.d("database", "#"+i+"->"+date+", "+year+", "+month+", "+day+", "+type+", "+place+", "+hour+", "+min+", "+memo+", "+total_budget);
+                adapter.addItem(new MainItem("D+"+dDay, travelTitle, startYear+"."+startMonth+"."+startDay, endYear+"."+endMonth+"."+endDay));
+            }
+
+            cursor.close();
+        }
+    }
 
 }
 

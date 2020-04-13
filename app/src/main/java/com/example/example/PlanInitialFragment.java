@@ -1,7 +1,11 @@
 package com.example.example;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -53,7 +57,7 @@ public class PlanInitialFragment extends Fragment {
     PlanSubAdapter adapter = new PlanSubAdapter();
 
     String time, name, memo;
-    int type;
+    int type, dayNum;
     double x, y;
     TextView transBudget;
     FragmentCallBack callback;
@@ -69,6 +73,8 @@ public class PlanInitialFragment extends Fragment {
     double transportTotal=0;
     double lodgingBudget=0, foodBudget=0, shoppingBudget=0, tourismBudget=0, etcBudget=0;
     int lodging=0, food=0, tourism=0, shopping=0, transport=0, etc=0;
+
+    SQLiteDatabase database;
 
 
     @Override
@@ -107,7 +113,7 @@ public class PlanInitialFragment extends Fragment {
         addButton = (Button) rootView.findViewById(R.id.addButton);
 
         if(getArguments() != null){
-            int dayNum = getArguments().getInt("index");
+            dayNum = getArguments().getInt("index");
             budgetText.setVisibility(View.VISIBLE);
             budget.setVisibility(View.VISIBLE);
             calculation.setVisibility(View.VISIBLE);
@@ -123,6 +129,28 @@ public class PlanInitialFragment extends Fragment {
 
         }
 
+        openDatabase("database");
+
+        //database.execSQL("drop table MainTable");
+        //database.execSQL("drop table PlanTable");
+        //database.execSQL("drop table BudgetTable");
+        //database.execSQL("drop table WalletTable");
+        //database.execSQL("drop table CostTable");
+
+        if (database != null) {
+            //_id 는 내부적으로 생성되는 아이디!
+            Log.d("database", "PlanTable");
+            String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
+            database.execSQL(sql);
+
+            sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
+            database.execSQL(sql);
+
+            sql = "create table if not exists " + "WalletTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, total_budget double, total_cost double, position integer)";
+            database.execSQL(sql);
+
+        }
+        settingList(dayNum);
         listView = (ListView) rootView.findViewById(R.id.con);
         listView.setAdapter(adapter);
 
@@ -140,7 +168,7 @@ public class PlanInitialFragment extends Fragment {
                 totalExp();
                 Intent intent = new Intent(getContext(), TravelEstimatedBudget.class);
                 budgetRemainder = budgetTotal - transportTotal - lodgingBudget - foodBudget- shoppingBudget - tourismBudget - etcBudget;
-                intent.putExtra("total", budgetRemainder);
+                intent.putExtra("total", budgetTotal);
                 intent.putExtra("lodging", lodging);
                 intent.putExtra("food", food);
                 intent.putExtra("shopping", shopping);
@@ -280,6 +308,10 @@ public class PlanInitialFragment extends Fragment {
                                 items.remove(position);
                                 adapter.notifyDataSetChanged();
                                 calculation.setBackgroundResource(R.drawable.ic_budget_calculation);
+                                String sql = "delete from PlanTable where position = " + position;
+                                database.execSQL(sql);
+                                sql = "delete from BudgetTable where plan_position =" + position;
+                                selectData("PlanTable");
                             }
                         }
                     });
@@ -325,8 +357,36 @@ public class PlanInitialFragment extends Fragment {
                                 addT.setBackgroundResource(R.drawable.ic_car_24px);
                                 transText.setText("Car");
                             }
+                            int tType=0;
+                            switch(transport){
+                                case 1:
+                                    tType = 7;
+                                    break;
+                                case 2:
+                                    tType = 8;
+                                    break;
+                                case 3:
+                                    tType = 9;
+                                    break;
+                                case 4:
+                                    tType = 10;
+                                    break;
+                                case 5:
+                                    tType = 11;
+                                    break;
+                            }
                             item.setTransport(transport);
                             calculation.setBackgroundResource(R.drawable.ic_budget_calculation);
+                            if(database != null){
+                                String sql = "update PlanTable set transport = ? where date = "+dayNum+" and position = "+position;
+                                Object[] params = {transport};
+                                database.execSQL(sql, params);
+                                sql = "update  BudgetTable set type = ?, budget = ? where date = "+dayNum+" and plan_position = "+position+" and position = "+1;
+                                Object[] params1 = {tType, 0};
+                                database.execSQL(sql, params1);
+                                selectData("PlanTable");
+                            }else {
+                            }
                         }
                     });
                 }
@@ -345,6 +405,7 @@ public class PlanInitialFragment extends Fragment {
                     intent.putExtra("type", items.get(position).getPlaceType());
                     intent.putExtra("memo", items.get(position).getPlaceMemo());
                     intent.putExtra("title", items.get(position).getPlaceName());
+                    intent.putExtra("date", dayNum);
                     startActivityForResult(intent, 103);
                 }
             });
@@ -359,6 +420,7 @@ public class PlanInitialFragment extends Fragment {
                     intent.putExtra("type", items.get(position).getPlaceType());
                     intent.putExtra("memo", items.get(position).getPlaceMemo());
                     intent.putExtra("title", items.get(position).getPlaceName());
+                    intent.putExtra("date", dayNum);
                     startActivityForResult(intent, 103);
                 }
             });
@@ -400,8 +462,37 @@ public class PlanInitialFragment extends Fragment {
                                 transText.setText("Car");
                             }
                             item.setTransport(transport);
+                            int tType=0;
+                            switch(transport){
+                                case 1:
+                                    tType = 7;
+                                    break;
+                                case 2:
+                                    tType = 8;
+                                    break;
+                                case 3:
+                                    tType = 9;
+                                    break;
+                                case 4:
+                                    tType = 10;
+                                    break;
+                                case 5:
+                                    tType = 11;
+                                    break;
+                            }
                             calculation.setBackgroundResource(R.drawable.ic_budget_calculation);
+                            if(database != null){
+                                String sql = "update PlanTable set transport = ? where date = "+dayNum+" and position = "+position;
+                                Object[] params = {transport};
+                                database.execSQL(sql, params);
+                                sql = "update  BudgetTable set type = ?, budget = ? where date = "+dayNum+" and plan_position = "+position+" and position = "+1;
+                                Object[] params1 = {tType, 0};
+                                database.execSQL(sql, params1);
+                                selectData("PlanTable");
+                            }else {
+                            }
                         }
+
                     });
 
                 }
@@ -463,8 +554,28 @@ public class PlanInitialFragment extends Fragment {
                 x = intent.getDoubleExtra("x", 0);
                 y = intent.getDoubleExtra("y", 0);
                 //transport =1;
-                adapter.addItem(new PlanInitialSubItem(time, name, memo, 1, type, x, y));
+
+                adapter.addItem(new PlanInitialSubItem(time, name, memo, 1, type, x, y, 0));
                 adapter.notifyDataSetChanged();
+                int position = adapter.getCount()-1;
+
+                if(database != null){
+                    String sql = "insert into PlanTable(date, year, month, day, type, place, hour, min, memo, transport, total_budget, x, y, position) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    Object[] params = {dayNum, startYear, startMonth, startDay, type, name, hour, min, memo, 1, 0.0, x, y, position};
+                    database.execSQL(sql, params);
+                    sql = "insert into WalletTable(date, year, month, day, type, place, hour, min, memo, total_budget, total_cost, position) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    Object[] params3 = {dayNum, startYear, startMonth, startDay, type, name, hour, min, memo, 0.0, 0.0, position};
+                    database.execSQL(sql, params3);
+                    sql = "insert into BudgetTable(plan_position, date, type, budget, position) values(?, ?, ?, ?, ?)";
+                    Object[] params1 = {position, dayNum, type, 0.0, 0};
+                    database.execSQL(sql, params1);
+                    sql = "insert into BudgetTable(plan_position, date, type, budget, position) values(?, ?, ?, ?, ?)";
+                    Object[] params2 = {position, dayNum, 7, 0.0, 1};
+                    database.execSQL(sql, params2);
+                    selectData("PlanTable");
+                    //selectData("BudgetTable");
+                }else {
+                }
             }
         }
 
@@ -543,6 +654,20 @@ public class PlanInitialFragment extends Fragment {
                 items.get(position).setX(x);
                 items.get(position).setY(y);
 
+                if(database != null){
+                    String sql = "update PlanTable set type = ?, place = ?, hour = ?, min = ?, memo = ?, x = ?, y = ? where date = "+dayNum+" and position = "+position;
+                    Object[] params = {type, name, hour, min, memo, x, y};
+                    database.execSQL(sql, params);
+                    sql = "update WalletTable set type = ?, place = ?, hour = ?, min =?, memo = ? where date = "+dayNum+" and position = "+position;
+                    Object[] params2 = {type, name, hour, min, memo};
+                    database.execSQL(sql, params2);
+                    sql = "update  BudgetTable set type = ? where date = "+dayNum+" and plan_position = "+position+" and position = "+0;
+                    Object[] params1 = {type};
+                    database.execSQL(sql, params1);
+                    selectData("PlanTable");
+                }else {
+                }
+
                 adapter.notifyDataSetChanged();
             }
         }
@@ -562,6 +687,118 @@ public class PlanInitialFragment extends Fragment {
 
                 Log.d("total", "lodging="+lodging+"\nfood="+food+"\nshopping="+shopping+"\ntourism="+tourism+"\netc="+etc);
             }
+        }
+    }
+
+    public void openDatabase(String databaseName){
+        DatabaseHelper helper = new DatabaseHelper(getContext(), databaseName, null, 4);
+        database = helper.getWritableDatabase();
+    }
+
+    class DatabaseHelper extends SQLiteOpenHelper {
+
+        public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+            super(context, name, factory, version);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            if(db != null){
+                //_id 는 내부적으로 생성되는 아이디!
+                String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
+                db.execSQL(sql);
+
+                sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
+                db.execSQL(sql);
+
+                //println("테이블 생성됨.");
+            }else{
+                //println("먼저 데이터베이스를 오픈하세요.");
+            }
+
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            //println("onUpgrade 호출됨: "+oldVersion + ", " + newVersion);
+
+            if(newVersion > 1) {
+                db.execSQL("drop table if exists " + "PlanTable");
+                db.execSQL("drop table if exists " + "BudgetTable");
+                //println("테이블 삭제함");
+
+                if (db != null) {
+                    //_id 는 내부적으로 생성되는 아이디!
+                    String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
+                    db.execSQL(sql);
+
+                    //_id 는 내부적으로 생성되는 아이디!
+                    sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
+                    db.execSQL(sql);
+
+                    //println("테이블 새로 생성됨.");
+                } else {
+                    //println("먼저 데이터베이스를 오픈하세요.");
+                }
+            }
+        }
+    }
+
+    public void createTable(String tableName) {
+        if (database != null) {
+            //_id 는 내부적으로 생성되는 아이디!
+            Log.d("database", tableName);
+            String sql = "create table if not exists " + tableName + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
+            database.execSQL(sql);
+
+        } else {
+            Log.d("database faile", tableName);
+        }
+    }
+
+    public void insertData(int age, String mobile){
+
+        if(database != null){
+            //물음표에 해당하는 거를 object 배열을 이용해서 따로 넣을 수 있음.
+            // 물음표 안 쓰고 바로 넣을 수도 있고!
+            String sql = "insert into PlanTable(date, memo) values(?, ?)";
+
+            Object[] params = {age, mobile};
+
+            database.execSQL(sql, params);
+        }else {
+        }
+    }
+
+    public void selectData(String tableName){
+        //println("selectData() 호출됨.");
+
+        if(database != null){
+            ///String sql = "select date, year, month, day, type, place, hour, min, memo, transport, total_budget from "+ tableName;
+            String sql = "select date, year, month, day, type, place, hour, min, memo, transport, total_budget, position from "+ tableName;
+
+            Cursor cursor = database.rawQuery(sql, null);
+            //println("조회된 데이터 개수: "+cursor.getCount());
+
+            for(int i=0; i<cursor.getCount(); i++){
+                cursor.moveToNext();
+                int date = cursor.getInt(0);
+                int year = cursor.getInt(1);
+                int month = cursor.getInt(2);
+                int day = cursor.getInt(3);
+                int type = cursor.getInt(4);
+                String place = cursor.getString(5);
+                int hour = cursor.getInt(6);
+                int min = cursor.getInt(7);
+                String memo = cursor.getString(8);
+                int transport = cursor.getInt(9);
+                double total_budget = cursor.getDouble(10);
+                int position = cursor.getInt(11);
+
+                Log.d("database", "#"+i+"->"+date+", "+year+", "+month+", "+day+", "+type+", "+place+", "+hour+", "+min+", "+memo+", "+transport+", "+total_budget+", "+position);
+            }
+
+            cursor.close();
         }
     }
 
@@ -662,6 +899,7 @@ public class PlanInitialFragment extends Fragment {
         JSONArray jsonArray;
         double taxiFare=0;
 
+
         try {
             String serviceKey = "l7xx45199929f5df446a85d295e1e5eebe6a";
             //startX=126.98217734415019&startY=37.56468648536046&
@@ -701,8 +939,58 @@ public class PlanInitialFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return taxiFare;
+    }
+
+    public  void settingList(int dayNum){
+        if(database != null){
+            String sql = "select date, year, month, day, type, place, hour, min, memo, transport, total_budget, x, y from "+ "PlanTable"+" where date = "+dayNum;
+            Cursor cursor = database.rawQuery(sql, null);
+            //println("조회된 데이터 개수: "+cursor.getCount());
+
+            for(int i=0; i<cursor.getCount(); i++){
+                cursor.moveToNext();
+                int date = cursor.getInt(0);
+                int year = cursor.getInt(1);
+                int month = cursor.getInt(2);
+                int day = cursor.getInt(3);
+                int type = cursor.getInt(4);
+                String place = cursor.getString(5);
+                int hour = cursor.getInt(6);
+                int min = cursor.getInt(7);
+                String memo = cursor.getString(8);
+                int transport = cursor.getInt(9);
+                double total_budget = cursor.getDouble(10);
+                double x = cursor.getDouble(11);
+                double y = cursor.getDouble(12);
+
+                String ap;
+                String sHour, sMin;
+                if(hour > 12) {
+                    ap = "PM";
+                    hour -= 12;
+                }
+                else
+                    ap = "AM";
+
+                if(hour<10)
+                    sHour = "0"+hour;
+                else
+                    sHour = String.valueOf(hour);
+
+                if(min<10)
+                    sMin = "0"+hour;
+                else
+                    sMin = String.valueOf(min);
+
+                time = ap+ " "+sHour+":"+sMin;
+
+                Log.d("database", "#"+i+"->"+date+", "+year+", "+month+", "+day+", "+type+", "+place+", "+hour+", "+min+", "+memo+", "+transport+", "+total_budget);
+                adapter.addItem(new PlanInitialSubItem(time, place, memo, transport, type, x, y, total_budget));
+            }
+
+            cursor.close();
+        }
     }
 
 }

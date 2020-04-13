@@ -28,6 +28,7 @@ public class WalletInput extends AppCompatActivity {
     private EditText edit1;
 
     int category = 1;
+    int payment=1;
 
     boolean cashState=false, cardState=false;
 
@@ -60,11 +61,14 @@ public class WalletInput extends AppCompatActivity {
 
         edit1 = (EditText) findViewById(R.id.edit1);
 
+
+
             //카드랑 현금 중에 선택
         cash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!cashState){
+                    payment = 1;
                     cashState = true;
                     cash.setBackgroundResource(R.drawable.ic_cash_selected);
 
@@ -84,6 +88,7 @@ public class WalletInput extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(!cardState){
+                    payment = 2;
                     cardState = true;
                     card.setBackgroundResource(R.drawable.ic_card_selected);
 
@@ -225,7 +230,18 @@ public class WalletInput extends AppCompatActivity {
 
     //sign in
     public void onClick(View view1){
+        returnToBack();
+    }
 
+    public void returnToBack(){
+        String cost = edit1.getText().toString();
+
+        Intent intent = new Intent();
+        intent.putExtra("type", category);
+        intent.putExtra("cost", cost);
+        intent.putExtra("payment", payment);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
 }

@@ -5,8 +5,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +26,7 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 public class TravelEstimatedBudget extends AppCompatActivity {
-    int lodging, food, tourism, shopping, transport, etc;
+    int lodging=0, food=0, tourism=0, shopping=0, transport=0, etc=0;
     double total, total2, lodgingB, foodB, leisureB, shoppingB, transportB, etcB;
 
     TextView lodgingPer, foodPer, leisurePer, shoppingPer, transportPer, etcPer;
@@ -31,12 +36,13 @@ public class TravelEstimatedBudget extends AppCompatActivity {
 
     Intent intent2;
 
+    SQLiteDatabase database;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_travel_estimated_budget);
-
 
         lodgingPer = findViewById(R.id.lodgingPer);
         foodPer = findViewById(R.id.foodPer);
@@ -72,19 +78,73 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         total2 = total;
         totalBudget.setText(String.valueOf(total));
 
-        lodging = intent.getIntExtra("lodging", 0);
+        openDatabase("database");
+        if (database != null) {
+            String sql = "create table if not exists " + "CategoryBudgetTable" + "(_id integer PRIMARY KEY autoincrement, category integer, budget double)";
+            database.execSQL(sql);
+            sql = "select category from "+ "CategoryBudgetTable";
+            Cursor cursor = database.rawQuery(sql, null);
+            if(cursor.getCount() != 6){
+                sql = "insert into CategoryBudgetTable(category, budget) values(?, ?)";
+                Object[] params1 = {1, 0.0};
+                Object[] params2 = {2, 0.0};
+                Object[] params3 = {3, 0.0};
+                Object[] params4 = {4, 0.0};
+                Object[] params5 = {5, 0.0};
+                Object[] params6 = {6, 0.0};
+                database.execSQL(sql, params1);
+                database.execSQL(sql, params2);
+                database.execSQL(sql, params3);
+                database.execSQL(sql, params4);
+                database.execSQL(sql, params5);
+                database.execSQL(sql, params6);
+            }
+
+            String sql1 = "select type, budget from BudgetTable";
+            Cursor cursor2 = database.rawQuery(sql1, null);
+            for(int i=0; i<cursor2.getCount(); i++){
+                cursor2.moveToNext();
+                int t = cursor2.getInt(0);
+                double budget = cursor2.getDouble(1);
+                switch (t){
+                    case 1:
+                        lodging += 1;
+                        break;
+                    case 2:
+                        food += 1;
+                        break;
+                    case 3:
+                        shopping += 1;
+                        break;
+                    case 4:
+                        tourism += 1;
+                        break;
+                    case 5:
+                        etc += 1;
+                        break;
+                    default:
+                        break;
+                }
+
+                Log.d("database", "#"+i+"->"+t+", "+budget);
+            }
+
+            cursor.close();
+            cursor2.close();
+        }
+
         if(lodging == 0)
-            //lodgingLin.setVisibility(View.GONE);
-        food = intent.getIntExtra("food", 0);
+            lodgingLin.setVisibility(View.GONE);
+        //food = intent.getIntExtra("food", 0);
         if(food == 0)
             foodLin.setVisibility(View.GONE);
-        shopping = intent.getIntExtra("shopping", 0);
+        //shopping = intent.getIntExtra("shopping", 0);
         if(shopping == 0)
             shopLin.setVisibility(View.GONE);
-        tourism = intent.getIntExtra("tourism", 0);
+        //tourism = intent.getIntExtra("tourism", 0);
         if(tourism == 0)
             tourLin.setVisibility(View.GONE);
-        etc = intent.getIntExtra("etc", 0);
+        //etc = intent.getIntExtra("etc", 0);
         if(etc == 0)
             etcLin.setVisibility(View.GONE);
 
@@ -205,9 +265,6 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
-
-
-
         //최종 금액, 타입별 예산
         intent2 = getIntent();
         /*total = intent2.getIntExtra("budget", 0);
@@ -217,9 +274,6 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         shoppingB = total*shopping/100;
         //transportB = total*transport/100;*/
         //etcB = total*etc/100;
-
-
-
     }
 
     // travel budget set
@@ -229,49 +283,83 @@ public class TravelEstimatedBudget extends AppCompatActivity {
 
     // plan initial
     public void onClick(View view){
-        /*int startYear = intent2.getIntExtra("startYear", 0);
-        int startMonth = intent2.getIntExtra("startMonth", 0);
-        int startDay = intent2.getIntExtra("startDay", 0);
-        int startDoW = intent2.getIntExtra("startDoW", 0);
-        int endYear = intent2.getIntExtra("endYear", 0);
-        int endMonth = intent2.getIntExtra("endMonth", 0);
-        int endDay = intent2.getIntExtra("endDay", 0);
-        int endDoW = intent2.getIntExtra("endDoW", 0);
-        String title = intent2.getStringExtra("travelTitle");
-        int budgetType = intent2.getIntExtra("budgetType", 0);
-        int budget = intent2.getIntExtra("budget", 0);
-        int lodgingType = intent2.getIntExtra("lodgingType", 0);
-        int prefType = intent2.getIntExtra("prefType", 0);*/
-
         Intent intent = new Intent(this, Navigation.class);
-        /*intent.putExtra("startYear", startYear);
-        intent.putExtra("startMonth", startMonth);
-        intent.putExtra("startDay", startDay);
-        intent.putExtra("startDoW", startDoW);
-        intent.putExtra("endYear", endYear);
-        intent.putExtra("endMonth", endMonth);
-        intent.putExtra("endDay", endDay);
-        intent.putExtra("endDoW", endDoW);
-        intent.putExtra("travelTitle", title);
-        intent.putExtra("budgetType", budgetType);
-        intent.putExtra("budget", budget);
-        intent.putExtra("lodgingType", lodgingType);
-        intent.putExtra("prefType", prefType);
-        intent.putExtra("lodgingBudget", lodgingB);
-        intent.putExtra("foodBudget", foodB);
-        intent.putExtra("leisureBudget", leisureB);
-        intent.putExtra("shoppingBudget", shoppingB);
-        //intent.putExtra("transportBudget", transportB);
-        intent.putExtra("etcBudget", etcB);
-        //Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
-         //       "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW
-          //      +"\n"+budgetType+"\n"+budget+"\n"+lodgingType+"\n"+prefType
-           //     +"\n"+lodgingB+"\n"+foodB+"\n"+leisureB+"\n"+shoppingB+"\n"+transportB+"\n"+etcB, Toast.LENGTH_LONG).show();*/
 
-        //
-        //startActivity(intent);
+        if(database != null){
+            String sql = "update CategoryBudgetTable set budget = ? where category = 1";
+            Object[] params1= {lodgingB};
+            database.execSQL(sql, params1);
+            sql = "update CategoryBudgetTable set budget = ? where category = 2";
+            Object[] params2 = {foodB};
+            database.execSQL(sql, params2);
+            sql = "update CategoryBudgetTable set budget = ? where category = 3";
+            Object[] params3 = {shoppingB};
+            database.execSQL(sql, params3);
+            sql = "update CategoryBudgetTable set budget = ? where category = 4";
+            Object[] params4 = {leisureB};
+            database.execSQL(sql, params4);
+            sql = "update CategoryBudgetTable set budget = ? where category = 5";
+            Object[] params5 = {transportB};
+            database.execSQL(sql, params2);
+            sql = "update CategoryBudgetTable set budget = ? where category = 6";
+            Object[] params6 = {etcB};
+            database.execSQL(sql, params2);
+        }
         finish();
     }
 
+    public void openDatabase(String databaseName){
+        DatabaseHelper helper = new DatabaseHelper(getApplicationContext(), databaseName, null, 4);
+        database = helper.getWritableDatabase();
+    }
+
+    class DatabaseHelper extends SQLiteOpenHelper {
+
+        public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+            super(context, name, factory, version);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            if(db != null){
+                //_id 는 내부적으로 생성되는 아이디!
+                String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
+                db.execSQL(sql);
+
+                sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
+                db.execSQL(sql);
+
+                //println("테이블 생성됨.");
+            }else{
+                //println("먼저 데이터베이스를 오픈하세요.");
+            }
+
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            //println("onUpgrade 호출됨: "+oldVersion + ", " + newVersion);
+
+            if(newVersion > 1) {
+                db.execSQL("drop table if exists " + "PlanTable");
+                db.execSQL("drop table if exists " + "BudgetTable");
+                //println("테이블 삭제함");
+
+                if (db != null) {
+                    //_id 는 내부적으로 생성되는 아이디!
+                    String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
+                    db.execSQL(sql);
+
+                    //_id 는 내부적으로 생성되는 아이디!
+                    sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
+                    db.execSQL(sql);
+
+                    //println("테이블 새로 생성됨.");
+                } else {
+                    //println("먼저 데이터베이스를 오픈하세요.");
+                }
+            }
+        }
+    }
 
 }
