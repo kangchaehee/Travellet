@@ -546,7 +546,7 @@ public class PlanInitialFragment extends Fragment {
                     case 4:
                         tourism += 1;
                         break;
-                    case 5:
+                    case 6:
                         etc += 1;
                         break;
                 }

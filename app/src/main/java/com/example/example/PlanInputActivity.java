@@ -91,7 +91,7 @@ public class PlanInputActivity extends AppCompatActivity {
             case 4:
                 tourism.setBackgroundResource(R.drawable.ic_tourism_selected);
                 break;
-            case 5:
+            case 6:
                 etc.setBackgroundResource(R.drawable.ic_etc_selected);
                 break;
             default:
@@ -168,7 +168,7 @@ public class PlanInputActivity extends AppCompatActivity {
         etc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                category = 5;
+                category = 6;
                 lodging.setBackgroundResource(R.drawable.ic_lodging);
                 food.setBackgroundResource(R.drawable.ic_food);
                 shopping.setBackgroundResource(R.drawable.ic_shopping);
@@ -239,7 +239,7 @@ public class PlanInputActivity extends AppCompatActivity {
                     break;
 
 
-                case 5:
+                case 6:
                     memo = "etc";
                     break;
 

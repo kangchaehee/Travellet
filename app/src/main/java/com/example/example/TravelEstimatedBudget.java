@@ -303,11 +303,11 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             database.execSQL(sql, params4);
             sql = "update CategoryBudgetTable set budget = ? where category = 5";
             Object[] params5 = {transportB};
-            database.execSQL(sql, params2);
+            database.execSQL(sql, params5);
             sql = "update CategoryBudgetTable set budget = ? where category = 6";
             Object[] params6 = {etcB};
-            database.execSQL(sql, params2);
-            String sql1 = "select category, budget from BudgetTable";
+            database.execSQL(sql, params6);
+            /*String sql1 = "select category, budget from CategoryBudgetTable";
             Cursor cursor2 = database.rawQuery(sql1, null);
             for(int i=0; i<cursor2.getCount(); i++){
                 cursor2.moveToNext();
@@ -316,8 +316,34 @@ public class TravelEstimatedBudget extends AppCompatActivity {
 
                 Log.d("category budget", "#"+i+"->"+t+", "+budget);
             }
+            cursor2.close();*/
+            String sql1="";
+            if(lodging != 0){
+                sql1 = "update BudgetTable set budget = ? where type = 1";
+                Object[] params7 = {lodgingB/lodging};
+                database.execSQL(sql1, params7);
+            }
+            if(food != 0){
+                sql1 = "update BudgetTable set budget = ? where type = 2";
+                Object[] params8 = {foodB/food};
+                database.execSQL(sql1, params8);
+            }
+            if(shopping != 0){
+                sql1 = "update BudgetTable set budget = ? where type = 3";
+                Object[] params9 = {shoppingB/shopping};
+                database.execSQL(sql1, params9);
+            }
+            if(tourism != 0){
 
-            cursor2.close();
+                sql1 = "update BudgetTable set budget = ? where type = 4";
+                Object[] params10 = {leisureB/tourism};
+                database.execSQL(sql1, params10);
+            }
+            if(etc != 0){
+                sql1 = "update BudgetTable set budget = ? where type = 6";
+                Object[] params11 = {etcB/etc};
+                database.execSQL(sql1, params11);
+            }
         }
         finish();
     }
