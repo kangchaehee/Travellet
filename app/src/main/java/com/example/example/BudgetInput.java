@@ -66,7 +66,6 @@ public class BudgetInput extends AppCompatActivity {
         Intent intent = getIntent();
         budget = String.valueOf((int) intent.getDoubleExtra("budget", 0));
         position = intent.getIntExtra("position", 0);
-        Log.d("zero", String.valueOf(budget));
         if(budget == null || budget.equals("0")){
             edit1.setText("");
         }

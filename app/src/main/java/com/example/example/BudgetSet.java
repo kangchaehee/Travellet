@@ -61,7 +61,7 @@ public class BudgetSet extends AppCompatActivity {
                     intent.putExtra("endDoW", endDoW);
                     intent.putExtra("travelTitle", title);
                     intent.putExtra("budgetType", budgetType);
-                    intent.putExtra("budget", Integer.parseInt(budget));
+                    intent.putExtra("budget", Double.parseDouble(budget));
                     //Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
                      //       "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW
                       //      +"\n"+budgetType+"\n"+budget, Toast.LENGTH_LONG).show();

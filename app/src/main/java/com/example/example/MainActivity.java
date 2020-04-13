@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putInt("endMonth", endMonth);
                 bundle.putInt("endDay", endDay);
                 bundle.putString("travelTitle", travelTitle);
-                Log.d("putBundle: ", travelTitle);
+                //Log.d("putBundle: ", travelTitle);
                 bundle.putFloat("budget", budget);
                 bundle.putFloat("lodgingBudget", lodgingBudget);
                 bundle.putFloat("foodBudget", foodBudget);

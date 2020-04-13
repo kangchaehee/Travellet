@@ -3,6 +3,7 @@ package com.example.example;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Color;
@@ -28,10 +29,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.odsay.odsayandroidsdk.API;
-import com.odsay.odsayandroidsdk.ODsayData;
-import com.odsay.odsayandroidsdk.ODsayService;
-import com.odsay.odsayandroidsdk.OnResultCallbackListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -129,7 +126,7 @@ public class PlanInitialActivity extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putInt("index", 1);
         bundle.putInt("startYear", startYear);
-        bundle.putInt("startMonth", startMonth);
+        bundle.putInt("startMonth", startMonth-1);
         bundle.putInt("startDay", startDay);
         bundle.putInt("endYear", endYear);
         bundle.putInt("endMonth", endMonth);
@@ -142,8 +139,8 @@ public class PlanInitialActivity extends Fragment {
         transaction.addToBackStack(null);
         transaction.commit();
 
-        //openDatabase("database");
-        //createTable("planTable");
+        //insertData(1, "database test");
+        //selectData("planTable");
 
 
         day_sub all = dayItems.get(0);
@@ -305,89 +302,6 @@ public class PlanInitialActivity extends Fragment {
 
             i++;
 
-        }
-    }
-
-    public void openDatabase(String databaseName){
-        DatabaseHelper helper = new DatabaseHelper(getContext(), databaseName, null, 4);
-        database = helper.getWritableDatabase();
-    }
-
-    class DatabaseHelper extends SQLiteOpenHelper {
-
-        public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-            super(context, name, factory, version);
-        }
-
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            if(db != null){
-                //_id 는 내부적으로 생성되는 아이디!
-                Log.d("database", "헬퍼 onCreate");
-                String sql = "create table if not exists " + "planTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double)";
-                db.execSQL(sql);
-
-                sql = "create table if not exists " + "budgetTable" + "(_id integer PRIMARY KEY autoincrement, data integer, plan_id integer, type integer, budget double, memo text)";
-                db.execSQL(sql);
-
-                //println("테이블 생성됨.");
-            }else{
-                //println("먼저 데이터베이스를 오픈하세요.");
-            }
-
-        }
-
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            //println("onUpgrade 호출됨: "+oldVersion + ", " + newVersion);
-
-            if(newVersion > 1) {
-                db.execSQL("drop table if exists " + "planTable");
-                db.execSQL("drop table if exists " + "budgetTable");
-                //println("테이블 삭제함");
-
-                if (db != null) {
-                    //_id 는 내부적으로 생성되는 아이디!
-                    String sql = "create table if not exists " + "planTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double)";
-                    db.execSQL(sql);
-
-                    //_id 는 내부적으로 생성되는 아이디!
-                    sql = "create table if not exists " + "budgetTable" + "(_id integer PRIMARY KEY autoincrement, data integer, plan_id integer, type integer, budget double, memo text";
-                    db.execSQL(sql);
-
-                    //println("테이블 새로 생성됨.");
-                } else {
-                    //println("먼저 데이터베이스를 오픈하세요.");
-                }
-            }
-        }
-    }
-
-    public void createTable(String tableName){
-        if(database != null){
-            //_id 는 내부적으로 생성되는 아이디!
-            Log.d("database", tableName);
-            String sql = "create table if not exists " + tableName + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double)";
-            database.execSQL(sql);
-
-        }else{
-            Log.d("database faile", tableName);
-        }
-    }
-
-    public void insertData(String name, int age, String mobile){
-
-        if(database != null){
-            //물음표에 해당하는 거를 object 배열을 이용해서 따로 넣을 수 있음.
-            // 물음표 안 쓰고 바로 넣을 수도 있고!
-            String sql = "insert into planTable(date, type) values(1, 1)";
-
-            Object[] params = {name, age, mobile};
-
-            Log.d("database", name);
-
-            database.execSQL(sql, params);
-        }else {
         }
     }
 }

@@ -3,7 +3,11 @@ package com.example.example;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,8 +34,11 @@ public class PlanBudget extends AppCompatActivity {
     int type, tType;
     double tBudget=0, lodgingB=0, foodB=0, tourismB=0, shoppingB=0, etcB=0, budget=0;
     int lodging=0, food=0, shopping=0, tourism=0, etc=0;
+    int date, position, planPosition;
 
-    String memo, title;
+    String memo=" ", title;
+
+    SQLiteDatabase database;
 
 
     @Override
@@ -43,7 +50,6 @@ public class PlanBudget extends AppCompatActivity {
 
         Intent intent = getIntent();
         type = intent.getIntExtra("type", 0);
-
         tType = intent.getIntExtra("transportT", 0);
 
         switch(tType){
@@ -66,16 +72,19 @@ public class PlanBudget extends AppCompatActivity {
         tBudget = intent.getDoubleExtra("transportB", 0);
         memo = intent.getStringExtra("memo");
         title = intent.getStringExtra("title");
+        date = intent.getIntExtra("date", 0);
+        planPosition = intent.getIntExtra("position", 0);
 
         TextView memoTxt = findViewById(R.id.textView2);
         memoTxt.setText(memo);
         TextView titleTxt = findViewById(R.id.textView);
         titleTxt.setText(title);
 
+        openDatabase("database");
+
         listView = findViewById(R.id.listView);
         listView.setAdapter(adapter);
-        adapter.addItem(new PlanBudgetItem(type, 0));
-        adapter.addItem(new PlanBudgetItem(tType, tBudget));
+        settingList();
 
         back = findViewById(R.id.btn_back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -219,7 +228,7 @@ public class PlanBudget extends AppCompatActivity {
                         case 4:
                             tourism +=1;
                             break;
-                        case 5:
+                        case 6:
                             etc+=1;
                             break;
                     }
@@ -227,6 +236,11 @@ public class PlanBudget extends AppCompatActivity {
 
                 adapter.addItem(new PlanBudgetItem(type, Double.parseDouble(budget)));
                 adapter.notifyDataSetChanged();
+                int position = adapter.getCount()-1;
+
+                String sql = "insert into  BudgetTable(plan_position, date, type, budget, position) values(?, ?, ?, ?, ?)";
+                Object[] params1 = {planPosition, date, type, Double.parseDouble(budget), position};
+                database.execSQL(sql, params1);
             }
         }
         if(requestCode == 106){
@@ -249,7 +263,7 @@ public class PlanBudget extends AppCompatActivity {
                         case 4:
                             tourism -=1;
                             break;
-                        case 5:
+                        case 6:
                             etc-=1;
                             break;
                     }
@@ -257,8 +271,12 @@ public class PlanBudget extends AppCompatActivity {
                 int position = intent.getIntExtra("position", 0);
                 items.get(position).setBudget(Double.parseDouble(budget));
                 items.get(position).setCategory(type);
-                budget += items.get(position).getBudget();
+                //budget += items.get(position).getBudget();
                 adapter.notifyDataSetChanged();
+
+                String sql = "update  BudgetTable set type = ?, budget = ? where date = "+date+" and plan_position = "+planPosition+" and position = "+position;
+                Object[] params1 = {type, Double.parseDouble(budget)};
+                database.execSQL(sql, params1);
             }
         }
     }
@@ -283,5 +301,92 @@ public class PlanBudget extends AppCompatActivity {
         Log.d("total1", "lodging="+lodging+"\nfood="+food+"\nshopping="+shopping+"\ntourism="+tourism+"\netc="+etc);
         setResult(RESULT_OK, intent);
         finish();
+    }
+
+    public void openDatabase(String databaseName){
+        DatabaseHelper helper = new DatabaseHelper(getApplicationContext(), databaseName, null, 4);
+        database = helper.getWritableDatabase();
+    }
+
+    class DatabaseHelper extends SQLiteOpenHelper {
+
+        public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+            super(context, name, factory, version);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            if(db != null){
+                //_id 는 내부적으로 생성되는 아이디!
+                String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
+                db.execSQL(sql);
+
+                sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, plan_id integer, type integer, budget double, memo text)";
+                db.execSQL(sql);
+
+                //println("테이블 생성됨.");
+            }else{
+                //println("먼저 데이터베이스를 오픈하세요.");
+            }
+
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            //println("onUpgrade 호출됨: "+oldVersion + ", " + newVersion);
+
+            if(newVersion > 1) {
+                db.execSQL("drop table if exists " + "PlanTable");
+                db.execSQL("drop table if exists " + "BudgetTable");
+                //println("테이블 삭제함");
+
+                if (db != null) {
+                    //_id 는 내부적으로 생성되는 아이디!
+                    String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
+                    db.execSQL(sql);
+
+                    //_id 는 내부적으로 생성되는 아이디!
+                    sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, plan_id integer, type integer, budget double, memo text)";
+                    db.execSQL(sql);
+
+                    //println("테이블 새로 생성됨.");
+                } else {
+                    //println("먼저 데이터베이스를 오픈하세요.");
+                }
+            }
+        }
+    }
+
+    public void createTable(String tableName) {
+        if (database != null) {
+            //_id 는 내부적으로 생성되는 아이디!
+            Log.d("database", tableName);
+            String sql = "create table if not exists " + tableName + "(_id integer PRIMARY KEY autoincrement, data integer, plan_id integer, type integer, budget double, memo text)";
+            database.execSQL(sql);
+
+        } else {
+            Log.d("database fail", tableName);
+        }
+    }
+
+    public  void settingList(){
+        if(database != null){
+            String sql = "select type, budget, plan_position from "+ "BudgetTable"+" where date = "+date+" and plan_position = "+planPosition;
+            Cursor cursor = database.rawQuery(sql, null);
+            //println("조회된 데이터 개수: "+cursor.getCount());
+
+            for(int i=0; i<cursor.getCount(); i++){
+                cursor.moveToNext();
+                int type = cursor.getInt(0);
+                double budget = cursor.getDouble(1);
+                int plan_position = cursor.getInt(2);
+                //int month = cursor.getInt(2);
+
+                Log.d("database", "#"+i+"->"+type+", "+budget+", "+plan_position);
+                adapter.addItem(new PlanBudgetItem(type, budget));
+            }
+
+            cursor.close();
+        }
     }
 }

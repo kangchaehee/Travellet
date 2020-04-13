@@ -87,7 +87,7 @@ public class WalletMain extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putInt("index", 1);
         bundle.putInt("startYear", startYear);
-        bundle.putInt("startMonth", startMonth);
+        bundle.putInt("startMonth", startMonth-1);
         bundle.putInt("startDay", startDay);
         bundle.putInt("endYear", endYear);
         bundle.putInt("endMonth", endMonth);
@@ -260,6 +260,7 @@ public class WalletMain extends Fragment {
             i++;
 
         }
-
     }
+
+
 }
