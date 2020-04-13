@@ -16,6 +16,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import java.util.regex.Pattern;
 import java.io.UnsupportedEncodingException;
@@ -30,19 +31,31 @@ import android.util.Log;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.example.example.data.LoginData;
+import com.example.example.data.LoginResponse;
+import com.example.example.network.RetrofitClient;
+import com.example.example.network.ServiceApi;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class SignIn extends AppCompatActivity {
 
+    private ServiceApi service;
+    private ProgressBar ProgressView;
+
     Button btn_register, btn_signin;
 
-        //이메일과 비밀번호
+    //이메일과 비밀번호
     private EditText Edittext_email;
     private EditText Edittext_pw;
 
     //이메일이랑 비밀번호 입력 잘 됐는지 확인
     boolean testEmail = false, testPw = false, testSign=false;
 
-    String id, password;
+    String email, password;
 
     View underbar;
 
@@ -50,6 +63,9 @@ public class SignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+        service = RetrofitClient.getClient().create(ServiceApi.class);
+        ProgressView = (ProgressBar) findViewById(R.id.login_progress);
 
             //스플래쉬
         Intent intent = new Intent(this, SplashActivity.class);
@@ -60,8 +76,8 @@ public class SignIn extends AppCompatActivity {
         Edittext_pw = (EditText) findViewById(R.id.Edittext_pw);
         btn_signin = (Button) findViewById(R.id.btn_signin);
 
-        String email = Edittext_email.getText().toString();
-        String password = Edittext_pw.getText().toString();
+        email = Edittext_email.getText().toString();
+        password = Edittext_pw.getText().toString();
 
             // 아이디 이메일 양식인지 확인
         Edittext_email.setOnFocusChangeListener(new View.OnFocusChangeListener(){
@@ -160,20 +176,51 @@ public class SignIn extends AppCompatActivity {
             }
         });
 
+
+        // 로그인 버튼 이벤트
         btn_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //testSign이 true 일 때만 로그인 가능
+                email = Edittext_email.getText().toString();
+                password = Edittext_pw.getText().toString();
                 if(testSign){
-                    Intent intent = new Intent(SignIn.this, MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }else{
+                    startLogin(new LoginData(email, password));
+                    showProgress(true);
                 }
             }
         });
 
     }
+
+    private void startLogin(LoginData data) {
+        service.userLogin(data).enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                LoginResponse result = response.body();
+                Toast.makeText(SignIn.this, result.getMessage(), Toast.LENGTH_SHORT).show();
+                showProgress(false);
+
+                if (result.getCode() == 200) {
+                    Intent intent = new Intent(SignIn.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                Toast.makeText(SignIn.this, "로그인 에러 발생", Toast.LENGTH_SHORT).show();
+                Log.e("로그인 에러 발생", t.getMessage());
+                showProgress(false);
+            }
+        });
+    }
+    private void showProgress(boolean show) {
+        ProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
+
 
         //register 버튼. 누르면 register로
     public void onButtonClick(View view2){
