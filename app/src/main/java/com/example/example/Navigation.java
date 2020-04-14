@@ -41,6 +41,7 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
     double budget;
     int size;
     String[] timeList;
+    int mainPosition;
 
     int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW, budgetType, lodgingType, prefType;
     String travelTitle;
@@ -70,14 +71,13 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         budgetTotal = intent2.getDoubleExtra("budget", 0);
         Log.d("budgetTotal", String.valueOf(budgetTotal));
         int dDay = returnDday(startYear, startMonth, startDay);
+        mainPosition = intent2.getIntExtra("mainPosition", 0);
 
         openDatabase("database");
         if (database != null && travelTitle != null) {
             //_id 는 내부적으로 생성되는 아이디!
-            String sql = "create table if not exists " + "MainTable" + "(_id integer PRIMARY KEY autoincrement, position integer, start_year integer, start_month integer, start_day integer, end_year integer, end_month integer, end_day integer, d_day integer, title text, total_budget double, lodging_budget double, food_budget double, shopping_budget double, tourism_budget double, etc_budget double, transport_budget double, state integer)";
-            database.execSQL(sql);
-            sql = "insert into MainTable(start_year, start_month, start_day, end_year, end_month, end_day, d_day, title, total_budget, state) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            Object[] params = {startYear, startMonth, startDay, endYear, endMonth, endDay, dDay, travelTitle, budgetTotal, 0};
+            String sql = "insert into MainTable(position, start_year, start_month, start_day, end_year, end_month, end_day, d_day, title, total_budget, state) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            Object[] params = {mainPosition, startYear, startMonth, startDay, endYear, endMonth, endDay, dDay, travelTitle, budgetTotal, 0};
             database.execSQL(sql, params);
 
            sql = "select title, d_day from "+ "MainTable";
@@ -112,6 +112,7 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         bundle.putInt("endDay", endDay);
         bundle.putInt("endDoW", endDoW);
         bundle.putDouble("total", budgetTotal);
+        bundle.putInt("mainPosition", mainPosition);
         //Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
         //        "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW, Toast.LENGTH_LONG).show();
 
@@ -187,6 +188,8 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         bundle.putInt("endYear", endYear);
         bundle.putInt("endMonth", endMonth);
         bundle.putInt("endDay", endDay);
+        bundle.putDouble("total", budgetTotal);
+        bundle.putInt("mainPosition", mainPosition);
         fragment.setArguments(bundle);
         transaction.replace(R.id.container, fragment);
         transaction.commit();
@@ -203,6 +206,7 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         bundle.putInt("endYear", endYear);
         bundle.putInt("endMonth", endMonth);
         bundle.putInt("endDay", endDay);
+        bundle.putInt("mainPosition", mainPosition);
         fragment.setArguments(bundle);
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -293,14 +297,7 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
         public void onCreate(SQLiteDatabase db) {
             if(db != null){
                 //_id 는 내부적으로 생성되는 아이디!
-                String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
-                db.execSQL(sql);
 
-                sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
-                db.execSQL(sql);
-
-                sql = "create table if not exists " + "MainTable" + "(_id integer PRIMARY KEY autoincrement, position integer, start_year integer, start_month integer, start_day integer, end_year integer, end_month integer, end_day integer, d_day integer, title text, total_budget double, lodging_budget double, food_budget double, shopping_budget double, tourism_budget double, etc_budget double, transport_budget double, state integer)";
-                db.execSQL(sql);
 
                 //println("테이블 생성됨.");
             }else{
@@ -314,23 +311,7 @@ public class Navigation extends AppCompatActivity implements FragmentCallBack{
             //println("onUpgrade 호출됨: "+oldVersion + ", " + newVersion);
 
             if(newVersion > 1) {
-                db.execSQL("drop table if exists " + "PlanTable");
-                db.execSQL("drop table if exists " + "BudgetTable");
-                //println("테이블 삭제함");
 
-                if (db != null) {
-                    //_id 는 내부적으로 생성되는 아이디!
-                    String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
-                    db.execSQL(sql);
-
-                    //_id 는 내부적으로 생성되는 아이디!
-                    sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
-                    db.execSQL(sql);
-
-                    //println("테이블 새로 생성됨.");
-                } else {
-                    //println("먼저 데이터베이스를 오픈하세요.");
-                }
             }
         }
     }

@@ -30,7 +30,7 @@ public class PlanAllSub extends LinearLayout {
     ArrayList<PlanInitialSubItem> items = new ArrayList<PlanInitialSubItem>();
     PlanSubAdapter adapter = new PlanSubAdapter();
     SQLiteDatabase database;
-    int date;
+    int date, mainPosition;
 
     public PlanAllSub(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -52,9 +52,10 @@ public class PlanAllSub extends LinearLayout {
         listView = findViewById(R.id.con);
     }
 
-    public void setDay(int date){
+    public void setDay(int date, int mainPosition){
         day.setText("DAY "+date);
         this.date = date;
+        this.mainPosition = mainPosition;
     }
 
     public void setPeriod(int year, int month, int day){
@@ -226,7 +227,7 @@ public class PlanAllSub extends LinearLayout {
 
     public  void settingList(int dayNum){
         if(database != null){
-            String sql = "select date, year, month, day, type, place, hour, min, memo, transport, total_budget, x, y from "+ "PlanTable"+" where date = "+dayNum;
+            String sql = "select date, year, month, day, type, place, hour, min, memo, transport, total_budget, x, y from "+ "PlanTable"+" where date = "+dayNum+" and main_position = "+mainPosition;
             Cursor cursor = database.rawQuery(sql, null);
             //println("조회된 데이터 개수: "+cursor.getCount());
 

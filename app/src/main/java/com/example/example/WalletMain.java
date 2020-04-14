@@ -43,6 +43,7 @@ public class WalletMain extends Fragment {
     FrameLayout con;
 
     int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW;
+    int mainPosition;
 
     @Override
     public void onAttach(Context context) {
@@ -69,6 +70,7 @@ public class WalletMain extends Fragment {
             endMonth = getArguments().getInt("endMonth", 0);
             endDay = getArguments().getInt("endDay", 0);
             endDoW = getArguments().getInt("endDow", 0);
+            mainPosition = getArguments().getInt("mainPosition", 0);
             Log.d("success", String.valueOf(startYear));
         }
 
@@ -92,6 +94,7 @@ public class WalletMain extends Fragment {
         bundle.putInt("endYear", endYear);
         bundle.putInt("endMonth", endMonth);
         bundle.putInt("endDay", endDay);
+        bundle.putInt("mainPosition", mainPosition);
         fragment.setArguments(bundle);
         FragmentManager manager = getChildFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -123,6 +126,7 @@ public class WalletMain extends Fragment {
                 bundle.putInt("endMonth", endMonth);
                 bundle.putInt("endDay", endDay);
                 bundle.putInt("period", size-1);
+                bundle.putInt("mainPosition", mainPosition);
                 fragment.setArguments(bundle);
                 FragmentManager manager = getChildFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
@@ -162,6 +166,7 @@ public class WalletMain extends Fragment {
                     bundle.putInt("startYear", startYear);
                     bundle.putInt("startMonth", startMonth);
                     bundle.putInt("startDay", startDay);
+                    bundle.putInt("mainPosition", mainPosition);
                     fragment.setArguments(bundle);
                     FragmentManager manager = getChildFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();

@@ -68,6 +68,7 @@ public class PlanInitialActivity extends Fragment {
     int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW, period;
     double budgetTotal;
     int lodging=0, food=0, leisure=0, shopping=0, transport=0, etc=0;
+    int mainPosition;
 
     SQLiteDatabase database;
 
@@ -109,6 +110,7 @@ public class PlanInitialActivity extends Fragment {
             endDay = getArguments().getInt("endDay", 0);
             endDoW = getArguments().getInt("endDow", 0);
             budgetTotal = getArguments().getDouble("total", 0);
+            mainPosition = getArguments().getInt("mainPosition", 0);
         }
 
         planner = (LinearLayout) rootView.findViewById(R.id.planner);
@@ -132,6 +134,7 @@ public class PlanInitialActivity extends Fragment {
         bundle.putInt("endMonth", endMonth);
         bundle.putInt("endDay", endDay);
         bundle.putDouble("total", budgetTotal);
+        bundle.putInt("mainPosition", mainPosition);
         fragment.setArguments(bundle);
         FragmentManager manager = getChildFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -167,7 +170,8 @@ public class PlanInitialActivity extends Fragment {
                 bundle.putInt("endMonth", endMonth);
                 bundle.putInt("endDay", endDay);
                 bundle.putDouble("total", budgetTotal);
-                bundle.putInt("period", size);
+                bundle.putInt("period", size-1);
+                bundle.putInt("mainPosition", mainPosition);
                 fragment.setArguments(bundle);
                 FragmentManager manager = getChildFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
@@ -208,6 +212,8 @@ public class PlanInitialActivity extends Fragment {
                     Log.d("startMonth: ", String.valueOf(startMonth));
                     bundle.putInt("startDay", startDay);
                     bundle.putDouble("total", budgetTotal);
+                    bundle.putInt("period", size-1);
+                    bundle.putInt("mainPosition", mainPosition);
                     fragment.setArguments(bundle);
                     FragmentManager manager = getChildFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();

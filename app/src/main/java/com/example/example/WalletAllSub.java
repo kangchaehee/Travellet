@@ -27,7 +27,7 @@ public class WalletAllSub extends LinearLayout {
     ArrayList<WalletMainItem> itemsMain = new ArrayList<WalletMainItem>();
     WalletAdapter adapterMain = new WalletAdapter();
     SQLiteDatabase database;
-    int date;
+    int date, mainPosition;
 
     public WalletAllSub(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -49,9 +49,10 @@ public class WalletAllSub extends LinearLayout {
         listView = findViewById(R.id.con);
     }
 
-    public void setDay(int date){
+    public void setDay(int date, int mainPosition){
         day.setText("DAY "+date);
         this.date = date;
+        this.mainPosition = mainPosition;
     }
 
     public void setPeriod(int year, int month, int day){
@@ -197,7 +198,7 @@ public class WalletAllSub extends LinearLayout {
     public  void settingListMain(int dayNum){
         if(database != null){
             itemsMain.clear();
-            String sql = "select date, year, month, day, type, place, hour, min, memo, total_budget, total_cost from "+ "WalletTable"+" where date = "+dayNum;
+            String sql = "select date, year, month, day, type, place, hour, min, memo, total_budget, total_cost from "+ "WalletTable"+" where date = "+dayNum+" and main_position = "+mainPosition;
             Cursor cursor = database.rawQuery(sql, null);
             //println("조회된 데이터 개수: "+cursor.getCount());
 

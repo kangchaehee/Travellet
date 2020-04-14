@@ -17,6 +17,7 @@ public class TravelTitleSet extends AppCompatActivity {
     EditText Edittext_title;
     Button btn_Next;
     String title;
+    int mainPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,8 @@ public class TravelTitleSet extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_travel_title_set);
+        Intent intent = getIntent();
+        mainPosition = intent.getIntExtra("mainPosition", 0);
 
         Edittext_title = (EditText) findViewById(R.id.Edittext_title);
 
@@ -38,6 +41,7 @@ public class TravelTitleSet extends AppCompatActivity {
                 }else{
                     Intent intent = new Intent(TravelTitleSet.this, AirCalendarDatePickerActivity.class);
                     intent.putExtra("travelTitle", title);
+                    intent.putExtra("mainPosition", mainPosition);
                     //Toast.makeText(getApplicationContext(), title, Toast.LENGTH_LONG).show();
                     startActivity(intent);
                     overridePendingTransition(0, 0);

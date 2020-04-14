@@ -49,11 +49,11 @@ public class WalletMainItemView extends LinearLayout {
     }
 
     public void setW_cost(double cost){
-        w_cost.setText("$ "+String.valueOf(cost));
+        w_cost.setText(String.valueOf(cost));
     }
 
     public void setW_budget(double budget){
-        w_budget.setText("$ "+String.valueOf(budget));
+        w_budget.setText(String.valueOf(budget));
     }
 
 }

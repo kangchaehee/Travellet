@@ -104,6 +104,7 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
 
     Button next;
     ImageButton remove;
+    int mainPosition;
 
 
     private RelativeLayout rl_popup_select_checkout_info_ok;
@@ -301,6 +302,7 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
             public void onClick(View v) {
                 Intent intent2 = getIntent();
                 String title = intent2.getStringExtra("travelTitle");
+                mainPosition = intent2.getIntExtra("mainPosition", 0);
 
                 if ((SELECT_START_DATE == null || SELECT_START_DATE.equals("")) && (SELECT_END_DATE == null || SELECT_END_DATE.equals(""))) {
                     SELECT_START_DATE = "";
@@ -327,6 +329,7 @@ public class AirCalendarDatePickerActivity extends AppCompatActivity implements 
                 resultIntent.putExtra("endDay", end_day_int);
                 resultIntent.putExtra("endDoW", end_dow_int);
                 resultIntent.putExtra("travelTitle", title);
+                resultIntent.putExtra("mainPosition", mainPosition);
                 resultIntent.putExtra(RESULT_FLAG, FLAG);
                 resultIntent.putExtra(RESULT_TYPE, FLAG);
                 resultIntent.putExtra(RESULT_STATE, "done");

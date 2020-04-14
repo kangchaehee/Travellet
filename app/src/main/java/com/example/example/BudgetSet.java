@@ -18,6 +18,7 @@ public class BudgetSet extends AppCompatActivity {
     EditText Edittext_budget;
     Button btn_Next;
     String budget;
+    int mainPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,7 @@ public class BudgetSet extends AppCompatActivity {
                 int endDoW = intent2.getIntExtra("endDoW", 0);
                 String title = intent2.getStringExtra("travelTitle");
                 int budgetType = intent2.getIntExtra("budgetType", 0);
+                int mainPosition = intent2.getIntExtra("mainPosition", 0);
 
                 if(budget == null || budget.length() == 0){
                     Edittext_budget.setHintTextColor(getColor(R.color.coral_red));
@@ -62,6 +64,7 @@ public class BudgetSet extends AppCompatActivity {
                     intent.putExtra("travelTitle", title);
                     intent.putExtra("budgetType", budgetType);
                     intent.putExtra("budget", Double.parseDouble(budget));
+                    intent.putExtra("mainPosition", mainPosition);
                     //Toast.makeText(getApplicationContext(), title+"\n"+ startYear+" "+startMonth+" "+startDay+" "+startDoW+
                      //       "\n"+endYear+" "+endMonth+" "+endDay+" "+endDoW
                       //      +"\n"+budgetType+"\n"+budget, Toast.LENGTH_LONG).show();

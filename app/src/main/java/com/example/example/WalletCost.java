@@ -32,7 +32,7 @@ public class WalletCost extends AppCompatActivity {
     int walletPosition;
 
     SQLiteDatabase database;
-    int date;
+    int date, mainPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,17 +42,13 @@ public class WalletCost extends AppCompatActivity {
         setContentView(R.layout.activity_wallet_cost);
 
         Intent intent = getIntent();
+        mainPosition = intent.getIntExtra("mainPosition", 0);
         walletPosition = intent.getIntExtra("wallet_position", 0);
         date = intent.getIntExtra("date", 0);
         place = intent.getStringExtra("place");
 
         openDatabase("database");
-        if (database != null) {
-            //_id 는 내부적으로 생성되는 아이디!
-            Log.d("database", "CostTable");
-            String sql = "create table if not exists " + "CostTable" + "(_id integer PRIMARY KEY autoincrement, wallet_position, date, type, cost, payment, position, place)";
-            database.execSQL(sql);
-        }
+
         listView = findViewById(R.id.listView);
         listView.setAdapter(adapter);
         settingList();
@@ -178,8 +174,8 @@ public class WalletCost extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 int position = adapter.getCount() - 1;
 
-                String sql = "insert into  CostTable(wallet_position, date, type, cost, payment, position, place) values(?, ?, ?, ?, ?, ?, ?)";
-                Object[] params1 = {walletPosition, date, type, Double.parseDouble(cost), payment, position, place};
+                String sql = "insert into  CostTable(wallet_position, date, type, cost, payment, position, place, main_position) values(?, ?, ?, ?, ?, ?, ?, ?)";
+                Object[] params1 = {walletPosition, date, type, Double.parseDouble(cost), payment, position, place, mainPosition};
                 database.execSQL(sql, params1);
             }
         }
@@ -238,21 +234,10 @@ public class WalletCost extends AppCompatActivity {
         }
     }
 
-    public void createTable(String tableName) {
-        if (database != null) {
-            //_id 는 내부적으로 생성되는 아이디!
-            Log.d("database", tableName);
-            String sql = "create table if not exists " + tableName + "(_id integer PRIMARY KEY autoincrement, data integer, plan_id integer, type integer, budget double, memo text)";
-            database.execSQL(sql);
-
-        } else {
-            Log.d("database fail", tableName);
-        }
-    }
 
     public  void settingList(){
         if(database != null){
-            String sql = "select type, cost, payment from "+ "CostTable"+" where date = "+date+" and wallet_position = "+walletPosition;
+            String sql = "select type, cost, payment from "+ "CostTable"+" where date = "+date+" and wallet_position = "+walletPosition+" and main_position = "+mainPosition;
             Cursor cursor = database.rawQuery(sql, null);
             //println("조회된 데이터 개수: "+cursor.getCount());
 

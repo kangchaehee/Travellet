@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -49,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
     int startYear, startMonth, startDay, endYear, endMonth, endDay, dDay;
     String travelTitle;
     float budget, lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget;
+    int mainPosition;
+
+    SQLiteDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +71,18 @@ public class MainActivity extends AppCompatActivity {
 
         fragment1 = new MainActivityUpcomingFragment();
         fragment2 = new MainActivityPastFragment();
-        name = (TextView)findViewById(R.id.name);
+        name = (TextView) findViewById(R.id.name);
+
+        openDatabase("database");
+        if (database != null && travelTitle != null) {
+            //_id 는 내부적으로 생성되는 아이디!
+            String sql = "create table if not exists " + "MainTable" + "(_id integer PRIMARY KEY autoincrement, position integer, start_year integer, start_month integer, start_day integer, end_year integer, end_month integer, end_day integer, d_day integer, title text, total_budget double, lodging_budget double, food_budget double, shopping_budget double, tourism_budget double, etc_budget double, transport_budget double, state integer)";
+            database.execSQL(sql);
+        }
 
         Intent intent2 = getIntent();
-        if(intent2 != null){
-            if(intent2.getIntExtra("startYear", 0) != 0){
+        if (intent2 != null) {
+            if (intent2.getIntExtra("startYear", 0) != 0) {
                 startYear = intent2.getIntExtra("startYear", 0);
                 startMonth = intent2.getIntExtra("startMonth", 0);
                 startDay = intent2.getIntExtra("startDay", 0);
@@ -102,16 +116,13 @@ public class MainActivity extends AppCompatActivity {
                 bundle.putFloat("etcBudget", etcBudget);
 
                 dDay = returnDday(startYear, startMonth, startDay);
-                if(dDay >=0){
-                    if(dDay == 0){
+                if (dDay >= 0) {
+                    if (dDay == 0) {
                         bundle.putString("dDay", "D-Day");
-                    }
-                    else
-                        bundle.putString("dDay", "D+"+dDay);
+                    } else
+                        bundle.putString("dDay", "D+" + dDay);
                     fragment1.setArguments(bundle);
-                }
-
-                else {
+                } else {
                     bundle.putString("dDay", "D-" + dDay);
                     fragment2.setArguments(bundle);
                 }
@@ -161,11 +172,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
                 ProfileResponse result = response.body();
-                if(result.getCode() == 200){
+                if (result.getCode() == 200) {
                     name.setText(result.getUserName());
                     Log.d("MainTitle", name.getText().toString());
                 }
             }
+
             @Override
             public void onFailure(Call<ProfileResponse> call, Throwable t) {
                 Log.e("메인 이름 설정 에러 발생", t.getMessage());
@@ -175,12 +187,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     //travel title set
-    public void onClick(View view1){
+    public void onClick(View view1) {
         Intent intent = new Intent(this, TravelTitleSet.class);
+        String sql = "select title from " + "MainTable";
+        Cursor cursor = database.rawQuery(sql, null);
+        int position = cursor.getCount();
+        Log.d("putBundle: ", position+"");
+        intent.putExtra("mainPosition", position);
         startActivity(intent);
     }
 
-    public int returnDday(int endYear, int endMonth, int endDay){
+    public int returnDday(int endYear, int endMonth, int endDay) {
         try {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -190,16 +207,47 @@ public class MainActivity extends AppCompatActivity {
             endMonth -= 1;// 받아온날자에서 -1을 해줘야함.
             ddayCal.set(endYear, endMonth, endDay);// D-day의 날짜를 입력
 
-            long today = todayCal.getTimeInMillis()/86400000; //->(24 * 60 * 60 * 1000) 24시간 60분 60초 * (ms초->초 변환 1000)
-            long dday = ddayCal.getTimeInMillis()/86400000;
+            long today = todayCal.getTimeInMillis() / 86400000; //->(24 * 60 * 60 * 1000) 24시간 60분 60초 * (ms초->초 변환 1000)
+            long dday = ddayCal.getTimeInMillis() / 86400000;
             long count = dday - today; // 오늘 날짜에서 dday 날짜 빼
             return (int) count;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return -1;
         }
     }
 
+    public void openDatabase(String databaseName) {
+        DatabaseHelper helper = new DatabaseHelper(getApplicationContext(), databaseName, null, 4);
+        database = helper.getWritableDatabase();
+    }
+
+    class DatabaseHelper extends SQLiteOpenHelper {
+
+        public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+            super(context, name, factory, version);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            if (db != null) {
+                //_id 는 내부적으로 생성되는 아이디!
+
+
+                //println("테이블 생성됨.");
+            } else {
+                //println("먼저 데이터베이스를 오픈하세요.");
+            }
+
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            //println("onUpgrade 호출됨: "+oldVersion + ", " + newVersion);
+
+            if (newVersion > 1) {
+
+            }
+        }
+    }
 }

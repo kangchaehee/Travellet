@@ -34,7 +34,7 @@ public class PlanBudget extends AppCompatActivity {
     int type, tType;
     double tBudget=0, lodgingB=0, foodB=0, tourismB=0, shoppingB=0, etcB=0, budget=0;
     int lodging=0, food=0, shopping=0, tourism=0, etc=0;
-    int date, position, planPosition;
+    int date, position, planPosition, mainPosition;
 
     String memo=" ", title;
 
@@ -74,6 +74,7 @@ public class PlanBudget extends AppCompatActivity {
         title = intent.getStringExtra("title");
         date = intent.getIntExtra("date", 0);
         planPosition = intent.getIntExtra("position", 0);
+        mainPosition = intent.getIntExtra("mainPosition", 0);
 
         TextView memoTxt = findViewById(R.id.textView2);
         memoTxt.setText(memo);
@@ -238,8 +239,8 @@ public class PlanBudget extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
                 int position = adapter.getCount()-1;
 
-                String sql = "insert into  BudgetTable(plan_position, date, type, budget, position) values(?, ?, ?, ?, ?)";
-                Object[] params1 = {planPosition, date, type, Double.parseDouble(budget), position};
+                String sql = "insert into  BudgetTable(plan_position, date, type, budget, position, main_position) values(?, ?, ?, ?, ?, ?)";
+                Object[] params1 = {planPosition, date, type, Double.parseDouble(budget), position, mainPosition};
                 database.execSQL(sql, params1);
             }
         }
@@ -274,7 +275,7 @@ public class PlanBudget extends AppCompatActivity {
                 //budget += items.get(position).getBudget();
                 adapter.notifyDataSetChanged();
 
-                String sql = "update  BudgetTable set type = ?, budget = ? where date = "+date+" and plan_position = "+planPosition+" and position = "+position;
+                String sql = "update  BudgetTable set type = ?, budget = ? where date = "+date+" and plan_position = "+planPosition+" and position = "+position+" and main_position = "+mainPosition;
                 Object[] params1 = {type, Double.parseDouble(budget)};
                 database.execSQL(sql, params1);
             }
@@ -357,17 +358,6 @@ public class PlanBudget extends AppCompatActivity {
         }
     }
 
-    public void createTable(String tableName) {
-        if (database != null) {
-            //_id 는 내부적으로 생성되는 아이디!
-            Log.d("database", tableName);
-            String sql = "create table if not exists " + tableName + "(_id integer PRIMARY KEY autoincrement, data integer, plan_id integer, type integer, budget double, memo text)";
-            database.execSQL(sql);
-
-        } else {
-            Log.d("database fail", tableName);
-        }
-    }
 
     public  void settingList(){
         if(database != null){

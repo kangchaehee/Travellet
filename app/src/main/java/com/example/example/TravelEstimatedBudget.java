@@ -28,6 +28,7 @@ import org.w3c.dom.Text;
 public class TravelEstimatedBudget extends AppCompatActivity {
     int lodging=0, food=0, tourism=0, shopping=0, transport=0, etc=0;
     double total, total2, lodgingB, foodB, leisureB, shoppingB, transportB, etcB, remain;
+    int mainPosition;
 
     TextView lodgingPer, foodPer, leisurePer, shoppingPer, transportPer, etcPer;
     TextView lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget, totalBudget;
@@ -85,21 +86,22 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         remain = intent.getDoubleExtra("total", 0);
         Log.d("estimate remain", remain+"");
         total2 = remain;
+        mainPosition = intent.getIntExtra("mainPosition", 0);
 
         openDatabase("database");
         if (database != null) {
-            String sql = "create table if not exists " + "CategoryBudgetTable" + "(_id integer PRIMARY KEY autoincrement, category integer, budget double)";
+            String sql = "create table if not exists " + "CategoryBudgetTable" + "(_id integer PRIMARY KEY autoincrement, category integer, budget double, main_position integer)";
             database.execSQL(sql);
-            sql = "select category from "+ "CategoryBudgetTable";
+            sql = "select category from "+ "CategoryBudgetTable where "+"main_position = "+mainPosition;
             Cursor cursor = database.rawQuery(sql, null);
             if(cursor.getCount() != 6){
-                sql = "insert into CategoryBudgetTable(category, budget) values(?, ?)";
-                Object[] params1 = {1, 0.0};
-                Object[] params2 = {2, 0.0};
-                Object[] params3 = {3, 0.0};
-                Object[] params4 = {4, 0.0};
-                Object[] params5 = {5, 0.0};
-                Object[] params6 = {6, 0.0};
+                sql = "insert into CategoryBudgetTable(category, budget, main_position) values(?, ?, ?)";
+                Object[] params1 = {1, 0.0, mainPosition};
+                Object[] params2 = {2, 0.0, mainPosition};
+                Object[] params3 = {3, 0.0, mainPosition};
+                Object[] params4 = {4, 0.0, mainPosition};
+                Object[] params5 = {5, 0.0, mainPosition};
+                Object[] params6 = {6, 0.0, mainPosition};
                 database.execSQL(sql, params1);
                 database.execSQL(sql, params2);
                 database.execSQL(sql, params3);
@@ -108,7 +110,7 @@ public class TravelEstimatedBudget extends AppCompatActivity {
                 database.execSQL(sql, params6);
             }
 
-            String sql1 = "select type, budget from BudgetTable";
+            String sql1 = "select type, budget from BudgetTable"+" where main_position = "+mainPosition;
             Cursor cursor2 = database.rawQuery(sql1, null);
             for(int i=0; i<cursor2.getCount(); i++){
                 cursor2.moveToNext();
@@ -177,12 +179,12 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         etcBar.setMax(((int)remain)/1000);
 
         //각 카테고리 예산 텍스트 조정
-        lodgingBudget.setText("$ "+lodgingB);
-        foodBudget.setText("$ "+foodB);
-        leisureBudget.setText("$ "+leisureB);
-        shoppingBudget.setText("$ "+shoppingB);
+        lodgingBudget.setText(""+lodgingB);
+        foodBudget.setText(""+foodB);
+        leisureBudget.setText(""+leisureB);
+        shoppingBudget.setText(""+shoppingB);
         //transportBudget.setText("$ "+transportB);
-        etcBudget.setText("$ "+etcB);
+        etcBudget.setText(""+etcB);
 
         //카테고리 비율에 맞게 텍스트랑 프로그레스 바 조정
         lodgingBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -214,7 +216,7 @@ public class TravelEstimatedBudget extends AppCompatActivity {
                 totalBudget.setText(String.valueOf((int)total2-progress*1000));
                 int percent= (progress*1000)*100/(int)remain;
                 foodPer.setText(String.valueOf(percent)+"%");
-                foodBudget.setText("₩ "+String.valueOf(progress*1000));
+                foodBudget.setText(String.valueOf(progress*1000));
                 foodB = progress*1000;
             }
             @Override
@@ -305,22 +307,22 @@ public class TravelEstimatedBudget extends AppCompatActivity {
     // plan initial
     public void onClick(View view){
         if(database != null){
-            String sql = "update CategoryBudgetTable set budget = ? where category = 1";
+            String sql = "update CategoryBudgetTable set budget = ? where category = 1"+" and main_position = "+mainPosition;
             Object[] params1= {lodgingB};
             database.execSQL(sql, params1);
-            sql = "update CategoryBudgetTable set budget = ? where category = 2";
+            sql = "update CategoryBudgetTable set budget = ? where category = 2"+" and main_position = "+mainPosition;
             Object[] params2 = {foodB};
             database.execSQL(sql, params2);
-            sql = "update CategoryBudgetTable set budget = ? where category = 3";
+            sql = "update CategoryBudgetTable set budget = ? where category = 3"+" and main_position = "+mainPosition;
             Object[] params3 = {shoppingB};
             database.execSQL(sql, params3);
-            sql = "update CategoryBudgetTable set budget = ? where category = 4";
+            sql = "update CategoryBudgetTable set budget = ? where category = 4"+" and main_position = "+mainPosition;
             Object[] params4 = {leisureB};
             database.execSQL(sql, params4);
-            sql = "update CategoryBudgetTable set budget = ? where category = 5";
+            sql = "update CategoryBudgetTable set budget = ? where category = 5"+" and main_position = "+mainPosition;
             Object[] params5 = {transportB};
             database.execSQL(sql, params5);
-            sql = "update CategoryBudgetTable set budget = ? where category = 6";
+            sql = "update CategoryBudgetTable set budget = ? where category = 6"+" and main_position = "+mainPosition;
             Object[] params6 = {etcB};
             database.execSQL(sql, params6);
             /*String sql1 = "select category, budget from CategoryBudgetTable";
@@ -335,28 +337,28 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             cursor2.close();*/
             String sql1="";
             if(lodging != 0){
-                sql1 = "update BudgetTable set budget = ? where type = 1 and budget = 0.0";
+                sql1 = "update BudgetTable set budget = ? where type = 1 and budget = 0.0"+" and main_position = "+mainPosition;
                 Object[] params7 = {Math.round((lodgingB/lodging)*100)/100.0};
                 database.execSQL(sql1, params7);
             }
             if(food != 0){
-                sql1 = "update BudgetTable set budget = ? where type = 2 and budget = 0.0";
+                sql1 = "update BudgetTable set budget = ? where type = 2 and budget = 0.0"+" and main_position = "+mainPosition;
                 Object[] params8 = {Math.round((foodB/food)*100)/100.0};
                 database.execSQL(sql1, params8);
             }
             if(shopping != 0){
-                sql1 = "update BudgetTable set budget = ? where type = 3 and budget = 0.0";
+                sql1 = "update BudgetTable set budget = ? where type = 3 and budget = 0.0"+" and main_position = "+mainPosition;
                 Object[] params9 = {Math.round((shoppingB/shopping)*100)/100.0};
                 database.execSQL(sql1, params9);
             }
             if(tourism != 0){
 
-                sql1 = "update BudgetTable set budget = ? where type = 4 and budget = 0.0";
+                sql1 = "update BudgetTable set budget = ? where type = 4 and budget = 0.0"+" and main_position = "+mainPosition;
                 Object[] params10 = {Math.round((leisureB/tourism)*100)/100.0};
                 database.execSQL(sql1, params10);
             }
             if(etc != 0){
-                sql1 = "update BudgetTable set budget = ? where type = 6 and budget = 0.0";
+                sql1 = "update BudgetTable set budget = ? where type = 6 and budget = 0.0"+" and main_position = "+mainPosition;
                 Object[] params11 = {Math.round((etcB/etc)*100)/100.0};
                 database.execSQL(sql1, params11);
             }

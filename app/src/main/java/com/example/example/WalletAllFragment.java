@@ -41,6 +41,8 @@ public class WalletAllFragment extends Fragment {
     TextView costText, budgetText;
     SQLiteDatabase database;
 
+    int mainPosition;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -57,10 +59,8 @@ public class WalletAllFragment extends Fragment {
         LinearLayout con = rootView.findViewById(R.id.lin);
         openDatabase("database");
 
-        getDayTotalBudget();
-        getDayTotalCost();
-
         if (getArguments() != null) {
+            mainPosition = getArguments().getInt("mainPosition", 0);
             periodInt = getArguments().getInt("period", 0);
             startYear = getArguments().getInt("startYear", 0);
             startDay = getArguments().getInt("startDay", 0);
@@ -68,12 +68,17 @@ public class WalletAllFragment extends Fragment {
             for (int i = 0; i < periodInt; i++) {
                 int date = i+1;
                 WalletAllSub walletItem = new WalletAllSub(getContext());
-                walletItem.setDay(date);
+                walletItem.setDay(date, mainPosition);
                 walletItem.setPeriod(startYear, startMonth, startDay+i);
                 walletItem.setListMainView();
                 con.addView(walletItem);
             }
         }
+
+        getDayTotalBudget();
+        getDayTotalCost();
+
+
 
         viewList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,7 +198,7 @@ public class WalletAllFragment extends Fragment {
 
     public  void settingListSub(int dayNum){
         if(database != null){
-            String sql = "select type, place, cost, payment from "+ "CostTable"+" where date = "+dayNum;
+            String sql = "select type, place, cost, payment from "+ "CostTable"+" where date = "+dayNum+" and main_position = "+mainPosition;
             Cursor cursor = database.rawQuery(sql, null);
             //println("조회된 데이터 개수: "+cursor.getCount());
 
@@ -237,7 +242,7 @@ public class WalletAllFragment extends Fragment {
     public void getDayTotalBudget(){
 
         double dayTotal = 0;
-        String sql = "select budget from BudgetTable";
+        String sql = "select budget from BudgetTable"+" where main_position = "+mainPosition;
         Cursor cursor = database.rawQuery(sql, null);
         for(int i=0; i<cursor.getCount(); i++){
             cursor.moveToNext();
@@ -249,7 +254,7 @@ public class WalletAllFragment extends Fragment {
 
     public void getDayTotalCost(){
         double dayCost = 0;
-        String sql = "select cost from CostTable";
+        String sql = "select cost from CostTable"+" where main_position = "+mainPosition;
         Cursor cursor = database.rawQuery(sql, null);
         for(int i=0; i<cursor.getCount(); i++){
             cursor.moveToNext();

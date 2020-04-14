@@ -122,7 +122,7 @@ public class MainActivityUpcomingFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getContext(), Navigation.class);
-                    String sql = "select start_year, start_month, start_day, end_year, end_month, end_day, lodging_budget, food_budget, tourism_budget, shopping_budget, transport_budget, etc_budget, total_budget from "+ "MainTable"+" where position = "+position+" and state = 0";
+                    String sql = "select start_year, start_month, start_day, end_year, end_month, end_day, lodging_budget, food_budget, tourism_budget, shopping_budget, transport_budget, etc_budget, total_budget, position from "+ "MainTable"+" where position = "+position+" and state = 0";
                     Cursor cursor = database.rawQuery(sql, null);
                     //println("조회된 데이터 개수: "+cursor.getCount());
                     for(int i=0; i<cursor.getCount(); i++) {
@@ -140,6 +140,7 @@ public class MainActivityUpcomingFragment extends Fragment {
                         transportBudget = cursor.getDouble(10);
                         etcBudget = cursor.getDouble(11);
                         double totalBudget = cursor.getDouble(12);
+                        int position = cursor.getInt(13);
 
                         intent.putExtra("startYear", startYear);
                         intent.putExtra("startMonth", startMonth);
@@ -155,6 +156,7 @@ public class MainActivityUpcomingFragment extends Fragment {
                         intent.putExtra("transportBudget", transportBudget);
                         intent.putExtra("etcBudget", etcBudget);
                         intent.putExtra("budget", totalBudget);
+                        intent.putExtra("mainPosition", position);
                         Log.d("startYear", startYear+"\n"+startMonth+"\n"+startDay);
 
                     }
@@ -200,11 +202,6 @@ public class MainActivityUpcomingFragment extends Fragment {
         public void onCreate(SQLiteDatabase db) {
             if(db != null){
                 //_id 는 내부적으로 생성되는 아이디!
-                String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
-                db.execSQL(sql);
-
-                sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
-                db.execSQL(sql);
 
                 //println("테이블 생성됨.");
             }else{
@@ -218,23 +215,6 @@ public class MainActivityUpcomingFragment extends Fragment {
             //println("onUpgrade 호출됨: "+oldVersion + ", " + newVersion);
 
             if(newVersion > 1) {
-                db.execSQL("drop table if exists " + "PlanTable");
-                db.execSQL("drop table if exists " + "BudgetTable");
-                //println("테이블 삭제함");
-
-                if (db != null) {
-                    //_id 는 내부적으로 생성되는 아이디!
-                    String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
-                    db.execSQL(sql);
-
-                    //_id 는 내부적으로 생성되는 아이디!
-                    sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
-                    db.execSQL(sql);
-
-                    //println("테이블 새로 생성됨.");
-                } else {
-                    //println("먼저 데이터베이스를 오픈하세요.");
-                }
             }
         }
     }
