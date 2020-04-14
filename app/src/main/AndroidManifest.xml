@@ -21,7 +21,6 @@
         <activity android:name=".WalletListSubItem" />
         <activity android:name=".ReportMain" />
         <activity android:name=".Navigation">
-
         </activity>
         <activity android:name=".WithFriendsActivity" />
         <activity android:name=".TravelAddActivity" />
@@ -66,6 +65,7 @@
         <activity android:name=".BudgetShow" />
         <activity android:name=".BudgetSet" />
         <activity android:name=".MainActivity">
+
         </activity>
         <activity android:name=".AirCalendarDatePickerActivity" />
         <activity
