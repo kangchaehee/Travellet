@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -103,6 +105,11 @@ public class PlanInitialFragment extends Fragment {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_plan_initial, container, false);
 
+        if (Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
         day = rootView.findViewById(R.id.day);
         period = rootView.findViewById(R.id.period);
 
@@ -174,7 +181,7 @@ public class PlanInitialFragment extends Fragment {
                 intent.putExtra("shopping", shopping);
                 intent.putExtra("tourism", tourism);
                 intent.putExtra("etc", etc);
-                startActivity(intent);
+                startActivityForResult(intent, 200);
                 calculation.setBackgroundResource(R.drawable.ic_budget_calculation_selected);
             }
         });
@@ -184,14 +191,14 @@ public class PlanInitialFragment extends Fragment {
             public void onClick(View v) {
                 totalExp();
                 Intent intent = new Intent(getContext(), TravelEstimatedBudget.class);
-                budgetRemainder = budgetTotal - transportTotal - lodgingBudget - foodBudget- shoppingBudget - tourismBudget - etcBudget;
+                budgetRemainder = budgetTotal;
                 intent.putExtra("total", budgetRemainder);
                 intent.putExtra("lodging", lodging);
                 intent.putExtra("food", food);
                 intent.putExtra("shopping", shopping);
                 intent.putExtra("tourism", tourism);
                 intent.putExtra("etc", etc);
-                startActivity(intent);
+                startActivityForResult(intent, 200);
                 calculation.setBackgroundResource(R.drawable.ic_budget_calculation_selected);
             }
         });
@@ -546,7 +553,7 @@ public class PlanInitialFragment extends Fragment {
                     case 4:
                         tourism += 1;
                         break;
-                    case 5:
+                    case 6:
                         etc += 1;
                         break;
                 }
@@ -688,6 +695,34 @@ public class PlanInitialFragment extends Fragment {
                 Log.d("total", "lodging="+lodging+"\nfood="+food+"\nshopping="+shopping+"\ntourism="+tourism+"\netc="+etc);
             }
         }
+
+        if(requestCode == 200){
+            if(intent != null){
+                for(int i=0; i<adapter.getCount(); i++){
+                    double totalBudget = getDayBudget(i);
+                    String sql = "update PlanTable set total_budget = ? where date = "+dayNum+" and position = "+i;
+                    Object[] params = {totalBudget};
+                    database.execSQL(sql, params);
+                }
+                items.clear();
+                settingList(dayNum);
+            }
+        }
+    }
+
+    public double getDayBudget(int planPosition){
+        double b = 0;
+        String sql = "select budget from BudgetTable where date = "+dayNum+" and plan_position = "+planPosition;
+        Cursor cursor2 = database.rawQuery(sql, null);
+        for(int j=0; j<cursor2.getCount(); j++){
+            cursor2.moveToNext();
+            b += cursor2.getDouble(0);
+
+            Log.d("pass", String.valueOf(b));
+        }
+        cursor2.close();
+
+        return b;
     }
 
     public void openDatabase(String databaseName){
@@ -744,31 +779,6 @@ public class PlanInitialFragment extends Fragment {
         }
     }
 
-    public void createTable(String tableName) {
-        if (database != null) {
-            //_id 는 내부적으로 생성되는 아이디!
-            Log.d("database", tableName);
-            String sql = "create table if not exists " + tableName + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
-            database.execSQL(sql);
-
-        } else {
-            Log.d("database faile", tableName);
-        }
-    }
-
-    public void insertData(int age, String mobile){
-
-        if(database != null){
-            //물음표에 해당하는 거를 object 배열을 이용해서 따로 넣을 수 있음.
-            // 물음표 안 쓰고 바로 넣을 수도 있고!
-            String sql = "insert into PlanTable(date, memo) values(?, ?)";
-
-            Object[] params = {age, mobile};
-
-            database.execSQL(sql, params);
-        }else {
-        }
-    }
 
     public void selectData(String tableName){
         //println("selectData() 호출됨.");
@@ -853,7 +863,11 @@ public class PlanInitialFragment extends Fragment {
                             Log.d("json", String.valueOf(info));
                             Log.d("payment : %s", String.valueOf(info.getInt("payment")));
                             items.get(x).setTransBudget(transportExp[0]);
-                            transportTotal += transportExp[0];
+                            if(database != null){
+                                String sql = "update BudgetTable set budget = ? where date = "+dayNum +" and plan_position = "+x+" and position = 1";
+                                Object[] object = {transportExp[0]};
+                                database.execSQL(sql, object);
+                            }
                             adapter.notifyDataSetChanged();
                         }
 
@@ -881,6 +895,11 @@ public class PlanInitialFragment extends Fragment {
             transportExp[0] = taxiFare(SX, SY, EX, EY);
             transportTotal += transportExp[0];
             items.get(x).setTransBudget(transportExp[0]);
+            if(database != null){
+                String sql = "update BudgetTable set budget = ? where date = "+dayNum +" and plan_position = "+x+" and position = 1";
+                Object[] object = {transportExp[0]};
+                database.execSQL(sql, object);
+            }
             adapter.notifyDataSetChanged();
         }
 

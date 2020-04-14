@@ -66,7 +66,6 @@
         <activity android:name=".BudgetShow" />
         <activity android:name=".BudgetSet" />
         <activity android:name=".MainActivity">
-
         </activity>
         <activity android:name=".AirCalendarDatePickerActivity" />
         <activity
@@ -77,6 +76,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCvnWf43FkeqO5OhkhsuX4V2_qzfZcDB3o"/>
+
     </application>
 
 </manifest>
