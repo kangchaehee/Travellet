@@ -306,7 +306,7 @@ public class PlanInitialFragment extends Fragment {
                 view.setTransportText("Car");
             }
 
-            //view.setTransBudgetText(String.valueOf(item.getTransBudget()));
+            view.setTransBudgetText(String.valueOf(item.getTransBudget()));
 
             LinearLayout i = view.findViewById(R.id.place_linear);
             i.setOnClickListener(new View.OnClickListener() {
@@ -918,13 +918,13 @@ public class PlanInitialFragment extends Fragment {
                             transportExp[0] = info.getInt("payment");
                             Log.d("json", String.valueOf(info));
                             Log.d("payment : %s", String.valueOf(info.getInt("payment")));
-                            //items.get(x).setTransBudget(transportExp[0]);
+                            items.get(x).setTransBudget(transportExp[0]);
                             if(database != null){
                                 String sql = "update BudgetTable set budget = ? where date = "+dayNum +" and plan_position = "+x+" and position = 1"+" and main_position = "+mainPosition;
                                 Object[] object = {transportExp[0]};
                                 database.execSQL(sql, object);
                             }
-                            adapter.notifyDataSetChanged();
+                            //adapter.notifyDataSetChanged();
                         }
 
                     } catch (JSONException e) {
@@ -950,20 +950,20 @@ public class PlanInitialFragment extends Fragment {
         else if(transport == 4){
             transportExp[0] = taxiFare(SX, SY, EX, EY);
             transportTotal += transportExp[0];
-           // items.get(x).setTransBudget(transportExp[0]);
+            items.get(x).setTransBudget(transportExp[0]);
             if(database != null){
                 String sql = "update BudgetTable set budget = ? where date = "+dayNum +" and plan_position = "+x+" and position = 1"+" and main_position = "+mainPosition;
                 Object[] object = {transportExp[0]};
                 database.execSQL(sql, object);
             }
-            adapter.notifyDataSetChanged();
+           // adapter.notifyDataSetChanged();
         }
 
         else {
             transportExp[0] = 0;
             transportTotal += transportExp[0];
-            //items.get(x).setTransBudget(transportExp[0]);
-            adapter.notifyDataSetChanged();
+            items.get(x).setTransBudget(transportExp[0]);
+            //adapter.notifyDataSetChanged();
         }
     }
 

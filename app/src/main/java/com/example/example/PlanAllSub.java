@@ -86,7 +86,7 @@ public class PlanAllSub extends LinearLayout {
             int totalItemsHeight = 0;
             for (int itemPos = 0; itemPos < numberOfItems; itemPos++) {
                 View item = listAdapter.getView(itemPos, null, listView);
-                float px = 500 * (listView.getResources().getDisplayMetrics().density);
+                float px = 320 * (listView.getResources().getDisplayMetrics().density);
                 item.measure(View.MeasureSpec.makeMeasureSpec((int) px, View.MeasureSpec.AT_MOST), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
                 totalItemsHeight += item.getMeasuredHeight();
             }
@@ -99,7 +99,7 @@ public class PlanAllSub extends LinearLayout {
 
             // Set list height.
             ViewGroup.LayoutParams params = listView.getLayoutParams();
-            params.height = totalItemsHeight + totalDividersHeight + totalPadding+10;
+            params.height = totalItemsHeight + totalDividersHeight + totalPadding;
             listView.setLayoutParams(params);
             listView.requestLayout();
             //setDynamicHeight(listView);
@@ -108,6 +108,7 @@ public class PlanAllSub extends LinearLayout {
         } else {
             return false;
         }
+
     }
 
 

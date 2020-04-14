@@ -61,13 +61,14 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/relative1">
+        android:layout_below="@+id/relative1"
+
+        android:scrollbars="none">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:id="@+id/lin"
-            android:scrollbars="none"
             />
     </ScrollView>
 
