@@ -23,15 +23,28 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.example.data.ProfileData;
+import com.example.example.data.ProfileResponse;
+import com.example.example.network.InfoID;
+import com.example.example.network.RetrofitClient;
+import com.example.example.network.ServiceApi;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainActivity extends AppCompatActivity {
+
+    private ServiceApi service;
 
     MainActivityUpcomingFragment fragment1;
     MainActivityPastFragment fragment2;
     LinearLayout btn_upcoming, btn_past;
+    TextView name;
 
     int startYear, startMonth, startDay, endYear, endMonth, endDay, dDay;
     String travelTitle;
@@ -45,8 +58,13 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        service = RetrofitClient.getClient().create(ServiceApi.class);
+
+        setName(new ProfileData(InfoID.userId));
+
         fragment1 = new MainActivityUpcomingFragment();
         fragment2 = new MainActivityPastFragment();
+        name = (TextView)findViewById(R.id.name);
 
         Intent intent2 = getIntent();
         if(intent2 != null){
@@ -137,6 +155,26 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    // 메인 이름 설정 통신 메소드
+    private void setName(ProfileData data) {
+        service.userProfile(data).enqueue(new Callback<ProfileResponse>() {
+            @Override
+            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                ProfileResponse result = response.body();
+                if(result.getCode() == 200){
+                    name.setText(result.getUserName());
+                    Log.d("MainTitle", name.getText().toString());
+                }
+            }
+            @Override
+            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+                Log.e("메인 이름 설정 에러 발생", t.getMessage());
+            }
+        });
+    }
+
+
     //travel title set
     public void onClick(View view1){
         Intent intent = new Intent(this, TravelTitleSet.class);

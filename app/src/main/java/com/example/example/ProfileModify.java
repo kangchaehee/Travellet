@@ -302,9 +302,8 @@ public class ProfileModify extends AppCompatActivity {
             @Override
             public void onResponse(Call<ProfileUpdateResponse> call, Response<ProfileUpdateResponse> response) {
                 ProfileUpdateResponse result = response.body();
-                exchangeCountry = country;
-
                 if (result.getCode() == 200) {
+                    exchangeCountry = country;
                     requestExchange();
                     returnToBack();
                 }

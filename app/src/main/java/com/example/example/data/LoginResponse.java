@@ -31,4 +31,5 @@ public class LoginResponse {
     public String getUserCountry() {
         return userCountry;
     }
+
 }
