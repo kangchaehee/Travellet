@@ -66,5 +66,4 @@ public class day_sub extends LinearLayout {
         this.dow.setTypeface(typeface);
         line.setVisibility(INVISIBLE);
     }
-
 }

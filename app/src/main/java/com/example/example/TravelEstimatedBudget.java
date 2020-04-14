@@ -191,7 +191,7 @@ public class TravelEstimatedBudget extends AppCompatActivity {
                 //progress가 바뀐 선택 값
                 total2 = remain-foodB-shoppingB - leisureB - etcB;
                 totalBudget.setText(String.valueOf((int)total2-progress*1000));
-                int percent= (progress*1000)*100/(int)total;
+                int percent= (progress*1000)*100/(int)remain;
                 lodgingPer.setText(String.valueOf((percent))+"%");
                 lodgingBudget.setText("₩ "+String.valueOf(progress*1000));
                 lodgingB = progress*1000;
