@@ -182,6 +182,7 @@ public class WalletMainFragment extends Fragment {
                 }
                 itemsMain.clear();
                 settingListMain(dayNum);
+                getDayTotalCost();
             }
         }
     }

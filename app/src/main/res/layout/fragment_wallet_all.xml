@@ -67,6 +67,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:id="@+id/lin"
+            android:scrollbars="none"
             />
     </ScrollView>
 
