@@ -44,6 +44,7 @@ public class PlanAllFragment extends Fragment {
     TextView day, period;
 
     int startYear, startMonth, startDay, endYear, endMonth, endDay;
+    int periodInt;
 
     @Override
     public void onPause() {
@@ -56,14 +57,23 @@ public class PlanAllFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.plan_all_fragment, container, false);
-
         LinearLayout con = rootView.findViewById(R.id.lin);
 
-
+        if (getArguments() != null) {
+            periodInt = getArguments().getInt("period", 0);
+            startYear = getArguments().getInt("startYear", 0);
+            startDay = getArguments().getInt("startDay", 0);
+            startMonth = getArguments().getInt("startMonth", 0);
+            for (int i = 0; i < periodInt; i++) {
+                int date = i+1;
+                PlanAllSub planItem = new PlanAllSub(getContext());
+                planItem.setDay(date);
+                planItem.setPeriod(startYear, startMonth, startDay+i);
+                planItem.setListView();
+                con.addView(planItem);
+            }
+        }
 
         return rootView;
     }
-
-
-
 }
