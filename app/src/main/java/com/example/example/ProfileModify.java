@@ -24,12 +24,19 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.example.data.ProfileResponse;
 import com.example.example.data.ProfileUpdateData;
 import com.example.example.data.ProfileUpdateResponse;
+import com.example.example.network.AppHelper;
 import com.example.example.network.InfoID;
 import com.example.example.network.RetrofitClient;
 import com.example.example.network.ServiceApi;
+import com.example.example.volley.ResponseInfo;
+import com.google.gson.Gson;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
@@ -51,6 +58,7 @@ public class ProfileModify extends AppCompatActivity {
     private ImageView selfie;
 
     EditText Edittext_name;
+    String exchangeCountry;
 
     ImageButton back;
     Button save;
@@ -189,6 +197,103 @@ public class ProfileModify extends AppCompatActivity {
                 updateProfile(new ProfileUpdateData(InfoID.userId, Edittext_name.getText().toString(), age, country));
             }
         });
+
+        // $한번만 만들어지도록
+        if(AppHelper.requestQueue == null){
+            AppHelper.requestQueue = Volley.newRequestQueue(getApplicationContext());
+        }
+    }
+
+    // $환율 요청
+    public void requestExchange(){
+        String url = AppHelper.host+"?app_id="+AppHelper.appId;
+
+        StringRequest request = new StringRequest(
+                Request.Method.GET,
+                url,
+                new com.android.volley.Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("onResponse:", "응답 받음");
+                        processResponse(response);
+                    }
+                },
+                new com.android.volley.Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("에러 발생", error.getMessage());
+                    }
+                }
+        );
+        request.setShouldCache(false);
+        AppHelper.requestQueue.add(request);
+        Log.d("request", "요청 보냄");
+    }
+
+    // $환율 요청 응답
+    public void processResponse(String response){
+        Gson gson = new Gson();
+        ResponseInfo info = gson.fromJson(response, ResponseInfo.class);
+        if(info.base != null){
+            InfoID.KRW = info.rates.KRW;
+            switch (exchangeCountry){
+                case "Japan":
+                    InfoID.exchange = info.rates.JPY;
+                    break;
+                case "China":
+                    InfoID.exchange = info.rates.CNY;
+                    break;
+                case "HongKong":
+                    InfoID.exchange = info.rates.HKD;
+                    break;
+                case "Singapore":
+                    InfoID.exchange = info.rates.SGD;
+                    break;
+                case "Taipei":
+                    InfoID.exchange = info.rates.TWD;
+                    break;
+                case "Thailand":
+                    InfoID.exchange = info.rates.THB;
+                    break;
+                case "Malaysia":
+                    InfoID.exchange = info.rates.MYR;
+                    break;
+                case "Australia":
+                    InfoID.exchange = info.rates.AUD;
+                    break;
+                case "U.S.A":
+                    InfoID.exchange = info.rates.USD;
+                    break;
+                case "Canada":
+                    InfoID.exchange = info.rates.CAD;
+                    break;
+                case "U.K":
+                    InfoID.exchange = info.rates.GBP;
+                    break;
+                case "Germany": case "France":
+                    InfoID.exchange = info.rates.EUR;
+                    break;
+                case "Russia":
+                    InfoID.exchange = info.rates.RUB;
+                    break;
+                case "India":
+                    InfoID.exchange = info.rates.INR;
+                    break;
+                case "Philippines":
+                    InfoID.exchange = info.rates.PHP;
+                    break;
+                case "Indonesia":
+                    InfoID.exchange = info.rates.IDR;
+                    break;
+                case "Vietnam":
+                    InfoID.exchange = info.rates.VND;
+                    break;
+                default:
+                    InfoID.exchange = info.rates.KRW;
+            }
+            Log.d("exchange: ", String.valueOf(InfoID.exchange));
+            Log.d("KRW: ", String.valueOf(InfoID.KRW));
+        }
     }
 
     // $프로필 수정 통신 메소드
@@ -197,7 +302,10 @@ public class ProfileModify extends AppCompatActivity {
             @Override
             public void onResponse(Call<ProfileUpdateResponse> call, Response<ProfileUpdateResponse> response) {
                 ProfileUpdateResponse result = response.body();
+                exchangeCountry = country;
+
                 if (result.getCode() == 200) {
+                    requestExchange();
                     returnToBack();
                 }
             }
