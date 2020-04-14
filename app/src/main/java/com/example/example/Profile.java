@@ -14,6 +14,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +22,24 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.example.data.ProfileData;
+import com.example.example.data.ProfileResponse;
+import com.example.example.network.InfoID;
+import com.example.example.network.RetrofitClient;
+import com.example.example.network.ServiceApi;
+
 import java.io.ByteArrayOutputStream;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Profile extends Fragment {
 
+    private ServiceApi service;
+
     Button editButton;
-    TextView name, age, country;
+    TextView name, age, country, titleName;
     ImageView image;
     Bitmap imageB;
     byte[] bytes;
@@ -44,15 +57,20 @@ public class Profile extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        // $네트워크를 위한 serviceApi 객체 생성
+        service = RetrofitClient.getClient().create(ServiceApi.class);
+
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_profile, container, false);
         editButton = (Button)rootView.findViewById(R.id.btn_edit);
 
-        //기존에 등록되어 있는 프로필 정보를 프로필 수정 화면에서도 볼 수 있도록 넘김.
         name = rootView.findViewById(R.id.name);
         age = rootView.findViewById(R.id.age);
         country = rootView.findViewById(R.id.country);
         image = rootView.findViewById(R.id.image);
+        titleName = rootView.findViewById(R.id.textView2);
 
+        // $프로필 정보 DB 에서 불러오기
+        setProfile(new ProfileData(InfoID.userId));
 
         /*BitmapDrawable drawable = (BitmapDrawable) image.getDrawable();
         if(drawable == null){
@@ -65,6 +83,7 @@ public class Profile extends Fragment {
             bytes = stream.toByteArray();
         }*/
 
+        // $프로필 수정 페이지로 이동 & 프로필 정보 보내기
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +96,6 @@ public class Profile extends Fragment {
             }
         });
         return rootView;
-
     }
 
     @Override
@@ -90,28 +108,49 @@ public class Profile extends Fragment {
                 int age = intent.getIntExtra("age", 0);
                 String country = intent.getStringExtra("country");
                 //이미지 파일 용량 개큰건 바이트로 변환해도 안넘어와서 db 사용해야할 듯.
-                /*if( intent.getByteArrayExtra("image")== null){
+                if( intent.getByteArrayExtra("image")== null){
                     image = null;
                 }
                 else{
                     byte[] byteArr = intent.getByteArrayExtra("image");
                     image = BitmapFactory.decodeByteArray(byteArr, 0, byteArr.length);
-                }*/
+                }
 
+                this.titleName.setText(name);
                 this.name.setText(name);
                 this.age.setText(String.valueOf(age));
                 this.country.setText(country);
-                /*if(image == null){
+                if(image == null){
                     this.image.setBackgroundResource(R.drawable.ic_profime_circle);
                 }
                 else{
                     this.image.setBackground(new ShapeDrawable(new OvalShape()));
                     this.image.setClipToOutline(true);
                     this.image.setImageBitmap(image);
-                }*/
+                }
             }
         }
 
+    }
+
+    // $프로필 설정 통신 메소드
+    private void setProfile(ProfileData data) {
+        service.userProfile(data).enqueue(new Callback<ProfileResponse>() {
+            @Override
+            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
+                ProfileResponse result = response.body();
+                if(result.getCode() == 200){
+                    name.setText(result.getUserName());
+                    age.setText(String.valueOf(result.getUserAge()));
+                    country.setText(result.getUserCountry());
+                    titleName.setText(result.getUserName());
+                }
+            }
+            @Override
+            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+                Log.e("프로필 설정 에러 발생", t.getMessage());
+            }
+        });
     }
 
     /*public void onClick(View view){

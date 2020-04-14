@@ -33,6 +33,7 @@ import android.widget.TextView;
 
 import com.example.example.data.LoginData;
 import com.example.example.data.LoginResponse;
+import com.example.example.network.InfoID;
 import com.example.example.network.RetrofitClient;
 import com.example.example.network.ServiceApi;
 
@@ -44,15 +45,15 @@ import retrofit2.Response;
 public class SignIn extends AppCompatActivity {
 
     private ServiceApi service;
-    private ProgressBar ProgressView;
+//    private ProgressBar ProgressView;
 
     Button btn_register, btn_signin;
 
-    //이메일과 비밀번호
+    // $이메일과 비밀번호
     private EditText Edittext_email;
     private EditText Edittext_pw;
 
-    //이메일이랑 비밀번호 입력 잘 됐는지 확인
+    // $이메일이랑 비밀번호 입력 잘 됐는지 확인
     boolean testEmail = false, testPw = false, testSign=false;
 
     String email, password;
@@ -65,13 +66,13 @@ public class SignIn extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         service = RetrofitClient.getClient().create(ServiceApi.class);
-        ProgressView = (ProgressBar) findViewById(R.id.login_progress);
+//        ProgressView = (ProgressBar) findViewById(R.id.login_progress);
 
-            //스플래쉬
+        // 스플래쉬
         Intent intent = new Intent(this, SplashActivity.class);
         startActivity(intent);
 
-            // 이메일, 패스워드
+        // 이메일, 패스워드
         Edittext_email = (EditText) findViewById(R.id.Edittext_email);
         Edittext_pw = (EditText) findViewById(R.id.Edittext_pw);
         btn_signin = (Button) findViewById(R.id.btn_signin);
@@ -79,7 +80,8 @@ public class SignIn extends AppCompatActivity {
         email = Edittext_email.getText().toString();
         password = Edittext_pw.getText().toString();
 
-            // 아이디 이메일 양식인지 확인
+
+        // $이메일 유효성 검사
         Edittext_email.setOnFocusChangeListener(new View.OnFocusChangeListener(){
 
             @Override
@@ -177,20 +179,19 @@ public class SignIn extends AppCompatActivity {
         });
 
 
-        // 로그인 버튼 이벤트
+        // $로그인 버튼 이벤트
         btn_signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //testSign이 true 일 때만 로그인 가능
                 email = Edittext_email.getText().toString();
                 password = Edittext_pw.getText().toString();
+                //testSign -> true 일 때만 로그인 가능
                 if(testSign){
                     startLogin(new LoginData(email, password));
-                    showProgress(true);
+//                    showProgress(true);
                 }
             }
         });
-
     }
 
     private void startLogin(LoginData data) {
@@ -199,7 +200,9 @@ public class SignIn extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse result = response.body();
                 Toast.makeText(SignIn.this, result.getMessage(), Toast.LENGTH_SHORT).show();
-                showProgress(false);
+                InfoID.userId = result.getUserId();
+                Log.d("signUserID", String.valueOf(InfoID.userId));
+//                showProgress(false);
 
                 if (result.getCode() == 200) {
                     Intent intent = new Intent(SignIn.this, MainActivity.class);
@@ -212,15 +215,16 @@ public class SignIn extends AppCompatActivity {
             public void onFailure(Call<LoginResponse> call, Throwable t) {
                 Toast.makeText(SignIn.this, "로그인 에러 발생", Toast.LENGTH_SHORT).show();
                 Log.e("로그인 에러 발생", t.getMessage());
-                showProgress(false);
+//                showProgress(false);
             }
         });
     }
-    private void showProgress(boolean show) {
-        ProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-    }
+//    private void showProgress(boolean show) {
+//        ProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+//    }
 
-        //register 버튼. 누르면 register로
+
+    // $회원가입 버튼 이벤트 - 회원 가입 창으로 이동
     public void onButtonClick(View view2){
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);

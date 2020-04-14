@@ -13,6 +13,7 @@ import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
@@ -23,12 +24,25 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import com.example.example.data.ProfileResponse;
+import com.example.example.data.ProfileUpdateData;
+import com.example.example.data.ProfileUpdateResponse;
+import com.example.example.network.InfoID;
+import com.example.example.network.RetrofitClient;
+import com.example.example.network.ServiceApi;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Array;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ProfileModify extends AppCompatActivity {
+
+    private ServiceApi service;
 
     Spinner spinner;
     Spinner spinner2;
@@ -54,6 +68,7 @@ public class ProfileModify extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_profile_modify);
 
+        // $프로필 정보 가져오기
         Intent intent = getIntent();
         name = intent.getStringExtra("name");
         country = intent.getStringExtra("country");
@@ -65,6 +80,9 @@ public class ProfileModify extends AppCompatActivity {
             bytes = intent.getByteArrayExtra("image");
             image = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
         }*/
+
+        // $네트워크를 위한 serviceApi 객체 생성
+        service = RetrofitClient.getClient().create(ServiceApi.class);
 
         Edittext_name = findViewById(R.id.Edittext_name);
         spinner = findViewById(R.id.country);
@@ -98,7 +116,8 @@ public class ProfileModify extends AppCompatActivity {
                 break;
             }
         }
-            //array_age
+
+        // $나이 스피너
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
                 this, R.array.array_age, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -120,7 +139,7 @@ public class ProfileModify extends AppCompatActivity {
         });
 
 
-            //country
+         // $국가 스피너
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.array_country, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -141,6 +160,8 @@ public class ProfileModify extends AppCompatActivity {
             }
         });
 
+
+        // $이미지 관련인듯?
         selfie.setClipToOutline(true);
         selfie.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -150,6 +171,7 @@ public class ProfileModify extends AppCompatActivity {
             }
         });
 
+        // $뒤로가기 버튼 이벤트
         back = (ImageButton) findViewById(R.id.btn_back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,21 +180,41 @@ public class ProfileModify extends AppCompatActivity {
             }
         });
 
+        // $프로필 저장 버튼 이벤트
         save = (Button) findViewById(R.id.btn_save);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                returnToBack();
+                // 프로필 수정 DB에 업데이트
+                updateProfile(new ProfileUpdateData(InfoID.userId, Edittext_name.getText().toString(), age, country));
             }
         });
     }
 
+    // $프로필 수정 통신 메소드
+    private void updateProfile(ProfileUpdateData data) {
+        service.userProfileUpdate(data).enqueue(new Callback<ProfileUpdateResponse>() {
+            @Override
+            public void onResponse(Call<ProfileUpdateResponse> call, Response<ProfileUpdateResponse> response) {
+                ProfileUpdateResponse result = response.body();
+                if (result.getCode() == 200) {
+                    returnToBack();
+                }
+            }
+            @Override
+            public void onFailure(Call<ProfileUpdateResponse> call, Throwable t) {
+                Log.e("프로필 수정 에러 발생", t.getMessage());
+            }
+        });
+    }
+
+    // $프로필 페이지로 이동
     public void returnToBack(){
         Intent intent = getIntent();
         intent.putExtra("country", country);
         intent.putExtra("age", age);
         intent.putExtra("name", Edittext_name.getText().toString());
-        /*BitmapDrawable drawable = (BitmapDrawable) selfie.getDrawable();
+        BitmapDrawable drawable = (BitmapDrawable) selfie.getDrawable();
         if(drawable == null){
             bytes=null;
         }
@@ -182,7 +224,7 @@ public class ProfileModify extends AppCompatActivity {
             image.compress(Bitmap.CompressFormat.PNG, 100, stream);
             bytes = stream.toByteArray();
         }
-        intent.putExtra("image", bytes);*/
+        intent.putExtra("image", bytes);
         setResult(RESULT_OK, intent);
         finish();
     }

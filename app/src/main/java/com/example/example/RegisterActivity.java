@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ImageView selfie;
 
     EditText Edittext_email, Edittext_pw, Edittext_name;
-    // 회원가입 입력 정보
+    // $회원가입 입력 정보
     String email, password, name, sex, country;
     int age;
 
@@ -77,23 +77,23 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        // 네트워크를 위한 serviceApi 객체 생성
+        // $네트워크를 위한 serviceApi 객체 생성
         service = RetrofitClient.getClient().create(ServiceApi.class);
 
-        // 로딩을 위한 진행바
+        // $로딩을 위한 진행바
         ProgressView = (ProgressBar) findViewById(R.id.join_progress);
 
-        // 에디트텍스트 선언
+        // $에디트텍스트 선언
         Edittext_email = (EditText) findViewById(R.id.Edittext_email);
         Edittext_pw = (EditText) findViewById(R.id.Edittext_pw);
         Edittext_name = (EditText) findViewById(R.id.Edittext_name);
 
-        // 스피너 선언
+        // $스피너 선언
         spinner = findViewById(R.id.country);
         spinner2 = findViewById(R.id.age);
 
 
-        //국가 스피너
+        // $국가 스피너
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.array_country, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -111,10 +111,10 @@ public class RegisterActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
-            //아래 화살표 색 설정
+            // $아래 화살표 색 설정
         spinner.getBackground().setColorFilter(Color.parseColor("#c8cbd3"), PorterDuff.Mode.SRC_ATOP);
 
-        //나이 스피너
+        // $나이 스피너
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
                 this, R.array.array_age, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -132,11 +132,11 @@ public class RegisterActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> arg0) {
             }
         });
-            //아래 화살표 색 설정
+            // $아래 화살표 색 설정
         spinner2.getBackground().setColorFilter(Color.parseColor("#c8cbd3"), PorterDuff.Mode.SRC_ATOP);
 
 
-        // 여자 버튼 이벤트
+        // $여자 버튼 이벤트
         btn_female = (Button) findViewById(R.id.btn_female);
         btn_female.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,7 +157,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
-        // 남자 버튼 이벤트
+        // $남자 버튼 이벤트
         btn_male = (Button) findViewById(R.id.btn_male);
         btn_male.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,7 +179,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        // 프로필 이벤트
+        // $프로필 이벤트
         selfie = (ImageView)findViewById(R.id.selfie);
         selfie.setClipToOutline(true);
         selfie.setOnClickListener(new View.OnClickListener() {
@@ -190,7 +190,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        // 이메일 유효성 검사
+        // $이메일 유효성 검사
         Edittext_email = (EditText) findViewById(R.id.Edittext_email);
         Edittext_email.setOnFocusChangeListener(new View.OnFocusChangeListener(){
             @Override
@@ -206,31 +206,31 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-        // 회원가입 버튼 이벤트
+        // $회원가입 버튼 이벤트
         btn_register = (Button) findViewById(R.id.btn_register);
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 이메일, 비밀번호, 이름 문자열로 변환
+                // $이메일, 비밀번호, 이름 문자열로 변환
                 email = Edittext_email.getText().toString();
                 password = Edittext_pw.getText().toString();
                 name = Edittext_name.getText().toString();
-                // 성별 구분
+                // $성별 구분
                 if(maleState)
                     sex = "Male";
                 else
                     sex = "Female";
 
-                // 회원가입 버튼 활성화/비활성화
+                // $회원가입 버튼 활성화/비활성화
                 if(email.length() == 0 || password.length() == 0 | name.length() == 0){
                     Edittext_email.setHintTextColor(getColor(R.color.coral_red));
                     Edittext_pw.setHintTextColor(getColor(R.color.coral_red));
                     Edittext_name.setHintTextColor(getColor(R.color.coral_red));
                 }else{
-                    // 회원가입 통신 메소드 실행
+                    // $회원가입 통신 메소드 실행
                     startJoin(new JoinData(name, email, password, sex, age, country));
                     showProgress(true);
-                    // signIn 페이지로 전환
+                    // $로그인 페이지로 전환
 //                    Intent intent = new Intent(RegisterActivity.this, SignIn.class);
 //                    startActivity(intent);
 //                    overridePendingTransition(0, 0);
@@ -240,7 +240,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    // 회원가입 통신 메소드
+    // $회원가입 통신 메소드
     private void startJoin(JoinData data) {
         service.userJoin(data).enqueue(new Callback<JoinResponse>() {
             @Override
@@ -261,13 +261,13 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    // 진행바 메소드
+    // $진행바 메소드
     private void showProgress(boolean show) {
         ProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
 
-    // 프로필 관련
+    // $프로필 관련
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -291,7 +291,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
 
-    // 로그인 창으로 이동
+    // $로그인 창으로 이동
     public void onClicked(View v){
         Intent intent = new Intent(this, SignIn.class);
         startActivity(intent);
@@ -301,7 +301,7 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //    // 이건 뭔지 모르겠음 - 아마 스피너 관련
+    //    // $아마 스피너 관련
 //    public class MyOnItemSelectedListener implements OnItemSelectedListener{
 //        @Override
 //        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
