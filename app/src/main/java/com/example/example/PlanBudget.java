@@ -249,7 +249,7 @@ public class PlanBudget extends AppCompatActivity {
                 String memo = intent.getStringExtra("memo");
                 String budget = intent.getStringExtra("budget");
                 int type = intent.getIntExtra("type", 0);
-                Toast.makeText(getApplicationContext(), String.valueOf(Double.parseDouble(budget)>0), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), String.valueOf(Double.parseDouble(budget)>0), Toast.LENGTH_LONG).show();
                 if(Double.parseDouble(budget)>0){
                     switch(type){
                         case 1:
@@ -361,7 +361,7 @@ public class PlanBudget extends AppCompatActivity {
 
     public  void settingList(){
         if(database != null){
-            String sql = "select type, budget, plan_position from "+ "BudgetTable"+" where date = "+date+" and plan_position = "+planPosition;
+            String sql = "select type, budget, plan_position from "+ "BudgetTable"+" where date = "+date+" and plan_position = "+planPosition+" and main_position = "+mainPosition;
             Cursor cursor = database.rawQuery(sql, null);
             //println("조회된 데이터 개수: "+cursor.getCount());
 
