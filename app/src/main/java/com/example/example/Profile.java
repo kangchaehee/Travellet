@@ -57,7 +57,7 @@ public class Profile extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        // $네트워크를 위한 serviceApi 객체 생성
+        // $네트워크를 위한 serviceApi 객체 생성 -
         service = RetrofitClient.getClient().create(ServiceApi.class);
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_profile, container, false);
