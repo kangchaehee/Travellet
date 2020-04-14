@@ -106,25 +106,28 @@ public class TravelEstimatedBudget extends AppCompatActivity {
                 cursor2.moveToNext();
                 int t = cursor2.getInt(0);
                 double budget = cursor2.getDouble(1);
-                switch (t){
-                    case 1:
-                        lodging += 1;
-                        break;
-                    case 2:
-                        food += 1;
-                        break;
-                    case 3:
-                        shopping += 1;
-                        break;
-                    case 4:
-                        tourism += 1;
-                        break;
-                    case 5:
-                        etc += 1;
-                        break;
-                    default:
-                        break;
+                if(budget == 0.0){
+                    switch (t){
+                        case 1:
+                            lodging += 1;
+                            break;
+                        case 2:
+                            food += 1;
+                            break;
+                        case 3:
+                            shopping += 1;
+                            break;
+                        case 4:
+                            tourism += 1;
+                            break;
+                        case 5:
+                            etc += 1;
+                            break;
+                        default:
+                            break;
+                    }
                 }
+
                 total += budget;
                 Log.d("database", "#"+i+"->"+t+", "+budget+", "+total);
             }
@@ -286,8 +289,6 @@ public class TravelEstimatedBudget extends AppCompatActivity {
 
     // plan initial
     public void onClick(View view){
-        Intent intent = new Intent(this, Navigation.class);
-
         if(database != null){
             String sql = "update CategoryBudgetTable set budget = ? where category = 1";
             Object[] params1= {lodgingB};
@@ -319,32 +320,35 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             cursor2.close();*/
             String sql1="";
             if(lodging != 0){
-                sql1 = "update BudgetTable set budget = ? where type = 1";
+                sql1 = "update BudgetTable set budget = ? where type = 1 and budget = 0.0";
                 Object[] params7 = {lodgingB/lodging};
                 database.execSQL(sql1, params7);
             }
             if(food != 0){
-                sql1 = "update BudgetTable set budget = ? where type = 2";
+                sql1 = "update BudgetTable set budget = ? where type = 2 and budget = 0.0";
                 Object[] params8 = {foodB/food};
                 database.execSQL(sql1, params8);
             }
             if(shopping != 0){
-                sql1 = "update BudgetTable set budget = ? where type = 3";
+                sql1 = "update BudgetTable set budget = ? where type = 3 and budget = 0.0";
                 Object[] params9 = {shoppingB/shopping};
                 database.execSQL(sql1, params9);
             }
             if(tourism != 0){
 
-                sql1 = "update BudgetTable set budget = ? where type = 4";
+                sql1 = "update BudgetTable set budget = ? where type = 4 and budget = 0.0";
                 Object[] params10 = {leisureB/tourism};
                 database.execSQL(sql1, params10);
             }
             if(etc != 0){
-                sql1 = "update BudgetTable set budget = ? where type = 6";
+                sql1 = "update BudgetTable set budget = ? where type = 6 and budget = 0.0";
                 Object[] params11 = {etcB/etc};
                 database.execSQL(sql1, params11);
             }
         }
+
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
         finish();
     }
 
