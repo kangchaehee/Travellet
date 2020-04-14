@@ -63,6 +63,9 @@ public class WalletCost extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra("position", walletPosition);
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
@@ -76,6 +79,14 @@ public class WalletCost extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent();
+        intent.putExtra("position", walletPosition);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     class WalletCostAdapter extends BaseAdapter {

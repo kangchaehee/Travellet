@@ -144,6 +144,8 @@ public class PlanInitialActivity extends Fragment {
 
 
         day_sub all = dayItems.get(0);
+        int size = dayItems.size();
+
         all.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,6 +167,7 @@ public class PlanInitialActivity extends Fragment {
                 bundle.putInt("endMonth", endMonth);
                 bundle.putInt("endDay", endDay);
                 bundle.putDouble("total", budgetTotal);
+                bundle.putInt("period", size);
                 fragment.setArguments(bundle);
                 FragmentManager manager = getChildFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
@@ -174,7 +177,6 @@ public class PlanInitialActivity extends Fragment {
             }
         });
 
-        int size = dayItems.size();
         for(int i=1; i<size; i++){
             day_sub item = dayItems.get(i);
             int finalI = i;
