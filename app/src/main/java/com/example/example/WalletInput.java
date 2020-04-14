@@ -244,6 +244,7 @@ public class WalletInput extends AppCompatActivity {
 
     }
 
+    // 환율
     public void setMoney(){
         exchangeMoney = InfoID.exchange/InfoID.KRW*(Integer.parseInt(edit1.getText().toString()));
         money.setText(String.valueOf(Math.round(exchangeMoney*100)/100.0));
