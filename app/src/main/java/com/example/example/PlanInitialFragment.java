@@ -195,7 +195,9 @@ public class PlanInitialFragment extends Fragment {
         calculation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                totalExp();
+                for(int i=1; i<=periodInt; i++){
+                    getTransport(i);
+                }
                 Intent intent = new Intent(getContext(), TravelEstimatedBudget.class);
                 budgetRemainder = budgetTotal;
                 intent.putExtra("total", budgetTotal);
@@ -213,7 +215,9 @@ public class PlanInitialFragment extends Fragment {
         calculationText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                totalExp();
+                for(int i=1; i<=periodInt; i++){
+                    getTransport(i);
+                }
                 Intent intent = new Intent(getContext(), TravelEstimatedBudget.class);
                 budgetRemainder = budgetTotal;
                 intent.putExtra("total", budgetRemainder);
@@ -776,11 +780,31 @@ public class PlanInitialFragment extends Fragment {
 
             Log.d("pass", String.valueOf(b));
         }
+
         cursor2.close();
 
         return b;
     }
 
+    public void getTransport(int dayNum)
+    {
+        String sql = "select x, y, transport, position from PlanTable where date = "+dayNum+" and main_position = "+mainPosition;
+        Cursor cursor2 = database.rawQuery(sql, null);
+        for(int j=0; j<cursor2.getCount()-1; j++){
+            cursor2.moveToPosition(j);
+            double startX= cursor2.getDouble(0);
+            double startY= cursor2.getDouble(1);
+            int transport = cursor2.getInt(2);
+            int planPosition = cursor2.getInt(3);
+            cursor2.moveToNext();
+            double endX = cursor2.getDouble(0);
+            double endY = cursor2.getDouble(1);
+
+            returnTransportExp(planPosition, startX, startY, endX, endY, transport, dayNum);
+
+        }
+        cursor2.close();
+    }
     public void openDatabase(String databaseName){
         DatabaseHelper helper = new DatabaseHelper(getContext(), databaseName, null, 4);
         database = helper.getWritableDatabase();
@@ -868,7 +892,7 @@ public class PlanInitialFragment extends Fragment {
         }
     }
 
-    public void totalExp(){
+    public void totalExp(int dayNum){
         double[] xList = new double[adapter.getCount()];
         double[] yList = new double[adapter.getCount()];
         int[] transportList = new int[adapter.getCount()];
@@ -879,15 +903,15 @@ public class PlanInitialFragment extends Fragment {
         }
 
         for(int j=0; j<adapter.getCount()-1; j++){
-            returnTransportExp(j, xList[j], yList[j], xList[j+1], yList[j+1], transportList[j]);
+            //returnTransportExp(j, xList[j], yList[j], xList[j+1], yList[j+1], transportList[j], dayNum);
         }
     }
 
-    public void returnTransportExp(int j, double SX, double SY, double EX, double EY, int transport){
+    public void returnTransportExp(int i, double SX, double SY, double EX, double EY, int transport, int dayNum){
         Log.d("x, y : %s", String.valueOf(SX) + String.valueOf(EX));
         int searchType;
+        final int x = i;
         final double[] transportExp = {0};
-        final int x=j;
         if(transport==2 || transport == 3) {
             if (transport == 2)
                 searchType = 2;
@@ -918,7 +942,7 @@ public class PlanInitialFragment extends Fragment {
                             transportExp[0] = info.getInt("payment");
                             Log.d("json", String.valueOf(info));
                             Log.d("payment : %s", String.valueOf(info.getInt("payment")));
-                            items.get(x).setTransBudget(transportExp[0]);
+                            //items.get(x).setTransBudget(transportExp[0]);
                             if(database != null){
                                 String sql = "update BudgetTable set budget = ? where date = "+dayNum +" and plan_position = "+x+" and position = 1"+" and main_position = "+mainPosition;
                                 Object[] object = {transportExp[0]};
@@ -950,7 +974,7 @@ public class PlanInitialFragment extends Fragment {
         else if(transport == 4){
             transportExp[0] = taxiFare(SX, SY, EX, EY);
             transportTotal += transportExp[0];
-            items.get(x).setTransBudget(transportExp[0]);
+            //items.get(x).setTransBudget(transportExp[0]);
             if(database != null){
                 String sql = "update BudgetTable set budget = ? where date = "+dayNum +" and plan_position = "+x+" and position = 1"+" and main_position = "+mainPosition;
                 Object[] object = {transportExp[0]};
