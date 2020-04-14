@@ -40,7 +40,7 @@ public class WalletMainFragment extends Fragment {
 
     int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW;
 
-    TextView day, period;
+    TextView day, period, budgetText, costText;
 
     SQLiteDatabase database;
     int dayNum;
@@ -57,6 +57,8 @@ public class WalletMainFragment extends Fragment {
 
         day = rootView.findViewById(R.id.day);
         period = rootView.findViewById(R.id.period);
+        budgetText = rootView.findViewById(R.id.budgetText);
+        costText = rootView. findViewById(R.id.costText);
 
         if(getArguments() != null){
             dayNum = getArguments().getInt("index");
@@ -79,6 +81,8 @@ public class WalletMainFragment extends Fragment {
         }
         settingListMain(dayNum);
         settingListSub(dayNum);
+        getDayTotalBudget();
+        getDayTotalCost();
 
         viewList = rootView.findViewById(R.id.btn_list);
         listView1 = rootView.findViewById(R.id.mainList);
@@ -198,6 +202,32 @@ public class WalletMainFragment extends Fragment {
         }
     }
 
+    public void getDayTotalBudget(){
+
+        double dayTotal = 0;
+        String sql = "select budget from BudgetTable where date = "+dayNum;
+        Cursor cursor = database.rawQuery(sql, null);
+        for(int i=0; i<cursor.getCount(); i++){
+            cursor.moveToNext();
+            dayTotal += cursor.getDouble(0);
+        }
+        cursor.close();
+        budgetText.setText(String.valueOf(dayTotal));
+    }
+
+    public void getDayTotalCost(){
+
+        double dayCost = 0;
+        String sql = "select cost from CostTable where date = "+dayNum;
+        Cursor cursor = database.rawQuery(sql, null);
+        for(int i=0; i<cursor.getCount(); i++){
+            cursor.moveToNext();
+            dayCost += cursor.getDouble(0);
+        }
+        cursor.close();
+        costText.setText(String.valueOf(dayCost));
+    }
+
     public void openDatabase(String databaseName){
         DatabaseHelper helper = new DatabaseHelper(getContext(), databaseName, null, 4);
         database = helper.getWritableDatabase();
@@ -295,6 +325,7 @@ public class WalletMainFragment extends Fragment {
 
                 Log.d("database", "#"+i+"->"+date+", "+year+", "+month+", "+day+", "+type+", "+place+", "+hour+", "+min+", "+memo+", "+total_budget);
                 adapterMain.addItem(new WalletMainItem(time, place, memo, total_cost, total_budget));
+                adapterMain.notifyDataSetChanged();
             }
 
             cursor.close();
@@ -337,6 +368,7 @@ public class WalletMainFragment extends Fragment {
 
                 Log.d("database", "#"+i+"->"+type+", "+place+", "+cost+", "+payment);
                 adapterList.addItem(new WalletListSubItem(typeStr, place, cost, type, payment));
+                adapterList.notifyDataSetChanged();
             }
 
             cursor.close();

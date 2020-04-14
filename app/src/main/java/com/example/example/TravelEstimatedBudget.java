@@ -31,6 +31,7 @@ public class TravelEstimatedBudget extends AppCompatActivity {
 
     TextView lodgingPer, foodPer, leisurePer, shoppingPer, transportPer, etcPer;
     TextView lodgingBudget, foodBudget, leisureBudget, shoppingBudget, transportBudget, etcBudget, totalBudget;
+    TextView lodgingText, foodText, shoppingText, tourismText, etcText;
     SeekBar lodgingBar, foodBar, leisureBar, shoppingBar, transportBar, etcBar;
     LinearLayout lodgingLin, foodLin, tourLin, shopLin, etcLin;
 
@@ -43,6 +44,12 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_travel_estimated_budget);
+
+        lodgingText = findViewById(R.id.text1);
+        foodText = findViewById(R.id.text2);
+        shoppingText = findViewById(R.id.text3);
+        tourismText = findViewById(R.id.text4);
+        etcText = findViewById(R.id.text5);
 
         lodgingPer = findViewById(R.id.lodgingPer);
         foodPer = findViewById(R.id.foodPer);
@@ -76,6 +83,7 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         Intent intent = getIntent();
         total = 0;
         remain = intent.getDoubleExtra("total", 0);
+        Log.d("estimate remain", remain+"");
         total2 = remain;
 
         openDatabase("database");
@@ -120,7 +128,7 @@ public class TravelEstimatedBudget extends AppCompatActivity {
                         case 4:
                             tourism += 1;
                             break;
-                        case 5:
+                        case 6:
                             etc += 1;
                             break;
                         default:
@@ -137,7 +145,12 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         }
 
         remain -= total;
-        totalBudget.setText(String.valueOf(remain));
+        totalBudget.setText(String.valueOf((int)remain));
+        lodgingText.append(" - "+lodging);
+        foodText.append(" - "+food);
+        shoppingText.append(" - "+shopping);
+        tourismText.append(" - "+tourism);
+        etcText.append(" - "+etc);
 
         if(lodging == 0)
             lodgingLin.setVisibility(View.GONE);
@@ -154,12 +167,14 @@ public class TravelEstimatedBudget extends AppCompatActivity {
         if(etc == 0)
             etcLin.setVisibility(View.GONE);
 
+        Log.d("remain: ", remain+"");
+
         //카테고리별 예산 max=total
-        lodgingBar.setMax((int)remain/1000);
-        foodBar.setMax((int)remain/1000);
-        leisureBar.setMax((int)remain/1000);
-        shoppingBar.setMax((int)remain/1000);
-        etcBar.setMax((int)remain/1000);
+        lodgingBar.setMax(((int)remain)/1000);
+        foodBar.setMax(((int)remain)/1000);
+        leisureBar.setMax(((int)remain)/1000);
+        shoppingBar.setMax(((int)remain)/1000);
+        etcBar.setMax(((int)remain)/1000);
 
         //각 카테고리 예산 텍스트 조정
         lodgingBudget.setText("$ "+lodgingB);
@@ -256,7 +271,7 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //progress가 바뀐 선택 값
-                total2 = remain-lodgingB-shoppingB-leisureB - foodB;
+                total2 = remain-lodgingB-shoppingB-leisureB-foodB;
                 totalBudget.setText(String.valueOf((int)total2-progress*1000));
                 int percent= (progress*1000)*100/(int)remain;
                 etcPer.setText(String.valueOf(percent)+"%");
@@ -321,28 +336,28 @@ public class TravelEstimatedBudget extends AppCompatActivity {
             String sql1="";
             if(lodging != 0){
                 sql1 = "update BudgetTable set budget = ? where type = 1 and budget = 0.0";
-                Object[] params7 = {lodgingB/lodging};
+                Object[] params7 = {Math.round((lodgingB/lodging)*100)/100.0};
                 database.execSQL(sql1, params7);
             }
             if(food != 0){
                 sql1 = "update BudgetTable set budget = ? where type = 2 and budget = 0.0";
-                Object[] params8 = {foodB/food};
+                Object[] params8 = {Math.round((foodB/food)*100)/100.0};
                 database.execSQL(sql1, params8);
             }
             if(shopping != 0){
                 sql1 = "update BudgetTable set budget = ? where type = 3 and budget = 0.0";
-                Object[] params9 = {shoppingB/shopping};
+                Object[] params9 = {Math.round((shoppingB/shopping)*100)/100.0};
                 database.execSQL(sql1, params9);
             }
             if(tourism != 0){
 
                 sql1 = "update BudgetTable set budget = ? where type = 4 and budget = 0.0";
-                Object[] params10 = {leisureB/tourism};
+                Object[] params10 = {Math.round((leisureB/tourism)*100)/100.0};
                 database.execSQL(sql1, params10);
             }
             if(etc != 0){
                 sql1 = "update BudgetTable set budget = ? where type = 6 and budget = 0.0";
-                Object[] params11 = {etcB/etc};
+                Object[] params11 = {Math.round((etcB/etc)*100)/100.0};
                 database.execSQL(sql1, params11);
             }
         }

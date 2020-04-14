@@ -76,6 +76,7 @@ public class PlanInitialFragment extends Fragment {
     double lodgingBudget=0, foodBudget=0, shoppingBudget=0, tourismBudget=0, etcBudget=0;
     int lodging=0, food=0, tourism=0, shopping=0, transport=0, etc=0;
 
+
     SQLiteDatabase database;
 
 
@@ -157,7 +158,9 @@ public class PlanInitialFragment extends Fragment {
             database.execSQL(sql);
 
         }
+        items.clear();
         settingList(dayNum);
+        getDayTotal();
         listView = (ListView) rootView.findViewById(R.id.con);
         listView.setAdapter(adapter);
 
@@ -174,8 +177,9 @@ public class PlanInitialFragment extends Fragment {
             public void onClick(View v) {
                 totalExp();
                 Intent intent = new Intent(getContext(), TravelEstimatedBudget.class);
-                budgetRemainder = budgetTotal - transportTotal - lodgingBudget - foodBudget- shoppingBudget - tourismBudget - etcBudget;
+                budgetRemainder = budgetTotal;
                 intent.putExtra("total", budgetTotal);
+                Log.d("estimate: ", budgetTotal+"");
                 intent.putExtra("lodging", lodging);
                 intent.putExtra("food", food);
                 intent.putExtra("shopping", shopping);
@@ -193,6 +197,7 @@ public class PlanInitialFragment extends Fragment {
                 Intent intent = new Intent(getContext(), TravelEstimatedBudget.class);
                 budgetRemainder = budgetTotal;
                 intent.putExtra("total", budgetRemainder);
+                Log.d("estimate: ", budgetTotal+"");
                 intent.putExtra("lodging", lodging);
                 intent.putExtra("food", food);
                 intent.putExtra("shopping", shopping);
@@ -691,6 +696,18 @@ public class PlanInitialFragment extends Fragment {
                 shoppingBudget += intent.getDoubleExtra("shppingBudget", 0);
                 tourismBudget += intent.getDoubleExtra("tourismBudget", 0);
                 etcBudget += intent.getDoubleExtra("etcBudget", 0);
+                for(int i=0; i<adapter.getCount(); i++){
+                    double totalBudget = getDayBudget(i);
+                    String sql = "update PlanTable set total_budget = ? where date = "+dayNum+" and position = "+i;
+                    Object[] params = {totalBudget};
+                    database.execSQL(sql, params);
+                    sql = "update WalletTable set total_budget = ? where date = "+dayNum+" and position = "+i;
+                    Object[] params1 = {totalBudget};
+                    database.execSQL(sql, params1);
+                }
+                items.clear();
+                settingList(dayNum);
+                getDayTotal();
 
                 Log.d("total", "lodging="+lodging+"\nfood="+food+"\nshopping="+shopping+"\ntourism="+tourism+"\netc="+etc);
             }
@@ -703,11 +720,28 @@ public class PlanInitialFragment extends Fragment {
                     String sql = "update PlanTable set total_budget = ? where date = "+dayNum+" and position = "+i;
                     Object[] params = {totalBudget};
                     database.execSQL(sql, params);
+                    sql = "update WalletTable set total_budget = ? where date = "+dayNum+" and position = "+i;
+                    Object[] params1 = {totalBudget};
+                    database.execSQL(sql, params1);
                 }
                 items.clear();
                 settingList(dayNum);
+                getDayTotal();
             }
         }
+    }
+
+    public void getDayTotal(){
+
+        double dayTotal = 0;
+        String sql = "select budget from BudgetTable where date = "+dayNum;
+        Cursor cursor = database.rawQuery(sql, null);
+        for(int i=0; i<cursor.getCount(); i++){
+            cursor.moveToNext();
+            dayTotal += cursor.getDouble(0);
+        }
+        cursor.close();
+        budgetText.setText(String.valueOf(dayTotal));
     }
 
     public double getDayBudget(int planPosition){
@@ -868,7 +902,7 @@ public class PlanInitialFragment extends Fragment {
                                 Object[] object = {transportExp[0]};
                                 database.execSQL(sql, object);
                             }
-                            adapter.notifyDataSetChanged();
+                            //adapter.notifyDataSetChanged();
                         }
 
                     } catch (JSONException e) {
@@ -900,14 +934,14 @@ public class PlanInitialFragment extends Fragment {
                 Object[] object = {transportExp[0]};
                 database.execSQL(sql, object);
             }
-            adapter.notifyDataSetChanged();
+            //adapter.notifyDataSetChanged();
         }
 
         else {
             transportExp[0] = 0;
             transportTotal += transportExp[0];
             items.get(x).setTransBudget(transportExp[0]);
-            adapter.notifyDataSetChanged();
+            //adapter.notifyDataSetChanged();
         }
     }
 
@@ -1006,6 +1040,7 @@ public class PlanInitialFragment extends Fragment {
 
                 Log.d("database", "#"+i+"->"+date+", "+year+", "+month+", "+day+", "+type+", "+place+", "+hour+", "+min+", "+memo+", "+transport+", "+total_budget);
                 adapter.addItem(new PlanInitialSubItem(time, place, memo, transport, type, x, y, total_budget));
+                adapter.notifyDataSetChanged();
             }
 
             cursor.close();

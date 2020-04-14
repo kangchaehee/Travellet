@@ -164,6 +164,7 @@ public class PlanInitialActivity extends Fragment {
                 bundle.putInt("endYear", endYear);
                 bundle.putInt("endMonth", endMonth);
                 bundle.putInt("endDay", endDay);
+                bundle.putDouble("total", budgetTotal);
                 fragment.setArguments(bundle);
                 FragmentManager manager = getChildFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
@@ -204,6 +205,7 @@ public class PlanInitialActivity extends Fragment {
                     bundle.putInt("startMonth", startMonth);
                     Log.d("startMonth: ", String.valueOf(startMonth));
                     bundle.putInt("startDay", startDay);
+                    bundle.putDouble("total", budgetTotal);
                     fragment.setArguments(bundle);
                     FragmentManager manager = getChildFragmentManager();
                     FragmentTransaction transaction = manager.beginTransaction();
