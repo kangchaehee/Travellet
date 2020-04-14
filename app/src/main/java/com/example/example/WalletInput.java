@@ -18,6 +18,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.example.example.network.InfoID;
+
 public class WalletInput extends AppCompatActivity {
 
     ImageButton card, cash;
@@ -26,6 +28,8 @@ public class WalletInput extends AppCompatActivity {
     private Button button1, button2, button3, button4, button5, button6, button7, button8, button9, button0;
     private ImageButton buttonC;
     private EditText edit1;
+    TextView money;
+    float exchangeMoney;
 
     int category = 1;
     int payment=1;
@@ -60,6 +64,7 @@ public class WalletInput extends AppCompatActivity {
         buttonC=(ImageButton)findViewById(R.id.buttonC);
 
         edit1 = (EditText) findViewById(R.id.edit1);
+        money = (TextView)findViewById(R.id.money);
 
 
 
@@ -190,26 +195,37 @@ public class WalletInput extends AppCompatActivity {
             public void onClick(View v) {
                 if (v == button1) {
                     edit1.setText(edit1.getText().toString() + 1);
+                    setMoney();
                 } else if (v == button2) {
                     edit1.setText(edit1.getText().toString() + 2);
+                    setMoney();
                 } else if (v == button3) {
                     edit1.setText(edit1.getText().toString() + 3);
+                    setMoney();
                 } else if (v == button4) {
                     edit1.setText(edit1.getText().toString() + 4);
+                    setMoney();
                 } else if (v == button5) {
                     edit1.setText(edit1.getText().toString() + 5);
+                    setMoney();
                 } else if (v == button6) {
                     edit1.setText(edit1.getText().toString() + 6);
+                    setMoney();
                 } else if (v == button7) {
                     edit1.setText(edit1.getText().toString() + 7);
+                    setMoney();
                 } else if (v == button8) {
                     edit1.setText(edit1.getText().toString() + 8);
+                    setMoney();
                 } else if (v == button9) {
                     edit1.setText(edit1.getText().toString() + 9);
+                    setMoney();
                 } else if (v == button0) {
                     edit1.setText(edit1.getText().toString() + 0);
+                    setMoney();
                 } else if (v == buttonC) {
                     edit1.setText("");
+                    money.setText("");
                 }
             }
         };
@@ -226,6 +242,11 @@ public class WalletInput extends AppCompatActivity {
         button0.setOnClickListener(cl);
         buttonC.setOnClickListener(cl);
 
+    }
+
+    public void setMoney(){
+        exchangeMoney = InfoID.exchange/InfoID.KRW*(Integer.parseInt(edit1.getText().toString()));
+        money.setText(String.valueOf(Math.round(exchangeMoney*100)/100.0));
     }
 
     //sign in

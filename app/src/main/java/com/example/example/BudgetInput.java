@@ -14,12 +14,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Bundle;
 
+import com.example.example.network.InfoID;
+
 public class BudgetInput extends AppCompatActivity {
 
     int category, position;
     String memo="null";
     String budget = "0";
 
+    TextView money;
+    float exchangeMoney;
     EditText editMemo;
 
     private Button button1, button2, button3, button4, button5, button6, button7, button8, button9, button0;
@@ -54,6 +58,7 @@ public class BudgetInput extends AppCompatActivity {
 
         edit1 = (EditText) findViewById(R.id.edit1);
         editMemo = findViewById(R.id.editMemo);
+        money = (TextView)findViewById(R.id.textView2);
 
         lodging = (ImageButton) findViewById(R.id.lodging);
         food = (ImageButton) findViewById(R.id.food);
@@ -68,9 +73,12 @@ public class BudgetInput extends AppCompatActivity {
         position = intent.getIntExtra("position", 0);
         if(budget == null || budget.equals("0")){
             edit1.setText("");
+            money.setText("");
         }
-        else
+        else {
             edit1.setText(budget);
+            setMoney();
+        }
         category = intent.getIntExtra("type", 0);
         switch(category){
             case 1:
@@ -206,26 +214,37 @@ public class BudgetInput extends AppCompatActivity {
             public void onClick(View v) {
                 if (v == button1) {
                     edit1.setText(edit1.getText().toString() + 1);
+                    setMoney();
                 } else if (v == button2) {
                     edit1.setText(edit1.getText().toString() + 2);
+                    setMoney();
                 } else if (v == button3) {
                     edit1.setText(edit1.getText().toString() + 3);
+                    setMoney();
                 } else if (v == button4) {
                     edit1.setText(edit1.getText().toString() + 4);
+                    setMoney();
                 } else if (v == button5) {
                     edit1.setText(edit1.getText().toString() + 5);
+                    setMoney();
                 } else if (v == button6) {
                     edit1.setText(edit1.getText().toString() + 6);
+                    setMoney();
                 } else if (v == button7) {
                     edit1.setText(edit1.getText().toString() + 7);
+                    setMoney();
                 } else if (v == button8) {
                     edit1.setText(edit1.getText().toString() + 8);
+                    setMoney();
                 } else if (v == button9) {
                     edit1.setText(edit1.getText().toString() + 9);
+                    setMoney();
                 } else if (v == button0) {
                     edit1.setText(edit1.getText().toString() + 0);
+                    setMoney();
                 } else if (v == buttonC) {
                     edit1.setText("");
+                    money.setText("");
                 }
             }
         };
@@ -244,6 +263,10 @@ public class BudgetInput extends AppCompatActivity {
 
     }
 
+    public void setMoney(){
+        exchangeMoney = InfoID.exchange/InfoID.KRW*(Integer.parseInt(edit1.getText().toString()));
+        money.setText(String.valueOf(Math.round(exchangeMoney*100)/100.0));
+    }
 
     public void returnToBack(){
         budget = edit1.getText().toString();
