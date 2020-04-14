@@ -98,7 +98,7 @@ public class PlanAllSub extends LinearLayout {
 
             // Set list height.
             ViewGroup.LayoutParams params = listView.getLayoutParams();
-            params.height = totalItemsHeight + totalDividersHeight + totalPadding;
+            params.height = totalItemsHeight + totalDividersHeight + totalPadding+10;
             listView.setLayoutParams(params);
             listView.requestLayout();
             //setDynamicHeight(listView);
@@ -276,5 +276,6 @@ public class PlanAllSub extends LinearLayout {
             cursor.close();
         }
     }
+
 
 }

@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 etcBudget = intent2.getFloatExtra("etcBudget", 0);
                 travelTitle = intent2.getStringExtra("travelTitle");
 
-
                 Bundle bundle = new Bundle();
                 bundle.putInt("startYear", startYear);
                 bundle.putInt("startMonth", startMonth);

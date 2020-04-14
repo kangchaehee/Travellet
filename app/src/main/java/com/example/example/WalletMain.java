@@ -100,6 +100,7 @@ public class WalletMain extends Fragment {
         transaction.commit();
 
         day_sub all = dayItems.get(0);
+        int size = dayItems.size();
         all.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -121,6 +122,7 @@ public class WalletMain extends Fragment {
                 bundle.putInt("endYear", endYear);
                 bundle.putInt("endMonth", endMonth);
                 bundle.putInt("endDay", endDay);
+                bundle.putInt("period", size-1);
                 fragment.setArguments(bundle);
                 FragmentManager manager = getChildFragmentManager();
                 FragmentTransaction transaction = manager.beginTransaction();
@@ -130,7 +132,6 @@ public class WalletMain extends Fragment {
             }
         });
 
-        int size = dayItems.size();
         for(int i=1; i<size; i++){
             day_sub item = dayItems.get(i);
             int finalI = i;
