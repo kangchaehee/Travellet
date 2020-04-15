@@ -64,7 +64,7 @@ public class ReportDaily extends Fragment {
     BarChart chart;
     float barSpace, barWidth, groupSpace;
     int groupCount;
-    int a, b, c, d, t;
+    int a, b, c, d, t, s;
     int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW, period;
 
     LinearLayout linear8;
@@ -110,9 +110,7 @@ public class ReportDaily extends Fragment {
 
             // xvalue 에 day 넣는 거
         for (b = 1 ; b < a +1 ; b++){
-
             xvalue.add("Day" + b);
-
         }
 
         /*
@@ -193,6 +191,7 @@ public class ReportDaily extends Fragment {
         //chartMon.setText("130,000 ￦");
         //chartDay.setText("Day 1");
 
+        /*
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
@@ -200,17 +199,19 @@ public class ReportDaily extends Fragment {
                 int t = 1;
                 int i = e.getXIndex(); //day 값
                 //chartMon.setText(String.valueof(e.getVal()) + ",000" + " ￦" )
-                chartMon.setText(String.format("%.0f", e.getVal())+ ",000" + " ￦"); //소수점 없애는거
-                chartDay.setText(i + t + "day");
-
+                //chartMon.setText(String.format("%.0f", e.getVal())+ ",000" + " ￦"); //소수점 없애는거
+                //chartDay.setText("day"+ i + t);
 
                 for (int s = 0; s ==6 ; s++){
 
-                    System.out.println(i);
-                    System.out.println(chartMon);
-                    System.out.println(chartDay);
+                    System.out.println(String.format("%.0f", e.getVal())+ ",000" + " ￦");
+                    System.out.println("day"+ i + t);
+                    //chartMon.setText(String.format("%.0f", e.getVal())+ ",000" + " ￦"); //소수점 없애는거
+                    //chartDay.setText("day"+ i + t);
+
 
                 }
+
 
                 /*
                 chartDay.setText("Day 1");
@@ -252,9 +253,6 @@ public class ReportDaily extends Fragment {
                         chartDay.setText("Day 12");
                         break;
                 }
-                */
-
-
             }
 
             @Override
@@ -264,5 +262,7 @@ public class ReportDaily extends Fragment {
 
             }
         });
+
+         */
     }
 }
