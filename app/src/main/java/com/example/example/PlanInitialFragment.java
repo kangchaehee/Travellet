@@ -169,9 +169,17 @@ public class PlanInitialFragment extends Fragment {
 
 
         }
+
+        listView = (ListView) rootView.findViewById(R.id.con);
+        listView.setAdapter(adapter);
+
+        items.clear();
+        settingList(dayNum);
+
         for(int i=0; i<adapter.getCount(); i++){
             double totalBudget = getDayBudget(i, dayNum);
             String sql = "update PlanTable set total_budget = ? where date = "+dayNum+" and position = "+i+" and main_position = "+mainPosition;
+            Log.d("얘야", ""+totalBudget);
             Object[] params = {totalBudget};
             database.execSQL(sql, params);
             sql = "update WalletTable set total_budget = ? where date = "+dayNum+" and position = "+i+" and main_position = "+mainPosition;
@@ -181,8 +189,6 @@ public class PlanInitialFragment extends Fragment {
         items.clear();
         settingList(dayNum);
         getDayTotal();
-        listView = (ListView) rootView.findViewById(R.id.con);
-        listView.setAdapter(adapter);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -722,6 +728,7 @@ public class PlanInitialFragment extends Fragment {
                 for(int i=0; i<adapter.getCount(); i++){
                     double totalBudget = getDayBudget(i, dayNum);
                     String sql = "update PlanTable set total_budget = ? where date = "+dayNum+" and position = "+i+" and main_position = "+mainPosition;
+                    Log.d("얘야", ""+totalBudget);
                     Object[] params = {totalBudget};
                     database.execSQL(sql, params);
                     sql = "update WalletTable set total_budget = ? where date = "+dayNum+" and position = "+i+" and main_position = "+mainPosition;
@@ -739,16 +746,14 @@ public class PlanInitialFragment extends Fragment {
         if(requestCode == 200){
             if(intent != null){
                 for(int i=0; i<adapter.getCount(); i++){
-                    for(int j=1; j<= periodInt ; j++){
-                        double totalBudget = getDayBudget(i, dayNum);
-                        String sql = "update PlanTable set total_budget = ? where date = "+j+" and position = "+i+" and main_position = "+mainPosition;
-                        Object[] params = {totalBudget};
-                        database.execSQL(sql, params);
-
-                        sql = "update WalletTable set total_budget = ? where date = "+j+" and position = "+i+" and main_position = "+mainPosition;
-                        Object[] params1 = {totalBudget};
-                        database.execSQL(sql, params1);
-                    }
+                    double totalBudget = getDayBudget(i, dayNum);
+                    String sql = "update PlanTable set total_budget = ? where date = "+dayNum+" and position = "+i+" and main_position = "+mainPosition;
+                    Log.d("얘야", ""+totalBudget);
+                    Object[] params = {totalBudget};
+                    database.execSQL(sql, params);
+                    sql = "update WalletTable set total_budget = ? where date = "+dayNum+" and position = "+i+" and main_position = "+mainPosition;
+                    Object[] params1 = {totalBudget};
+                    database.execSQL(sql, params1);
                 }
                 items.clear();
                 settingList(dayNum);
