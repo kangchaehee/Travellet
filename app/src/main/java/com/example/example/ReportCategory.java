@@ -28,14 +28,20 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 //import com.github.mikephil.charting.utils.PercentFormatter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ReportCategory extends Fragment {
 
     PieChart chart;
     float percent, hole;
+    int i, e, array;
 
     TextView chartPer, chartText;
+    TextView money_lodging, money_food, money_leisure, money_shopping, money_transport, money_etc;
+
+    //float lodging, food, leisure, shopping, transport, etc;
+    //float sum, per_a, per_b, per_c, per_d, per_e, per_f;
 
     @Nullable
     @Override
@@ -44,20 +50,50 @@ public class ReportCategory extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_report_category, container, false);
         PieChart pieChart = rootView.findViewById(R.id.piechart);
         chartPer = rootView.findViewById(R.id.chartPer);
-        chartText = rootView.findViewById(R.id.charText);
+        chartText = rootView.findViewById(R.id.chartText);
 
+        //money_lodging = rootView.findViewById(R.id.money_lodging);
+        //money_food = rootView.findViewById(R.id.money_food);
+        //money_leisure = rootView.findViewById(R.id.money_leisure);
+        //money_shopping = rootView.findViewById(R.id.money_shopping);
+        //money_transport = rootView.findViewById(R.id.money_transport);
+        //money_etc = rootView.findViewById(R.id.money_etc);
 
-        chartPer.setText("10.0%");
-        chartText.setText("Lodging");
 
         ArrayList NoOfEmp = new ArrayList();
 
+        //lodging 부터 etc 까지 값 받아들이기.
+        /*
+        float lodging;  //a
+        float food;  //b
+        float leisure;  //c
+        float shopping;  //d
+        float transport;  //e
+        float etc;  //f
+
+        float sum =  a+b+c+d+e+f;
+
+        float per_a =a / sum;  // lodging 퍼센트
+        float per_b =b / sum;  // food 퍼센트
+        float per_c =c / sum;  // leisure 퍼센트
+        float per_d =d / sum;  // shopping 퍼센트
+        float per_e =e / sum;  // transport 퍼센트
+        float per_f =f / sum;  // etc 퍼센트
+
+        NoOfEmp.add(new Entry(per_a, 0));
+        NoOfEmp.add(new Entry(per_b, 1));
+        NoOfEmp.add(new Entry(per_c, 2));
+        NoOfEmp.add(new Entry(per_d, 3));
+        NoOfEmp.add(new Entry(per_e, 4));
+        NoOfEmp.add(new Entry(per_f, 5));
+        */
+
         NoOfEmp.add(new Entry(10, 0));
-        NoOfEmp.add(new Entry(20, 1));
+        NoOfEmp.add(new Entry(10, 1));
         NoOfEmp.add(new Entry(15, 2));
         NoOfEmp.add(new Entry(15, 3));
         NoOfEmp.add(new Entry(20, 4));
-        NoOfEmp.add(new Entry(20, 5));
+        NoOfEmp.add(new Entry(30, 5));
 
         PieDataSet dataSet = new PieDataSet(NoOfEmp, " Of Budget");
         ArrayList category = new ArrayList();
@@ -76,6 +112,11 @@ public class ReportCategory extends Fragment {
         int colors [] = {getResources().getColor(R.color.category1), getResources().getColor(R.color.category2), getResources().getColor(R.color.category3), getResources().getColor(R.color.category4), getResources().getColor(R.color.category5), getResources().getColor(R.color.category6)};
         dataSet.setColors(colors);
         dataSet.setDrawValues(false);
+
+        chartPer.setText("10.0%");
+        //chartPer.setText(a + "%");
+        chartText.setText("Lodging"); //lodging 으로 고정
+
 
         // 하단 x-Values List 안보이게. (색깔과 설명)
         pieChart.getLegend().setEnabled(false);
@@ -127,12 +168,6 @@ public class ReportCategory extends Fragment {
         //차트 내의 값이 원래 값이 아닌 백분율로 표시됩니다. To ValueFormatter형식에 제공된 값은 백분율로 제공됩니다.
         pieChart.setUsePercentValues(false);
 
-        //PieChart의 중앙에 그려진 텍스트를 설정합니다. 더 긴 텍스트는 자동으로 "줄 바꿈"되어 파이 조각에 클리핑되지 않습니다.
-        //PieChart.setCenterText(SpannableString text):
-
-        //중심 텍스트에 대한 경계 상자의 사각형 반경을 파이 구멍 기본값 1.f (100 %)의 백분율로 설정합니다.
-        //setCenterTextRadiusPercent(float percent)
-
         //원형 차트의 중심에있는 구멍의 반경을 최대 반경의 백분율로 설정합니다 (최대 = 전체 차트의 반경). 기본값은 50 %
         float hole = 80;
         pieChart.setHoleRadius(hole);
@@ -149,9 +184,29 @@ public class ReportCategory extends Fragment {
         //기본값 : 360f
         //setMaxAngle(float maxangle)
 
-        //애니메이션
-        //pieChart.animateXY(5000, 5000);
+
+        /*
+            // 밑에 텍스트
+        money_lodging.setText(lodging + "￦");
+        money_food.setText(food + "￦");
+        money_leisure.setText(leisure + "￦");
+        money_shopping.setText(shopping + "￦");
+        money_transport.setText(transport + "￦");
+        money_etc.setText(etc + "￦");
+
+              //소수점 없애고 싶을 땐 이거
+        money_lodging.setText(String.format("%.0f", lodging)+ " ￦");
+        money_food.setText(String.format("%.0f", lodging)+ " ￦");
+        money_leisure.setText(String.format("%.0f", lodging)+ " ￦");
+        money_shopping.setText(String.format("%.0f", lodging)+ " ￦");
+        money_transport.setText(String.format("%.0f", lodging)+ " ￦");
+        money_etc.setText(String.format("%.0f", lodging)+ " ￦");
+
+         */
 
         return rootView;
     }
+
+
+
 }

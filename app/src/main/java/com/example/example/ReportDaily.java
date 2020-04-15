@@ -62,42 +62,35 @@ import lecho.lib.hellocharts.formatter.AxisValueFormatter;
 public class ReportDaily extends Fragment {
 
     BarChart chart;
-    float barSpace, barWidth, groupSpace, a, b;
+    float barSpace, barWidth, groupSpace;
     int groupCount;
+    int a, b, c, d, t;
     int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW, period;
 
     LinearLayout linear8;
-
-    FragmentCallBack callback;
     HorizontalScrollView scroll;
 
     TextView chartDay, chartMon, chartCard, chartCash;
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if(context instanceof FragmentCallBack){
-            callback = (FragmentCallBack) context;
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        if(callback != null){
-            callback = null;
-        }
-
-    }
-
-
-    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_report_daily, null);
         initView(view);
         initChart();
         Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.roboto_regular);
+
+        if(getArguments() != null){
+
+            startYear = getArguments().getInt("startYear", 0);
+            startDay = getArguments().getInt("startDay", 0);
+            startMonth = getArguments().getInt("startMonth", 0);
+            startDoW = getArguments().getInt("startDow", 0);
+            endYear = getArguments().getInt("endYear", 0);
+            endMonth = getArguments().getInt("endMonth", 0);
+            endDay = getArguments().getInt("endDay", 0);
+            endDoW = getArguments().getInt("endDow", 0);
+
+        }
         return view;
     }
 
@@ -112,28 +105,38 @@ public class ReportDaily extends Fragment {
 
     private void initChart(){
 
-        List<BarEntry> yvalue = new ArrayList<>();
+        int a = 4; // 여행 날짜 수 endDay - startDay?
+        List<String> xvalue=new ArrayList<>();
+
+            // xvalue 에 day 넣는 거
+        for (b = 1 ; b < a +1 ; b++){
+
+            xvalue.add("Day" + b);
+
+        }
 
         /*
-        float [] a = new float[]{10, 100, 120, 130, 50, 120};
-        float [] b = new float[]{10, 20, 30, 40, 50, 60};
+        xvalue.add("Day1");
+        xvalue.add("Day2");
+        xvalue.add("Day3");
+        xvalue.add("Day4");
+        xvalue.add("Day5");
+        xvalue.add("Day6");
+        */
 
-        Iterator it = yvalue.iterator();
-            while(it.hasNext()){
-                float value = it.next();
-            }
-
-         */
+        List<BarEntry> yvalue = new ArrayList<>();
 
         yvalue.add(new BarEntry(new float[]{10, 60},0));
         yvalue.add(new BarEntry(new float[]{30, 50},1));
         yvalue.add(new BarEntry(new float[]{50, 40},2));
         yvalue.add(new BarEntry(new float[]{60, 30},3));
-        yvalue.add(new BarEntry(new float[]{80, 20},4));
-        yvalue.add(new BarEntry(new float[]{100, 10},5));
+        //yvalue.add(new BarEntry(new float[]{80, 20},4));
+        //yvalue.add(new BarEntry(new float[]{100, 10},5));
 
 
         BarDataSet set=new BarDataSet(yvalue,"");
+        BarData data=new BarData(xvalue,set);
+
         int colors [] = {getResources().getColor(R.color.category3), getResources().getColor(R.color.category5)};
         set.setColors(colors); //color
         set.setBarSpacePercent(50f); // 바 사이 간격
@@ -143,16 +146,6 @@ public class ReportDaily extends Fragment {
         set.setValueTextSize(9f);
         set.setValueTextColor(Color.parseColor("#c8cbd3"));
 
-
-        List<String> xvalue=new ArrayList<>();
-        xvalue.add("Day1");
-        xvalue.add("Day2");
-        xvalue.add("Day3");
-        xvalue.add("Day4");
-        xvalue.add("Day5");
-        xvalue.add("Day6");
-
-        BarData data=new BarData(xvalue,set);
 
         chart.getXAxis().setAxisMaxValue(5f);
         XAxis xAxis = chart.getXAxis();
@@ -178,7 +171,7 @@ public class ReportDaily extends Fragment {
         chart.setDescription(" ");
         chart.setData(data);
         chart.setHorizontalScrollBarEnabled(true);
-       //chart.setViewPortOffsets(0f, 0f, 0f, 0f); // day 랑 그래프 띄어져 있는 공간 넓이
+        //chart.setViewPortOffsets(0f, 0f, 0f, 0f); // day 랑 그래프 띄어져 있는 공간 넓이
 
         float barWidth = 0.3f; //0.3
         float groupSpace= 0.06f; //0.06
@@ -197,19 +190,30 @@ public class ReportDaily extends Fragment {
         chart.isHorizontalScrollBarEnabled();
         chart.setDoubleTapToZoomEnabled(false); // 줌인
         chart.setDrawValueAboveBar(true);
-        chartMon.setText("130,000 ￦");
-        chartDay.setText("Day 1");
-
+        //chartMon.setText("130,000 ￦");
+        //chartDay.setText("Day 1");
 
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-
             @Override
             public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
 
+                int t = 1;
+                int i = e.getXIndex(); //day 값
                 //chartMon.setText(String.valueof(e.getVal()) + ",000" + " ￦" )
                 chartMon.setText(String.format("%.0f", e.getVal())+ ",000" + " ￦"); //소수점 없애는거
+                chartDay.setText(i + t + "day");
 
-                int i = e.getXIndex();
+
+                for (int s = 0; s ==6 ; s++){
+
+                    System.out.println(i);
+                    System.out.println(chartMon);
+                    System.out.println(chartDay);
+
+                }
+
+                /*
+                chartDay.setText("Day 1");
                 switch (i){
                     case 0:
                         chartDay.setText("Day 1");
@@ -247,19 +251,18 @@ public class ReportDaily extends Fragment {
                     case 11:
                         chartDay.setText("Day 12");
                         break;
-
                 }
+                */
 
 
             }
 
             @Override
             public void onNothingSelected() {
-                chartMon.setText("130,000 ￦");
-                chartDay.setText("Day 1");
+                //chartMon.setText("130,000 ￦");
+                //chartDay.setText("Day 1");
+
             }
-
         });
-
     }
 }

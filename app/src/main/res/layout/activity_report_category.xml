@@ -43,7 +43,7 @@ tools:context=".ReportCategory">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/chartPer"
-                    android:id="@+id/charText"
+                    android:id="@+id/chartText"
                     android:textColor="@color/soft_black"
                     android:textSize="14sp"
                     android:layout_centerHorizontal="true"
@@ -79,7 +79,7 @@ tools:context=".ReportCategory">
                 android:text="Lodging" />
             
             <TextView
-                android:id="@+id/lodging"
+                android:id="@+id/money_lodging"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -89,7 +89,7 @@ tools:context=".ReportCategory">
                 android:letterSpacing="0.03"
                 android:lineSpacingExtra="12sp"
                 android:gravity="right"
-                android:text="$ 1,200"
+                android:text="1,200 ￦"
                 />
 
         </LinearLayout>
@@ -129,7 +129,7 @@ tools:context=".ReportCategory">
                 android:text="Food" />
 
             <TextView
-                android:id="@+id/food"
+                android:id="@+id/money_food"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -139,7 +139,7 @@ tools:context=".ReportCategory">
                 android:letterSpacing="0.03"
                 android:lineSpacingExtra="12sp"
                 android:gravity="right"
-                android:text="$ 1,200"
+                android:text="1,200 ￦"
                 />
         </LinearLayout>
 
@@ -178,7 +178,7 @@ tools:context=".ReportCategory">
                 android:text="Leisure/Culture" />
 
             <TextView
-                android:id="@+id/leisure"
+                android:id="@+id/money_leisure"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -188,7 +188,7 @@ tools:context=".ReportCategory">
                 android:letterSpacing="0.03"
                 android:lineSpacingExtra="12sp"
                 android:gravity="right"
-                android:text="$ 1,200"
+                android:text="1,200 ￦"
                 />
         </LinearLayout>
 
@@ -227,7 +227,7 @@ tools:context=".ReportCategory">
                 android:text="Shopping" />
 
             <TextView
-                android:id="@+id/shopping"
+                android:id="@+id/money_shopping"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -237,7 +237,7 @@ tools:context=".ReportCategory">
                 android:letterSpacing="0.03"
                 android:lineSpacingExtra="12sp"
                 android:gravity="right"
-                android:text="$ 1,200"
+                android:text="1,200 ￦"
                 />
         </LinearLayout>
 
@@ -277,7 +277,7 @@ tools:context=".ReportCategory">
                 android:text="Transport" />
 
             <TextView
-                android:id="@+id/transport"
+                android:id="@+id/money_transport"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -287,7 +287,7 @@ tools:context=".ReportCategory">
                 android:letterSpacing="0.03"
                 android:lineSpacingExtra="12sp"
                 android:gravity="right"
-                android:text="$ 1,200"
+                android:text="1,200 ￦"
                 />
         </LinearLayout>
 
@@ -326,7 +326,7 @@ tools:context=".ReportCategory">
                 android:text="Etc" />
 
             <TextView
-                android:id="@+id/etc"
+                android:id="@+id/money_etc"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -336,7 +336,7 @@ tools:context=".ReportCategory">
                 android:letterSpacing="0.03"
                 android:lineSpacingExtra="12sp"
                 android:gravity="right"
-                android:text="$ 1,200"
+                android:text="1,200 ￦"
                 />
         </LinearLayout>
 
