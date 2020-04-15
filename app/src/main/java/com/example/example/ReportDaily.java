@@ -124,10 +124,11 @@ public class ReportDaily extends Fragment {
 
         List<BarEntry> yvalue = new ArrayList<>();
 
-        yvalue.add(new BarEntry(new float[]{10, 60},0));
-        yvalue.add(new BarEntry(new float[]{30, 50},1));
-        yvalue.add(new BarEntry(new float[]{50, 40},2));
-        yvalue.add(new BarEntry(new float[]{60, 30},3));
+            //cash, card
+        yvalue.add(new BarEntry(new float[]{12, 100},0));
+        yvalue.add(new BarEntry(new float[]{0, 52},1));
+        yvalue.add(new BarEntry(new float[]{18, 0},2));
+        yvalue.add(new BarEntry(new float[]{23, 1},3));
         //yvalue.add(new BarEntry(new float[]{80, 20},4));
         //yvalue.add(new BarEntry(new float[]{100, 10},5));
 

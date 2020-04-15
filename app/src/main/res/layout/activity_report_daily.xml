@@ -144,7 +144,7 @@
                                 android:textColor="@color/soft_black"
                                 android:letterSpacing="0.03"
                                 android:lineSpacingExtra="12sp"
-                                android:text="120,000 ￦"
+                                android:text="112,000 ￦"
                                 android:layout_weight="1"/>
 
                             <TextView
@@ -188,7 +188,7 @@
                                 android:textColor="@color/soft_black"
                                 android:letterSpacing="0.03"
                                 android:lineSpacingExtra="12sp"
-                                android:text="120,000 ￦"
+                                android:text="52,000 ￦"
                                 android:layout_weight="1"/>
 
                             <TextView
@@ -232,7 +232,7 @@
                                 android:textColor="@color/soft_black"
                                 android:letterSpacing="0.03"
                                 android:lineSpacingExtra="12sp"
-                                android:text="120,000 ￦"
+                                android:text="18,000 ￦"
                                 android:layout_weight="1"/>
 
                             <TextView
@@ -277,7 +277,7 @@
                                 android:textColor="@color/soft_black"
                                 android:letterSpacing="0.03"
                                 android:lineSpacingExtra="12sp"
-                                android:text="120,000 ￦"
+                                android:text="24,000 ￦"
                                 android:layout_weight="1"/>
 
                             <TextView
