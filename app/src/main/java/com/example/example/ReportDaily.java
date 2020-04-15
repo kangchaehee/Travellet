@@ -190,7 +190,7 @@ public class ReportDaily extends Fragment {
         chart.setDrawValueAboveBar(true);
         //chartMon.setText("130,000 ￦");
         //chartDay.setText("Day 1");
-
+//
         /*
         chart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
