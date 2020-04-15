@@ -175,7 +175,7 @@ tools:context=".ReportCategory">
                 android:letterSpacing="0.03"
                 android:lineSpacingExtra="12sp"
                 android:textColor="@color/soft_black"
-                android:text="Leisure/Culture" />
+                android:text="Tourism" />
 
             <TextView
                 android:id="@+id/money_leisure"

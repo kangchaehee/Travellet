@@ -6,9 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,12 +41,23 @@ public class ReportCategory extends Fragment {
     PieChart chart;
     float percent, hole;
     int i, e, array;
+    int mainPosition;
 
     TextView chartPer, chartText;
     TextView money_lodging, money_food, money_leisure, money_shopping, money_transport, money_etc;
 
     //float lodging, food, leisure, shopping, transport, etc;
     //float sum, per_a, per_b, per_c, per_d, per_e, per_f;
+
+    SQLiteDatabase database;
+    float lodging=0;
+    float food=0;  //b
+    float tourism=0;  //c
+    float shopping=0;  //d
+    float transport=0;  //e
+    float etc=0;  //f
+
+    int lodgingCount = 0, foodCount = 0, tourismCount = 0, shoppingCount = 0, transportCount = 0, etcCount = 0;
 
     @Nullable
     @Override
@@ -52,56 +68,96 @@ public class ReportCategory extends Fragment {
         chartPer = rootView.findViewById(R.id.chartPer);
         chartText = rootView.findViewById(R.id.chartText);
 
-        //money_lodging = rootView.findViewById(R.id.money_lodging);
-        //money_food = rootView.findViewById(R.id.money_food);
-        //money_leisure = rootView.findViewById(R.id.money_leisure);
-        //money_shopping = rootView.findViewById(R.id.money_shopping);
-        //money_transport = rootView.findViewById(R.id.money_transport);
-        //money_etc = rootView.findViewById(R.id.money_etc);
+        money_lodging = rootView.findViewById(R.id.money_lodging);
+        money_food = rootView.findViewById(R.id.money_food);
+        money_leisure = rootView.findViewById(R.id.money_leisure);
+        money_shopping = rootView.findViewById(R.id.money_shopping);
+        money_transport = rootView.findViewById(R.id.money_transport);
+        money_etc = rootView.findViewById(R.id.money_etc);
 
+        if(getArguments() != null){
+            mainPosition = getArguments().getInt("mainPosition", 0);
+        }
+
+        openDatabase("database");
 
         ArrayList NoOfEmp = new ArrayList();
 
+        if(database != null){
+            String sql = "select cost, type from "+ "CostTable"+" where main_position = "+mainPosition;
+            Cursor cursor = database.rawQuery(sql, null);
+            //println("조회된 데이터 개수: "+cursor.getCount());
+
+            for(int i=0; i<cursor.getCount(); i++){
+                String typeStr="";
+                cursor.moveToNext();
+                double cost = cursor.getDouble(0);
+                int type = cursor.getInt(1);
+                switch (type){
+                    case 1:
+                        typeStr = "Lodging";
+                        lodgingCount += 1;
+                        lodging += cost;
+                        break;
+                    case 2:
+                        typeStr = "Food";
+                        foodCount += 1;
+                        food += cost;
+                        break;
+                    case 3:
+                        typeStr = "Shopping";
+                        shoppingCount += 1;
+                        shopping += cost;
+                        break;
+                    case 4:
+                        typeStr = "Tourism";
+                        tourismCount += 1;
+                        tourism += cost;
+                        break;
+                    case 5:
+                        typeStr = "Transport";
+                        transportCount += 1;
+                        transport += cost;
+                        break;
+                    case 6:
+                        typeStr = "Etc";
+                        etcCount += 1;
+                        etc += cost;
+                        break;
+                }
+
+                Log.d("categoryReport", typeStr);
+
+            }
+
+            cursor.close();
+        }
+
         //lodging 부터 etc 까지 값 받아들이기.
-        /*
-        float lodging;  //a
-        float food;  //b
-        float leisure;  //c
-        float shopping;  //d
-        float transport;  //e
-        float etc;  //f
+        float sum =  lodging+food+tourism+shopping+transport+etc;
 
-        float sum =  a+b+c+d+e+f;
+        float per_lodging =lodging*100 / sum;  // lodging 퍼센트
+        float per_food =food*100 / sum;  // food 퍼센트
+        float per_tourism =tourism*100 / sum;  // leisure 퍼센트
+        float per_shopping =shopping*100 / sum;  // shopping 퍼센트
+        float per_transport =transport*100 / sum;  // transport 퍼센트
+        float per_etc =etc*100 / sum;  // etc 퍼센트
 
-        float per_a =a / sum;  // lodging 퍼센트
-        float per_b =b / sum;  // food 퍼센트
-        float per_c =c / sum;  // leisure 퍼센트
-        float per_d =d / sum;  // shopping 퍼센트
-        float per_e =e / sum;  // transport 퍼센트
-        float per_f =f / sum;  // etc 퍼센트
+        NoOfEmp.add(new Entry(per_lodging, 0));
+        NoOfEmp.add(new Entry(per_food, 1));
+        NoOfEmp.add(new Entry(per_shopping, 2));
+        NoOfEmp.add(new Entry(per_tourism, 3));
+        NoOfEmp.add(new Entry(per_transport, 4));
+        NoOfEmp.add(new Entry(per_etc, 5));
 
-        NoOfEmp.add(new Entry(per_a, 0));
-        NoOfEmp.add(new Entry(per_b, 1));
-        NoOfEmp.add(new Entry(per_c, 2));
-        NoOfEmp.add(new Entry(per_d, 3));
-        NoOfEmp.add(new Entry(per_e, 4));
-        NoOfEmp.add(new Entry(per_f, 5));
-        */
-
-        NoOfEmp.add(new Entry(10, 0));
-        NoOfEmp.add(new Entry(10, 1));
-        NoOfEmp.add(new Entry(15, 2));
-        NoOfEmp.add(new Entry(15, 3));
-        NoOfEmp.add(new Entry(20, 4));
-        NoOfEmp.add(new Entry(30, 5));
 
         PieDataSet dataSet = new PieDataSet(NoOfEmp, " Of Budget");
         ArrayList category = new ArrayList();
 
         category.add("Lodging");
         category.add("Food");
-        category.add("Leisure/Culture");
         category.add("Shopping");
+        category.add("Tourism");
         category.add("Transport");
         category.add("Etc");
 
@@ -113,7 +169,7 @@ public class ReportCategory extends Fragment {
         dataSet.setColors(colors);
         dataSet.setDrawValues(false);
 
-        chartPer.setText("10.0%");
+        chartPer.setText(Math.round(per_lodging*100)/100.0+"%");
         //chartPer.setText(a + "%");
         chartText.setText("Lodging"); //lodging 으로 고정
 
@@ -125,7 +181,7 @@ public class ReportCategory extends Fragment {
             @Override
             public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
 
-                chartPer.setText(String.valueOf(e.getVal())+"%");
+                chartPer.setText(String.valueOf(Math.round(e.getVal()*100)/100.0)+"%");
                 int i = e.getXIndex();
                 switch (i){
                     case 0:
@@ -134,10 +190,10 @@ public class ReportCategory extends Fragment {
                     case 1:
                         chartText.setText("Food");
                         break;
-                    case 2:
-                        chartText.setText("Leisure/Culture");
-                        break;
                     case 3:
+                        chartText.setText("Tourism");
+                        break;
+                    case 2:
                         chartText.setText("Shopping");
                         break;
                     case 4:
@@ -152,7 +208,7 @@ public class ReportCategory extends Fragment {
 
             @Override
             public void onNothingSelected() {
-                chartPer.setText("10.0%");
+                chartPer.setText(lodging+"");
                 chartText.setText("Lodging");
             }
         });
@@ -185,28 +241,77 @@ public class ReportCategory extends Fragment {
         //setMaxAngle(float maxangle)
 
 
-        /*
             // 밑에 텍스트
         money_lodging.setText(lodging + "￦");
         money_food.setText(food + "￦");
-        money_leisure.setText(leisure + "￦");
+        money_leisure.setText(tourism + "￦");
         money_shopping.setText(shopping + "￦");
         money_transport.setText(transport + "￦");
         money_etc.setText(etc + "￦");
 
               //소수점 없애고 싶을 땐 이거
         money_lodging.setText(String.format("%.0f", lodging)+ " ￦");
-        money_food.setText(String.format("%.0f", lodging)+ " ￦");
-        money_leisure.setText(String.format("%.0f", lodging)+ " ￦");
-        money_shopping.setText(String.format("%.0f", lodging)+ " ￦");
-        money_transport.setText(String.format("%.0f", lodging)+ " ￦");
-        money_etc.setText(String.format("%.0f", lodging)+ " ￦");
+        money_food.setText(String.format("%.0f", food)+ " ￦");
+        money_leisure.setText(String.format("%.0f", tourism)+ " ￦");
+        money_shopping.setText(String.format("%.0f", shopping)+ " ￦");
+        money_transport.setText(String.format("%.0f", transport)+ " ￦");
+        money_etc.setText(String.format("%.0f", etc)+ " ￦");
 
-         */
 
         return rootView;
     }
 
+    public void openDatabase(String databaseName){
+        DatabaseHelper helper = new DatabaseHelper(getContext(), databaseName, null, 4);
+        database = helper.getWritableDatabase();
+    }
 
+    class DatabaseHelper extends SQLiteOpenHelper {
 
+        public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+            super(context, name, factory, version);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) {
+            if(db != null){
+                //_id 는 내부적으로 생성되는 아이디!
+                /*String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
+                db.execSQL(sql);
+
+                sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
+                db.execSQL(sql);*/
+
+                //println("테이블 생성됨.");
+            }else{
+                //println("먼저 데이터베이스를 오픈하세요.");
+            }
+
+        }
+
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            //println("onUpgrade 호출됨: "+oldVersion + ", " + newVersion);
+
+            if(newVersion > 1) {
+                db.execSQL("drop table if exists " + "PlanTable");
+                db.execSQL("drop table if exists " + "BudgetTable");
+                //println("테이블 삭제함");
+
+                if (db != null) {
+                    //_id 는 내부적으로 생성되는 아이디!
+                    /*String sql = "create table if not exists " + "PlanTable" + "(_id integer PRIMARY KEY autoincrement, date integer, year integer, month integer, day integer, type integer, place text, hour integer, min integer, memo text, transport integer, total_budget double, x double, y double, position integer)";
+                    db.execSQL(sql);
+
+                    //_id 는 내부적으로 생성되는 아이디!
+                    sql = "create table if not exists " + "BudgetTable" + "(_id integer PRIMARY KEY autoincrement, date integer, type integer, budget double, memo text, plan_position integer, position integer)";
+                    db.execSQL(sql);*/
+
+                    //println("테이블 새로 생성됨.");
+                } else {
+                    //println("먼저 데이터베이스를 오픈하세요.");
+                }
+            }
+        }
+    }
 }
