@@ -250,9 +250,10 @@ public class PlanAllSub extends LinearLayout {
 
                 String ap;
                 String sHour, sMin;
-                if(hour > 12) {
+                if(hour >= 12) {
                     ap = "PM";
-                    hour -= 12;
+                    if(hour >12)
+                        hour -= 12;
                 }
                 else
                     ap = "AM";
@@ -263,7 +264,7 @@ public class PlanAllSub extends LinearLayout {
                     sHour = String.valueOf(hour);
 
                 if(min<10)
-                    sMin = "0"+hour;
+                    sMin = "0"+min;
                 else
                     sMin = String.valueOf(min);
 

@@ -173,7 +173,7 @@ public class WalletInput extends AppCompatActivity {
                 shopping.setBackgroundResource(R.drawable.ic_shopping);
                 tourism.setBackgroundResource(R.drawable.ic_tourism);
                 transport.setBackgroundResource(R.drawable.ic_transport_selected);
-                etc.setBackgroundResource(R.drawable.ic_etc_selected);
+                etc.setBackgroundResource(R.drawable.ic_etc);
             }
         });
 

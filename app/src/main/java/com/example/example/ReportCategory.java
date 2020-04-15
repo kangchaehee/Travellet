@@ -208,7 +208,7 @@ public class ReportCategory extends Fragment {
 
             @Override
             public void onNothingSelected() {
-                chartPer.setText(lodging+"");
+                chartPer.setText(Math.round(per_lodging*100)/100.0+"%");
                 chartText.setText("Lodging");
             }
         });

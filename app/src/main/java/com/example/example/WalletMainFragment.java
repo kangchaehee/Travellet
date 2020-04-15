@@ -342,9 +342,10 @@ public class WalletMainFragment extends Fragment {
 
                 String ap;
                 String sHour, sMin;
-                if(hour > 12) {
+                if(hour >= 12) {
                     ap = "PM";
-                    hour -= 12;
+                    if(hour >12)
+                        hour -= 12;
                 }
                 else
                     ap = "AM";
@@ -355,10 +356,9 @@ public class WalletMainFragment extends Fragment {
                     sHour = String.valueOf(hour);
 
                 if(min<10)
-                    sMin = "0"+hour;
+                    sMin = "0"+min;
                 else
                     sMin = String.valueOf(min);
-
                 String time = ap+ " "+sHour+":"+sMin;
 
                 Log.d("database", "#"+i+"->"+date+", "+year+", "+month+", "+day+", "+type+", "+place+", "+hour+", "+min+", "+memo+", "+total_budget);

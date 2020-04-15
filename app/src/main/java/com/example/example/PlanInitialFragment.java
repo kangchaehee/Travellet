@@ -550,12 +550,15 @@ public class PlanInitialFragment extends Fragment {
         if(requestCode == 101){
             if(intent != null){
                 int hour = intent.getIntExtra("hour", 0);
+                int hourData = intent.getIntExtra("hour", 0);
+                int minData = intent.getIntExtra("min", 0);
                 int min = intent.getIntExtra("min", 0);
                 String ap;
                 String sHour, sMin;
-                if(hour > 12) {
+                if(hour >= 12) {
                     ap = "PM";
-                    hour -= 12;
+                    if(hour >12)
+                        hour -= 12;
                 }
                 else
                     ap = "AM";
@@ -566,10 +569,9 @@ public class PlanInitialFragment extends Fragment {
                     sHour = String.valueOf(hour);
 
                 if(min<10)
-                    sMin = "0"+hour;
+                    sMin = "0"+min;
                 else
                     sMin = String.valueOf(min);
-
                 time = ap+ " "+sHour+":"+sMin;
                 name = intent.getStringExtra("title");
                 memo = intent.getStringExtra("memo");
@@ -602,10 +604,10 @@ public class PlanInitialFragment extends Fragment {
 
                 if(database != null){
                     String sql = "insert into PlanTable(date, year, month, day, type, place, hour, min, memo, transport, total_budget, x, y, position, main_position) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                    Object[] params = {dayNum, startYear, startMonth, startDay, type, name, hour, min, memo, 1, 0.0, x, y, position, mainPosition};
+                    Object[] params = {dayNum, startYear, startMonth, startDay, type, name, hourData, minData, memo, 1, 0.0, x, y, position, mainPosition};
                     database.execSQL(sql, params);
                     sql = "insert into WalletTable(date, year, month, day, type, place, hour, min, memo, total_budget, total_cost, position, main_position) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                    Object[] params3 = {dayNum, startYear, startMonth, startDay, type, name, hour, min, memo, 0.0, 0.0, position, mainPosition};
+                    Object[] params3 = {dayNum, startYear, startMonth, startDay, type, name, hourData, minData, memo, 0.0, 0.0, position, mainPosition};
                     database.execSQL(sql, params3);
                     sql = "insert into BudgetTable(plan_position, date, type, budget, position, main_position) values(?, ?, ?, ?, ?, ?)";
                     Object[] params1 = {position, dayNum, type, 0.0, 0, mainPosition};
@@ -625,11 +627,14 @@ public class PlanInitialFragment extends Fragment {
                 int position = intent.getIntExtra("position", 0);
                 int hour = intent.getIntExtra("hour", 0);
                 int min = intent.getIntExtra("min", 0);
+                int hourData = intent.getIntExtra("hour", 0);
+                int minData = intent.getIntExtra("min", 0);
                 String ap;
                 String sHour, sMin;
-                if(hour > 12) {
+                if(hour >= 12) {
                     ap = "PM";
-                    hour -= 12;
+                    if(hour >12)
+                         hour -= 12;
                 }
                 else
                     ap = "AM";
@@ -640,7 +645,7 @@ public class PlanInitialFragment extends Fragment {
                     sHour = String.valueOf(hour);
 
                 if(min<10)
-                    sMin = "0"+hour;
+                    sMin = "0"+min;
                 else
                     sMin = String.valueOf(min);
 
@@ -697,10 +702,10 @@ public class PlanInitialFragment extends Fragment {
 
                 if(database != null){
                     String sql = "update PlanTable set type = ?, place = ?, hour = ?, min = ?, memo = ?, x = ?, y = ? where date = "+dayNum+" and position = "+position+" and main_position = "+mainPosition;
-                    Object[] params = {type, name, hour, min, memo, x, y};
+                    Object[] params = {type, name, hourData, minData, memo, x, y};
                     database.execSQL(sql, params);
                     sql = "update WalletTable set type = ?, place = ?, hour = ?, min =?, memo = ? where date = "+dayNum+" and position = "+position+" and main_position = "+mainPosition;
-                    Object[] params2 = {type, name, hour, min, memo};
+                    Object[] params2 = {type, name, hourData, minData, memo};
                     database.execSQL(sql, params2);
                     sql = "update  BudgetTable set type = ? where date = "+dayNum+" and plan_position = "+position+" and position = "+0+" and main_position = "+mainPosition;
                     Object[] params1 = {type};
@@ -1071,9 +1076,10 @@ public class PlanInitialFragment extends Fragment {
 
                 String ap;
                 String sHour, sMin;
-                if(hour > 12) {
+                if(hour >= 12) {
                     ap = "PM";
-                    hour -= 12;
+                    if(hour >12)
+                        hour -= 12;
                 }
                 else
                     ap = "AM";
@@ -1084,10 +1090,9 @@ public class PlanInitialFragment extends Fragment {
                     sHour = String.valueOf(hour);
 
                 if(min<10)
-                    sMin = "0"+hour;
+                    sMin = "0"+min;
                 else
                     sMin = String.valueOf(min);
-
                 time = ap+ " "+sHour+":"+sMin;
 
                 Log.d("database", "#"+i+"->"+date+", "+year+", "+month+", "+day+", "+type+", "+place+", "+hour+", "+min+", "+memo+", "+transport+", "+total_budget);

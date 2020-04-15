@@ -17,6 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,7 @@ public class WalletCost extends AppCompatActivity {
     ImageButton back;
     Button add;
     String place;
+    TextView title;
 
     int walletPosition;
 
@@ -41,11 +43,15 @@ public class WalletCost extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_wallet_cost);
 
+        title = findViewById(R.id.textView);
+
         Intent intent = getIntent();
         mainPosition = intent.getIntExtra("mainPosition", 0);
         walletPosition = intent.getIntExtra("wallet_position", 0);
         date = intent.getIntExtra("date", 0);
         place = intent.getStringExtra("place");
+
+        title.setText(place);
 
         openDatabase("database");
 
@@ -135,10 +141,10 @@ public class WalletCost extends AppCompatActivity {
                 view.setType("Etc");
             }
 
-            if(item.getPayment()==1){
+            if(item.getPayment()==2){
                 view.setPayment(R.drawable.ic_card_24px);
             }
-            else if(item.getPayment()==2){
+            else if(item.getPayment()==1){
                 view.setPayment(R.drawable.ic_cash_24px);
             }
             view.setBudget(item.getBudget());
