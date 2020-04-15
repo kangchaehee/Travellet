@@ -77,6 +77,7 @@ public class ReportDaily extends Fragment {
         View view = inflater.inflate(R.layout.activity_report_daily, null);
         initView(view);
         initChart();
+
         Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.roboto_regular);
 
         if(getArguments() != null){
@@ -139,11 +140,11 @@ public class ReportDaily extends Fragment {
         int colors [] = {getResources().getColor(R.color.category3), getResources().getColor(R.color.category5)};
         set.setColors(colors); //color
         set.setBarSpacePercent(50f); // 바 사이 간격
-        set.setDrawValues(true); // 바 수치
-        set.isStacked(); //
-        set.isDrawValuesEnabled();
-        set.setValueTextSize(9f);
-        set.setValueTextColor(Color.parseColor("#c8cbd3"));
+        set.setDrawValues(false); // 바 수치
+        //set.isStacked(); //
+        //set.isDrawValuesEnabled();
+        //set.setValueTextSize(9f);
+        //set.setValueTextColor(Color.parseColor("#c8cbd3"));
 
 
         chart.getXAxis().setAxisMaxValue(5f);
@@ -170,6 +171,8 @@ public class ReportDaily extends Fragment {
         chart.setDescription(" ");
         chart.setData(data);
         chart.setHorizontalScrollBarEnabled(true);
+
+        chart.isClickable();
         //chart.setViewPortOffsets(0f, 0f, 0f, 0f); // day 랑 그래프 띄어져 있는 공간 넓이
 
         float barWidth = 0.3f; //0.3
