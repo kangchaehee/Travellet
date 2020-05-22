@@ -32,7 +32,7 @@ import androidx.fragment.app.FragmentManager;
 
 import static java.sql.DriverManager.println;
 
-public class Navigation extends AppCompatActivity implements FragmentCallBack{
+public class Navigation extends AppCompatActivity{
     ImageButton planButton, walletButton, reportButton, profileButton;
     RelativeLayout bottomBar;
     FrameLayout container;

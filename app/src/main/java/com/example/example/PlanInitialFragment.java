@@ -62,7 +62,6 @@ public class PlanInitialFragment extends Fragment {
     int type, dayNum;
     double x, y;
     TextView transBudget;
-    FragmentCallBack callback;
 
     String[] timeList, titleList, memoList;
     double[] budgetList;
@@ -82,25 +81,6 @@ public class PlanInitialFragment extends Fragment {
     SQLiteDatabase database;
 
 
-    @Override
-    public void onPause() {
-        super.onPause();
-
-        timeList = new String[adapter.getCount()];
-        titleList = new String[adapter.getCount()];
-        memoList = new String[adapter.getCount()];
-        budgetList = new double[adapter.getCount()];
-        for(int i=0; i<adapter.getCount(); i++){
-            timeList[i] = items.get(i).getPlaceTime();
-            titleList[i] = items.get(i).getPlaceName();
-            memoList[i] = items.get(i).getPlaceMemo();
-            budgetList[i] = items.get(i).getTransBudget();
-        }
-
-        if(callback != null){
-            callback.getPlanInfo(adapter.getCount(), timeList, titleList, memoList, budgetList);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -203,6 +183,7 @@ public class PlanInitialFragment extends Fragment {
             public void onClick(View v) {
                 for(int i=1; i<=periodInt; i++){
                     getTransport(i);
+                    Log.d("getTransport : ", "success");
                 }
                 Intent intent = new Intent(getContext(), TravelEstimatedBudget.class);
                 budgetRemainder = budgetTotal;
@@ -223,7 +204,9 @@ public class PlanInitialFragment extends Fragment {
             public void onClick(View v) {
                 for(int i=1; i<=periodInt; i++){
                     getTransport(i);
+                    Log.d("getTransport : ", "success");
                 }
+                Log.d("getTransport : ", "get");
                 Intent intent = new Intent(getContext(), TravelEstimatedBudget.class);
                 budgetRemainder = budgetTotal;
                 intent.putExtra("total", budgetRemainder);

@@ -19,7 +19,6 @@
         <activity android:name=".Report" />
         <activity android:name=".ReportCategory" />
         <activity android:name=".WalletListSubItem" />
-        <activity android:name=".ReportMain" />
         <activity android:name=".Navigation" />
         <activity android:name=".WithFriendsActivity" />
         <activity android:name=".TravelAddActivity" />
@@ -34,7 +33,6 @@
         <activity android:name=".PlanInitialSubItem" />
         <activity android:name=".PlanInputActivity" />
         <activity android:name=".SelectPlaceActivity" />
-        <activity android:name=".TravelBudgetShow" />
         <activity android:name=".BudgetInput" />
         <activity android:name=".PlanBudget" />
         <activity android:name=".TravelTitleSet" />
@@ -43,11 +41,6 @@
         <activity android:name=".WalletMain" />
         <activity android:name=".ProfileModify" />
         <activity android:name=".TravelEstimatedBudget" />
-        <activity android:name=".TravelCalendar" />
-        <activity android:name=".TravelCalendar2" />
-        <activity android:name=".TravelPreferenceSet" />
-        <activity android:name=".TravelLodgingSet" />
-        <activity android:name=".MainEmpty" />
         <activity android:name=".SignIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,8 +51,6 @@
         <activity android:name=".SplashActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".Profile" />
-        <activity android:name=".PlanSearch" />
-        <activity android:name=".BudgetShow" />
         <activity android:name=".BudgetSet" />
         <activity android:name=".MainActivity" />
         <activity android:name=".AirCalendarDatePickerActivity" />

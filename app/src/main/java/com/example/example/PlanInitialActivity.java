@@ -63,7 +63,6 @@ public class PlanInitialActivity extends Fragment {
     LinearLayout planner;
     FrameLayout con;
 
-    FragmentCallBack callback;
 
     int startYear, startMonth, startDay, startDoW, endYear, endMonth, endDay, endDoW, period;
     double budgetTotal;
@@ -72,22 +71,7 @@ public class PlanInitialActivity extends Fragment {
 
     SQLiteDatabase database;
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if(context instanceof FragmentCallBack){
-            callback = (FragmentCallBack) context;
-        }
-    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        if(callback != null){
-            callback = null;
-        }
-
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Nullable
@@ -121,6 +105,7 @@ public class PlanInitialActivity extends Fragment {
         dayItems.add(dayItem);
         addDay(startYear, startMonth, startDay, endYear, endMonth, endDay);
         dayItems.get(1).selectItem();
+        int size = dayItems.size();
 
         con = (FrameLayout) rootView.findViewById(R.id.con);
         Fragment fragment;
@@ -134,6 +119,7 @@ public class PlanInitialActivity extends Fragment {
         bundle.putInt("endMonth", endMonth);
         bundle.putInt("endDay", endDay);
         bundle.putDouble("total", budgetTotal);
+        bundle.putInt("period", size-1);
         bundle.putInt("mainPosition", mainPosition);
         fragment.setArguments(bundle);
         FragmentManager manager = getChildFragmentManager();
@@ -147,7 +133,8 @@ public class PlanInitialActivity extends Fragment {
 
 
         day_sub all = dayItems.get(0);
-        int size = dayItems.size();
+
+        Log.d("period size:", String.valueOf(size));
 
         all.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -212,7 +199,7 @@ public class PlanInitialActivity extends Fragment {
                     Log.d("startMonth: ", String.valueOf(startMonth));
                     bundle.putInt("startDay", startDay);
                     bundle.putDouble("total", budgetTotal);
-                    bundle.putInt("period", size-1);
+                    bundle.putInt("period", dayItems.size()-1);
                     bundle.putInt("mainPosition", mainPosition);
                     fragment.setArguments(bundle);
                     FragmentManager manager = getChildFragmentManager();
