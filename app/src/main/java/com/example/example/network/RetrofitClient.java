@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 // 네트워크 관련 서비스 객체 생성
 public class RetrofitClient {
-    private final static String BASE_URL = "http://:3000";
+    private final static String BASE_URL = "http://ec2-52-78-195-255.ap-northeast-2.compute.amazonaws.com:3000";
     private static Retrofit retrofit = null;
 
     private RetrofitClient() {
