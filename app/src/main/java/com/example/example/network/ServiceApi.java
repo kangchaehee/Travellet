@@ -1,13 +1,12 @@
 package com.example.example.network;
 
-import com.example.example.data.SignUpData;
-import com.example.example.data.SignUpResponse;
-import com.example.example.data.SignInData;
-import com.example.example.data.SignInResponse;
-import com.example.example.data.ProfileReadData;
-import com.example.example.data.ProfileReadResponse;
-import com.example.example.data.ProfileUpdateData;
-import com.example.example.data.ProfileUpdateResponse;
+import com.example.example.data.user.SignUpData;
+import com.example.example.data.user.SignUpResponse;
+import com.example.example.data.user.SignInData;
+import com.example.example.data.user.SignInResponse;
+import com.example.example.data.user.ProfileReadResponse;
+import com.example.example.data.user.ProfileUpdateData;
+import com.example.example.data.user.ProfileUpdateResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

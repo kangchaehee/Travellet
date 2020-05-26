@@ -24,8 +24,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.example.R;
-import com.example.example.data.SignUpData;
-import com.example.example.data.SignUpResponse;
+import com.example.example.data.user.SignUpData;
+import com.example.example.data.user.SignUpResponse;
 import com.example.example.network.RetrofitClient;
 
 import java.io.FileNotFoundException;

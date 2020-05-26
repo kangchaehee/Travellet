@@ -28,12 +28,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.example.R;
-import com.example.example.data.ProfileUpdateData;
-import com.example.example.data.ProfileUpdateResponse;
+import com.example.example.data.user.ProfileUpdateData;
+import com.example.example.data.user.ProfileUpdateResponse;
 import com.example.example.network.AppHelper;
 import com.example.example.network.InfoID;
 import com.example.example.network.RetrofitClient;
-import com.example.example.network.ServiceApi;
 import com.example.example.volley.ResponseInfo;
 import com.google.gson.Gson;
 

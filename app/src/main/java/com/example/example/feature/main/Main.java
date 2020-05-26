@@ -16,8 +16,7 @@ import android.widget.TextView;
 
 import com.example.example.R;
 import com.example.example.feature.main.set.TravelTitleSet;
-import com.example.example.data.ProfileReadData;
-import com.example.example.data.ProfileReadResponse;
+import com.example.example.data.user.ProfileReadResponse;
 import com.example.example.network.InfoID;
 import com.example.example.network.RetrofitClient;
 import com.example.example.network.ServiceApi;

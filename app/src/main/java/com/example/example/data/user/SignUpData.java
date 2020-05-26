@@ -1,4 +1,4 @@
-package com.example.example.data;
+package com.example.example.data.user;
 
 import com.google.gson.annotations.SerializedName;
 
