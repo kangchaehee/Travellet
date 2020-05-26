@@ -16,6 +16,7 @@ public class SplashActivity extends AppCompatActivity {
         startSplash();
     }
 
+    //splash 구현
     private void startSplash() {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

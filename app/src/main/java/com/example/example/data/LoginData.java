@@ -1,11 +1,10 @@
-package com.example.example.data.user;
+package com.example.example.data;
 
 import com.google.gson.annotations.SerializedName;
 
 public class LoginData {
     @SerializedName("userEmail")
     String userEmail;
-
     @SerializedName("userPwd")
     String userPwd;
 

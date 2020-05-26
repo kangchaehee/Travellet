@@ -171,20 +171,6 @@ public class PlanTransportDialog extends Dialog {
 
     }
 
-    /*@Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        WindowManager.LayoutParams lpWindow = new WindowManager.LayoutParams();
-        lpWindow.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        lpWindow.dimAmount = 0.5f;
-        getWindow().setAttributes(lpWindow);
-        setContentView(R.layout.transport_dialog);
-
-        m_tDialog = this;
-
-
-    }*/
-
     public void onClickOk(View view){
 
         this.dismiss();

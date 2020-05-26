@@ -28,8 +28,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.example.R;
-import com.example.example.data.user.ProfileUpdateData;
-import com.example.example.data.user.ProfileUpdateResponse;
+import com.example.example.data.ProfileUpdateData;
+import com.example.example.data.ProfileUpdateResponse;
 import com.example.example.network.AppHelper;
 import com.example.example.network.InfoID;
 import com.example.example.network.RetrofitClient;
@@ -374,19 +374,5 @@ public class ProfileModify extends AppCompatActivity {
             // Do nothing
         }
     }
-
-    //age
-    //public class MyOnItemSelectedListener2 implements AdapterView.OnItemSelectedListener {
-    //    @Override
-    //    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            //Toast.makeText(parent.getContext(),
-            //        "Your country is "+parent.getItemAtPosition(position),
-            //        Toast.LENGTH_SHORT).show();
-    //    }
-    //    @Override
-    //    public void onNothingSelected(AdapterView<?> arg0) {
-            // Do nothing
-    //    }
-    //}
 
 }

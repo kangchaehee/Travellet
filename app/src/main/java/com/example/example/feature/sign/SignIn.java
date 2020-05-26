@@ -24,8 +24,8 @@ import com.android.volley.toolbox.Volley;
 import com.example.example.feature.main.Main;
 import com.example.example.R;
 import com.example.example.feature.SplashActivity;
-import com.example.example.data.user.LoginData;
-import com.example.example.data.user.LoginResponse;
+import com.example.example.data.LoginData;
+import com.example.example.data.LoginResponse;
 import com.example.example.network.AppHelper;
 import com.example.example.network.InfoID;
 import com.example.example.network.RetrofitClient;
@@ -56,8 +56,6 @@ public class SignIn extends AppCompatActivity {
     String email, password;
 
     String exchangeCountry;
-
-    View underbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -318,10 +316,6 @@ public class SignIn extends AppCompatActivity {
             }
         });
     }
-//    private void showProgress(boolean show) {
-//        ProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-//    }
-
 
     // $회원가입 버튼 이벤트 - 회원 가입 창으로 이동
     public void onButtonClick(View view2){

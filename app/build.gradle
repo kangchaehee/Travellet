@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 
-//
+
 android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
@@ -27,7 +27,6 @@ android {
             maven {
                 url 'https://jitpack.io'
             }
-
         }
     }
     compileOptions {
@@ -48,33 +47,43 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.android.support:design:28.0.0'
-    implementation 'org.jsoup:jsoup:1.12.2'
+
     implementation 'com.google.code.findbugs:jsr305:2.0.1'
-    implementation 'de.hdodenhof:circleimageview:3.0.1'
     implementation 'androidx.room:room-runtime:2.1.0-alpha06'
     implementation 'com.google.android.material:material:1.1.0-alpha05'
-
     implementation 'joda-time:joda-time:2.10.1'
+    implementation 'com.android.support:appcompat-v7:28.2.0'
 
-    implementation 'com.android.volley:volley:1.1.1'
+    //util
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
+    //image load
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
-    implementation 'com.android.support:appcompat-v7:28.2.0'
-    implementation 'com.github.applikeysolutions:cosmocalendar:1.0.4'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation project(path: ':SDK_release_v2.0.0')
-    implementation project(path: ':AirCalendar')
 
+    //transport
+    implementation project(path: ':SDK_release_v2.0.0')
+
+    //calendar
+    implementation project(path: ':AirCalendar')
+    implementation 'com.github.applikeysolutions:cosmocalendar:1.0.4'
+
+    //chart
     implementation 'com.nineoldandroids:library:2.4.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v2.2.5'
     implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
 
+    //google map
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
 
+    //network
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
-    implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
     implementation 'com.android.volley:volley:1.1.1'
 
+    //parser
+    implementation 'org.jsoup:jsoup:1.12.2'
+    implementation 'com.google.code.gson:gson:2.8.6'
 }

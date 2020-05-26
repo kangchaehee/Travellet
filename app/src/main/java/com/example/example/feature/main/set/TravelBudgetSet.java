@@ -99,15 +99,6 @@ public class TravelBudgetSet extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /*
-    //Travel Lodging set
-    public void onClick(View view){
-
-        Intent intent = new Intent(BudgetSet.this, TravelLodgingSet.class);
-        startActivity(intent);
-        overridePendingTransition(0, 0);
-    }
-    */
 
     @Override
     public void onBackPressed() {

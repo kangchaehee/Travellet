@@ -1,17 +1,14 @@
-package com.example.example.data.user;
+package com.example.example.data;
 
 import com.google.gson.annotations.SerializedName;
 
 public class ProfileUpdateData {
     @SerializedName("userId")
     int userId;
-
     @SerializedName("userName")
     private String userName;
-
     @SerializedName("userAge")
     private int userAge;
-
     @SerializedName("userCountry")
     private String userCountry;
 

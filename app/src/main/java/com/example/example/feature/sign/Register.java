@@ -24,8 +24,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.example.R;
-import com.example.example.data.user.JoinData;
-import com.example.example.data.user.JoinResponse;
+import com.example.example.data.JoinData;
+import com.example.example.data.JoinResponse;
 import com.example.example.network.RetrofitClient;
 import com.example.example.network.ServiceApi;
 
@@ -290,51 +290,5 @@ public class Register extends AppCompatActivity {
         Intent intent = new Intent(this, SignIn.class);
         startActivity(intent);
     }
-
-    //    // $아마 스피너 관련
-//    public class MyOnItemSelectedListener implements OnItemSelectedListener{
-//        @Override
-//        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//
-//            ((TextView)view).setTextColor(getResources().getColor(R.color.soft_black));
-//
-//            ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.soft_grey));
-//            ((TextView) parent.getChildAt(0)).setTextSize(14);
-//
-//            country = parent.getItemAtPosition(position).toString();
-//            age =  Integer.parseInt(parent.getItemAtPosition(position).toString());
-//            //((TextView) parent.getChildAt(0)).setFontFeatureSettings(getResources().getFont(R.font.roboto_regular));
-//
-//            //Toast.makeText(parent.getContext(),
-//            //        "Your country is "+parent.getItemAtPosition(position),
-//            //        Toast.LENGTH_SHORT).show();
-//        }
-//        @Override
-//        public void onNothingSelected(AdapterView<?> arg0) {
-//            // Do nothing
-//        }
-//    }
-
-    /*
-    public class MyOnItemSelectedListener2 implements OnItemSelectedListener{
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            ((TextView)view).setTextColor(getResources().getColor(R.color.soft_grey));
-
-            ((TextView) parent.getChildAt(0)).setTextColor(getResources().getColor(R.color.soft_grey));
-            ((TextView) parent.getChildAt(0)).setTextSize(14);
-            //((TextView) parent.getChildAt(0)).setFontFeatureSettings(getResources().getFont(R.font.roboto_regular));
-
-            //Toast.makeText(parent.getContext(),
-            //        "Your country is "+parent.getItemAtPosition(position),
-            //        Toast.LENGTH_SHORT).show();
-        }
-        @Override
-        public void onNothingSelected(AdapterView<?> arg0) {
-            // Do nothing
-        }
-    }
-    */
 
 }

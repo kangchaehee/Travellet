@@ -173,6 +173,7 @@ package com.example.example.volley;
             "ZWL": 322.000001
             }*/
 
+    //환율 관련
 public class RateResult {
     public float AED;
     public float AFN;

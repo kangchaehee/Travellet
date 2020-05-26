@@ -13,6 +13,7 @@ package com.example.example.volley;
 }
  */
 
+    //환율 관련
 public class ResponseInfo {
     public String disclaimer;
     public String license;

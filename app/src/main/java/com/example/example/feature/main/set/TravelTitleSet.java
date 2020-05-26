@@ -52,22 +52,6 @@ public class TravelTitleSet extends AppCompatActivity {
 
     }
 
-    /*
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-
-        if(requestCode == 50){
-            String title = Edittext_title.getText().toString();
-            if(title != null){
-                //title2 = intent.getStringExtra("Edittext_title");
-                Edittext_title.setTextColor(getColor(R.color.soft_black));
-                Edittext_title.setText(title);
-            }
-        }
-    }
-    */
-
     //Main Empty
     public void onButtonClick(View view1){
         Intent intent = new Intent(TravelTitleSet.this, Main.class);
@@ -75,13 +59,4 @@ public class TravelTitleSet extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /*
-    //travelcalendar
-    public void onClick(View view){
-
-        Intent intent = new Intent(TravelTitleSet.this, TravelCalendar.class);
-        startActivity(intent);
-        overridePendingTransition(0, 0);
-    }
-    */
 }
