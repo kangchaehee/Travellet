@@ -20,8 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.example.R;
-import com.example.example.data.ProfileData;
-import com.example.example.data.ProfileResponse;
+import com.example.example.data.user.ProfileData;
+import com.example.example.data.user.ProfileResponse;
 import com.example.example.network.InfoID;
 import com.example.example.network.RetrofitClient;
 import com.example.example.network.ServiceApi;

@@ -24,8 +24,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.example.R;
-import com.example.example.data.JoinData;
-import com.example.example.data.JoinResponse;
+import com.example.example.data.user.JoinData;
+import com.example.example.data.user.JoinResponse;
 import com.example.example.network.RetrofitClient;
 import com.example.example.network.ServiceApi;
 

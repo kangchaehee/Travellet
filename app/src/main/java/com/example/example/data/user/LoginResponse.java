@@ -1,16 +1,17 @@
-package com.example.example.data;
+package com.example.example.data.user;
+
 
 import com.google.gson.annotations.SerializedName;
 
-public class ProfileResponse {
+public class LoginResponse {
     @SerializedName("code")
     private int code;
 
-    @SerializedName("userName")
-    private String userName;
+    @SerializedName("message")
+    private String message;
 
-    @SerializedName("userAge")
-    private int userAge;
+    @SerializedName("userId")
+    private int userId;
 
     @SerializedName("userCountry")
     private String userCountry;
@@ -19,15 +20,16 @@ public class ProfileResponse {
         return code;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getMessage() {
+        return message;
     }
 
-    public int getUserAge() {
-        return userAge;
+    public int getUserId() {
+        return userId;
     }
 
     public String getUserCountry() {
         return userCountry;
     }
+
 }
