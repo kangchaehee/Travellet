@@ -138,18 +138,19 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="left"
+                                android:id="@+id/chartMon"
                                 android:textSize="16sp"
                                 android:fontFamily="@font/roboto_regular"
                                 android:textStyle="normal"
                                 android:textColor="@color/soft_black"
                                 android:letterSpacing="0.03"
                                 android:lineSpacingExtra="12sp"
-                                android:text="112,000 ￦"
                                 android:layout_weight="1"/>
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:id="@+id/chartDay"
                                 android:gravity="right"
                                 android:textSize="16sp"
                                 android:fontFamily="@font/roboto_regular"
@@ -157,153 +158,9 @@
                                 android:textColor="@color/soft_black"
                                 android:letterSpacing="0.03"
                                 android:lineSpacingExtra="12sp"
-                                android:text="Day 1"
                                 android:layout_weight="1"
                                 android:layout_gravity="right"/>
                         </LinearLayout>
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bar"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="20dp"
-                            />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="left"
-                                android:textSize="16sp"
-                                android:fontFamily="@font/roboto_regular"
-                                android:textStyle="normal"
-                                android:textColor="@color/soft_black"
-                                android:letterSpacing="0.03"
-                                android:lineSpacingExtra="12sp"
-                                android:text="52,000 ￦"
-                                android:layout_weight="1"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:textSize="16sp"
-                                android:fontFamily="@font/roboto_regular"
-                                android:textStyle="normal"
-                                android:textColor="@color/soft_black"
-                                android:letterSpacing="0.03"
-                                android:lineSpacingExtra="12sp"
-                                android:text="Day 2"
-                                android:layout_weight="1"
-                                android:layout_gravity="right"/>
-                        </LinearLayout>
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bar"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="20dp"
-                            />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="left"
-                                android:textSize="16sp"
-                                android:fontFamily="@font/roboto_regular"
-                                android:textStyle="normal"
-                                android:textColor="@color/soft_black"
-                                android:letterSpacing="0.03"
-                                android:lineSpacingExtra="12sp"
-                                android:text="18,000 ￦"
-                                android:layout_weight="1"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:textSize="16sp"
-                                android:fontFamily="@font/roboto_regular"
-                                android:textStyle="normal"
-                                android:textColor="@color/soft_black"
-                                android:letterSpacing="0.03"
-                                android:lineSpacingExtra="12sp"
-                                android:text="Day 3"
-                                android:layout_weight="1"
-                                android:layout_gravity="right"/>
-                        </LinearLayout>
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bar"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="20dp"
-                            />
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginRight="16dp"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="left"
-                                android:textSize="16sp"
-                                android:fontFamily="@font/roboto_regular"
-                                android:textStyle="normal"
-                                android:textColor="@color/soft_black"
-                                android:letterSpacing="0.03"
-                                android:lineSpacingExtra="12sp"
-                                android:text="24,000 ￦"
-                                android:layout_weight="1"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="right"
-                                android:textSize="16sp"
-                                android:fontFamily="@font/roboto_regular"
-                                android:textStyle="normal"
-                                android:textColor="@color/soft_black"
-                                android:letterSpacing="0.03"
-                                android:lineSpacingExtra="12sp"
-                                android:text="Day 4"
-                                android:layout_weight="1"
-                                android:layout_gravity="right"/>
-                        </LinearLayout>
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bar"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="20dp"
-                            />
-
-
                     </LinearLayout>
 
 
