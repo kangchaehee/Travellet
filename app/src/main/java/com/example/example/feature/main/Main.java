@@ -16,8 +16,8 @@ import android.widget.TextView;
 
 import com.example.example.R;
 import com.example.example.feature.main.set.TravelTitleSet;
-import com.example.example.data.ProfileData;
-import com.example.example.data.ProfileResponse;
+import com.example.example.data.ProfileReadData;
+import com.example.example.data.ProfileReadResponse;
 import com.example.example.network.InfoID;
 import com.example.example.network.RetrofitClient;
 import com.example.example.network.ServiceApi;
@@ -55,7 +55,7 @@ public class Main extends AppCompatActivity {
 
         service = RetrofitClient.getClient().create(ServiceApi.class);
 
-        setName(new ProfileData(InfoID.userId));
+        setName(InfoID.userId);
 
         fragment1 = new MainUpcomingFragment();
         fragment2 = new MainPastFragment();
@@ -155,11 +155,11 @@ public class Main extends AppCompatActivity {
     }
 
     // 메인 이름 설정 통신 메소드
-    private void setName(ProfileData data) {
-        service.userProfile(data).enqueue(new Callback<ProfileResponse>() {
+    private void setName(int userId) {
+        service.userProfileRead(userId).enqueue(new Callback<ProfileReadResponse>() {
             @Override
-            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
-                ProfileResponse result = response.body();
+            public void onResponse(Call<ProfileReadResponse> call, Response<ProfileReadResponse> response) {
+                ProfileReadResponse result = response.body();
                 if (result.getCode() == 200) {
                     name.setText(result.getUserName());
                     Log.d("MainTitle", name.getText().toString());
@@ -167,7 +167,7 @@ public class Main extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+            public void onFailure(Call<ProfileReadResponse> call, Throwable t) {
                 Log.e("메인 이름 설정 에러 발생", t.getMessage());
             }
         });

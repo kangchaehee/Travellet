@@ -20,11 +20,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.example.R;
-import com.example.example.data.ProfileData;
-import com.example.example.data.ProfileResponse;
+import com.example.example.data.ProfileReadData;
+import com.example.example.data.ProfileReadResponse;
 import com.example.example.network.InfoID;
 import com.example.example.network.RetrofitClient;
-import com.example.example.network.ServiceApi;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,7 +31,7 @@ import retrofit2.Response;
 
 public class Profile extends Fragment {
 
-    private ServiceApi service;
+//    private ServiceApi service;
 
     Button editButton;
     TextView name, age, country, titleName;
@@ -54,7 +53,7 @@ public class Profile extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // $네트워크를 위한 serviceApi 객체 생성 -
-        service = RetrofitClient.getClient().create(ServiceApi.class);
+//        service = RetrofitClient.getClient().create(ServiceApi.class);
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.activity_profile, container, false);
         editButton = (Button)rootView.findViewById(R.id.btn_edit);
@@ -66,7 +65,7 @@ public class Profile extends Fragment {
         titleName = rootView.findViewById(R.id.textView2);
 
         // $프로필 정보 DB 에서 불러오기
-        setProfile(new ProfileData(InfoID.userId));
+        setProfile(InfoID.userId);
 
         /*BitmapDrawable drawable = (BitmapDrawable) image.getDrawable();
         if(drawable == null){
@@ -130,11 +129,11 @@ public class Profile extends Fragment {
     }
 
     // $프로필 설정 통신 메소드
-    private void setProfile(ProfileData data) {
-        service.userProfile(data).enqueue(new Callback<ProfileResponse>() {
+    private void setProfile(int userId) {
+        RetrofitClient.service.userProfileRead(userId).enqueue(new Callback<ProfileReadResponse>() {
             @Override
-            public void onResponse(Call<ProfileResponse> call, Response<ProfileResponse> response) {
-                ProfileResponse result = response.body();
+            public void onResponse(Call<ProfileReadResponse> call, Response<ProfileReadResponse> response) {
+                ProfileReadResponse result = response.body();
                 if(result.getCode() == 200){
                     name.setText(result.getUserName());
                     age.setText(String.valueOf(result.getUserAge()));
@@ -143,7 +142,7 @@ public class Profile extends Fragment {
                 }
             }
             @Override
-            public void onFailure(Call<ProfileResponse> call, Throwable t) {
+            public void onFailure(Call<ProfileReadResponse> call, Throwable t) {
                 Log.e("프로필 설정 에러 발생", t.getMessage());
             }
         });

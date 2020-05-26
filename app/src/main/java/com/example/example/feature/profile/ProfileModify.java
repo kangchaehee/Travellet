@@ -47,7 +47,7 @@ import retrofit2.Response;
 
 public class ProfileModify extends AppCompatActivity {
 
-    private ServiceApi service;
+//    private ServiceApi service;
 
     Spinner spinner;
     Spinner spinner2;
@@ -88,7 +88,7 @@ public class ProfileModify extends AppCompatActivity {
         }*/
 
         // $네트워크를 위한 serviceApi 객체 생성
-        service = RetrofitClient.getClient().create(ServiceApi.class);
+//        service = RetrofitClient.getClient().create(ServiceApi.class);
 
         Edittext_name = findViewById(R.id.Edittext_name);
         spinner = findViewById(R.id.country);
@@ -192,7 +192,7 @@ public class ProfileModify extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 프로필 수정 DB에 업데이트
-                updateProfile(new ProfileUpdateData(InfoID.userId, Edittext_name.getText().toString(), age, country));
+                updateProfile(InfoID.userId, new ProfileUpdateData(Edittext_name.getText().toString(), age, country));
             }
         });
 
@@ -295,8 +295,8 @@ public class ProfileModify extends AppCompatActivity {
     }
 
     // $프로필 수정 통신 메소드
-    private void updateProfile(ProfileUpdateData data) {
-        service.userProfileUpdate(data).enqueue(new Callback<ProfileUpdateResponse>() {
+    private void updateProfile(int userId, ProfileUpdateData data) {
+        RetrofitClient.service.userProfileUpdate(userId, data).enqueue(new Callback<ProfileUpdateResponse>() {
             @Override
             public void onResponse(Call<ProfileUpdateResponse> call, Response<ProfileUpdateResponse> response) {
                 ProfileUpdateResponse result = response.body();

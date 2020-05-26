@@ -24,10 +24,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.example.R;
-import com.example.example.data.JoinData;
-import com.example.example.data.JoinResponse;
+import com.example.example.data.SignUpData;
+import com.example.example.data.SignUpResponse;
 import com.example.example.network.RetrofitClient;
-import com.example.example.network.ServiceApi;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -60,7 +59,7 @@ public class Register extends AppCompatActivity {
     int age;
 
     // serviceApi 객체 변수 선언
-    private ServiceApi service;
+//    private ServiceApi service;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +67,7 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // $네트워크를 위한 serviceApi 객체 생성
-        service = RetrofitClient.getClient().create(ServiceApi.class);
+//        service = RetrofitClient.getClient().create(ServiceApi.class);
 
         // $로딩을 위한 진행바
         ProgressView = (ProgressBar) findViewById(R.id.join_progress);
@@ -218,7 +217,7 @@ public class Register extends AppCompatActivity {
                     Edittext_name.setHintTextColor(getColor(R.color.coral_red));
                 }else{
                     // $회원가입 통신 메소드 실행
-                    startJoin(new JoinData(name, email, password, sex, age, country));
+                    startJoin(new SignUpData(name, email, password, sex, age, country));
                     showProgress(true);
                     // $로그인 페이지로 전환
 //                    Intent intent = new Intent(RegisterActivity.this, SignIn.class);
@@ -231,11 +230,12 @@ public class Register extends AppCompatActivity {
 
 
     // $회원가입 통신 메소드
-    private void startJoin(JoinData data) {
-        service.userJoin(data).enqueue(new Callback<JoinResponse>() {
+    private void startJoin(SignUpData data) {
+
+        RetrofitClient.service.userSignUp(data).enqueue(new Callback<SignUpResponse>() {
             @Override
-            public void onResponse(Call<JoinResponse> call, Response<JoinResponse> response) {
-                JoinResponse result = response.body();
+            public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+                SignUpResponse result = response.body();
                 Toast.makeText(Register.this, result.getMessage(), Toast.LENGTH_SHORT).show();
                 showProgress(false);
                 if (result.getCode() == 200) {
@@ -243,7 +243,7 @@ public class Register extends AppCompatActivity {
                 }
             }
             @Override
-            public void onFailure(Call<JoinResponse> call, Throwable t) {
+            public void onFailure(Call<SignUpResponse> call, Throwable t) {
                 Toast.makeText(Register.this, "회원가입 에러 발생", Toast.LENGTH_SHORT).show();
                 Log.e("회원가입 에러 발생", t.getMessage());
                 showProgress(false);

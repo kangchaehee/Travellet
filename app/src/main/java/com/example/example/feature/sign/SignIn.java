@@ -24,12 +24,11 @@ import com.android.volley.toolbox.Volley;
 import com.example.example.feature.main.Main;
 import com.example.example.R;
 import com.example.example.feature.SplashActivity;
-import com.example.example.data.LoginData;
-import com.example.example.data.LoginResponse;
+import com.example.example.data.SignInData;
+import com.example.example.data.SignInResponse;
 import com.example.example.network.AppHelper;
 import com.example.example.network.InfoID;
 import com.example.example.network.RetrofitClient;
-import com.example.example.network.ServiceApi;
 
 import com.example.example.volley.ResponseInfo;
 import com.google.gson.Gson;
@@ -41,7 +40,7 @@ import retrofit2.Response;
 
 public class SignIn extends AppCompatActivity {
 
-    private ServiceApi service;
+//    private ServiceApi service;
 //    private ProgressBar ProgressView;
 
     Button btn_register, btn_signin;
@@ -62,7 +61,7 @@ public class SignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        service = RetrofitClient.getClient().create(ServiceApi.class);
+//        service = RetrofitClient.getClient().create(ServiceApi.class);
 //        ProgressView = (ProgressBar) findViewById(R.id.login_progress);
 
         // 스플래쉬
@@ -184,7 +183,7 @@ public class SignIn extends AppCompatActivity {
                 password = Edittext_pw.getText().toString();
                 //testSign -> true 일 때만 로그인 가능
                 if(testSign){
-                    startLogin(new LoginData(email, password));
+                    startLogin(new SignInData(email, password));
 //                  showProgress(true);
                 }
             }
@@ -288,11 +287,11 @@ public class SignIn extends AppCompatActivity {
         }
     }
 
-    private void startLogin(LoginData data) {
-        service.userLogin(data).enqueue(new Callback<LoginResponse>() {
+    private void startLogin(SignInData data) {
+        RetrofitClient.service.userSignIn(data).enqueue(new Callback<SignInResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                LoginResponse result = response.body();
+            public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
+                SignInResponse result = response.body();
                 Toast.makeText(SignIn.this, result.getMessage(), Toast.LENGTH_SHORT).show();
                 InfoID.userId = result.getUserId();
                 exchangeCountry = result.getUserCountry();
@@ -309,7 +308,7 @@ public class SignIn extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
+            public void onFailure(Call<SignInResponse> call, Throwable t) {
                 Toast.makeText(SignIn.this, "로그인 에러 발생", Toast.LENGTH_SHORT).show();
                 Log.e("로그인 에러 발생", t.getMessage());
 //                showProgress(false);

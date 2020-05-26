@@ -2,13 +2,13 @@ package com.example.example.data;
 
 import com.google.gson.annotations.SerializedName;
 
-public class LoginData {
+public class SignInData {
     @SerializedName("userEmail")
     String userEmail;
     @SerializedName("userPwd")
     String userPwd;
 
-    public LoginData(String userEmail, String userPwd) {
+    public SignInData(String userEmail, String userPwd) {
         this.userEmail = userEmail;
         this.userPwd = userPwd;
     }
